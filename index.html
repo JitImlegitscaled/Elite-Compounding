@@ -2047,12 +2047,13 @@
       document.querySelector('.hero-ctas'),
       document.querySelector('.hero-trust'),
     ];
+    const heroDelay = 450; // start after skeleton overlay finishes fading (400ms + buffer)
     heroEls.forEach((el, i) => {
       if (!el) return;
       setTimeout(() => {
         el.classList.remove('hero-pre-animate');
         el.classList.add('hero-animate');
-      }, i * 60);
+      }, heroDelay + i * 60);
     });
   });
 
