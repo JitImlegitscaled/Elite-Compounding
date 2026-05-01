@@ -57,6 +57,8 @@
       --shadow-md:    0 4px 16px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.25);
       --shadow-lg:    0 12px 40px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3);
       --shadow-cobalt:0 8px 30px rgba(0,112,243,0.35), 0 2px 8px rgba(0,112,243,0.2);
+      --shimmer-base:      #1a2235;
+      --shimmer-highlight: #243049;
     }
     [data-theme="dark"] .nav {
       background: rgba(10,15,30,0.85);
@@ -70,6 +72,78 @@
     [data-theme="dark"] .hero-badge {
       background: var(--cobalt-light);
       border-color: var(--cobalt-border);
+    }
+
+    /* ─── SKELETON SHIMMER ─────────────────────────────────── */
+    :root {
+      --shimmer-base:      #E2E8F4;
+      --shimmer-highlight: #F0F4FF;
+    }
+
+    @keyframes shimmer {
+      0%   { background-position: -600px 0; }
+      100% { background-position:  600px 0; }
+    }
+
+    #skeleton-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--bg);
+      padding: 0;
+      pointer-events: none;
+    }
+
+    .skeleton-block {
+      background: linear-gradient(
+        90deg,
+        var(--shimmer-base) 25%,
+        var(--shimmer-highlight) 50%,
+        var(--shimmer-base) 75%
+      );
+      background-size: 1200px 100%;
+      animation: shimmer 1.4s ease-in-out infinite;
+      border-radius: 8px;
+    }
+
+    .sk-nav {
+      height: 72px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+      gap: 16px;
+    }
+    .sk-nav-logo { width: 120px; height: 24px; }
+    .sk-nav-links { display: flex; gap: 12px; margin-left: auto; }
+    .sk-nav-link  { width: 72px; height: 16px; }
+    .sk-nav-btn   { width: 100px; height: 32px; border-radius: 10px; }
+
+    .sk-hero {
+      max-width: 1120px;
+      margin: 64px auto 0;
+      padding: 0 32px;
+    }
+    .sk-badge  { width: 160px; height: 28px; border-radius: 100px; margin-bottom: 28px; }
+    .sk-h1-1   { width: 520px; height: 56px; margin-bottom: 12px; }
+    .sk-h1-2   { width: 400px; height: 56px; margin-bottom: 28px; }
+    .sk-sub-1  { width: 460px; height: 20px; margin-bottom: 10px; }
+    .sk-sub-2  { width: 380px; height: 20px; margin-bottom: 40px; }
+    .sk-ctas   { display: flex; gap: 14px; margin-bottom: 48px; }
+    .sk-btn-1  { width: 200px; height: 48px; border-radius: 10px; }
+    .sk-btn-2  { width: 160px; height: 48px; border-radius: 10px; }
+    .sk-trust  { display: flex; gap: 28px; }
+    .sk-trust-item { width: 120px; height: 20px; }
+
+    @media (max-width: 768px) {
+      .sk-nav-links { display: none; }
+      .sk-h1-1 { width: 90%; }
+      .sk-h1-2 { width: 70%; }
+      .sk-sub-1 { width: 85%; }
+      .sk-sub-2 { width: 70%; }
+      .sk-btn-1, .sk-btn-2 { width: 100%; }
+      .sk-ctas  { flex-direction: column; }
     }
 
     /* ─── RESET ─────────────────────────────────────────────── */
@@ -1174,6 +1248,36 @@
 </head>
 <body>
 
+<!-- ─── SKELETON OVERLAY ──────────────────────────────── -->
+<div id="skeleton-overlay" aria-hidden="true">
+  <div class="sk-nav">
+    <div class="skeleton-block sk-nav-logo"></div>
+    <div class="sk-nav-links">
+      <div class="skeleton-block sk-nav-link"></div>
+      <div class="skeleton-block sk-nav-link"></div>
+      <div class="skeleton-block sk-nav-link"></div>
+      <div class="skeleton-block sk-nav-link"></div>
+    </div>
+    <div class="skeleton-block sk-nav-btn"></div>
+  </div>
+  <div class="sk-hero">
+    <div class="skeleton-block sk-badge"></div>
+    <div class="skeleton-block sk-h1-1"></div>
+    <div class="skeleton-block sk-h1-2"></div>
+    <div class="skeleton-block sk-sub-1"></div>
+    <div class="skeleton-block sk-sub-2"></div>
+    <div class="sk-ctas">
+      <div class="skeleton-block sk-btn-1"></div>
+      <div class="skeleton-block sk-btn-2"></div>
+    </div>
+    <div class="sk-trust">
+      <div class="skeleton-block sk-trust-item"></div>
+      <div class="skeleton-block sk-trust-item"></div>
+      <div class="skeleton-block sk-trust-item"></div>
+    </div>
+  </div>
+</div>
+
 <!-- ─── NAVIGATION ─────────────────────────────────────── -->
 <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
   <div class="container">
@@ -1915,6 +2019,16 @@
 
 <!-- ─── JAVASCRIPT ─────────────────────────────────────── -->
 <script>
+  // ── Skeleton overlay dismissal
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('skeleton-overlay');
+    if (overlay) {
+      overlay.style.transition = 'opacity 0.4s ease';
+      overlay.style.opacity = '0';
+      setTimeout(() => overlay.remove(), 400);
+    }
+  });
+
   // ── NAV scroll state
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
