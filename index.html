@@ -3,11 +3,13 @@
 <head>
   <script>
     (function() {
-      var saved = localStorage.getItem('theme');
-      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (saved === 'dark' || (!saved && prefersDark)) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      }
+      try {
+        var saved = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
     })();
   </script>
   <meta charset="UTF-8" />
@@ -54,6 +56,7 @@
       --shadow-sm:    0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
       --shadow-md:    0 4px 16px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.25);
       --shadow-lg:    0 12px 40px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3);
+      --shadow-cobalt:0 8px 30px rgba(0,112,243,0.35), 0 2px 8px rgba(0,112,243,0.2);
     }
     [data-theme="dark"] .nav {
       background: rgba(10,15,30,0.85);
@@ -62,7 +65,7 @@
       background: rgba(17,24,39,0.98);
     }
     [data-theme="dark"] .service-card.featured {
-      background: linear-gradient(160deg, #0f1f3d 0%, #111827 60%);
+      background: linear-gradient(160deg, var(--cobalt-light) 0%, var(--bg-soft) 60%);
     }
     [data-theme="dark"] .hero-badge {
       background: var(--cobalt-light);
