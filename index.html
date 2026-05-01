@@ -186,6 +186,18 @@
     .reveal-delay-4 { transition-delay: 0.40s; }
     .reveal-delay-5 { transition-delay: 0.50s; }
 
+    /* ─── HERO ENTRANCE ────────────────────────────────────────── */
+    .hero-pre-animate {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    .hero-animate {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.6s cubic-bezier(0.22,1,0.36,1);
+    }
+
     /* ─── BUTTONS ────────────────────────────────────────────── */
     .btn {
       display: inline-flex;
@@ -1336,7 +1348,7 @@
 
       <!-- Left -->
       <div>
-        <div class="hero-badge reveal">
+        <div class="hero-badge hero-pre-animate">
           <div class="hero-badge-dot" aria-hidden="true">
             <svg viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M2 5.5L4.5 8L9 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1345,17 +1357,17 @@
           USP &lt;797&gt; &amp; &lt;800&gt; Specialists
         </div>
 
-        <h1 class="hero-headline reveal reveal-delay-1" id="hero-headline">
+        <h1 class="hero-headline hero-pre-animate" id="hero-headline">
           Your cleanroom.<br>
           Always compliant.<br>
           <span class="accent">Always ready.</span>
         </h1>
 
-        <p class="hero-sub reveal reveal-delay-2">
+        <p class="hero-sub hero-pre-animate">
           Elite Compounding Agency partners with Florida's sterile compounding facilities to achieve full USP compliance, pass regulatory inspections, and maintain audit-ready operations — year-round.
         </p>
 
-        <div class="hero-ctas reveal reveal-delay-3">
+        <div class="hero-ctas hero-pre-animate">
           <a href="#contact" class="btn btn-primary">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5L13.5 5V11L8 14.5L2.5 11V5L8 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
             Request a Free Assessment
@@ -1366,7 +1378,7 @@
           </a>
         </div>
 
-        <div class="hero-trust reveal reveal-delay-4">
+        <div class="hero-trust hero-pre-animate">
           <div class="hero-trust-item">
             <div class="hero-trust-icon" aria-hidden="true">
               <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2017,14 +2029,31 @@
 
 <!-- ─── JAVASCRIPT ─────────────────────────────────────── -->
 <script>
-  // ── Skeleton overlay dismissal
+  // ── Skeleton overlay dismissal + Hero entrance sequence
   document.addEventListener('DOMContentLoaded', () => {
+    // Dismiss skeleton overlay
     const overlay = document.getElementById('skeleton-overlay');
     if (overlay) {
       overlay.style.transition = 'opacity 0.4s ease';
       overlay.style.opacity = '0';
       setTimeout(() => overlay.remove(), 400);
     }
+
+    // Hero entrance sequence
+    const heroEls = [
+      document.querySelector('.hero-badge'),
+      document.querySelector('.hero-headline'),
+      document.querySelector('.hero-sub'),
+      document.querySelector('.hero-ctas'),
+      document.querySelector('.hero-trust'),
+    ];
+    heroEls.forEach((el, i) => {
+      if (!el) return;
+      setTimeout(() => {
+        el.classList.remove('hero-pre-animate');
+        el.classList.add('hero-animate');
+      }, i * 60);
+    });
   });
 
   // ── NAV scroll state
