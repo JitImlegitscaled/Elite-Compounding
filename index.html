@@ -41,6 +41,8 @@
       --radius-md:     10px;
       --radius-lg:     16px;
       --max-w:         1120px;
+      --shimmer-base:      #E2E8F4;
+      --shimmer-highlight: #F0F4FF;
     }
 
     /* ─── DARK MODE TOKENS ─────────────────────────────────── */
@@ -60,6 +62,7 @@
       --shimmer-base:      #1a2235;
       --shimmer-highlight: #243049;
     }
+
     [data-theme="dark"] .nav {
       background: rgba(10,15,30,0.85);
     }
@@ -75,11 +78,6 @@
     }
 
     /* ─── SKELETON SHIMMER ─────────────────────────────────── */
-    :root {
-      --shimmer-base:      #E2E8F4;
-      --shimmer-highlight: #F0F4FF;
-    }
-
     @keyframes shimmer {
       0%   { background-position: -600px 0; }
       100% { background-position:  600px 0; }
