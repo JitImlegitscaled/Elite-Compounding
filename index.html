@@ -244,6 +244,35 @@
       flex-shrink: 0;
     }
 
+    /* ─── THEME TOGGLE ─────────────────────────────────────── */
+    .theme-toggle {
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+      font-size: 17px;
+      color: var(--text-2);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .theme-toggle:hover {
+      color: var(--text);
+      background: var(--bg-soft);
+    }
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--cobalt);
+      outline-offset: 2px;
+    }
+    .theme-toggle:active {
+      transform: scale(0.9);
+    }
+
     /* Mobile hamburger */
     .nav-hamburger {
       display: none;
@@ -1171,6 +1200,7 @@
       </nav>
 
       <div class="nav-ctas">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">☾</button>
         <a href="tel:0000000000" class="btn btn-ghost btn-sm">Schedule a Call</a>
         <a href="#contact" class="btn btn-primary btn-sm">Request a Quote</a>
       </div>
@@ -1890,6 +1920,30 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
+
+  // ── Theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeToggle.textContent = '☀';
+      themeToggle.setAttribute('aria-label', 'Switch to light mode');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      themeToggle.textContent = '☾';
+      themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+    }
+  }
+  // Sync icon to current state on load
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  applyTheme(currentTheme === 'dark' ? 'dark' : 'light');
+
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const next = isDark ? 'light' : 'dark';
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    applyTheme(next);
+  });
 
   // ── Hamburger menu
   const hamburger = document.getElementById('hamburger');
