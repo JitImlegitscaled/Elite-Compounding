@@ -2092,9 +2092,11 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  revealEls.forEach(el => observer.observe(el));
+  revealEls.forEach(el => {
+    if (!el.closest('[data-stagger-children]')) observer.observe(el);
+  });
 
-  // Observe stagger containers
+  // Observe stagger containers (children inside are handled by the stagger branch above)
   document.querySelectorAll('[data-stagger-children]').forEach(el => observer.observe(el));
 
   // ── Smooth scroll for anchor links
