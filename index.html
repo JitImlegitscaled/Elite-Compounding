@@ -1663,7 +1663,7 @@
       <p class="section-sub">Comprehensive programs designed to achieve, maintain, and document USP compliance at every level of your operation.</p>
     </div>
 
-    <div class="services-grid">
+    <div class="services-grid" data-stagger-children>
 
       <!-- Card 1 - Featured -->
       <div class="service-card featured reveal">
@@ -1686,7 +1686,7 @@
       </div>
 
       <!-- Card 2 -->
-      <div class="service-card reveal reveal-delay-1">
+      <div class="service-card reveal">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M17 21V19C17 17.9 16.1 17 15 17H9C7.9 17 7 17.9 7 19V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -1706,7 +1706,7 @@
       </div>
 
       <!-- Card 3 -->
-      <div class="service-card reveal reveal-delay-2">
+      <div class="service-card reveal">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9 5H7C5.9 5 5 5.9 5 7V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V7C19 5.9 18.1 5 17 5H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -1738,24 +1738,24 @@
   <div class="stats-dots" aria-hidden="true"></div>
   <div class="stats-glow" aria-hidden="true"></div>
   <div class="container">
-    <div class="stats-grid" role="list">
+    <div class="stats-grid" role="list" data-stagger-children>
 
       <div class="stat-item reveal" role="listitem">
         <div class="stat-number">100%</div>
         <div class="stat-label">Audit Pass Rate</div>
       </div>
 
-      <div class="stat-item reveal reveal-delay-1" role="listitem">
+      <div class="stat-item reveal" role="listitem">
         <div class="stat-number">24hr</div>
         <div class="stat-label">Response Guarantee</div>
       </div>
 
-      <div class="stat-item reveal reveal-delay-2" role="listitem">
+      <div class="stat-item reveal" role="listitem">
         <div class="stat-number" style="font-size:clamp(26px,2.8vw,44px); line-height:1.15;">503A<br>503B</div>
         <div class="stat-label">Both Pathways Served</div>
       </div>
 
-      <div class="stat-item reveal reveal-delay-3" role="listitem">
+      <div class="stat-item reveal" role="listitem">
         <div class="stat-number">0</div>
         <div class="stat-label">Uncorrected Citations</div>
       </div>
@@ -2079,13 +2079,23 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        if (entry.target.hasAttribute('data-stagger-children')) {
+          Array.from(entry.target.children).forEach((child, i) => {
+            child.style.transitionDelay = (i * 80) + 'ms';
+            child.classList.add('visible');
+          });
+        } else {
+          entry.target.classList.add('visible');
+        }
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
   revealEls.forEach(el => observer.observe(el));
+
+  // Observe stagger containers
+  document.querySelectorAll('[data-stagger-children]').forEach(el => observer.observe(el));
 
   // ── Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
