@@ -1085,12 +1085,6 @@
       font-size: 16px;
       color: var(--text-2);
     }
-    .cta-buttons {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-shrink: 0;
-    }
 
     /* ─── CONTACT FORM ─────────────────────────────────────────────────── */
     .contact-card {
@@ -1229,6 +1223,10 @@
     .contact-submit {
       width: 100%;
       margin-top: 4px;
+    }
+    .contact-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
     /* Loading overlay — shown inside .contact-card-body while submitting */
     .contact-loading {
@@ -1445,7 +1443,6 @@
 
       .cta-section { padding: 80px 0; }
       .cta-box { gap: 32px; padding: 40px 32px; }
-      .cta-buttons { flex-direction: column; align-items: flex-start; }
 
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
@@ -2571,7 +2568,9 @@
 
     function showLoading() {
       formFields.classList.add('loading');
-      loadingEl.querySelector('.contact-loading-text').textContent = 'Sending your message…';
+      const loadingText = loadingEl.querySelector('.contact-loading-text');
+      loadingText.textContent = '';
+      loadingText.textContent = 'Sending your message…';
       loadingEl.classList.add('visible');
       submitBtn.disabled = true;
     }
@@ -2592,6 +2591,9 @@
 
     function showError() {
       hideLoading();
+      const bannerTitle = errorBanner.querySelector('.contact-error-banner-title');
+      bannerTitle.textContent = '';
+      bannerTitle.textContent = "Couldn't send your message";
       errorBanner.classList.add('visible');
       submitBtn.disabled = false;
       submitBtn.textContent = 'Try Again →';
