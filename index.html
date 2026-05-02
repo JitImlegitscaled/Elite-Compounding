@@ -2161,7 +2161,7 @@
           <div class="contact-card-sub">USP compliance specialists · 24hr response guarantee</div>
         </div>
 
-        <div class="contact-card-body" aria-live="polite">
+        <div class="contact-card-body">
 
           <!-- Form fields (faded during loading) -->
           <div class="contact-form-fields" id="contact-form-fields">
@@ -2182,7 +2182,7 @@
                   aria-required="true"
                   aria-describedby="msg-name"
                 >
-                <div class="contact-field-msg" id="msg-name" role="alert"></div>
+                <div class="contact-field-msg" id="msg-name" aria-live="polite"></div>
               </div>
               <div class="contact-field-wrap" id="wrap-email">
                 <label class="contact-label" for="contact-email">
@@ -2198,7 +2198,7 @@
                   aria-required="true"
                   aria-describedby="msg-email"
                 >
-                <div class="contact-field-msg" id="msg-email" role="alert"></div>
+                <div class="contact-field-msg" id="msg-email" aria-live="polite"></div>
               </div>
             </div>
 
@@ -2215,7 +2215,7 @@
                   autocomplete="tel"
                   aria-describedby="msg-phone"
                 >
-                <div class="contact-field-msg" id="msg-phone" role="alert"></div>
+                <div class="contact-field-msg" id="msg-phone" aria-live="polite"></div>
               </div>
               <div class="contact-field-wrap" id="wrap-facility">
                 <label class="contact-label" for="contact-facility">Facility Type</label>
@@ -2223,6 +2223,7 @@
                   id="contact-facility"
                   name="facility_type"
                   class="contact-select"
+                  aria-describedby="msg-facility"
                 >
                   <option value="">Select type…</option>
                   <option value="503A Pharmacy">503A Pharmacy</option>
@@ -2232,7 +2233,7 @@
                   <option value="Nuclear Pharmacy">Nuclear Pharmacy</option>
                   <option value="Other">Other</option>
                 </select>
-                <div class="contact-field-msg" id="msg-facility"></div>
+                <div class="contact-field-msg" id="msg-facility" aria-live="polite"></div>
               </div>
             </div>
 
@@ -2251,7 +2252,7 @@
                   aria-required="true"
                   aria-describedby="msg-message"
                 ></textarea>
-                <div class="contact-field-msg" id="msg-message" role="alert"></div>
+                <div class="contact-field-msg" id="msg-message" aria-live="polite"></div>
               </div>
             </div>
 
@@ -2286,7 +2287,7 @@
           </div>
 
           <!-- Success state -->
-          <div class="contact-success" id="contact-success">
+          <div class="contact-success" id="contact-success" role="status">
             <div class="contact-success-icon" aria-hidden="true">✓</div>
             <div class="contact-success-title">Message sent!</div>
             <div class="contact-success-body">
