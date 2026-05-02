@@ -1092,6 +1092,209 @@
       flex-shrink: 0;
     }
 
+    /* ─── CONTACT FORM ─────────────────────────────────────────────────── */
+    .contact-card {
+      width: 100%;
+      max-width: 520px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .contact-card-header {
+      background: var(--cobalt);
+      padding: 24px 28px;
+    }
+    .contact-card-title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .contact-card-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.75);
+    }
+    .contact-card-body {
+      background: var(--bg);
+      padding: 24px 28px;
+      position: relative;
+    }
+    .contact-field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .contact-field-full {
+      margin-bottom: 14px;
+    }
+    .contact-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      margin-bottom: 5px;
+    }
+    .contact-label .required {
+      color: #ef4444;
+      margin-left: 2px;
+    }
+    .contact-input,
+    .contact-select,
+    .contact-textarea {
+      width: 100%;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 7px;
+      padding: 9px 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .contact-input:focus,
+    .contact-select:focus,
+    .contact-textarea:focus {
+      border-color: var(--cobalt);
+    }
+    .contact-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%234A5468' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      padding-right: 28px;
+    }
+    .contact-textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .contact-field-wrap {
+      position: relative;
+    }
+    .contact-field-wrap.is-error .contact-input,
+    .contact-field-wrap.is-error .contact-select,
+    .contact-field-wrap.is-error .contact-textarea {
+      border-color: #ef4444;
+      background: #fff9f9;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .contact-field-wrap.is-valid .contact-input,
+    .contact-field-wrap.is-valid .contact-select,
+    .contact-field-wrap.is-valid .contact-textarea {
+      border-color: #22c55e;
+      background: #f9fff9;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .contact-field-msg {
+      font-size: 11px;
+      margin-top: 4px;
+      min-height: 16px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .contact-field-wrap.is-error .contact-field-msg { color: #ef4444; }
+    .contact-field-wrap.is-valid .contact-field-msg { color: #22c55e; }
+    [data-theme="dark"] .contact-field-wrap.is-error .contact-input,
+    [data-theme="dark"] .contact-field-wrap.is-error .contact-select,
+    [data-theme="dark"] .contact-field-wrap.is-error .contact-textarea { background: #2d0a0a; }
+    [data-theme="dark"] .contact-field-wrap.is-valid .contact-input,
+    [data-theme="dark"] .contact-field-wrap.is-valid .contact-select,
+    [data-theme="dark"] .contact-field-wrap.is-valid .contact-textarea { background: #0a2d0f; }
+    .contact-error-banner {
+      display: none;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: 7px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .contact-error-banner.visible { display: flex; }
+    [data-theme="dark"] .contact-error-banner { background: #2d0a0a; border-color: #7f1d1d; }
+    .contact-error-banner-icon { color: #ef4444; font-size: 16px; line-height: 1; flex-shrink: 0; margin-top: 1px; }
+    .contact-error-banner-title { font-weight: 600; font-size: 13px; color: #dc2626; }
+    .contact-error-banner-sub { font-size: 11px; color: var(--text-2); margin-top: 3px; }
+    .contact-error-banner-sub a { color: var(--cobalt); }
+    .contact-submit {
+      width: 100%;
+      margin-top: 4px;
+    }
+    /* Loading overlay — shown inside .contact-card-body while submitting */
+    .contact-loading {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 48px 0;
+    }
+    .contact-loading.visible { display: flex; }
+    .contact-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--cobalt-light);
+      border-top-color: var(--cobalt);
+      border-radius: 50%;
+      animation: contact-spin 0.8s linear infinite;
+    }
+    @keyframes contact-spin { to { transform: rotate(360deg); } }
+    .contact-loading-text { font-size: 13px; color: var(--text-2); }
+    /* Success state — replaces form content */
+    .contact-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 40px 0;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .contact-success.visible { display: flex; }
+    .contact-success.fade-in { opacity: 1; }
+    .contact-success-icon {
+      width: 52px;
+      height: 52px;
+      background: #dcfce7;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+    .contact-success-title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--text);
+    }
+    .contact-success-body {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+    /* Form fields opacity fade during loading */
+    .contact-form-fields {
+      transition: opacity 0.25s ease;
+    }
+    .contact-form-fields.loading {
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    @media (max-width: 540px) {
+      .contact-card-header { padding: 18px 20px; }
+      .contact-card-body { padding: 18px 20px; }
+      .contact-field-grid { grid-template-columns: 1fr; }
+    }
+
     /* ─── FOOTER ─────────────────────────────────────────────── */
     .footer {
       background: #0A0F1E;
