@@ -2495,6 +2495,158 @@
       }
     });
   });
+
+  // ── Contact form
+  (function () {
+    const form        = document.getElementById('contact-form');
+    if (!form) return;
+
+    const fields = {
+      name:     { el: document.getElementById('contact-name'),    wrap: document.getElementById('wrap-name'),    msg: document.getElementById('msg-name') },
+      email:    { el: document.getElementById('contact-email'),   wrap: document.getElementById('wrap-email'),   msg: document.getElementById('msg-email') },
+      phone:    { el: document.getElementById('contact-phone'),   wrap: document.getElementById('wrap-phone'),   msg: document.getElementById('msg-phone') },
+      message:  { el: document.getElementById('contact-message'), wrap: document.getElementById('wrap-message'), msg: document.getElementById('msg-message') },
+    };
+    const submitBtn     = document.getElementById('contact-submit');
+    const formFields    = document.getElementById('contact-form-fields');
+    const loadingEl     = document.getElementById('contact-loading');
+    const successEl     = document.getElementById('contact-success');
+    const errorBanner   = document.getElementById('contact-error-banner');
+    const hiddenName    = document.getElementById('hidden-from-name');
+    const hiddenReplyTo = document.getElementById('hidden-replyto');
+
+    // Validation rules — return error string or '' if valid
+    function validate(key, value) {
+      if (key === 'name') {
+        if (!value.trim()) return 'Full name is required';
+        if (value.trim().length < 2) return 'Name must be at least 2 characters';
+        return '';
+      }
+      if (key === 'email') {
+        if (!value.trim()) return 'Email address is required';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())) return 'Enter a valid email address';
+        return '';
+      }
+      if (key === 'phone') {
+        if (value.trim() && !/^[\d\s\-\+\(\)]{7,}$/.test(value.trim())) return 'Enter a valid phone number';
+        return '';
+      }
+      if (key === 'message') {
+        if (!value.trim()) return 'Message is required';
+        if (value.trim().length < 10) return 'Message must be at least 10 characters';
+        return '';
+      }
+      return '';
+    }
+
+    function setFieldState(key, error) {
+      const { wrap, msg } = fields[key];
+      wrap.classList.remove('is-error', 'is-valid');
+      if (error) {
+        wrap.classList.add('is-error');
+        msg.textContent = '⚠ ' + error;
+      } else if (fields[key].el.value.trim() !== '') {
+        wrap.classList.add('is-valid');
+        msg.textContent = '✓ Looks good';
+      } else {
+        msg.textContent = '';
+      }
+    }
+
+    // Attach blur handlers
+    Object.keys(fields).forEach(key => {
+      fields[key].el.addEventListener('blur', () => {
+        const error = validate(key, fields[key].el.value);
+        setFieldState(key, error);
+      });
+      // Re-validate live while user is correcting an error
+      fields[key].el.addEventListener('input', () => {
+        if (fields[key].wrap.classList.contains('is-error')) {
+          const error = validate(key, fields[key].el.value);
+          setFieldState(key, error);
+        }
+      });
+    });
+
+    function showLoading() {
+      formFields.classList.add('loading');
+      loadingEl.classList.add('visible');
+    }
+
+    function hideLoading() {
+      formFields.classList.remove('loading');
+      loadingEl.classList.remove('visible');
+    }
+
+    function showSuccess() {
+      formFields.style.display = 'none';
+      loadingEl.classList.remove('visible');
+      successEl.classList.add('visible');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => successEl.classList.add('fade-in'));
+      });
+    }
+
+    function showError() {
+      hideLoading();
+      errorBanner.classList.add('visible');
+      submitBtn.textContent = 'Try Again →';
+      submitBtn.setAttribute('aria-label', 'Try again');
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Re-validate all fields on submit
+      let hasError = false;
+      ['name', 'email', 'phone', 'message'].forEach(key => {
+        const error = validate(key, fields[key].el.value);
+        setFieldState(key, error);
+        if (error) hasError = true;
+      });
+      if (hasError) return;
+
+      // Dismiss previous error banner and reset button
+      errorBanner.classList.remove('visible');
+      submitBtn.textContent = 'Send Message →';
+      submitBtn.setAttribute('aria-label', 'Send message');
+
+      // Sync hidden fields
+      hiddenName.value    = fields.name.el.value.trim();
+      hiddenReplyTo.value = fields.email.el.value.trim();
+
+      showLoading();
+
+      const payload = {
+        access_key:    form.querySelector('[name="access_key"]').value,
+        subject:       'New Assessment Request — Elite Compounding Agency',
+        from_name:     fields.name.el.value.trim(),
+        replyto:       fields.email.el.value.trim(),
+        name:          fields.name.el.value.trim(),
+        email:         fields.email.el.value.trim(),
+        phone:         fields.phone.el.value.trim(),
+        facility_type: form.querySelector('[name="facility_type"]').value,
+        message:       fields.message.el.value.trim(),
+        botcheck:      '',
+      };
+
+      try {
+        const res  = await fetch('https://api.web3forms.com/submit', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body:    JSON.stringify(payload),
+        });
+        const data = await res.json();
+        if (data.success) {
+          showSuccess();
+        } else {
+          showError();
+        }
+      } catch (_) {
+        showError();
+      }
+    });
+  })();
 </script>
 
 </body>
