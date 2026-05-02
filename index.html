@@ -2514,6 +2514,7 @@
     const errorBanner   = document.getElementById('contact-error-banner');
     const hiddenName    = document.getElementById('hidden-from-name');
     const hiddenReplyTo = document.getElementById('hidden-replyto');
+    const accessKey     = form.querySelector('[name="access_key"]').value;
 
     // Validation rules — return error string or '' if valid
     function validate(key, value) {
@@ -2528,7 +2529,7 @@
         return '';
       }
       if (key === 'phone') {
-        if (value.trim() && !/^[\d\s\-\+\(\)]{7,}$/.test(value.trim())) return 'Enter a valid phone number';
+        if (value.trim() && !/^\+?[\d][\d\s\-\(\)]{5,}[\d]$/.test(value.trim())) return 'Enter a valid phone number';
         return '';
       }
       if (key === 'message') {
@@ -2570,7 +2571,9 @@
 
     function showLoading() {
       formFields.classList.add('loading');
+      loadingEl.querySelector('.contact-loading-text').textContent = 'Sending your message…';
       loadingEl.classList.add('visible');
+      submitBtn.disabled = true;
     }
 
     function hideLoading() {
@@ -2590,6 +2593,7 @@
     function showError() {
       hideLoading();
       errorBanner.classList.add('visible');
+      submitBtn.disabled = false;
       submitBtn.textContent = 'Try Again →';
       submitBtn.setAttribute('aria-label', 'Try again');
     }
@@ -2618,7 +2622,7 @@
       showLoading();
 
       const payload = {
-        access_key:    form.querySelector('[name="access_key"]').value,
+        access_key:    accessKey,
         subject:       'New Assessment Request — Elite Compounding Agency',
         from_name:     fields.name.el.value.trim(),
         replyto:       fields.email.el.value.trim(),
