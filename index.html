@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>
-    (function() {
-      try {
-        var saved = localStorage.getItem('theme');
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (saved === 'dark' || (!saved && prefersDark)) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        }
-      } catch (e) {}
-    })();
-  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Elite Compounding Agency — Cleanroom Compliance & Sterile Staffing</title>
+  <title>Elite Compounding Agency — Cleanroom Compliance &amp; Sterile Staffing</title>
   <meta name="description" content="Elite Compounding Agency delivers USP &lt;797&gt; &amp; &lt;800&gt; compliance consulting, cleanroom certification, and sterile compounding staffing across Florida." />
-
+  <meta property="og:image" content="logo-v2.png" />
+  <link rel="icon" type="image/png" href="logo-v2.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap');
-
     /* ─── TOKENS ───────────────────────────────────────────── */
+    /* Brand Update — 2026-05-04
+       Colors changed:
+         --cobalt        #0052B8  →  #0052B8  (ECA Primary Blue)
+         --cobalt-dark   #0050CC  →  #0A3F8C  (ECA Deep Blue)
+         --cobalt-mid    #1a7fff  →  #1a65cc  (derived mid)
+         --cobalt-light  #EBF3FF  →  #EBF1FB  (derived tint)
+         --cobalt-border #C7DEFF  →  #B8CFED  (derived border)
+       Fonts changed:
+         Display/headings: Bricolage Grotesque  →  Montserrat (Bold/ExtraBold)
+         Body:             DM Sans              →  Inter (Regular/Medium)
+         Buttons:          DM Sans              →  Montserrat (SemiBold)
+    */
     :root {
-      --cobalt:        #0070F3;
-      --cobalt-dark:   #0050CC;
-      --cobalt-mid:    #1a7fff;
-      --cobalt-light:  #EBF3FF;
-      --cobalt-border: #C7DEFF;
+      --cobalt:        #0052B8;
+      --cobalt-dark:   #0A3F8C;
+      --cobalt-mid:    #1a65cc;
+      --cobalt-light:  #EBF1FB;
+      --cobalt-border: #B8CFED;
       --bg:            #FFFFFF;
       --bg-soft:       #F7F9FC;
       --text:          #0A0F1E;
@@ -36,119 +39,18 @@
       --shadow-sm:     0 1px 3px rgba(10,15,30,0.06), 0 1px 2px rgba(10,15,30,0.04);
       --shadow-md:     0 4px 16px rgba(10,15,30,0.08), 0 2px 6px rgba(10,15,30,0.05);
       --shadow-lg:     0 12px 40px rgba(10,15,30,0.12), 0 4px 12px rgba(10,15,30,0.07);
-      --shadow-cobalt: 0 8px 30px rgba(0,112,243,0.25), 0 2px 8px rgba(0,112,243,0.15);
-      --radius-sm:     6px;
-      --radius-md:     10px;
+      --shadow-cobalt: 0 8px 30px rgba(0,82,184,0.25), 0 2px 8px rgba(0,82,184,0.15);
+      --radius-sm:     8px;
+      --radius-md:     16px;
       --radius-lg:     16px;
       --max-w:         1120px;
-      --shimmer-base:      #E2E8F4;
-      --shimmer-highlight: #F0F4FF;
-    }
-
-    /* ─── DARK MODE TOKENS ─────────────────────────────────── */
-    [data-theme="dark"] {
-      --bg:           #0A0F1E;
-      --bg-soft:      #111827;
-      --text:         #F0F4FF;
-      --text-2:       #94A3B8;
-      --text-3:       #64748B;
-      --border:       rgba(255,255,255,0.08);
-      --cobalt-light: #0f1f3d;
-      --cobalt-border:#1e3a6e;
-      --shadow-sm:    0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
-      --shadow-md:    0 4px 16px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.25);
-      --shadow-lg:    0 12px 40px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3);
-      --shadow-cobalt:0 8px 30px rgba(0,112,243,0.35), 0 2px 8px rgba(0,112,243,0.2);
-      --shimmer-base:      #1a2235;
-      --shimmer-highlight: #243049;
-    }
-
-    [data-theme="dark"] .nav {
-      background: rgba(10,15,30,0.85);
-    }
-    [data-theme="dark"] .nav-mobile-menu {
-      background: rgba(17,24,39,0.98);
-    }
-    [data-theme="dark"] .service-card.featured {
-      background: linear-gradient(160deg, var(--cobalt-light) 0%, var(--bg-soft) 60%);
-    }
-    [data-theme="dark"] .hero-badge {
-      background: var(--cobalt-light);
-      border-color: var(--cobalt-border);
-    }
-
-    /* ─── SKELETON SHIMMER ─────────────────────────────────── */
-    @keyframes shimmer {
-      0%   { background-position: -600px 0; }
-      100% { background-position:  600px 0; }
-    }
-
-    #skeleton-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: var(--bg);
-      padding: 0;
-      pointer-events: none;
-    }
-
-    .skeleton-block {
-      background: linear-gradient(
-        90deg,
-        var(--shimmer-base) 25%,
-        var(--shimmer-highlight) 50%,
-        var(--shimmer-base) 75%
-      );
-      background-size: 1200px 100%;
-      animation: shimmer 1.4s ease-in-out infinite;
-      border-radius: 8px;
-    }
-
-    .sk-nav {
-      height: 72px;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      padding: 0 32px;
-      gap: 16px;
-    }
-    .sk-nav-logo { width: 120px; height: 24px; }
-    .sk-nav-links { display: flex; gap: 12px; margin-left: auto; }
-    .sk-nav-link  { width: 72px; height: 16px; }
-    .sk-nav-btn   { width: 100px; height: 32px; border-radius: 10px; }
-
-    .sk-hero {
-      max-width: 1120px;
-      margin: 64px auto 0;
-      padding: 0 32px;
-    }
-    .sk-badge  { width: 160px; height: 28px; border-radius: 100px; margin-bottom: 28px; }
-    .sk-h1-1   { width: 520px; height: 56px; margin-bottom: 12px; }
-    .sk-h1-2   { width: 400px; height: 56px; margin-bottom: 28px; }
-    .sk-sub-1  { width: 460px; height: 20px; margin-bottom: 10px; }
-    .sk-sub-2  { width: 380px; height: 20px; margin-bottom: 40px; }
-    .sk-ctas   { display: flex; gap: 14px; margin-bottom: 48px; }
-    .sk-btn-1  { width: 200px; height: 48px; border-radius: 10px; }
-    .sk-btn-2  { width: 160px; height: 48px; border-radius: 10px; }
-    .sk-trust  { display: flex; gap: 28px; }
-    .sk-trust-item { width: 120px; height: 20px; }
-
-    @media (max-width: 768px) {
-      .sk-nav-links { display: none; }
-      .sk-h1-1 { width: 90%; }
-      .sk-h1-2 { width: 70%; }
-      .sk-sub-1 { width: 85%; }
-      .sk-sub-2 { width: 70%; }
-      .sk-btn-1, .sk-btn-2 { width: 100%; }
-      .sk-ctas  { flex-direction: column; }
     }
 
     /* ─── RESET ─────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 16px;
       line-height: 1.7;
       color: var(--text);
@@ -161,1242 +63,422 @@
     button { font-family: inherit; cursor: pointer; border: none; background: none; }
     ul { list-style: none; }
 
-    /* ─── TYPOGRAPHY ─────────────────────────────────────────── */
-    .font-display { font-family: 'Bricolage Grotesque', sans-serif; }
-
     /* ─── LAYOUT ─────────────────────────────────────────────── */
-    .container {
-      width: 100%;
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 32px;
-    }
+    .container { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
 
     /* ─── SCROLL REVEAL ──────────────────────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
-                  transform 0.65s cubic-bezier(0.22,1,0.36,1);
-    }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.10s; }
     .reveal-delay-2 { transition-delay: 0.20s; }
     .reveal-delay-3 { transition-delay: 0.30s; }
     .reveal-delay-4 { transition-delay: 0.40s; }
-    .reveal-delay-5 { transition-delay: 0.50s; }
-
-    /* ─── HERO ENTRANCE ────────────────────────────────────────── */
-    .hero-pre-animate {
-      opacity: 0;
-      transform: translateY(16px);
-    }
-    .hero-animate {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1),
-                  transform 0.6s cubic-bezier(0.22,1,0.36,1);
-    }
 
     /* ─── BUTTONS ────────────────────────────────────────────── */
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 26px;
-      border-radius: var(--radius-md);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      line-height: 1;
-      white-space: nowrap;
-      transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1),
-                  box-shadow 0.22s ease,
-                  background 0.18s ease,
-                  border-color 0.18s ease,
-                  color 0.18s ease;
-      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px; border-radius: 100px;
+      font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600;
+      letter-spacing: 0.02em; text-transform: none;
+      line-height: 1; white-space: nowrap; cursor: pointer;
+      transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.22s ease, background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
     }
     .btn:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 3px; }
     .btn:active { transform: translateY(0) scale(0.97) !important; transition: transform 0.1s ease-out !important; }
-
-    .btn-primary {
-      background: var(--cobalt);
-      color: #fff;
-      box-shadow: var(--shadow-cobalt);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(0,112,243,0.35), 0 4px 12px rgba(0,112,243,0.2);
-      background: var(--cobalt-mid);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--cobalt);
-      border: 1.5px solid var(--cobalt-border);
-    }
-    .btn-ghost:hover {
-      transform: translateY(-2px);
-      background: var(--cobalt-light);
-      border-color: var(--cobalt);
-      box-shadow: 0 4px 16px rgba(0,112,243,0.12);
-    }
-
-    .btn-sm {
-      padding: 10px 22px;
-      font-size: 14px;
-    }
+    .btn-primary { background: linear-gradient(135deg, var(--cobalt) 0%, var(--cobalt-dark) 100%); color: #fff; box-shadow: var(--shadow-cobalt); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,82,184,0.38), 0 4px 12px rgba(0,82,184,0.22); background: linear-gradient(135deg, var(--cobalt-mid) 0%, var(--cobalt) 100%); }
+    .btn-ghost { background: transparent; color: var(--cobalt); border: 1.5px solid var(--cobalt-border); }
+    .btn-ghost:hover { transform: translateY(-2px); background: var(--cobalt-light); border-color: var(--cobalt); box-shadow: 0 4px 16px rgba(0,82,184,0.12); }
+    .btn-sm { padding: 10px 22px; font-size: 13px; }
 
     /* ─── NAV ────────────────────────────────────────────────── */
     .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      height: 72px;
+      position: sticky; top: 0; z-index: 100; height: 72px;
       background: rgba(255,255,255,0.82);
       backdrop-filter: blur(18px) saturate(180%);
       -webkit-backdrop-filter: blur(18px) saturate(180%);
       border-bottom: 1px solid transparent;
       transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
     }
-    .nav.scrolled {
-      border-color: var(--border);
-      box-shadow: 0 2px 20px rgba(10,15,30,0.06);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 100%;
-      gap: 24px;
-    }
-
-    /* Logo */
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
+    .nav.scrolled { border-color: var(--border); box-shadow: 0 2px 20px rgba(10,15,30,0.06); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; gap: 24px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     .nav-logo-mark {
-      width: 34px;
-      height: 34px;
-      background: var(--cobalt);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      width: 34px; height: 34px; background: var(--cobalt); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
     .nav-logo-mark svg { width: 18px; height: 18px; }
-    .nav-logo-text {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: 16px;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      line-height: 1.2;
-    }
-    .nav-logo-text span { display: block; font-size: 10px; font-weight: 400; color: var(--text-2); letter-spacing: 0.04em; text-transform: uppercase; font-family: 'DM Sans', sans-serif; }
-
-    /* Center links */
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      flex: 1;
-      justify-content: center;
-    }
-    .nav-links a {
-      padding: 8px 14px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-2);
-      border-radius: var(--radius-sm);
-      transition: color 0.18s ease, background 0.18s ease,
-                  transform 0.15s cubic-bezier(0.34,1.56,0.64,1);
-      white-space: nowrap;
-      display: inline-block;
-    }
+    .nav-logo-img { height: 44px; width: auto; display: block; }
+    .nav-logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: -0.02em; color: #0A0F1E; line-height: 1.2; }
+    .nav-logo-text span { display: block; font-size: 9.5px; font-weight: 400; color: #0052B8; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'Inter', sans-serif; }
+    .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; }
+    .nav-links a { padding: 8px 14px; font-size: 14px; font-weight: 500; color: var(--text-2); border-radius: var(--radius-sm); transition: color 0.18s ease, background 0.18s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1); white-space: nowrap; display: inline-block; }
     .nav-links a:hover { color: var(--text); background: var(--bg-soft); transform: translateY(-2px); }
     .nav-links a:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
-
-    /* Nav CTA */
-    .nav-ctas {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-
-    /* ─── THEME TOGGLE ─────────────────────────────────────── */
-    .theme-toggle {
-      width: 34px;
-      height: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: var(--radius-sm);
-      font-size: 17px;
-      color: var(--text-2);
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      transition: color 0.18s ease, background 0.18s ease, transform 0.18s ease;
-      flex-shrink: 0;
-      line-height: 1;
-    }
-    .theme-toggle:hover {
-      color: var(--text);
-      background: var(--bg-soft);
-    }
-    .theme-toggle:focus-visible {
-      outline: 2px solid var(--cobalt);
-      outline-offset: 2px;
-    }
-    .theme-toggle:active {
-      transform: scale(0.9);
-    }
-
-    /* Mobile hamburger */
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      padding: 8px;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-    }
-    .nav-hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: transform 0.25s ease, opacity 0.25s ease;
-    }
+    .nav-ctas { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; border-radius: var(--radius-sm); cursor: pointer; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
     .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-hamburger.open span:nth-child(2) { opacity: 0; }
     .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    .nav-mobile-menu {
-      display: none;
-      position: fixed;
-      top: 72px;
-      left: 0;
-      right: 0;
-      background: rgba(255,255,255,0.98);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      padding: 20px 24px 28px;
-      z-index: 99;
-      box-shadow: 0 8px 32px rgba(10,15,30,0.1);
-    }
+    .nav-mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 20px 24px 28px; z-index: 99; box-shadow: 0 8px 32px rgba(10,15,30,0.1); }
     .nav-mobile-menu.open { display: block; }
-    .nav-mobile-menu a {
-      display: block;
-      padding: 14px 0;
-      font-size: 16px;
-      font-weight: 500;
-      color: var(--text-2);
-      border-bottom: 1px solid var(--border);
-      transition: color 0.18s ease;
-    }
+    .nav-mobile-menu a { display: block; padding: 14px 0; font-size: 16px; font-weight: 500; color: var(--text-2); border-bottom: 1px solid var(--border); transition: color 0.18s ease; }
     .nav-mobile-menu a:last-of-type { border-bottom: none; }
     .nav-mobile-menu a:hover { color: var(--cobalt); }
     .nav-mobile-btns { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
     .nav-mobile-btns .btn { justify-content: center; }
 
     /* ─── HERO ───────────────────────────────────────────────── */
-    .hero {
-      padding: 100px 0 80px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -120px;
-      right: -80px;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(ellipse at center, rgba(0,112,243,0.09) 0%, transparent 65%);
-      pointer-events: none;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -100px;
-      left: -60px;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(ellipse at center, rgba(0,112,243,0.04) 0%, transparent 65%);
-      pointer-events: none;
-    }
+    .hero { padding: 96px 0 80px; position: relative; overflow: hidden; background: #06091a; }
+    /* Layered ambient glow — brand cobalt left, warm teal right, subtle violet top */
+    .hero::before { content: ''; position: absolute; inset: 0; background:
+      radial-gradient(ellipse 70% 60% at 15% 55%, rgba(0,82,184,0.22) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 50% at 85% 40%, rgba(14,165,233,0.12) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 35% at 50% 0%, rgba(99,102,241,0.1) 0%, transparent 60%),
+      radial-gradient(ellipse 30% 40% at 95% 80%, rgba(0,82,184,0.1) 0%, transparent 60%);
+      pointer-events: none; }
+    /* Bottom fade to white for smooth section transition */
+    .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to bottom, transparent, #06091a 60%, rgba(6,9,26,0)); display: none; }
 
-    /* SVG noise grain overlay */
-    .hero-grain {
+    /* floating pill shapes — now visible with proper opacity */
+    .hero-shape { position: absolute; border-radius: 9999px; pointer-events: none; }
+    .hero-shape::after { display: none; }
+    .hero-shape-1 { width: 700px; height: 1px; background: linear-gradient(to right, transparent, rgba(0,82,184,0.5), transparent); top: 28%; left: -5%; transform: rotate(12deg); animation: shapefloat 12s ease-in-out infinite; filter: blur(0.5px); }
+    .hero-shape-2 { width: 500px; height: 1px; background: linear-gradient(to right, transparent, rgba(14,165,233,0.4), transparent); top: 68%; right: -5%; transform: rotate(-8deg); animation: shapefloat 14s ease-in-out infinite 1s; filter: blur(0.5px); }
+    .hero-shape-3 { width: 300px; height: 1px; background: linear-gradient(to right, transparent, rgba(99,102,241,0.35), transparent); bottom: 22%; left: 5%; transform: rotate(-15deg); animation: shapefloat 11s ease-in-out infinite 0.5s; filter: blur(0.5px); }
+    /* Ambient orbs — soft glows in the background */
+    .hero-shape-4 { width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(0,82,184,0.08) 0%, transparent 70%); top: -10%; right: 5%; animation: shapefloat 10s ease-in-out infinite 1.5s; }
+    .hero-shape-5 { width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, rgba(14,165,233,0.07) 0%, transparent 70%); bottom: 10%; right: 30%; animation: shapefloat 13s ease-in-out infinite 0.8s; }
+    @keyframes shapefloat { 0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); } 50% { transform: translateY(-16px) rotate(var(--r, 0deg)); } }
+    .hero-shape-1 { --r: 12deg; }
+    .hero-shape-2 { --r: -8deg; }
+    .hero-shape-3 { --r: -15deg; }
+
+    /* hero content overrides for dark background */
+    .hero .hero-headline { color: #fff; }
+    .hero .hero-headline .accent {
+      background: linear-gradient(90deg, #60a5fa 0%, #3b82f6 50%, #0052B8 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero .hero-sub { color: rgba(255,255,255,0.72); }
+    .hero .hero-badge {
+      background: rgba(0,82,184,0.15);
+      border-color: rgba(0,82,184,0.35);
+      color: #93c5fd;
+      box-shadow: 0 0 0 1px rgba(0,82,184,0.1), inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+    .hero .hero-badge-dot { background: var(--cobalt); box-shadow: 0 0 12px rgba(0,82,184,0.6); }
+    .hero .hero-trust {
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      padding: 0;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .hero .hero-trust-item {
+      color: rgba(255,255,255,0.78);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 100px;
+      padding: 6px 12px 6px 8px;
+      backdrop-filter: blur(8px);
+      font-size: 12.5px;
+    }
+    .hero .hero-trust-icon {
+      background: linear-gradient(135deg, rgba(0,82,184,0.9), rgba(14,165,233,0.9));
+      box-shadow: 0 2px 8px rgba(0,82,184,0.4);
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+    }
+    .hero .hero-trust-icon svg { width: 12px; height: 12px; }
+    .hero .btn-ghost { background: rgba(255,255,255,0.05); color: #fff; border-color: rgba(255,255,255,0.2); backdrop-filter: blur(8px); }
+    .hero .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.35); }
+
+    .hero-grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.028; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 180px 180px; }
+    .hero-inner { display: grid; grid-template-columns: 52fr 48fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 8px; background: var(--cobalt-light); border: 1px solid var(--cobalt-border); border-radius: 100px; font-size: 13px; font-weight: 500; color: var(--cobalt); margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,82,184,0.1); }
+    .hero-badge-dot { width: 20px; height: 20px; background: var(--cobalt); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .hero-badge-dot svg { width: 11px; height: 11px; }
+    .hero-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(44px, 4.8vw, 64px); line-height: 1.06; letter-spacing: -0.05em; color: var(--text); margin-bottom: 22px; }
+    .hero-headline .accent { color: var(--cobalt); }
+    .hero-sub { font-size: 16.5px; line-height: 1.72; color: var(--text-2); max-width: 480px; margin-bottom: 32px; }
+    .hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; }
+    .hero-trust { display: flex; align-items: center; flex-wrap: wrap; background: rgba(255,255,255,0.7); border: 1px solid var(--border); border-radius: 12px; padding: 12px 20px; gap: 20px; backdrop-filter: blur(8px); box-shadow: 0 2px 12px rgba(0,82,184,0.06); }
+    .hero-trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--text); }
+    .hero-trust-icon { width: 30px; height: 30px; background: var(--cobalt); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,82,184,0.3); }
+    .hero-trust-icon svg { width: 14px; height: 14px; color: #fff; }
+    .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; padding: 30px 24px 50px; }
+    .hero-visual::before {
+      content: '';
       position: absolute;
       inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,82,184,0.12) 0%, transparent 75%);
       pointer-events: none;
-      opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      background-size: 200px 200px;
-    }
-
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 55fr 45fr;
-      gap: 60px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px 6px 8px;
-      background: var(--cobalt-light);
-      border: 1px solid var(--cobalt-border);
-      border-radius: 100px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--cobalt);
-      margin-bottom: 28px;
-    }
-    .hero-badge-dot {
-      width: 20px;
-      height: 20px;
-      background: var(--cobalt);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
     }
-    .hero-badge-dot svg { width: 11px; height: 11px; }
+    .hero-svg-wrap { position: relative; width: 100%; max-width: 460px; filter: drop-shadow(0 8px 32px rgba(0,82,184,0.18)) brightness(1.15) saturate(1.2); }
 
-    .hero-headline {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: clamp(48px, 5.5vw, 68px);
-      line-height: 1.15;
-      letter-spacing: -0.045em;
-      color: var(--text);
-      margin-bottom: 28px;
-    }
-    .hero-headline .accent { color: var(--cobalt); }
-
-    .hero-sub {
-      font-size: 17px;
-      line-height: 1.65;
-      color: var(--text-2);
-      max-width: 480px;
-      margin-bottom: 40px;
-    }
-
-    .hero-ctas {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 48px;
-    }
-
-    .hero-trust {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      flex-wrap: wrap;
-    }
-    .hero-trust-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-2);
-    }
-    .hero-trust-icon {
-      width: 28px;
-      height: 28px;
-      background: var(--cobalt-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .hero-trust-icon svg { width: 14px; height: 14px; color: var(--cobalt); }
-
-    /* Right column / illustration */
-    .hero-visual {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero-svg-wrap {
-      position: relative;
-      width: 100%;
-      max-width: 460px;
-    }
-
-    /* Floating stat cards */
+    /* Floating stat cards — adapted for dark hero */
     .stat-card {
       position: absolute;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 12px 16px;
-      box-shadow: var(--shadow-lg);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      white-space: nowrap;
-      z-index: 10;
+      background: rgba(10,20,50,0.75);
+      border: 1px solid rgba(0,82,184,0.25);
+      border-radius: 14px; padding: 14px 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.06) inset;
+      backdrop-filter: blur(20px);
+      display: flex; align-items: center; gap: 12px; white-space: nowrap; z-index: 10;
     }
-    .stat-card-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: var(--cobalt-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .stat-card-icon svg { width: 16px; height: 16px; color: var(--cobalt); }
-    .stat-card-val {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 800;
-      font-size: 14px;
-      color: var(--text);
-      line-height: 1.2;
-    }
-    .stat-card-lbl {
-      font-size: 11px;
-      color: var(--text-3);
-      font-weight: 400;
-    }
-
-    .stat-card-1 {
-      top: 14%;
-      right: -10px;
-      animation: float1 4.5s ease-in-out infinite;
-    }
-    .stat-card-2 {
-      bottom: 22%;
-      left: -14px;
-      animation: float2 5s ease-in-out infinite;
-    }
-    .stat-card-3 {
-      bottom: -10px;
-      right: 14%;
-      animation: float3 4s ease-in-out infinite;
-    }
-
-    @keyframes float1 {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    @keyframes float2 {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-    @keyframes float3 {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
+    .stat-card-icon { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, #0070f3, #0ea5e9); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 3px 12px rgba(0,82,184,0.5); }
+    .stat-card-icon svg { width: 18px; height: 18px; color: #fff; }
+    .stat-card-val { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px; color: #fff; line-height: 1.2; }
+    .stat-card-lbl { font-size: 11px; color: rgba(255,255,255,0.55); font-weight: 400; }
+    .stat-card-1 { top: 5%; right: 0; animation: float1 4.5s ease-in-out infinite; }
+    .stat-card-2 { bottom: 28%; left: 0; animation: float2 5s ease-in-out infinite; }
+    .stat-card-3 { bottom: 4%; right: 8%; animation: float3 4s ease-in-out infinite; }
+    @keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    @keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    @keyframes float3 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
 
     /* ─── TRUST BAR ──────────────────────────────────────────── */
-    .trust-bar {
-      background: var(--bg-soft);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 40px 0;
-    }
-    .trust-bar-label {
-      text-align: center;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-3);
-      margin-bottom: 28px;
-    }
-    .trust-logos {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-    .trust-logo {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      letter-spacing: -0.02em;
-      color: var(--text-3);
-      opacity: 0.7;
-      transition: opacity 0.2s ease;
-    }
-    .trust-logo:hover { opacity: 1; }
+    .trust-bar { background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px 0; }
+    .trust-bar-label { text-align: center; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); margin-bottom: 24px; }
+    .trust-logos { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
+    .trust-logo { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: -0.02em; color: var(--text-2); opacity: 1; transition: color 0.2s ease, opacity 0.2s ease; padding: 6px 28px; border-right: 1px solid var(--border); line-height: 1; }
+    .trust-logo:last-child { border-right: none; }
+    .trust-logo:hover { color: var(--cobalt); }
 
-    /* ─── PROBLEM SECTION ────────────────────────────────────── */
-    .problem {
-      padding: 112px 0;
-      background: var(--bg);
+    /* ─── PROBLEM ────────────────────────────────────────────── */
+    .problem { padding: 100px 0; background: #F4F7FF; position: relative; }
+    .problem::before { content: ''; position: absolute; inset: 0; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 180px 180px; pointer-events: none; }
+    .problem-inner { display: grid; grid-template-columns: 40% 60%; gap: 60px; align-items: center; }
+    .problem-left { position: sticky; top: 100px; }
+    .problem-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 34px; line-height: 1.15; letter-spacing: -0.035em; color: var(--text); margin: 0 0 10px; }
+    .problem-headline .accent { color: #0052B8; }
+    .problem-subtext { font-size: 14px; color: #4A5468; margin: 0 0 28px; }
+
+    /* Tab list */
+    .prob-tab-list { display: flex; flex-direction: column; gap: 4px; }
+    .prob-tab-btn {
+      width: 100%; text-align: left; padding: 14px 20px 14px 23px;
+      border-radius: 10px; border: none; cursor: pointer;
+      font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 600;
+      background: transparent; color: #4A5468;
+      border-left: 3px solid transparent;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      line-height: 1.35;
     }
-    .problem-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
+    .prob-tab-btn:hover { background: rgba(0,82,184,0.05); color: var(--text); }
+    .prob-tab-btn.active {
+      background: #EBF3FF; color: #0052B8;
+      border-left-color: #0052B8;
     }
-    .problem-headline {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: clamp(28px, 2.8vw, 38px);
-      line-height: 1.1;
-      letter-spacing: -0.035em;
-      color: var(--text);
-      position: sticky;
-      top: 100px;
+    .prob-tab-btn:focus-visible { outline: 2px solid #0052B8; outline-offset: 2px; }
+
+    /* Right panel card */
+    .prob-panel-wrap { position: relative; min-height: 400px; }
+    .prob-panel {
+      background: var(--bg); border: 1px solid #E2E8F4; border-radius: 16px;
+      padding: 0; box-shadow: 0 4px 32px rgba(0,82,184,0.08), 0 1px 4px rgba(10,15,30,0.05);
+      opacity: 0; position: absolute; inset: 0;
+      transition: opacity 0.28s ease;
+      pointer-events: none; overflow: hidden;
     }
-    .problem-headline .accent { color: var(--cobalt); }
-    .problem-pain-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+    .prob-panel.active { opacity: 1; position: relative; pointer-events: auto; }
+    .prob-panel-header {
+      background: linear-gradient(135deg, var(--cobalt-light) 0%, rgba(235,243,255,0.4) 100%);
+      border-bottom: 1px solid var(--cobalt-border);
+      padding: 32px 36px 28px;
+      display: flex; align-items: flex-start; gap: 20px;
     }
-    .pain-item {
-      display: flex;
-      gap: 18px;
-      padding: 26px 0;
-      border-bottom: 1px solid var(--border);
+    .prob-panel-icon {
+      width: 56px; height: 56px; border-radius: 14px; background: var(--cobalt);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(0,82,184,0.35);
     }
-    .pain-item:first-child { padding-top: 0; }
-    .pain-item:last-child { border-bottom: none; }
-    .pain-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: var(--radius-sm);
-      background: var(--cobalt-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 2px;
+    .prob-panel-icon svg { width: 26px; height: 26px; color: #fff; }
+    .prob-panel-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 21px; color: #0A0F1E; margin: 6px 0 0; letter-spacing: -0.025em; line-height: 1.25; }
+    .prob-panel-body { padding: 28px 36px 32px; }
+    .prob-panel-desc { font-size: 15px; color: #4A5468; line-height: 1.75; margin: 0; }
+    .prob-panel-divider { border: none; border-top: 1px solid #E2E8F4; margin: 24px 0; }
+    .prob-panel-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #0052B8; margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
+    .prob-panel-label::before { content: ''; width: 16px; height: 2px; background: var(--cobalt); border-radius: 2px; display: inline-block; }
+    .prob-panel-solution { font-size: 15px; color: #0A0F1E; font-weight: 500; line-height: 1.65; margin: 0; }
+
+    /* Mobile accordion */
+    .prob-accordion { display: none; flex-direction: column; gap: 8px; }
+    .prob-accordion-item { border: 1px solid #E2E8F4; border-radius: 12px; overflow: hidden; }
+    .prob-accordion-btn {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px; background: var(--bg); border: none; cursor: pointer;
+      font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 600;
+      color: var(--text); text-align: left; gap: 12px;
     }
-    .pain-icon svg { width: 18px; height: 18px; color: var(--cobalt); }
-    .pain-content {}
-    .pain-title {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--text);
-      margin-bottom: 4px;
-      line-height: 1.3;
-    }
-    .pain-desc {
-      font-size: 14px;
-      color: var(--text-2);
-      line-height: 1.6;
-    }
+    .prob-accordion-btn:focus-visible { outline: 2px solid #0052B8; outline-offset: -2px; }
+    .prob-accordion-chevron { width: 18px; height: 18px; flex-shrink: 0; color: #4A5468; transition: transform 0.25s ease; }
+    .prob-accordion-btn[aria-expanded="true"] .prob-accordion-chevron { transform: rotate(180deg); }
+    .prob-accordion-btn[aria-expanded="true"] { color: #0052B8; }
+    .prob-accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .prob-accordion-body.open { max-height: 600px; }
+    .prob-accordion-inner { padding: 0 20px 24px; background: var(--bg); }
+
+    /* ─── SECTION HEADER ─────────────────────────────────────── */
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-eyebrow { display: inline-block; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cobalt); margin-bottom: 16px; }
+    .section-headline { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: clamp(28px, 3.2vw, 40px); letter-spacing: -0.035em; line-height: 1.1; color: var(--text); margin-bottom: 16px; }
+    .section-sub { font-size: 17px; color: var(--text-2); max-width: 540px; margin: 0 auto; }
 
     /* ─── SERVICES ───────────────────────────────────────────── */
-    .services {
-      padding: 112px 0 0;
-      background: var(--bg-soft);
-    }
-    .section-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-    .section-eyebrow {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--cobalt);
-      margin-bottom: 16px;
-    }
-    .section-headline {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: clamp(28px, 3.2vw, 40px);
-      letter-spacing: -0.035em;
-      line-height: 1.1;
-      color: var(--text);
-      margin-bottom: 16px;
-    }
-    .section-sub {
-      font-size: 17px;
-      color: var(--text-2);
-      max-width: 540px;
-      margin: 0 auto;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      align-items: start;
-    }
+    .services { padding: 112px 0 0; background: #FFFFFF; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
     .service-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 36px 32px;
-      position: relative;
-      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1),
-                  box-shadow 0.25s ease;
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 36px 32px; position: relative; overflow: hidden;
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
     }
-    .service-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
-    }
-    .service-card:focus-within { outline: 2px solid var(--cobalt); outline-offset: 4px; }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
 
-    .service-card.featured {
-      border-left: 4px solid var(--cobalt);
-      background: linear-gradient(160deg, #f4f8ff 0%, #fff 60%);
-    }
-    .service-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 4px 10px;
-      background: var(--cobalt-light);
-      border: 1px solid var(--cobalt-border);
-      border-radius: 100px;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--cobalt);
-      margin-bottom: 20px;
-    }
-    .service-icon {
-      width: 48px;
-      height: 48px;
-      background: var(--cobalt-light);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-    .service-icon svg { width: 24px; height: 24px; color: var(--cobalt); }
-    .service-title {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: 20px;
-      color: var(--text);
-      margin-bottom: 10px;
-      letter-spacing: -0.02em;
-    }
-    .service-desc {
-      font-size: 14px;
-      color: var(--text-2);
-      line-height: 1.65;
-      margin-bottom: 24px;
-    }
-    .service-deliverables {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .service-deliverable {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 13px;
-      color: var(--text-2);
-      line-height: 1.5;
-    }
-    .service-deliverable::before {
-      content: '';
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--cobalt-light);
-      border: 1.5px solid var(--cobalt-border);
-      flex-shrink: 0;
-      margin-top: 1px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8l3 3 6-6' stroke='%230070F3' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-size: 14px;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
+    /* Card 1 — cobalt (Cleanroom Compliance) */
+    .service-card.featured { background: linear-gradient(170deg, #f2f7ff 0%, #fff 55%); }
+    .service-card.featured::before { background: linear-gradient(90deg, #0052B8, #1a7fff); }
+    .service-card.featured .service-icon { background: var(--cobalt); box-shadow: 0 4px 14px rgba(0,82,184,0.3); }
+    .service-card.featured .service-icon svg { color: #fff; }
+    .service-card.featured .service-badge { background: var(--cobalt-light); border-color: var(--cobalt-border); color: var(--cobalt); }
+    .service-card.featured .service-deliverable::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8l3 3 6-6' stroke='%230070F3' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); border-color: var(--cobalt-border); background-color: var(--cobalt-light); }
 
-    .services-banner {
-      margin-top: 48px;
-      background: var(--cobalt-light);
-      border-top: 1px solid var(--cobalt-border);
-      padding: 20px 32px;
-      text-align: center;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--cobalt-dark);
-    }
-    .services-banner span { font-weight: 600; }
+    /* Card 2 — teal (Sterile Staffing) */
+    .service-card.staffing::before { background: linear-gradient(90deg, #0891b2, #22d3ee); }
+    .service-card.staffing .service-icon { background: #0891b2; box-shadow: 0 4px 14px rgba(8,145,178,0.3); }
+    .service-card.staffing .service-icon svg { color: #fff; }
+    .service-card.staffing .service-deliverable::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8l3 3 6-6' stroke='%230891b2' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); border-color: rgba(8,145,178,0.25); background-color: rgba(8,145,178,0.08); }
+
+    /* Card 3 — violet (Regulatory Consulting) */
+    .service-card.consulting::before { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
+    .service-card.consulting .service-icon { background: #7c3aed; box-shadow: 0 4px 14px rgba(124,58,237,0.3); }
+    .service-card.consulting .service-icon svg { color: #fff; }
+    .service-card.consulting .service-deliverable::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8l3 3 6-6' stroke='%237c3aed' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); border-color: rgba(124,58,237,0.25); background-color: rgba(124,58,237,0.08); }
+
+    .service-badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; background: var(--cobalt-light); border: 1px solid var(--cobalt-border); border-radius: 100px; font-size: 11px; font-weight: 600; color: var(--cobalt); margin-bottom: 20px; }
+    .service-icon { width: 52px; height: 52px; background: var(--cobalt-light); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .service-icon svg { width: 26px; height: 26px; color: var(--cobalt); }
+    .service-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 20px; color: var(--text); margin-bottom: 10px; letter-spacing: -0.02em; }
+    .service-desc { font-size: 14px; color: var(--text-2); line-height: 1.7; margin-bottom: 24px; }
+    .service-deliverables { display: flex; flex-direction: column; gap: 9px; }
+    .service-deliverable { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-2); line-height: 1.5; }
+    .service-deliverable::before { content: ''; width: 18px; height: 18px; border-radius: 50%; background: var(--cobalt-light); border: 1.5px solid var(--cobalt-border); flex-shrink: 0; margin-top: 0px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8l3 3 6-6' stroke='%230070F3' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-size: 14px; background-position: center; background-repeat: no-repeat; }
+    .services-banner { margin-top: 48px; background: linear-gradient(135deg, var(--cobalt-light), rgba(235,243,255,0.6)); border-top: 1px solid var(--cobalt-border); padding: 22px 32px; text-align: center; font-size: 14px; font-weight: 500; color: var(--cobalt-dark); }
+    .services-banner span { font-weight: 700; }
 
     /* ─── STATS ──────────────────────────────────────────────── */
-    .stats {
-      padding: 100px 0;
-      background: linear-gradient(135deg, var(--cobalt) 0%, var(--cobalt-dark) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .stats-dots {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background-image: radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px);
-      background-size: 28px 28px;
-    }
-    .stats-glow {
-      position: absolute;
-      top: -160px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 400px;
-      background: radial-gradient(ellipse at center, rgba(255,255,255,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      overflow: hidden;
-    }
-    .stat-item {
-      text-align: center;
-      padding: 0 20px;
-      border-right: 1px solid rgba(255,255,255,0.15);
-      min-width: 0;
-    }
+    .stats { padding: 90px 0; background: linear-gradient(135deg, #0052B8 0%, #0A3F8C 100%); position: relative; overflow: hidden; }
+    .stats-dots { position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 32px 32px; }
+    .stats-glow { position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, transparent 65%); pointer-events: none; }
+    .stats-grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.06; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 180px 180px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; z-index: 1; width: 100%; overflow: hidden; }
+    .stat-item { text-align: center; padding: 0 24px; border-right: 1px solid rgba(255,255,255,0.15); min-width: 0; }
     .stat-item:last-child { border-right: none; }
-    .stat-number {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 800;
-      font-size: clamp(32px, 3.5vw, 54px);
-      color: #fff;
-      line-height: 1;
-      letter-spacing: -0.03em;
-      margin-bottom: 12px;
-    }
-    .stat-label {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.65);
-    }
+    .stat-number { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(52px, 5.5vw, 80px); color: #fff; line-height: 1; letter-spacing: -0.04em; margin-bottom: 14px; }
+    .stat-number-sm { font-size: clamp(28px, 2.8vw, 46px); line-height: 1.1; white-space: nowrap; }
+    .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
 
     /* ─── WHY ELITE ──────────────────────────────────────────── */
-    .why {
-      padding: 112px 0;
-      background: var(--bg-soft);
-    }
-    .why-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .why-left {}
-    .why-headline {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: clamp(26px, 2.6vw, 36px);
-      letter-spacing: -0.035em;
-      line-height: 1.1;
-      color: var(--text);
-      margin-bottom: 20px;
-    }
-    .why-sub {
-      font-size: 16px;
-      color: var(--text-2);
-      line-height: 1.7;
-      margin-bottom: 32px;
-      max-width: 400px;
-    }
-    .why-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--cobalt);
-      transition: gap 0.22s ease;
-    }
-    .why-link:hover { gap: 12px; }
+    .why { padding: 112px 0; background: #F4F7FF; }
+    .why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .why-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(28px, 2.8vw, 40px); letter-spacing: -0.04em; line-height: 1.1; color: var(--text); margin-bottom: 20px; }
+    .why-sub { font-size: 16px; color: var(--text-2); line-height: 1.75; margin-bottom: 32px; max-width: 420px; }
+    .why-link { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: var(--cobalt); transition: gap 0.22s ease; }
+    .why-link:hover { gap: 14px; }
     .why-link svg { width: 16px; height: 16px; }
-
-    .why-cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .why-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 28px 24px;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1),
-                  box-shadow 0.25s ease,
-                  border-bottom-color 0.25s ease;
-      border-bottom: 2px solid transparent;
-    }
-    .why-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-      border-bottom-color: var(--cobalt);
-    }
-    .why-card-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: var(--cobalt-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .why-card-icon svg { width: 20px; height: 20px; color: var(--cobalt); }
-    .why-card-title {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      color: var(--text);
-      margin-bottom: 6px;
-      letter-spacing: -0.01em;
-    }
-    .why-card-desc {
-      font-size: 13px;
-      color: var(--text-2);
-      line-height: 1.6;
-    }
+    .why-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .why-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px 22px; position: relative; overflow: hidden; transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; }
+    .why-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--cobalt); transform: scaleX(0); transform-origin: left; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+    .why-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,82,184,0.1), 0 2px 8px rgba(10,15,30,0.06); }
+    .why-card:hover::after { transform: scaleX(1); }
+    .why-card-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--cobalt); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(0,82,184,0.25); }
+    .why-card-icon svg { width: 22px; height: 22px; color: #fff; }
+    .why-card-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; color: var(--text); margin-bottom: 8px; letter-spacing: -0.01em; }
+    .why-card-desc { font-size: 13px; color: var(--text-2); line-height: 1.65; }
 
     /* ─── WHO WE SERVE ───────────────────────────────────────── */
-    .who {
-      padding: 112px 0;
-      background: var(--bg);
-    }
-    .who-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      justify-content: center;
-      margin-top: 56px;
-      max-width: 860px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .who-card {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 20px 24px;
-      background: var(--bg);
-      border: 1.5px solid var(--border);
-      border-radius: 100px;
-      transition: border-color 0.22s ease,
-                  background 0.22s ease,
-                  box-shadow 0.22s ease,
-                  transform 0.22s cubic-bezier(0.34,1.56,0.64,1);
-      cursor: default;
-    }
-    .who-card:hover {
-      border-color: var(--cobalt-border);
-      background: var(--cobalt-light);
-      box-shadow: 0 4px 16px rgba(0,112,243,0.1);
-      transform: translateY(-3px);
-    }
-    .who-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--cobalt-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .who-icon svg { width: 18px; height: 18px; color: var(--cobalt); }
-    .who-name {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      color: var(--text);
-    }
-    .who-type {
-      font-size: 12px;
-      color: var(--text-3);
-    }
+    .who { padding: 112px 0; background: var(--bg); position: relative; overflow: hidden; }
+    .who::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(0,82,184,0.04) 0%, transparent 60%); pointer-events: none; }
+    .who-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 56px; }
+    .who-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 28px 20px 24px; background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius-lg); transition: border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease, transform 0.22s cubic-bezier(0.34,1.56,0.64,1); cursor: default; }
+    .who-card:hover { border-color: var(--cobalt-border); background: linear-gradient(170deg, var(--cobalt-light), var(--bg)); box-shadow: 0 8px 24px rgba(0,82,184,0.1); transform: translateY(-5px); }
+    .who-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--cobalt); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,82,184,0.25); }
+    .who-icon svg { width: 24px; height: 24px; color: #fff; }
+    .who-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: var(--text); line-height: 1.3; }
+    .who-type { font-size: 12px; color: var(--text-3); line-height: 1.4; }
 
-    /* ─── CTA BANNER ─────────────────────────────────────────── */
-    .cta-section {
-      padding: 112px 0;
-      background: var(--bg-soft);
-    }
-    .cta-box {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-left: 5px solid var(--cobalt);
-      border-radius: var(--radius-lg);
-      padding: 64px 72px;
-      display: flex;
-      flex-direction: column;
-      gap: 36px;
-      align-items: flex-start;
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-box::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 400px;
-      height: 100%;
-      background: radial-gradient(ellipse at right, rgba(0,112,243,0.05) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .cta-headline {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: clamp(28px, 3.2vw, 40px);
-      letter-spacing: -0.035em;
-      color: var(--text);
-      margin-bottom: 12px;
-    }
-    .cta-sub {
-      font-size: 16px;
-      color: var(--text-2);
-    }
-
-    /* ─── CONTACT FORM ─────────────────────────────────────────────────── */
-    .contact-card {
-      width: 100%;
-      max-width: 520px;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-    }
-    .contact-card-header {
-      background: var(--cobalt);
-      padding: 24px 28px;
-    }
-    .contact-card-title {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: 17px;
-      color: #fff;
-      margin-bottom: 4px;
-    }
-    .contact-card-sub {
-      font-size: 12px;
-      color: rgba(255,255,255,0.75);
-    }
-    .contact-card-body {
-      background: var(--bg);
-      padding: 24px 28px;
-      position: relative;
-    }
-    .contact-field-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-    .contact-field-full {
-      margin-bottom: 14px;
-    }
-    .contact-label {
-      display: block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--text-2);
-      margin-bottom: 5px;
-    }
-    .contact-label .required {
-      color: #ef4444;
-      margin-left: 2px;
-    }
-    .contact-input,
-    .contact-select,
-    .contact-textarea {
-      width: 100%;
-      background: var(--bg);
-      border: 1.5px solid var(--border);
-      border-radius: 7px;
-      padding: 9px 12px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.2s ease;
-      appearance: none;
-      -webkit-appearance: none;
-    }
-    .contact-input:focus,
-    .contact-select:focus,
-    .contact-textarea:focus {
-      border-color: var(--cobalt);
-    }
-    .contact-select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%234A5468' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 10px center;
-      padding-right: 28px;
-    }
-    [data-theme="dark"] .contact-select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%2394A3B8' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    }
-    .contact-textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-    .contact-field-wrap {
-      position: relative;
-    }
-    .contact-field-wrap.is-error .contact-input,
-    .contact-field-wrap.is-error .contact-select,
-    .contact-field-wrap.is-error .contact-textarea {
-      border-color: #ef4444;
-      background: #fff9f9;
-      transition: border-color 0.15s ease, background 0.15s ease;
-    }
-    .contact-field-wrap.is-valid .contact-input,
-    .contact-field-wrap.is-valid .contact-select,
-    .contact-field-wrap.is-valid .contact-textarea {
-      border-color: #22c55e;
-      background: #f9fff9;
-      transition: border-color 0.15s ease, background 0.15s ease;
-    }
-    .contact-field-msg {
-      font-size: 11px;
-      margin-top: 4px;
-      min-height: 16px;
-      display: flex;
-      align-items: center;
-      gap: 3px;
-    }
+    /* ─── CONTACT ────────────────────────────────────────────── */
+    .cta-section { padding: 112px 0; background: linear-gradient(170deg, #0052B8 0%, #0A3F8C 100%); position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; }
+    .cta-section::after { content: ''; position: absolute; top: -100px; right: -100px; width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(255,255,255,0.07) 0%, transparent 65%); pointer-events: none; }
+    .cta-section-grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.05; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 180px 180px; }
+    .cta-box { background: transparent; border: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
+    .cta-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(32px, 3.5vw, 48px); letter-spacing: -0.04em; color: #fff; margin-bottom: 12px; }
+    .cta-sub { font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+    .contact-card { width: 100%; max-width: 520px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.25), 0 4px 16px rgba(0,0,0,0.15); }
+    .contact-card-header { background: linear-gradient(135deg, #0A0F1E 0%, #12203A 100%); padding: 24px 28px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .contact-card-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 17px; color: #fff; margin-bottom: 4px; }
+    .contact-card-sub { font-size: 12px; color: rgba(255,255,255,0.55); }
+    .contact-card-body { background: #fff; padding: 24px 28px; position: relative; }
+    .contact-field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .contact-field-full { margin-bottom: 14px; }
+    .contact-label { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-2); margin-bottom: 5px; }
+    .contact-label .required { color: #ef4444; margin-left: 2px; }
+    .contact-input, .contact-select, .contact-textarea { width: 100%; background: var(--bg); border: 1.5px solid var(--border); border-radius: 8px; padding: 9px 12px; font-family: 'Inter', sans-serif; font-size: 13px; color: var(--text); outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease; appearance: none; -webkit-appearance: none; }
+    .contact-input:focus, .contact-select:focus, .contact-textarea:focus { border-color: var(--cobalt); box-shadow: 0 0 0 3px rgba(0,82,184,0.12); }
+    .contact-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%234A5468' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 28px; }
+    .contact-textarea { resize: vertical; min-height: 80px; }
+    .contact-field-wrap { position: relative; }
+    .contact-field-wrap.is-error .contact-input, .contact-field-wrap.is-error .contact-select, .contact-field-wrap.is-error .contact-textarea { border-color: #ef4444; background: #fff9f9; }
+    .contact-field-wrap.is-valid .contact-input, .contact-field-wrap.is-valid .contact-select, .contact-field-wrap.is-valid .contact-textarea { border-color: #22c55e; background: #f9fff9; }
+    .contact-field-msg { font-size: 11px; margin-top: 4px; min-height: 16px; display: flex; align-items: center; gap: 3px; }
     .contact-field-wrap.is-error .contact-field-msg { color: #ef4444; }
     .contact-field-wrap.is-valid .contact-field-msg { color: #22c55e; }
-    [data-theme="dark"] .contact-field-wrap.is-error .contact-input,
-    [data-theme="dark"] .contact-field-wrap.is-error .contact-select,
-    [data-theme="dark"] .contact-field-wrap.is-error .contact-textarea { background: #2d0a0a; }
-    [data-theme="dark"] .contact-field-wrap.is-valid .contact-input,
-    [data-theme="dark"] .contact-field-wrap.is-valid .contact-select,
-    [data-theme="dark"] .contact-field-wrap.is-valid .contact-textarea { background: #0a2d0f; }
-    .contact-error-banner {
-      display: none;
-      background: #fef2f2;
-      border: 1px solid #fecaca;
-      border-radius: 7px;
-      padding: 12px 14px;
-      margin-bottom: 12px;
-      gap: 10px;
-      align-items: flex-start;
-    }
+    .contact-error-banner { display: none; background: #fef2f2; border: 1px solid #fecaca; border-radius: 7px; padding: 12px 14px; margin-bottom: 12px; gap: 10px; align-items: flex-start; }
     .contact-error-banner.visible { display: flex; }
-    [data-theme="dark"] .contact-error-banner { background: #2d0a0a; border-color: #7f1d1d; }
     .contact-error-banner-icon { color: #ef4444; font-size: 16px; line-height: 1; flex-shrink: 0; margin-top: 1px; }
     .contact-error-banner-title { font-weight: 600; font-size: 13px; color: #dc2626; }
-    [data-theme="dark"] .contact-error-banner-title { color: #fca5a5; }
     .contact-error-banner-sub { font-size: 11px; color: var(--text-2); margin-top: 3px; }
     .contact-error-banner-sub a { color: var(--cobalt); }
-    .contact-submit {
-      width: 100%;
-      margin-top: 4px;
-    }
-    .contact-submit:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-    /* Loading overlay — shown inside .contact-card-body while submitting */
-    .contact-loading {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      padding: 48px 0;
-    }
+    .contact-submit { width: 100%; margin-top: 4px; }
+    .contact-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .contact-loading { display: none; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 48px 0; }
     .contact-loading.visible { display: flex; }
-    .contact-spinner {
-      width: 40px;
-      height: 40px;
-      border: 3px solid var(--cobalt-light);
-      border-top-color: var(--cobalt);
-      border-radius: 50%;
-      animation: contact-spin 0.8s linear infinite;
-    }
+    .contact-spinner { width: 40px; height: 40px; border: 3px solid var(--cobalt-light); border-top-color: var(--cobalt); border-radius: 50%; animation: contact-spin 0.8s linear infinite; }
     @keyframes contact-spin { to { transform: rotate(360deg); } }
     .contact-loading-text { font-size: 13px; color: var(--text-2); }
-    /* Success state — replaces form content */
-    .contact-success {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      padding: 40px 0;
-      text-align: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
+    .contact-success { display: none; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 40px 0; text-align: center; opacity: 0; transition: opacity 0.3s ease; }
     .contact-success.visible { display: flex; }
     .contact-success.fade-in { opacity: 1; }
-    .contact-success-icon {
-      width: 52px;
-      height: 52px;
-      background: #dcfce7;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-    }
-    [data-theme="dark"] .contact-success-icon { background: #052e16; }
-    .contact-success-title {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: 18px;
-      color: var(--text);
-    }
-    .contact-success-body {
-      font-size: 13px;
-      color: var(--text-2);
-      line-height: 1.7;
-    }
-    /* Form fields opacity fade during loading */
-    .contact-form-fields {
-      transition: opacity 0.25s ease;
-    }
-    .contact-form-fields.loading {
-      opacity: 0.15;
-      pointer-events: none;
-    }
-    @media (max-width: 540px) {
-      .contact-card-header { padding: 18px 20px; }
-      .contact-card-body { padding: 18px 20px; }
-      .contact-field-grid { grid-template-columns: 1fr; }
-    }
+    .contact-success-icon { width: 52px; height: 52px; background: #dcfce7; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; }
+    .contact-success-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 18px; color: var(--text); }
+    .contact-success-body { font-size: 13px; color: var(--text-2); line-height: 1.7; }
+    .contact-form-fields { transition: opacity 0.25s ease; }
+    .contact-form-fields.loading { opacity: 0.15; pointer-events: none; }
 
     /* ─── FOOTER ─────────────────────────────────────────────── */
-    .footer {
-      background: #0A0F1E;
-      padding: 72px 0 0;
-      color: rgba(255,255,255,0.65);
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 48px;
-      padding-bottom: 56px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    .footer-brand {}
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-    .footer-logo-mark {
-      width: 32px;
-      height: 32px;
-      background: var(--cobalt);
-      border-radius: 7px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .footer-logo-mark svg { width: 17px; height: 17px; }
-    .footer-logo-text {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      letter-spacing: -0.02em;
-      color: #fff;
-    }
-    .footer-tagline {
-      font-size: 13px;
-      line-height: 1.6;
-      margin-bottom: 24px;
-      max-width: 260px;
-    }
-    .footer-contact-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      margin-bottom: 10px;
-      color: rgba(255,255,255,0.55);
-    }
+    .footer { background: #0A0F1E; padding: 72px 0 0; color: rgba(255,255,255,0.65); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .footer-logo-img-wrap { height: 80px; flex-shrink: 0; display: flex; align-items: center; }
+    .footer-tagline { font-size: 13px; line-height: 1.6; margin-bottom: 24px; max-width: 260px; }
+    .footer-contact-item { display: flex; align-items: center; gap: 8px; font-size: 13px; margin-bottom: 10px; color: rgba(255,255,255,0.55); }
     .footer-contact-item svg { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.7; }
-    .footer-col-title {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 20px;
-    }
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .footer-links a {
-      font-size: 14px;
-      color: rgba(255,255,255,0.6);
-      transition: color 0.18s ease;
-    }
+    .footer-col-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color 0.18s ease; }
     .footer-links a:hover { color: #fff; }
-    .footer-links a:focus-visible { outline: 1px solid var(--cobalt); outline-offset: 2px; }
-
-    .footer-bottom {
-      padding: 20px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .footer-bottom-text {
-      font-size: 12px;
-      color: rgba(255,255,255,0.3);
-    }
-    .footer-usp {
-      font-size: 12px;
-      color: rgba(255,255,255,0.3);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .footer-usp-dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.25);
-    }
+    .footer-bottom { padding: 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .footer-bottom-text { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .footer-usp { font-size: 12px; color: rgba(255,255,255,0.3); display: flex; align-items: center; gap: 8px; }
+    .footer-usp-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.25); }
 
     /* ─── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 1024px) {
@@ -1407,11 +489,9 @@
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
       .cta-box { padding: 48px; }
     }
-
     @media (max-width: 768px) {
       .nav-links, .nav-ctas { display: none; }
       .nav-hamburger { display: flex; }
-
       .hero { padding: 72px 0 60px; }
       .hero-inner { grid-template-columns: 1fr; gap: 52px; }
       .hero-headline { font-size: 42px; }
@@ -1419,98 +499,57 @@
       .stat-card-1 { right: 0; top: 5%; }
       .stat-card-2 { left: 0; bottom: 15%; }
       .stat-card-3 { right: 10%; bottom: -5%; }
-
-      .problem { padding: 80px 0; }
-      .problem-inner { grid-template-columns: 1fr; gap: 40px; }
+      .problem { padding: 72px 0; }
+      .problem-inner { display: none !important; }
       .problem-headline { position: static; font-size: 34px; }
-
+      .problem-mobile-head { display: block !important; margin-bottom: 28px; }
+      .prob-accordion { display: flex !important; }
       .services { padding: 80px 0 0; }
       .services-grid { grid-template-columns: 1fr; gap: 20px; }
-
       .stats { padding: 72px 0; }
       .stats-grid { grid-template-columns: 1fr 1fr; gap: 40px 0; }
       .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); padding: 0 16px 40px; }
       .stat-item:nth-child(2), .stat-item:nth-child(4) { border-bottom: none; }
       .stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.15); }
-
       .why { padding: 80px 0; }
       .why-inner { grid-template-columns: 1fr; gap: 48px; }
       .why-sub { max-width: 100%; }
       .why-cards { grid-template-columns: 1fr; }
-
       .who { padding: 80px 0; }
-      .who-card { padding: 16px 20px; }
-
+      .who-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .who-card { padding: 24px 16px; }
       .cta-section { padding: 80px 0; }
-      .cta-box { gap: 32px; padding: 40px 32px; }
-
+      .cta-box { grid-template-columns: 1fr; gap: 40px; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
-
       .trust-logos { gap: 24px; }
     }
-
+    @media (max-width: 540px) {
+      .contact-card-header { padding: 18px 20px; }
+      .contact-card-body { padding: 18px 20px; }
+      .contact-field-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 480px) {
       .container { padding: 0 16px; }
       .hero-headline { font-size: 36px; }
       .hero-ctas { flex-direction: column; align-items: flex-start; }
       .hero-ctas .btn { width: 100%; justify-content: center; }
-      .hero-trust { gap: 16px; }
+      .hero-trust { gap: 12px; }
       .stats-grid { grid-template-columns: 1fr; }
       .stat-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.15) !important; padding: 0 0 32px; }
       .stat-item:last-child { border-bottom: none !important; }
-      .who-card { border-radius: 16px; }
+      .who-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 
-<!-- ─── SKELETON OVERLAY ──────────────────────────────── -->
-<div id="skeleton-overlay" aria-hidden="true">
-  <div class="sk-nav">
-    <div class="skeleton-block sk-nav-logo"></div>
-    <div class="sk-nav-links">
-      <div class="skeleton-block sk-nav-link"></div>
-      <div class="skeleton-block sk-nav-link"></div>
-      <div class="skeleton-block sk-nav-link"></div>
-      <div class="skeleton-block sk-nav-link"></div>
-    </div>
-    <div class="skeleton-block sk-nav-btn"></div>
-  </div>
-  <div class="sk-hero">
-    <div class="skeleton-block sk-badge"></div>
-    <div class="skeleton-block sk-h1-1"></div>
-    <div class="skeleton-block sk-h1-2"></div>
-    <div class="skeleton-block sk-sub-1"></div>
-    <div class="skeleton-block sk-sub-2"></div>
-    <div class="sk-ctas">
-      <div class="skeleton-block sk-btn-1"></div>
-      <div class="skeleton-block sk-btn-2"></div>
-    </div>
-    <div class="sk-trust">
-      <div class="skeleton-block sk-trust-item"></div>
-      <div class="skeleton-block sk-trust-item"></div>
-      <div class="skeleton-block sk-trust-item"></div>
-    </div>
-  </div>
-</div>
-
-<!-- ─── NAVIGATION ─────────────────────────────────────── -->
+<!-- ─── NAV ─────────────────────────────────────────────────── -->
 <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
   <div class="container">
     <div class="nav-inner">
-
-      <a href="#" class="nav-logo" aria-label="Elite Compounding Agency home">
-        <div class="nav-logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9 2L14.5 5.5V12.5L9 16L3.5 12.5V5.5L9 2Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M9 6.5L11.5 8V11L9 12.5L6.5 11V8L9 6.5Z" fill="white" opacity="0.8"/>
-          </svg>
-        </div>
-        <div class="nav-logo-text">
-          Elite Compounding
-          <span>Agency</span>
-        </div>
+      <a href="#" class="nav-logo" aria-label="Elite Compounding Agency home" id="logo-link">
+        <img src="logo-v2.png" alt="Elite Compounding Agency" class="nav-logo-img" />
       </a>
 
       <nav class="nav-links" aria-label="Site sections">
@@ -1521,15 +560,12 @@
       </nav>
 
       <div class="nav-ctas">
-        <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode">☾</button>
         <a href="tel:0000000000" class="btn btn-ghost btn-sm">Schedule a Call</a>
         <a href="#contact" class="btn btn-primary btn-sm">Request a Quote</a>
       </div>
 
       <button class="nav-hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </div>
   </div>
@@ -1546,16 +582,19 @@
   </div>
 </div>
 
-
-<!-- ─── HERO ───────────────────────────────────────────── -->
+<!-- ─── HERO ─────────────────────────────────────────────────── -->
 <section class="hero" aria-labelledby="hero-headline">
   <div class="hero-grain" aria-hidden="true"></div>
+  <div class="hero-shape hero-shape-1" aria-hidden="true"></div>
+  <div class="hero-shape hero-shape-2" aria-hidden="true"></div>
+  <div class="hero-shape hero-shape-3" aria-hidden="true"></div>
+  <div class="hero-shape hero-shape-4" aria-hidden="true"></div>
+  <div class="hero-shape hero-shape-5" aria-hidden="true"></div>
   <div class="container">
     <div class="hero-inner">
 
-      <!-- Left -->
       <div>
-        <div class="hero-badge hero-pre-animate">
+        <div class="hero-badge">
           <div class="hero-badge-dot" aria-hidden="true">
             <svg viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M2 5.5L4.5 8L9 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1564,28 +603,32 @@
           USP &lt;797&gt; &amp; &lt;800&gt; Specialists
         </div>
 
-        <h1 class="hero-headline hero-pre-animate" id="hero-headline">
+        <h1 class="hero-headline" id="hero-headline">
           Your cleanroom.<br>
           Always compliant.<br>
           <span class="accent">Always ready.</span>
         </h1>
 
-        <p class="hero-sub hero-pre-animate">
+        <p class="hero-sub">
           Elite Compounding Agency partners with Florida's sterile compounding facilities to achieve full USP compliance, pass regulatory inspections, and maintain audit-ready operations — year-round.
         </p>
 
-        <div class="hero-ctas hero-pre-animate">
+        <div class="hero-ctas">
           <a href="#contact" class="btn btn-primary">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5L13.5 5V11L8 14.5L2.5 11V5L8 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M8 1.5L13.5 5V11L8 14.5L2.5 11V5L8 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
             Request a Free Assessment
           </a>
           <a href="#services" class="btn btn-ghost">
             Explore Services
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7H11M7.5 4L11 7L7.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M3 7H11M7.5 4L11 7L7.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </a>
         </div>
 
-        <div class="hero-trust hero-pre-animate">
+        <div class="hero-trust">
           <div class="hero-trust-item">
             <div class="hero-trust-icon" aria-hidden="true">
               <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1615,10 +658,8 @@
         </div>
       </div>
 
-      <!-- Right / Illustration -->
       <div class="hero-visual reveal reveal-delay-2">
         <div class="hero-svg-wrap">
-          <!-- Isometric cleanroom SVG illustration -->
           <svg viewBox="0 0 460 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Isometric cleanroom illustration" role="img">
             <defs>
               <linearGradient id="floorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1634,98 +675,50 @@
                 <stop offset="100%" stop-color="#bedaff"/>
               </linearGradient>
             </defs>
-
-            <!-- Outer glow / shadow -->
-            <ellipse cx="230" cy="320" rx="160" ry="28" fill="#0070F3" opacity="0.06"/>
-
-            <!-- Room floor -->
+            <ellipse cx="230" cy="320" rx="160" ry="28" fill="#0052B8" opacity="0.06"/>
             <path d="M230 300 L390 210 L230 118 L70 210 Z" fill="url(#floorGrad)"/>
-            <!-- Floor grid -->
             <line x1="150" y1="255" x2="310" y2="165" stroke="white" stroke-width="1" opacity="0.55"/>
             <line x1="190" y1="232" x2="350" y2="142" stroke="white" stroke-width="1" opacity="0.45"/>
             <line x1="110" y1="210" x2="390" y2="210" stroke="white" stroke-width="0.8" opacity="0.35"/>
-            <line x1="150" y1="188" x2="310" y2="278" stroke="white" stroke-width="0.8" opacity="0.25"/>
-
-            <!-- Left wall -->
             <path d="M70 210 L230 118 L230 28 L70 120 Z" fill="url(#wallL)"/>
-            <!-- Left wall window/panel -->
             <path d="M90 148 L170 102 L170 138 L90 184 Z" fill="white" opacity="0.22"/>
-            <path d="M90 148 L170 102" stroke="white" stroke-width="0.8" opacity="0.4"/>
-
-            <!-- Right wall -->
             <path d="M230 118 L390 210 L390 120 L230 28 Z" fill="url(#wallR)"/>
-
-            <!-- Ceiling edge highlight -->
-            <path d="M70 120 L230 28 L390 120" stroke="#0070F3" stroke-width="2" opacity="0.35"/>
-
-            <!-- Left biosafety cabinet -->
+            <path d="M70 120 L230 28 L390 120" stroke="#0052B8" stroke-width="2" opacity="0.35"/>
             <path d="M88 228 L88 170 L176 124 L176 182 Z" fill="#8ab4eb"/>
             <path d="M88 170 L176 124 L188 130 L100 178 Z" fill="#aaccf5"/>
             <path d="M100 178 L188 130 L188 168 L100 216 Z" fill="#9bbff0" opacity="0.85"/>
-            <!-- Cabinet glass front -->
             <path d="M100 178 L154 149 L154 168 L100 197 Z" fill="#c8dfff" opacity="0.55"/>
-            <!-- Cabinet shelf line -->
             <line x1="100" y1="196" x2="188" y2="150" stroke="white" stroke-width="0.7" opacity="0.5"/>
-
-            <!-- Laminar flow hood top -->
-            <path d="M90 170 L176 124 L176 118 L90 164 Z" fill="#0070F3" opacity="0.18"/>
-            <line x1="100" y1="166" x2="176" y2="122" stroke="#0070F3" stroke-width="0.6" opacity="0.4"/>
-
-            <!-- Right storage shelves -->
+            <path d="M90 170 L176 124 L176 118 L90 164 Z" fill="#0052B8" opacity="0.18"/>
             <path d="M322 172 L390 136 L390 202 L322 238 Z" fill="#9bbff0"/>
             <line x1="322" y1="195" x2="390" y2="159" stroke="white" stroke-width="0.8" opacity="0.5"/>
             <line x1="322" y1="218" x2="390" y2="182" stroke="white" stroke-width="0.8" opacity="0.5"/>
-            <!-- Shelf items -->
             <rect width="16" height="10" rx="2" fill="white" opacity="0.5" transform="translate(336,148) rotate(-30) skewX(-12)"/>
             <rect width="16" height="10" rx="2" fill="#EBF3FF" opacity="0.55" transform="translate(352,140) rotate(-30) skewX(-12)"/>
             <rect width="16" height="10" rx="2" fill="white" opacity="0.45" transform="translate(336,171) rotate(-30) skewX(-12)"/>
-
-            <!-- IV pole -->
             <line x1="310" y1="158" x2="310" y2="228" stroke="#6B9FE0" stroke-width="3.5" stroke-linecap="round"/>
             <line x1="296" y1="228" x2="324" y2="228" stroke="#6B9FE0" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- IV bags -->
             <ellipse cx="302" cy="150" rx="7" ry="11" fill="#c8dfff" stroke="#7aaadf" stroke-width="1.2"/>
             <ellipse cx="318" cy="148" rx="7" ry="11" fill="#b8d5ff" stroke="#7aaadf" stroke-width="1.2"/>
-            <!-- drip line -->
             <line x1="310" y1="161" x2="310" y2="170" stroke="#9bbfe8" stroke-width="1.2"/>
-
-            <!-- Technician (gowned) -->
             <circle cx="228" cy="182" r="12" fill="#7aaadf"/>
-            <!-- gown -->
             <path d="M214 196 Q228 190 242 196 L246 242 L210 242 Z" fill="#6b9fd8" opacity="0.85"/>
-            <!-- arms -->
             <path d="M214 210 L200 220 M242 210 L256 220" stroke="#7aaadf" stroke-width="5" stroke-linecap="round"/>
-            <!-- legs -->
             <path d="M218 242 L214 268 M238 242 L242 268" stroke="#6b9fd8" stroke-width="4" stroke-linecap="round"/>
-            <!-- face mask -->
             <ellipse cx="228" cy="186" rx="7" ry="5" fill="white" opacity="0.45"/>
-
-            <!-- Work surface / bench in front -->
             <path d="M144 272 L144 246 L316 154 L316 180 Z" fill="#aac8f0"/>
             <path d="M130 280 L144 272 L144 246 L130 254 Z" fill="#96b8e8"/>
-
-            <!-- Small equipment on bench -->
             <rect width="22" height="14" rx="3" fill="white" opacity="0.6" transform="translate(190,228) rotate(-30) skewX(-12)"/>
             <rect width="14" height="20" rx="2" fill="#dceeff" opacity="0.7" transform="translate(240,202) rotate(-30) skewX(-12)"/>
-
-            <!-- Ceiling HEPA vent -->
             <path d="M172 86 L230 52 L288 86 L230 120 Z" fill="#d2e8ff" opacity="0.75"/>
             <line x1="188" y1="86" x2="272" y2="86" stroke="white" stroke-width="1" opacity="0.55"/>
-            <line x1="196" y1="76" x2="264" y2="96" stroke="white" stroke-width="0.7" opacity="0.35"/>
-            <line x1="196" y1="96" x2="264" y2="76" stroke="white" stroke-width="0.7" opacity="0.35"/>
-            <!-- HEPA center dot -->
-            <circle cx="230" cy="86" r="5" fill="#0070F3" opacity="0.22"/>
-
-            <!-- Cobalt accent edges -->
-            <path d="M70 120 L70 210" stroke="#0070F3" stroke-width="2" opacity="0.28"/>
-            <path d="M390 120 L390 210" stroke="#0070F3" stroke-width="2" opacity="0.28"/>
-
-            <!-- Checkmark badge (corner) -->
-            <circle cx="390" cy="175" r="20" fill="white" opacity="0.95" filter="drop-shadow(0 2px 6px rgba(0,112,243,0.15))"/>
-            <path d="M382 175L387 180L398 168" stroke="#0070F3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="230" cy="86" r="5" fill="#0052B8" opacity="0.22"/>
+            <path d="M70 120 L70 210" stroke="#0052B8" stroke-width="2" opacity="0.28"/>
+            <path d="M390 120 L390 210" stroke="#0052B8" stroke-width="2" opacity="0.28"/>
+            <circle cx="390" cy="175" r="20" fill="white" opacity="0.95" filter="drop-shadow(0 2px 6px rgba(0,82,184,0.15))"/>
+            <path d="M382 175L387 180L398 168" stroke="#0052B8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
 
-          <!-- Floating stat cards -->
           <div class="stat-card stat-card-1">
             <div class="stat-card-icon" aria-hidden="true">
               <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1770,8 +763,7 @@
   </div>
 </section>
 
-
-<!-- ─── TRUST BAR ──────────────────────────────────────── -->
+<!-- ─── TRUST BAR ────────────────────────────────────────────── -->
 <section class="trust-bar" aria-label="Trusted facilities">
   <div class="container">
     <p class="trust-bar-label">Trusted by sterile compounding facilities across Florida</p>
@@ -1785,95 +777,214 @@
   </div>
 </section>
 
-
-<!-- ─── PROBLEM ────────────────────────────────────────── -->
-<section class="problem" aria-labelledby="problem-headline">
+<!-- ─── PROBLEM ──────────────────────────────────────────────── -->
+<section class="problem" id="problem" aria-labelledby="problem-headline">
   <div class="container">
-    <div class="problem-inner">
 
-      <div class="reveal">
+    <!-- Desktop: 2-col tabbed layout -->
+    <div class="problem-inner" role="tablist" aria-orientation="vertical">
+      <!-- LEFT: headline + tab buttons -->
+      <div class="problem-left">
         <h2 class="problem-headline" id="problem-headline">
-          The compliance problems<br>
-          that cost you<br>
-          <span class="accent">time and money.</span>
+          The compliance problems that cost you <span class="accent">time and money.</span>
         </h2>
+        <p class="problem-subtext">Click each problem to learn more.</p>
+        <div class="prob-tab-list">
+          <button class="prob-tab-btn active" role="tab" aria-selected="true"  aria-controls="prob-panel-1" id="prob-tab-1" type="button">Surprise Board of Pharmacy Inspections</button>
+          <button class="prob-tab-btn"        role="tab" aria-selected="false" aria-controls="prob-panel-2" id="prob-tab-2" type="button">Outdated SOPs &amp; Policy Gaps</button>
+          <button class="prob-tab-btn"        role="tab" aria-selected="false" aria-controls="prob-panel-3" id="prob-tab-3" type="button">Environmental Monitoring Failures</button>
+          <button class="prob-tab-btn"        role="tab" aria-selected="false" aria-controls="prob-panel-4" id="prob-tab-4" type="button">Staff Training &amp; Competency Gaps</button>
+          <button class="prob-tab-btn"        role="tab" aria-selected="false" aria-controls="prob-panel-5" id="prob-tab-5" type="button">No Clear Path to 503A or 503B Status</button>
+        </div>
       </div>
 
-      <ul class="problem-pain-list">
-        <li class="pain-item reveal">
-          <div class="pain-icon" aria-hidden="true">
-            <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9 3L15.5 6.5V11.5C15.5 13.5 12.5 15 9 15.5C5.5 15 2.5 13.5 2.5 11.5V6.5L9 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M9 9V9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M9 7V7.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="pain-content">
-            <div class="pain-title">Surprise Board of Pharmacy Inspections</div>
-            <div class="pain-desc">Unannounced state inspections expose documentation gaps, room pressure failures, and SOP deficiencies that trigger immediate corrective actions.</div>
-          </div>
-        </li>
+      <!-- RIGHT: content panels -->
+      <div class="prob-panel-wrap">
 
-        <li class="pain-item reveal reveal-delay-1">
-          <div class="pain-icon" aria-hidden="true">
-            <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M9 5.5V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="9" cy="12" r="0.75" fill="currentColor"/>
-            </svg>
+        <div class="prob-panel active" role="tabpanel" id="prob-panel-1" aria-labelledby="prob-tab-1">
+          <div class="prob-panel-header">
+            <div class="prob-panel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3L19.5 7V13C19.5 16.5 16 18.5 12 19C8 18.5 4.5 16.5 4.5 13V7L12 3Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/>
+                <path d="M12 11V12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M12 8.5V9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="prob-panel-title">Surprise Board of Pharmacy Inspections</h3>
           </div>
-          <div class="pain-content">
-            <div class="pain-title">Outdated SOPs & Policy Gaps</div>
-            <div class="pain-desc">USP &lt;797&gt; 2023 revisions introduced sweeping changes. Facilities still running legacy procedures face citation risk with every inspection cycle.</div>
+          <div class="prob-panel-body">
+            <p class="prob-panel-desc">Unannounced state inspections expose documentation gaps, room pressure failures, and SOP deficiencies that trigger immediate corrective actions.</p>
+            <hr class="prob-panel-divider" />
+            <p class="prob-panel-label">How we solve this</p>
+            <p class="prob-panel-solution">We keep your cleanroom inspection-ready 365 days a year — documentation current, logs complete, and protocols audit-proof.</p>
           </div>
-        </li>
+        </div>
 
-        <li class="pain-item reveal reveal-delay-2">
-          <div class="pain-icon" aria-hidden="true">
-            <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 14V10M8 14V6M12 14V8M16 14V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
+        <div class="prob-panel" role="tabpanel" id="prob-panel-2" aria-labelledby="prob-tab-2" hidden>
+          <div class="prob-panel-header">
+            <div class="prob-panel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.75"/>
+                <path d="M12 7.5V13" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+                <circle cx="12" cy="15.5" r="1" fill="currentColor"/>
+              </svg>
+            </div>
+            <h3 class="prob-panel-title">Outdated SOPs &amp; Policy Gaps</h3>
           </div>
-          <div class="pain-content">
-            <div class="pain-title">Environmental Monitoring Failures</div>
-            <div class="pain-desc">Missed viable and non-viable particle counts, inadequate surface sampling, or failed trending analysis invalidates your cleanroom certification.</div>
+          <div class="prob-panel-body">
+            <p class="prob-panel-desc">USP &lt;797&gt; 2023 revisions introduced sweeping changes. Facilities still running legacy procedures face citation risk with every inspection cycle.</p>
+            <hr class="prob-panel-divider" />
+            <p class="prob-panel-label">How we solve this</p>
+            <p class="prob-panel-solution">We audit your existing SOPs and align them with current USP &lt;797&gt;/&lt;800&gt; standards so you're never caught with outdated policies.</p>
           </div>
-        </li>
+        </div>
 
-        <li class="pain-item reveal reveal-delay-3">
-          <div class="pain-icon" aria-hidden="true">
-            <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="3" y="5" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M6 5V4C6 3 6.5 2 9 2C11.5 2 12 3 12 4V5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M9 9.5V11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
+        <div class="prob-panel" role="tabpanel" id="prob-panel-3" aria-labelledby="prob-tab-3" hidden>
+          <div class="prob-panel-header">
+            <div class="prob-panel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 18V13M9 18V7M13 18V10M17 18V4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="prob-panel-title">Environmental Monitoring Failures</h3>
           </div>
-          <div class="pain-content">
-            <div class="pain-title">Staff Training & Competency Gaps</div>
-            <div class="pain-desc">Unqualified or under-trained compounding personnel are among the top cited violations in Florida Board of Pharmacy inspections.</div>
+          <div class="prob-panel-body">
+            <p class="prob-panel-desc">Missed viable and non-viable particle counts, inadequate surface sampling, or failed trending analysis invalidates your cleanroom certification.</p>
+            <hr class="prob-panel-divider" />
+            <p class="prob-panel-label">How we solve this</p>
+            <p class="prob-panel-solution">Our EM programs are fully documented and trend-tracked, so your certification stays valid and your data tells a clean story.</p>
           </div>
-        </li>
+        </div>
 
-        <li class="pain-item reveal reveal-delay-4">
-          <div class="pain-icon" aria-hidden="true">
-            <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 9H15M9 3V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
+        <div class="prob-panel" role="tabpanel" id="prob-panel-4" aria-labelledby="prob-tab-4" hidden>
+          <div class="prob-panel-header">
+            <div class="prob-panel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="7" width="16" height="13" rx="2.5" stroke="currentColor" stroke-width="1.75"/>
+                <path d="M8 7V5.5C8 4 8.5 2.5 12 2.5C15.5 2.5 16 4 16 5.5V7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+                <path d="M12 12.5V14.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="prob-panel-title">Staff Training &amp; Competency Gaps</h3>
           </div>
-          <div class="pain-content">
-            <div class="pain-title">No Clear Path to 503A or 503B Status</div>
-            <div class="pain-desc">Navigating FDA outsourcing facility registration, CGMP requirements, and state board licensing simultaneously overwhelms most pharmacy teams.</div>
+          <div class="prob-panel-body">
+            <p class="prob-panel-desc">Unqualified or under-trained compounding personnel are among the top cited violations in Florida Board of Pharmacy inspections.</p>
+            <hr class="prob-panel-divider" />
+            <p class="prob-panel-label">How we solve this</p>
+            <p class="prob-panel-solution">We supply trained, experienced sterile compounding technicians ready to integrate without disrupting your operations.</p>
           </div>
-        </li>
-      </ul>
+        </div>
 
+        <div class="prob-panel" role="tabpanel" id="prob-panel-5" aria-labelledby="prob-tab-5" hidden>
+          <div class="prob-panel-header">
+            <div class="prob-panel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+                <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.75"/>
+              </svg>
+            </div>
+            <h3 class="prob-panel-title">No Clear Path to 503A or 503B Status</h3>
+          </div>
+          <div class="prob-panel-body">
+            <p class="prob-panel-desc">Navigating FDA outsourcing facility registration, CGMP requirements, and state board licensing simultaneously overwhelms most pharmacy teams.</p>
+            <hr class="prob-panel-divider" />
+            <p class="prob-panel-label">How we solve this</p>
+            <p class="prob-panel-solution">We've guided facilities through both 503A and 503B pathways and can map out exactly what your facility needs to get there.</p>
+          </div>
+        </div>
+
+      </div><!-- /.prob-panel-wrap -->
+    </div><!-- /.problem-inner -->
+
+    <!-- Mobile: accordion (visible only on small screens) -->
+    <div class="problem-mobile-head" style="display:none;">
+      <h2 class="problem-headline" aria-hidden="true">
+        The compliance problems that cost you <span class="accent">time and money.</span>
+      </h2>
+      <p class="problem-subtext">Tap each problem to learn more.</p>
     </div>
+    <div class="prob-accordion" aria-label="Compliance problems">
+
+      <div class="prob-accordion-item">
+        <button class="prob-accordion-btn" type="button" aria-expanded="false">
+          Surprise Board of Pharmacy Inspections
+          <svg class="prob-accordion-chevron" viewBox="0 0 18 18" fill="none"><path d="M4.5 6.5L9 11L13.5 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="prob-accordion-body">
+          <div class="prob-accordion-inner">
+            <p class="prob-panel-desc">Unannounced state inspections expose documentation gaps, room pressure failures, and SOP deficiencies that trigger immediate corrective actions.</p>
+            <hr class="prob-panel-divider" />
+            <p class="prob-panel-label">How we solve this:</p>
+            <p class="prob-panel-solution">We keep your cleanroom inspection-ready 365 days a year — documentation current, logs complete, and protocols audit-proof.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prob-accordion-item">
+        <button class="prob-accordion-btn" type="button" aria-expanded="false">
+          Outdated SOPs &amp; Policy Gaps
+          <svg class="prob-accordion-chevron" viewBox="0 0 18 18" fill="none"><path d="M4.5 6.5L9 11L13.5 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="prob-accordion-body">
+          <div class="prob-accordion-inner">
+            <p class="prob-panel-desc">USP &lt;797&gt; 2023 revisions introduced sweeping changes. Facilities still running legacy procedures face citation risk with every inspection cycle.</p>
+            <hr class="prob-panel-divider" />
+            <p class="prob-panel-label">How we solve this:</p>
+            <p class="prob-panel-solution">We audit your existing SOPs and align them with current USP &lt;797&gt;/&lt;800&gt; standards so you're never caught with outdated policies.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prob-accordion-item">
+        <button class="prob-accordion-btn" type="button" aria-expanded="false">
+          Environmental Monitoring Failures
+          <svg class="prob-accordion-chevron" viewBox="0 0 18 18" fill="none"><path d="M4.5 6.5L9 11L13.5 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="prob-accordion-body">
+          <div class="prob-accordion-inner">
+            <p class="prob-panel-desc">Missed viable and non-viable particle counts, inadequate surface sampling, or failed trending analysis invalidates your cleanroom certification.</p>
+            <hr class="prob-panel-divider" />
+            <p class="prob-panel-label">How we solve this:</p>
+            <p class="prob-panel-solution">Our EM programs are fully documented and trend-tracked, so your certification stays valid and your data tells a clean story.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prob-accordion-item">
+        <button class="prob-accordion-btn" type="button" aria-expanded="false">
+          Staff Training &amp; Competency Gaps
+          <svg class="prob-accordion-chevron" viewBox="0 0 18 18" fill="none"><path d="M4.5 6.5L9 11L13.5 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="prob-accordion-body">
+          <div class="prob-accordion-inner">
+            <p class="prob-panel-desc">Unqualified or under-trained compounding personnel are among the top cited violations in Florida Board of Pharmacy inspections.</p>
+            <hr class="prob-panel-divider" />
+            <p class="prob-panel-label">How we solve this:</p>
+            <p class="prob-panel-solution">We supply trained, experienced sterile compounding technicians ready to integrate without disrupting your operations.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prob-accordion-item">
+        <button class="prob-accordion-btn" type="button" aria-expanded="false">
+          No Clear Path to 503A or 503B Status
+          <svg class="prob-accordion-chevron" viewBox="0 0 18 18" fill="none"><path d="M4.5 6.5L9 11L13.5 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="prob-accordion-body">
+          <div class="prob-accordion-inner">
+            <p class="prob-panel-desc">Navigating FDA outsourcing facility registration, CGMP requirements, and state board licensing simultaneously overwhelms most pharmacy teams.</p>
+            <hr class="prob-panel-divider" />
+            <p class="prob-panel-label">How we solve this:</p>
+            <p class="prob-panel-solution">We've guided facilities through both 503A and 503B pathways and can map out exactly what your facility needs to get there.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.prob-accordion -->
   </div>
 </section>
 
-
-<!-- ─── SERVICES ───────────────────────────────────────── -->
+<!-- ─── SERVICES ─────────────────────────────────────────────── -->
 <section class="services" id="services" aria-labelledby="services-headline">
   <div class="container">
     <div class="section-header reveal">
@@ -1881,10 +992,7 @@
       <h2 class="section-headline" id="services-headline">Compliance services built for sterile compounding.</h2>
       <p class="section-sub">Comprehensive programs designed to achieve, maintain, and document USP compliance at every level of your operation.</p>
     </div>
-
-    <div class="services-grid" data-stagger-children>
-
-      <!-- Card 1 - Featured -->
+    <div class="services-grid">
       <div class="service-card featured reveal">
         <div class="service-badge">⭐ Core Service</div>
         <div class="service-icon" aria-hidden="true">
@@ -1903,9 +1011,7 @@
           <li class="service-deliverable">Pre-inspection mock audit &amp; report</li>
         </ul>
       </div>
-
-      <!-- Card 2 -->
-      <div class="service-card reveal">
+      <div class="service-card staffing reveal reveal-delay-1">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M17 21V19C17 17.9 16.1 17 15 17H9C7.9 17 7 17.9 7 19V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -1923,9 +1029,7 @@
           <li class="service-deliverable">Contract &amp; per-diem staffing models</li>
         </ul>
       </div>
-
-      <!-- Card 3 -->
-      <div class="service-card reveal">
+      <div class="service-card consulting reveal reveal-delay-2">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9 5H7C5.9 5 5 5.9 5 7V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V7C19 5.9 18.1 5 17 5H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -1942,53 +1046,44 @@
           <li class="service-deliverable">Board response &amp; citation resolution</li>
         </ul>
       </div>
-
     </div>
-
     <div class="services-banner">
       <span>All services include inspection-ready documentation as standard</span> — binders, digital records, and audit trails formatted for immediate regulatory use.
     </div>
   </div>
 </section>
 
-
-<!-- ─── STATS ──────────────────────────────────────────── -->
+<!-- ─── STATS ─────────────────────────────────────────────────── -->
 <section class="stats" aria-label="Company statistics">
   <div class="stats-dots" aria-hidden="true"></div>
   <div class="stats-glow" aria-hidden="true"></div>
+  <div class="stats-grain" aria-hidden="true"></div>
   <div class="container">
-    <div class="stats-grid" role="list" data-stagger-children>
-
+    <div class="stats-grid" role="list">
       <div class="stat-item reveal" role="listitem">
         <div class="stat-number">100%</div>
         <div class="stat-label">Audit Pass Rate</div>
       </div>
-
-      <div class="stat-item reveal" role="listitem">
+      <div class="stat-item reveal reveal-delay-1" role="listitem">
         <div class="stat-number">24hr</div>
         <div class="stat-label">Response Guarantee</div>
       </div>
-
-      <div class="stat-item reveal" role="listitem">
-        <div class="stat-number" style="font-size:clamp(26px,2.8vw,44px); line-height:1.15;">503A<br>503B</div>
+      <div class="stat-item reveal reveal-delay-2" role="listitem">
+        <div class="stat-number stat-number-sm">503A &amp; 503B</div>
         <div class="stat-label">Both Pathways Served</div>
       </div>
-
-      <div class="stat-item reveal" role="listitem">
+      <div class="stat-item reveal reveal-delay-3" role="listitem">
         <div class="stat-number">0</div>
         <div class="stat-label">Uncorrected Citations</div>
       </div>
-
     </div>
   </div>
 </section>
 
-
-<!-- ─── WHY ELITE ──────────────────────────────────────── -->
+<!-- ─── WHY ELITE ─────────────────────────────────────────────── -->
 <section class="why" id="why" aria-labelledby="why-headline">
   <div class="container">
     <div class="why-inner">
-
       <div class="why-left reveal">
         <span class="section-eyebrow">Why Elite</span>
         <h2 class="why-headline" id="why-headline">Built for pharmacists.<br>Trusted by regulators.</h2>
@@ -2000,7 +1095,6 @@
           </svg>
         </a>
       </div>
-
       <div class="why-cards">
         <div class="why-card reveal">
           <div class="why-card-icon" aria-hidden="true">
@@ -2012,7 +1106,6 @@
           <div class="why-card-title">USP Expert Consultants</div>
           <div class="why-card-desc">Every engagement is led by pharmacists with direct USP &lt;797&gt;/&lt;800&gt; regulatory experience — not generalist consultants.</div>
         </div>
-
         <div class="why-card reveal reveal-delay-1">
           <div class="why-card-icon" aria-hidden="true">
             <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2023,7 +1116,6 @@
           <div class="why-card-title">Always-On Availability</div>
           <div class="why-card-desc">Compliance emergencies don't keep business hours. Our on-call team responds to urgent regulatory situations around the clock.</div>
         </div>
-
         <div class="why-card reveal reveal-delay-2">
           <div class="why-card-icon" aria-hidden="true">
             <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2034,7 +1126,6 @@
           <div class="why-card-title">Data-Driven Programs</div>
           <div class="why-card-desc">Trending analysis, automated reminders, and digital recordkeeping turn your compliance program from reactive to predictive.</div>
         </div>
-
         <div class="why-card reveal reveal-delay-3">
           <div class="why-card-icon" aria-hidden="true">
             <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2048,22 +1139,18 @@
           <div class="why-card-desc">We produce inspection-ready SOPs, logbooks, training records, and risk assessments — every document formatted for immediate regulator review.</div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-
-<!-- ─── WHO WE SERVE ───────────────────────────────────── -->
+<!-- ─── WHO WE SERVE ──────────────────────────────────────────── -->
 <section class="who" id="who" aria-labelledby="who-headline">
   <div class="container">
     <div class="section-header reveal">
       <span class="section-eyebrow">Who We Serve</span>
-      <h2 class="section-headline" id="who-headline" style="max-width:640px; margin-left:auto; margin-right:auto;">Built for every sterile compounding environment.</h2>
+      <h2 class="section-headline" id="who-headline" style="max-width:640px;margin-left:auto;margin-right:auto;">Built for every sterile compounding environment.</h2>
     </div>
-
     <div class="who-grid" role="list">
-
       <div class="who-card reveal" role="listitem">
         <div class="who-icon" aria-hidden="true">
           <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2075,7 +1162,6 @@
           <div class="who-type">Compounding &amp; retail</div>
         </div>
       </div>
-
       <div class="who-card reveal reveal-delay-1" role="listitem">
         <div class="who-icon" aria-hidden="true">
           <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2089,7 +1175,6 @@
           <div class="who-type">FDA-registered facilities</div>
         </div>
       </div>
-
       <div class="who-card reveal reveal-delay-2" role="listitem">
         <div class="who-icon" aria-hidden="true">
           <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2101,7 +1186,6 @@
           <div class="who-type">Inpatient &amp; outpatient</div>
         </div>
       </div>
-
       <div class="who-card reveal reveal-delay-3" role="listitem">
         <div class="who-icon" aria-hidden="true">
           <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2114,7 +1198,6 @@
           <div class="who-type">Hazardous drug handling</div>
         </div>
       </div>
-
       <div class="who-card reveal reveal-delay-4" role="listitem">
         <div class="who-icon" aria-hidden="true">
           <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2127,205 +1210,123 @@
           <div class="who-type">Radiopharmaceutical prep</div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-
-<!-- ─── CTA ────────────────────────────────────────────── -->
+<!-- ─── CONTACT ───────────────────────────────────────────────── -->
 <section class="cta-section" id="contact" aria-labelledby="cta-headline">
+  <div class="cta-section-grain" aria-hidden="true"></div>
   <div class="container">
     <div class="cta-box reveal">
       <div>
         <h2 class="cta-headline" id="cta-headline">Ready to get compliant?</h2>
         <p class="cta-sub">Schedule a free 30-minute assessment with one of our USP compliance specialists.</p>
       </div>
-      <form
-        id="contact-form"
-        class="contact-card"
-        novalidate
-        aria-label="Request a free assessment"
-      >
-        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
-        <input type="hidden" name="subject" value="New Assessment Request — Elite Compounding Agency">
-        <input type="hidden" name="from_name" id="hidden-from-name" value="">
-        <input type="hidden" name="replyto" id="hidden-replyto" value="">
-        <input type="checkbox" name="botcheck" style="display:none">
 
+      <form class="contact-card" id="contactForm" novalidate aria-label="Request a free assessment">
         <div class="contact-card-header">
           <div class="contact-card-title">Request a Free Assessment</div>
           <div class="contact-card-sub">USP compliance specialists · 24hr response guarantee</div>
         </div>
-
         <div class="contact-card-body">
 
-          <!-- Form fields (faded during loading) -->
-          <div class="contact-form-fields" id="contact-form-fields">
-
-            <!-- Row 1: Name + Email -->
+          <div class="contact-form-fields" id="formFields">
             <div class="contact-field-grid">
               <div class="contact-field-wrap" id="wrap-name">
-                <label class="contact-label" for="contact-name">
-                  Full Name <span class="required" aria-hidden="true">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="contact-name"
-                  name="name"
-                  class="contact-input"
-                  placeholder="Jane Smith"
-                  autocomplete="name"
-                  aria-required="true"
-                  aria-describedby="msg-name"
-                >
+                <label class="contact-label" for="contact-name">Full Name <span class="required" aria-hidden="true">*</span></label>
+                <input type="text" id="contact-name" name="name" class="contact-input" placeholder="Jane Smith" autocomplete="name" aria-required="true" aria-describedby="msg-name">
                 <div class="contact-field-msg" id="msg-name" aria-live="polite"></div>
               </div>
               <div class="contact-field-wrap" id="wrap-email">
-                <label class="contact-label" for="contact-email">
-                  Email <span class="required" aria-hidden="true">*</span>
-                </label>
-                <input
-                  type="email"
-                  id="contact-email"
-                  name="email"
-                  class="contact-input"
-                  placeholder="jane@pharmacy.com"
-                  autocomplete="email"
-                  aria-required="true"
-                  aria-describedby="msg-email"
-                >
+                <label class="contact-label" for="contact-email">Email <span class="required" aria-hidden="true">*</span></label>
+                <input type="email" id="contact-email" name="email" class="contact-input" placeholder="jane@pharmacy.com" autocomplete="email" aria-required="true" aria-describedby="msg-email">
                 <div class="contact-field-msg" id="msg-email" aria-live="polite"></div>
               </div>
             </div>
-
-            <!-- Row 2: Phone + Facility Type -->
             <div class="contact-field-grid">
               <div class="contact-field-wrap" id="wrap-phone">
                 <label class="contact-label" for="contact-phone">Phone</label>
-                <input
-                  type="tel"
-                  id="contact-phone"
-                  name="phone"
-                  class="contact-input"
-                  placeholder="(555) 000-0000"
-                  autocomplete="tel"
-                  aria-describedby="msg-phone"
-                >
+                <input type="tel" id="contact-phone" name="phone" class="contact-input" placeholder="(555) 000-0000" autocomplete="tel" aria-describedby="msg-phone">
                 <div class="contact-field-msg" id="msg-phone" aria-live="polite"></div>
               </div>
-              <div class="contact-field-wrap" id="wrap-facility">
+              <div class="contact-field-wrap">
                 <label class="contact-label" for="contact-facility">Facility Type</label>
-                <select
-                  id="contact-facility"
-                  name="facility_type"
-                  class="contact-select"
-                  aria-describedby="msg-facility"
-                >
+                <select id="contact-facility" name="facility_type" class="contact-select">
                   <option value="">Select type…</option>
-                  <option value="503A Pharmacy">503A Pharmacy</option>
-                  <option value="503B Outsourcing Facility">503B Outsourcing Facility</option>
-                  <option value="Hospital IV Room">Hospital IV Room</option>
-                  <option value="Oncology Clinic">Oncology Clinic</option>
-                  <option value="Nuclear Pharmacy">Nuclear Pharmacy</option>
-                  <option value="Other">Other</option>
+                  <option>503A Pharmacy</option>
+                  <option>503B Outsourcing Facility</option>
+                  <option>Hospital IV Room</option>
+                  <option>Oncology Clinic</option>
+                  <option>Nuclear Pharmacy</option>
+                  <option>Other</option>
                 </select>
-                <div class="contact-field-msg" id="msg-facility" aria-live="polite"></div>
               </div>
             </div>
-
-            <!-- Row 3: Message (full width) -->
             <div class="contact-field-full">
               <div class="contact-field-wrap" id="wrap-message">
-                <label class="contact-label" for="contact-message">
-                  Message <span class="required" aria-hidden="true">*</span>
-                </label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  class="contact-textarea"
-                  rows="3"
-                  placeholder="Tell us about your compliance challenge…"
-                  aria-required="true"
-                  aria-describedby="msg-message"
-                ></textarea>
+                <label class="contact-label" for="contact-message">Message <span class="required" aria-hidden="true">*</span></label>
+                <textarea id="contact-message" name="message" class="contact-textarea" rows="3" placeholder="Tell us about your compliance challenge…" aria-required="true" aria-describedby="msg-message"></textarea>
                 <div class="contact-field-msg" id="msg-message" aria-live="polite"></div>
               </div>
             </div>
 
-            <!-- Error banner (shown on API failure) -->
-            <div class="contact-error-banner" id="contact-error-banner" role="alert">
+            <div class="contact-error-banner" id="errorBanner" role="alert">
               <span class="contact-error-banner-icon" aria-hidden="true">⚠</span>
               <div>
                 <div class="contact-error-banner-title">Couldn't send your message</div>
-                <div class="contact-error-banner-sub">
-                  Please try again, or email us at
-                  <a href="mailto:info@elitecompoundingagency.com">info@elitecompoundingagency.com</a>
-                </div>
+                <div class="contact-error-banner-sub">Please try again, or email us at <a href="mailto:info@elitecompoundingagency.com">info@elitecompoundingagency.com</a></div>
               </div>
             </div>
 
-            <!-- Submit button -->
-            <button
-              type="submit"
-              id="contact-submit"
-              class="btn btn-primary contact-submit"
-              aria-label="Send message"
-            >
-              Send Message →
-            </button>
+            <button type="submit" class="btn btn-primary contact-submit" id="submitBtn">Send Message →</button>
+          </div>
 
-          </div><!-- /contact-form-fields -->
-
-          <!-- Loading state -->
-          <div class="contact-loading" id="contact-loading" aria-live="polite" aria-label="Sending message">
+          <div class="contact-loading" id="loadingState" aria-live="polite" aria-label="Sending message">
             <div class="contact-spinner" aria-hidden="true"></div>
             <div class="contact-loading-text">Sending your message…</div>
           </div>
 
-          <!-- Success state -->
-          <div class="contact-success" id="contact-success" role="status">
+          <div class="contact-success" id="successState" role="status">
             <div class="contact-success-icon" aria-hidden="true">✓</div>
             <div class="contact-success-title">Message sent!</div>
-            <div class="contact-success-body">
-              We'll be in touch within 24 hours.<br>
-              Check your inbox for a confirmation copy.
-            </div>
+            <div class="contact-success-body">We'll be in touch within 24 hours.<br>Check your inbox for a confirmation copy.</div>
           </div>
 
-        </div><!-- /contact-card-body -->
+        </div>
       </form>
     </div>
   </div>
 </section>
 
-
-<!-- ─── FOOTER ─────────────────────────────────────────── -->
+<!-- ─── FOOTER ────────────────────────────────────────────────── -->
 <footer class="footer" aria-label="Site footer">
   <div class="container">
     <div class="footer-grid">
-
       <div class="footer-brand">
         <div class="footer-logo">
-          <div class="footer-logo-mark" aria-hidden="true">
-            <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9 2L14.5 5.5V12.5L9 16L3.5 12.5V5.5L9 2Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M9 6.5L11.5 8V11L9 12.5L6.5 11V8L9 6.5Z" fill="white" opacity="0.8"/>
-            </svg>
+          <div class="footer-logo-img-wrap">
+            <img src="logo-v2.png" alt="Elite Compounding Agency" style="height:80px;width:auto;display:block;" />
           </div>
-          <span class="footer-logo-text">Elite Compounding Agency</span>
         </div>
         <p class="footer-tagline">Florida's leading USP compliance consultancy for sterile compounding pharmacies and outsourcing facilities.</p>
         <div class="footer-contact-item">
-          <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 3L7 7.5L12 3M2 3H12V11H2V3Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2 3L7 7.5L12 3M2 3H12V11H2V3Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+          </svg>
           <a href="mailto:info@elitecompoundingagency.com" style="color:inherit">info@elitecompoundingagency.com</a>
         </div>
         <div class="footer-contact-item">
-          <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.5 2H5.5L6.5 4.5L5 5.5C5.7 7 6 7.3 7.5 8L8.5 6.5L11 7.5V9.5C11 10.3 10.3 11 9.5 11C5 11 2 7.8 2 4.5C2 2.8 2.8 2 3.5 2Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3.5 2H5.5L6.5 4.5L5 5.5C5.7 7 6 7.3 7.5 8L8.5 6.5L11 7.5V9.5C11 10.3 10.3 11 9.5 11C5 11 2 7.8 2 4.5C2 2.8 2.8 2 3.5 2Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+          </svg>
           <a href="tel:0000000000" style="color:inherit">(000) 000-0000</a>
         </div>
         <div class="footer-contact-item">
-          <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 2C4.5 2 2.5 4 2.5 6.5C2.5 9.5 7 13 7 13C7 13 11.5 9.5 11.5 6.5C11.5 4 9.5 2 7 2Z" stroke="currentColor" stroke-width="1.2"/><circle cx="7" cy="6.5" r="1.5" stroke="currentColor" stroke-width="1.2"/></svg>
+          <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M7 2C4.5 2 2.5 4 2.5 6.5C2.5 9.5 7 13 7 13C7 13 11.5 9.5 11.5 6.5C11.5 4 9.5 2 7 2Z" stroke="currentColor" stroke-width="1.2"/>
+            <circle cx="7" cy="6.5" r="1.5" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
           Florida, USA
         </div>
       </div>
@@ -2361,7 +1362,6 @@
           <li><a href="tel:0000000000">Schedule a Call</a></li>
         </ul>
       </div>
-
     </div>
 
     <div class="footer-bottom">
@@ -2377,283 +1377,195 @@
   </div>
 </footer>
 
-
-<!-- ─── JAVASCRIPT ─────────────────────────────────────── -->
 <script>
-  // ── Skeleton overlay dismissal + Hero entrance sequence
-  document.addEventListener('DOMContentLoaded', () => {
-    // Dismiss skeleton overlay
-    const overlay = document.getElementById('skeleton-overlay');
-    if (overlay) {
-      overlay.style.transition = 'opacity 0.4s ease';
-      overlay.style.opacity = '0';
-      setTimeout(() => overlay.remove(), 400);
-    }
-
-    // Hero entrance sequence
-    const heroEls = [
-      document.querySelector('.hero-badge'),
-      document.querySelector('.hero-headline'),
-      document.querySelector('.hero-sub'),
-      document.querySelector('.hero-ctas'),
-      document.querySelector('.hero-trust'),
-    ];
-    const heroDelay = 450; // start after skeleton overlay finishes fading (400ms + buffer)
-    heroEls.forEach((el, i) => {
-      if (!el) return;
-      setTimeout(() => {
-        el.classList.remove('hero-pre-animate');
-        el.classList.add('hero-animate');
-      }, heroDelay + i * 60);
-    });
-  });
-
-  // ── NAV scroll state
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 20);
+(function() {
+  // ─── NAV SCROLL ───────────────────────────────────────────
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
   }, { passive: true });
 
-  // ── Theme toggle
-  const themeToggle = document.getElementById('theme-toggle');
-  function applyTheme(theme) {
-    if (theme === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      themeToggle.textContent = '☀';
-      themeToggle.setAttribute('aria-label', 'Switch to light mode');
-    } else {
-      document.documentElement.removeAttribute('data-theme');
-      themeToggle.textContent = '☾';
-      themeToggle.setAttribute('aria-label', 'Switch to dark mode');
-    }
-  }
-  // Sync icon to current state on load
-  const currentTheme = document.documentElement.getAttribute('data-theme');
-  applyTheme(currentTheme === 'dark' ? 'dark' : 'light');
-
-  themeToggle.addEventListener('click', () => {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const next = isDark ? 'light' : 'dark';
-    try { localStorage.setItem('theme', next); } catch (e) {}
-    applyTheme(next);
+  // ─── HAMBURGER ────────────────────────────────────────────
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', function() {
+    var open = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
   });
-
-  // ── Hamburger menu
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    const isOpen = hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open', isOpen);
-    hamburger.setAttribute('aria-expanded', String(isOpen));
-  });
-  // Close on link click
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
+  mobileMenu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
       hamburger.classList.remove('open');
       mobileMenu.classList.remove('open');
       hamburger.setAttribute('aria-expanded', 'false');
     });
   });
 
-  // ── Scroll reveal (IntersectionObserver)
-  const revealEls = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        if (entry.target.hasAttribute('data-stagger-children')) {
-          Array.from(entry.target.children).forEach((child, i) => {
-            child.style.transitionDelay = (i * 80) + 'ms';
-            child.classList.add('visible');
-          });
-        } else {
-          entry.target.classList.add('visible');
-        }
-        observer.unobserve(entry.target);
-      }
+  // ─── SMOOTH SCROLL ────────────────────────────────────────
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var id = a.getAttribute('href');
+    if (id === '#') { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    var el = document.querySelector(id);
+    if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+
+  // ─── SCROLL REVEAL ────────────────────────────────────────
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
 
-  revealEls.forEach(el => {
-    if (!el.closest('[data-stagger-children]')) observer.observe(el);
+  // ─── CONTACT FORM ─────────────────────────────────────────
+  var form       = document.getElementById('contactForm');
+  var formFields = document.getElementById('formFields');
+  var loadState  = document.getElementById('loadingState');
+  var successEl  = document.getElementById('successState');
+  var errorBanner= document.getElementById('errorBanner');
+  var submitBtn  = document.getElementById('submitBtn');
+
+  function validateEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  function validatePhone(v) { return v === '' || /^[\d\s\-\(\)\+\.]{7,20}$/.test(v); }
+
+  function setField(id, state, msg) {
+    var wrap = document.getElementById('wrap-' + id);
+    var msgEl = document.getElementById('msg-' + id);
+    if (!wrap) return;
+    wrap.classList.remove('is-error', 'is-valid');
+    if (state) wrap.classList.add('is-' + state);
+    if (msgEl) msgEl.textContent = msg || '';
+  }
+
+  function validateAll() {
+    var name    = document.getElementById('contact-name').value.trim();
+    var email   = document.getElementById('contact-email').value.trim();
+    var phone   = document.getElementById('contact-phone').value.trim();
+    var message = document.getElementById('contact-message').value.trim();
+    var valid = true;
+
+    if (!name) { setField('name', 'error', 'Full name is required'); valid = false; }
+    else setField('name', 'valid', '');
+
+    if (!email) { setField('email', 'error', 'Email is required'); valid = false; }
+    else if (!validateEmail(email)) { setField('email', 'error', 'Enter a valid email'); valid = false; }
+    else setField('email', 'valid', '');
+
+    if (!validatePhone(phone)) { setField('phone', 'error', 'Enter a valid phone number'); valid = false; }
+    else if (phone) setField('phone', 'valid', '');
+
+    if (!message) { setField('message', 'error', 'Message is required'); valid = false; }
+    else setField('message', 'valid', '');
+
+    return valid;
+  }
+
+  ['name','email','phone','message'].forEach(function(id) {
+    var el = document.getElementById('contact-' + id);
+    if (!el) return;
+    el.addEventListener('blur', validateAll);
   });
 
-  // Observe stagger containers (children inside are handled by the stagger branch above)
-  document.querySelectorAll('[data-stagger-children]').forEach(el => observer.observe(el));
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    if (!validateAll()) return;
 
-  // ── Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        const offset = 80;
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-    });
-  });
+    errorBanner.classList.remove('visible');
+    formFields.classList.add('loading');
+    loadState.classList.add('visible');
+    submitBtn.disabled = true;
 
-  // ── Contact form
-  (function () {
-    const form        = document.getElementById('contact-form');
-    if (!form) return;
-
-    const fields = {
-      name:     { el: document.getElementById('contact-name'),    wrap: document.getElementById('wrap-name'),    msg: document.getElementById('msg-name') },
-      email:    { el: document.getElementById('contact-email'),   wrap: document.getElementById('wrap-email'),   msg: document.getElementById('msg-email') },
-      phone:    { el: document.getElementById('contact-phone'),   wrap: document.getElementById('wrap-phone'),   msg: document.getElementById('msg-phone') },
-      message:  { el: document.getElementById('contact-message'), wrap: document.getElementById('wrap-message'), msg: document.getElementById('msg-message') },
+    var data = {
+      access_key: 'YOUR_ACCESS_KEY',
+      name:    document.getElementById('contact-name').value.trim(),
+      email:   document.getElementById('contact-email').value.trim(),
+      phone:   document.getElementById('contact-phone').value.trim(),
+      facility_type: document.getElementById('contact-facility').value,
+      message: document.getElementById('contact-message').value.trim(),
     };
-    const submitBtn     = document.getElementById('contact-submit');
-    const formFields    = document.getElementById('contact-form-fields');
-    const loadingEl     = document.getElementById('contact-loading');
-    const successEl     = document.getElementById('contact-success');
-    const errorBanner   = document.getElementById('contact-error-banner');
-    const hiddenName    = document.getElementById('hidden-from-name');
-    const hiddenReplyTo = document.getElementById('hidden-replyto');
-    const accessKey     = form.querySelector('[name="access_key"]').value;
 
-    // Validation rules — return error string or '' if valid
-    function validate(key, value) {
-      if (key === 'name') {
-        if (!value.trim()) return 'Full name is required';
-        if (value.trim().length < 2) return 'Name must be at least 2 characters';
-        return '';
-      }
-      if (key === 'email') {
-        if (!value.trim()) return 'Email address is required';
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())) return 'Enter a valid email address';
-        return '';
-      }
-      if (key === 'phone') {
-        if (value.trim() && !/^\+?[\d][\d\s\-\(\)]{5,}[\d]$/.test(value.trim())) return 'Enter a valid phone number';
-        return '';
-      }
-      if (key === 'message') {
-        if (!value.trim()) return 'Message is required';
-        if (value.trim().length < 10) return 'Message must be at least 10 characters';
-        return '';
-      }
-      return '';
-    }
-
-    function setFieldState(key, error) {
-      const { wrap, msg } = fields[key];
-      wrap.classList.remove('is-error', 'is-valid');
-      if (error) {
-        wrap.classList.add('is-error');
-        msg.textContent = '⚠ ' + error;
-      } else if (fields[key].el.value.trim() !== '') {
-        wrap.classList.add('is-valid');
-        msg.textContent = '✓ Looks good';
-      } else {
-        msg.textContent = '';
-      }
-    }
-
-    // Attach blur handlers
-    Object.keys(fields).forEach(key => {
-      fields[key].el.addEventListener('blur', () => {
-        const error = validate(key, fields[key].el.value);
-        setFieldState(key, error);
+    try {
+      var res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data),
       });
-      // Re-validate live while user is correcting an error
-      fields[key].el.addEventListener('input', () => {
-        if (fields[key].wrap.classList.contains('is-error')) {
-          const error = validate(key, fields[key].el.value);
-          setFieldState(key, error);
-        }
-      });
-    });
-
-    function showLoading() {
-      formFields.classList.add('loading');
-      const loadingText = loadingEl.querySelector('.contact-loading-text');
-      loadingText.textContent = '';
-      loadingText.textContent = 'Sending your message…';
-      loadingEl.classList.add('visible');
-      submitBtn.disabled = true;
-    }
-
-    function hideLoading() {
-      formFields.classList.remove('loading');
-      loadingEl.classList.remove('visible');
-    }
-
-    function showSuccess() {
+      var json = await res.json();
+      loadState.classList.remove('visible');
       formFields.style.display = 'none';
-      loadingEl.classList.remove('visible');
       successEl.classList.add('visible');
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => successEl.classList.add('fade-in'));
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() { successEl.classList.add('fade-in'); });
       });
-    }
-
-    function showError() {
-      hideLoading();
-      const bannerTitle = errorBanner.querySelector('.contact-error-banner-title');
-      bannerTitle.textContent = '';
-      bannerTitle.textContent = "Couldn't send your message";
-      errorBanner.classList.add('visible');
+    } catch (err) {
+      loadState.classList.remove('visible');
+      formFields.classList.remove('loading');
       submitBtn.disabled = false;
+      errorBanner.classList.add('visible');
       submitBtn.textContent = 'Try Again →';
-      submitBtn.setAttribute('aria-label', 'Try again');
     }
+  });
+})();
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+/* ─── PROBLEM TABS (desktop) ──────────────────────────────── */
+(function() {
+  var tabs    = document.querySelectorAll('.prob-tab-btn');
+  var panels  = document.querySelectorAll('.prob-panel');
+  if (!tabs.length) return;
 
-      // Re-validate all fields on submit
-      let hasError = false;
-      ['name', 'email', 'phone', 'message'].forEach(key => {
-        const error = validate(key, fields[key].el.value);
-        setFieldState(key, error);
-        if (error) hasError = true;
-      });
-      if (hasError) return;
-
-      // Dismiss previous error banner and reset button
-      errorBanner.classList.remove('visible');
-      submitBtn.textContent = 'Send Message →';
-      submitBtn.setAttribute('aria-label', 'Send message');
-
-      // Sync hidden fields
-      hiddenName.value    = fields.name.el.value.trim();
-      hiddenReplyTo.value = fields.email.el.value.trim();
-
-      showLoading();
-
-      const payload = {
-        access_key:    accessKey,
-        subject:       'New Assessment Request — Elite Compounding Agency',
-        from_name:     fields.name.el.value.trim(),
-        replyto:       fields.email.el.value.trim(),
-        name:          fields.name.el.value.trim(),
-        email:         fields.email.el.value.trim(),
-        phone:         fields.phone.el.value.trim(),
-        facility_type: form.querySelector('[name="facility_type"]').value,
-        message:       fields.message.el.value.trim(),
-        botcheck:      '',
-      };
-
-      try {
-        const res  = await fetch('https://api.web3forms.com/submit', {
-          method:  'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body:    JSON.stringify(payload),
-        });
-        const data = await res.json();
-        if (data.success) {
-          showSuccess();
-        } else {
-          showError();
-        }
-      } catch (_) {
-        showError();
+  function activateTab(index) {
+    tabs.forEach(function(t, i) {
+      var isActive = i === index;
+      t.classList.toggle('active', isActive);
+      t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+    panels.forEach(function(p, i) {
+      if (i === index) {
+        p.removeAttribute('hidden');
+        p.classList.remove('active');
+        void p.offsetWidth; // reflow to restart transition
+        p.classList.add('active');
+      } else {
+        p.classList.remove('active');
+        p.setAttribute('hidden', '');
       }
     });
-  })();
-</script>
+  }
 
+  tabs.forEach(function(btn, i) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      activateTab(i);
+    });
+    btn.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowDown') { e.preventDefault(); activateTab((i + 1) % tabs.length); tabs[(i + 1) % tabs.length].focus(); }
+      if (e.key === 'ArrowUp')   { e.preventDefault(); activateTab((i - 1 + tabs.length) % tabs.length); tabs[(i - 1 + tabs.length) % tabs.length].focus(); }
+    });
+  });
+})();
+
+/* ─── PROBLEM ACCORDION (mobile) ─────────────────────────── */
+(function() {
+  var btns = document.querySelectorAll('.prob-accordion-btn');
+  if (!btns.length) return;
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var body    = btn.nextElementSibling;
+      var isOpen  = btn.getAttribute('aria-expanded') === 'true';
+      // close all
+      btns.forEach(function(b) {
+        b.setAttribute('aria-expanded', 'false');
+        b.nextElementSibling.classList.remove('open');
+      });
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        body.classList.add('open');
+      }
+    });
+  });
+})();
+</script>
 </body>
 </html>
