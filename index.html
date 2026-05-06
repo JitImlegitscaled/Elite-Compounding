@@ -1788,5 +1788,52 @@
   setTimeout(tick, 600);
 })();
 </script>
+
+<script>
+(function() {
+  var rows = document.querySelectorAll('.checklist-row');
+  var resultGood = document.getElementById('result-good');
+  var resultWarn = document.getElementById('result-warn');
+  var resultUrgent = document.getElementById('result-urgent');
+
+  function getGapCount() {
+    var count = 0;
+    rows.forEach(function(row) {
+      if (row.classList.contains('gap')) count++;
+    });
+    return count;
+  }
+
+  function updateResult() {
+    var gaps = getGapCount();
+    resultGood.classList.remove('active');
+    resultWarn.classList.remove('active');
+    resultUrgent.classList.remove('active');
+    if (gaps <= 2) {
+      resultGood.classList.add('active');
+    } else if (gaps <= 4) {
+      resultWarn.classList.add('active');
+    } else {
+      resultUrgent.classList.add('active');
+    }
+  }
+
+  function toggleRow(row) {
+    var isGap = row.classList.toggle('gap');
+    row.setAttribute('aria-pressed', isGap ? 'false' : 'true');
+    updateResult();
+  }
+
+  rows.forEach(function(row) {
+    row.addEventListener('click', function() { toggleRow(row); });
+    row.addEventListener('keydown', function(e) {
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        toggleRow(row);
+      }
+    });
+  });
+})();
+</script>
 </body>
 </html>
