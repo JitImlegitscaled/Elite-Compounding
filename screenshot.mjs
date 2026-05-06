@@ -25,9 +25,13 @@ const page = await browser.newPage();
 await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1 });
 await page.goto(url, { waitUntil: 'networkidle0', timeout: 30000 });
 
-// Trigger all scroll reveal elements immediately via JS
+// Trigger all scroll reveal and hero entrance elements immediately via JS
 await page.evaluate(() => {
   document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  document.querySelectorAll('.hero-pre-animate').forEach(el => {
+    el.classList.remove('hero-pre-animate');
+    el.classList.add('hero-animate');
+  });
 });
 await new Promise(r => setTimeout(r, 500));
 
