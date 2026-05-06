@@ -84,7 +84,7 @@ Appears below the 7 items, separated by a `1px solid rgba(255,255,255,0.08)` div
 - Icon: red alert circle
 - Message: **"Your facility is at risk. You need this call."**
 - Sub-copy: "Don't wait for an inspection to find out."
-- CTA: Full-width urgent primary button — "Call Now — (561) 123-4567" *(placeholder — confirm real phone number before launch)* + secondary link "or Request a Quote"
+- CTA: Full-width urgent primary button — "Get Emergency Consultation" (links to `#contact`), styled with stronger box-shadow and slightly larger font than the standard primary button to signal urgency. No phone number (none exists yet).
 
 ### Initial state (0 gaps — all covered on load)
 Show State 1 by default since all 7 start checked.
