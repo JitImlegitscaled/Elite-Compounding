@@ -46,6 +46,16 @@
       --max-w:         1120px;
     }
 
+    /* ─── SCROLL PROGRESS ──────────────────────────────────── */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 3px; width: 0%;
+      background: linear-gradient(90deg, #0052B8, #1a65cc);
+      z-index: 200;
+      transition: width 0.1s linear;
+      pointer-events: none;
+    }
+
     /* ─── RESET ─────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
@@ -362,12 +372,46 @@
     .stat-card-lbl { font-size: 10px; color: rgba(255,255,255,0.5); font-weight: 400; }
 
     /* ─── TRUST BAR ──────────────────────────────────────────── */
-    .trust-bar { display: none; }
-    .trust-bar-label { text-align: center; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 24px; }
-    .trust-logos { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
-    .trust-logo { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: -0.02em; color: rgba(255,255,255,0.45); opacity: 1; transition: color 0.2s ease, opacity 0.2s ease; padding: 6px 28px; border-right: 1px solid rgba(255,255,255,0.1); line-height: 1; }
-    .trust-logo:last-child { border-right: none; }
-    .trust-logo:hover { color: rgba(255,255,255,0.85); }
+    .trust-bar {
+      background: #06091a;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 20px 0;
+      overflow: hidden;
+    }
+    .trust-bar-label { text-align: center; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
+    /* ticker track — clips the overflow */
+    .trust-ticker-wrap {
+      overflow: hidden;
+      position: relative;
+      /* fade edges */
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+    .trust-ticker-track {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      animation: ticker-scroll 28s linear infinite;
+    }
+    .trust-ticker-track:hover { animation-play-state: paused; }
+    @keyframes ticker-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .trust-logo {
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px;
+      letter-spacing: -0.01em; color: rgba(255,255,255,0.42);
+      white-space: nowrap; padding: 0 32px; flex-shrink: 0;
+      transition: color 0.2s ease;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .trust-logo::before {
+      content: '';
+      display: block; width: 4px; height: 4px; border-radius: 50%;
+      background: rgba(0,82,184,0.6); flex-shrink: 0;
+    }
+    .trust-ticker-track:hover .trust-logo:hover { color: rgba(255,255,255,0.8); }
 
     /* ─── PROBLEM ────────────────────────────────────────────── */
     .problem { padding: 100px 0; background: #F4F7FF; position: relative; }
@@ -530,42 +574,51 @@
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
       position: relative; margin-top: 56px;
     }
-    /* dashed connector line through the node row */
+    /* dashed connector line through center of nodes */
     .hiw-grid::before {
       content: ''; position: absolute;
-      top: 28px; /* half of 56px node height */
-      left: calc(12.5% + 28px); right: calc(12.5% + 28px);
+      top: 36px; /* half of 72px node height */
+      left: calc(12.5% + 36px); right: calc(12.5% + 36px);
       border-top: 2px dashed var(--cobalt-border);
       z-index: 0;
     }
     .hiw-step {
       display: flex; flex-direction: column; align-items: center;
-      text-align: center; padding: 0 16px; position: relative; z-index: 1;
+      text-align: center; padding: 0 20px; position: relative; z-index: 1;
     }
     .hiw-node {
-      width: 56px; height: 56px; border-radius: 50%;
-      background: var(--cobalt-light); border: 2px solid var(--cobalt-border);
+      width: 72px; height: 72px; border-radius: 50%;
+      background: #fff;
+      border: 2px solid var(--cobalt-border);
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; margin-bottom: 20px; position: relative; z-index: 1;
-      box-shadow: 0 0 0 6px var(--bg-soft); /* punches through the dashed line */
+      flex-shrink: 0; margin-bottom: 24px; position: relative; z-index: 1;
+      /* halo punches through the dashed line cleanly */
+      box-shadow: 0 0 0 8px var(--bg-soft), 0 4px 16px rgba(0,82,184,0.12), 0 1px 4px rgba(0,82,184,0.08);
+      transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1);
     }
-    .hiw-node svg { width: 22px; height: 22px; color: var(--cobalt); }
+    .hiw-step:hover .hiw-node {
+      border-color: var(--cobalt);
+      box-shadow: 0 0 0 8px var(--bg-soft), 0 8px 28px rgba(0,82,184,0.22), 0 2px 8px rgba(0,82,184,0.12);
+      transform: translateY(-3px);
+    }
+    .hiw-node svg { width: 26px; height: 26px; color: var(--cobalt); transition: color 0.2s ease; }
     .hiw-num {
-      position: absolute; top: -8px; left: -8px;
-      width: 20px; height: 20px; border-radius: 50%;
+      position: absolute; top: -6px; right: -6px;
+      width: 22px; height: 22px; border-radius: 50%;
       background: var(--cobalt); color: #fff;
-      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 700;
+      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 800;
       display: flex; align-items: center; justify-content: center;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.03em;
+      box-shadow: 0 2px 6px rgba(0,82,184,0.4);
     }
     .hiw-title {
       font-family: 'Montserrat', sans-serif; font-weight: 700;
       font-size: 16px; color: var(--text); margin-bottom: 10px;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.025em;
     }
     .hiw-desc {
       font-family: 'Inter', sans-serif; font-size: 13.5px;
-      color: var(--text-2); line-height: 1.6; max-width: 200px;
+      color: var(--text-2); line-height: 1.65; max-width: 190px;
     }
 
     /* ─── SERVICE CARD DRAWER ────────────────────────────────── */
@@ -599,7 +652,7 @@
     .stats-dots { position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 32px 32px; }
     .stats-glow { position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, transparent 65%); pointer-events: none; }
     .stats-grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.06; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 180px 180px; }
-    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; z-index: 1; width: 100%; overflow: hidden; }
+    .stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); position: relative; z-index: 1; width: 100%; overflow: hidden; }
     .stat-item { text-align: center; padding: 0 24px; border-right: 1px solid rgba(255,255,255,0.15); min-width: 0; }
     .stat-item:last-child { border-right: none; }
     .stat-number { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(52px, 5.5vw, 80px); color: #fff; line-height: 1; letter-spacing: -0.04em; margin-bottom: 14px; }
@@ -683,6 +736,73 @@
     .contact-form-fields { transition: opacity 0.25s ease; }
     .contact-form-fields.loading { opacity: 0.15; pointer-events: none; }
 
+    /* ─── CONTACT TABS ─────────────────────────────────────────── */
+    .contact-tabs { display: flex; gap: 0; margin-bottom: 20px; background: rgba(255,255,255,0.12); border-radius: 100px; padding: 4px; backdrop-filter: blur(8px); }
+    .contact-tab-btn {
+      flex: 1; padding: 9px 18px; border-radius: 100px; border: none; cursor: pointer;
+      font-family: 'Montserrat', sans-serif; font-size: 12.5px; font-weight: 600;
+      letter-spacing: 0.02em; white-space: nowrap;
+      background: transparent; color: rgba(255,255,255,0.65);
+      transition: background 0.22s cubic-bezier(0.22,1,0.36,1), color 0.18s ease, box-shadow 0.22s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .contact-tab-btn:focus-visible { outline: 2px solid rgba(255,255,255,0.7); outline-offset: 2px; }
+    .contact-tab-btn:active { transform: scale(0.97); }
+    .contact-tab-btn.active {
+      background: #fff; color: var(--cobalt);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.18), 0 1px 4px rgba(0,0,0,0.10);
+    }
+    /* Calendar panel */
+    .contact-calendar-panel { display: none; }
+    .contact-calendar-panel.active { display: block; }
+    .contact-form-panel { display: block; }
+    .contact-form-panel.hidden { display: none; }
+    .cal-embed-wrap {
+      background: #fff; border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+      overflow: hidden; padding: 0;
+    }
+    .cal-embed-inner {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 380px; padding: 32px 28px; gap: 20px; text-align: center;
+    }
+    .cal-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: linear-gradient(135deg, var(--cobalt-light) 0%, rgba(0,82,184,0.1) 100%);
+      display: flex; align-items: center; justify-content: center;
+      border: 1.5px solid var(--cobalt-border);
+    }
+    .cal-icon svg { width: 26px; height: 26px; }
+    .cal-heading { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 17px; color: var(--text); letter-spacing: -0.02em; }
+    .cal-sub { font-size: 13px; color: var(--text-2); line-height: 1.65; max-width: 320px; }
+    .cal-slots { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 340px; }
+    .cal-slot {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 11px 16px; border-radius: 9px;
+      border: 1.5px solid var(--border); background: var(--bg);
+      cursor: pointer;
+      transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease;
+    }
+    .cal-slot:hover { border-color: var(--cobalt); background: var(--cobalt-light); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,82,184,0.1); }
+    .cal-slot:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
+    .cal-slot:active { transform: translateY(0) scale(0.98); }
+    .cal-slot-time { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; color: var(--text); }
+    .cal-slot-tz { font-size: 11px; color: var(--text-2); margin-top: 1px; }
+    .cal-slot-badge { font-size: 10.5px; font-weight: 600; color: var(--cobalt); background: var(--cobalt-light); border: 1px solid var(--cobalt-border); padding: 3px 8px; border-radius: 100px; letter-spacing: 0.03em; }
+    .cal-divider { display: flex; align-items: center; gap: 10px; width: 100%; max-width: 340px; }
+    .cal-divider::before, .cal-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .cal-divider-text { font-size: 11px; color: var(--text-2); white-space: nowrap; }
+    .cal-open-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 11px 22px; border-radius: 100px; border: 1.5px solid var(--cobalt-border);
+      background: transparent; color: var(--cobalt);
+      font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
+      cursor: pointer; letter-spacing: 0.01em;
+      transition: background 0.18s ease, border-color 0.18s ease, transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease;
+    }
+    .cal-open-btn:hover { background: var(--cobalt-light); border-color: var(--cobalt); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,82,184,0.12); }
+    .cal-open-btn:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 3px; }
+    .cal-open-btn:active { transform: scale(0.97); }
+    .cal-disclaimer { font-size: 10.5px; color: var(--text-2); opacity: 0.7; }
+
     /* ─── FOOTER ─────────────────────────────────────────────── */
     .footer { background: #0A0F1E; padding: 72px 0 0; color: rgba(255,255,255,0.65); }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,0.1); }
@@ -728,7 +848,7 @@
       .stats { padding: 72px 0; }
       .stats-grid { grid-template-columns: 1fr 1fr; gap: 40px 0; }
       .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); padding: 0 16px 40px; }
-      .stat-item:nth-child(2), .stat-item:nth-child(4) { border-bottom: none; }
+      .stat-item:nth-child(5) { border-bottom: none; }
       .stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.15); }
       .why { padding: 80px 0; }
       .why-inner { grid-template-columns: 1fr; gap: 48px; }
@@ -741,16 +861,17 @@
       .cta-box { grid-template-columns: 1fr; gap: 40px; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
-      .trust-logos { gap: 24px; }
       .how-it-works { padding: 72px 0; }
-      .hiw-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 0; }
+      .hiw-grid { grid-template-columns: repeat(2, 1fr); gap: 48px 0; }
       .hiw-grid::before { display: none; }
-      .hiw-step { padding: 0 8px; }
+      .hiw-step { padding: 0 12px; }
     }
     @media (max-width: 540px) {
       .contact-card-header { padding: 18px 20px; }
       .contact-card-body { padding: 18px 20px; }
       .contact-field-grid { grid-template-columns: 1fr; }
+      #contactTabBar { padding: 14px 20px 0; }
+      .contact-tab-btn { font-size: 11.5px; padding: 8px 12px; }
     }
     @media (max-width: 480px) {
       .container { padding: 0 16px; }
@@ -760,13 +881,197 @@
       .hero-trust { gap: 12px; }
       .stats-grid { grid-template-columns: 1fr; }
       .stat-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.15) !important; padding: 0 0 32px; }
-      .stat-item:last-child { border-bottom: none !important; }
+      .stat-item:last-child { border-bottom: none !important; padding-bottom: 0; }
       .who-grid { grid-template-columns: repeat(2, 1fr); }
       .hiw-grid { grid-template-columns: 1fr; gap: 36px 0; }
+    }
+
+    /* ─── COMPLIANCE QUIZ ────────────────────────────────────── */
+    .quiz-section { padding: 96px 0 0; }
+    .quiz-wrap { max-width: 720px; margin: 0 auto; }
+    .quiz-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+    .quiz-header {
+      padding: 36px 40px 28px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(160deg, var(--bg) 0%, var(--bg-soft) 100%);
+    }
+    .quiz-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--cobalt);
+      margin-bottom: 12px;
+    }
+    .quiz-eyebrow-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--cobalt);
+      animation: quiz-pulse 2s ease-in-out infinite;
+    }
+    @keyframes quiz-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.75); }
+    }
+    .quiz-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      font-size: clamp(20px, 2.4vw, 26px); letter-spacing: -0.025em;
+      color: var(--text); margin-bottom: 8px; line-height: 1.2;
+    }
+    .quiz-sub { font-size: 14px; color: var(--text-2); line-height: 1.6; }
+
+    .quiz-body { padding: 8px 40px 32px; }
+    .quiz-items { list-style: none; padding: 0; margin: 0; }
+    .quiz-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .quiz-item:last-child { border-bottom: none; }
+    .quiz-item:hover .quiz-toggle { border-color: var(--cobalt); }
+
+    .quiz-toggle {
+      flex-shrink: 0; margin-top: 2px;
+      width: 22px; height: 22px; border-radius: 6px;
+      border: 2px solid var(--border);
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+    .quiz-toggle-check {
+      width: 11px; height: 8px;
+      stroke: #fff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+      fill: none;
+      opacity: 0;
+      transform: scale(0.6);
+      transition: opacity 0.15s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .quiz-item.checked .quiz-toggle {
+      background: var(--cobalt);
+      border-color: var(--cobalt);
+      box-shadow: 0 2px 8px rgba(0,82,184,0.28);
+    }
+    .quiz-item.checked .quiz-toggle-check { opacity: 1; transform: scale(1); }
+    .quiz-item-label {
+      font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.55;
+      color: var(--text); user-select: none;
+      transition: color 0.15s ease;
+    }
+    .quiz-item:not(.checked) .quiz-item-label { color: var(--text-2); }
+
+    /* Score result */
+    .quiz-result {
+      margin: 4px 40px 32px;
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      display: flex; align-items: flex-start; gap: 18px;
+      opacity: 0; transform: translateY(10px);
+      transition: opacity 0.35s cubic-bezier(0.22,1,0.36,1), transform 0.35s cubic-bezier(0.22,1,0.36,1);
+      pointer-events: none;
+    }
+    .quiz-result.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+    .quiz-result--green { background: #f0fdf4; border: 1.5px solid #86efac; }
+    .quiz-result--amber { background: #fffbeb; border: 1.5px solid #fcd34d; }
+    .quiz-result--red   { background: #fef2f2; border: 1.5px solid #fca5a5; }
+
+    .quiz-result-icon {
+      flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; line-height: 1;
+    }
+    .quiz-result--green .quiz-result-icon { background: #dcfce7; }
+    .quiz-result--amber .quiz-result-icon { background: #fef3c7; }
+    .quiz-result--red   .quiz-result-icon { background: #fee2e2; }
+
+    .quiz-result-body { flex: 1; min-width: 0; }
+    .quiz-result-score {
+      font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px;
+    }
+    .quiz-result--green .quiz-result-score { color: #15803d; }
+    .quiz-result--amber .quiz-result-score { color: #b45309; }
+    .quiz-result--red   .quiz-result-score { color: #b91c1c; }
+
+    .quiz-result-msg {
+      font-size: 14px; line-height: 1.55; color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .quiz-result-cta {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 10px 20px; border-radius: 100px;
+      font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
+      letter-spacing: 0.01em; cursor: pointer; text-decoration: none;
+      transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.22s ease, background 0.18s ease;
+    }
+    .quiz-result-cta:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 3px; }
+    .quiz-result-cta:active { transform: translateY(0) scale(0.97) !important; }
+
+    .quiz-result-cta--ghost {
+      background: transparent; color: var(--cobalt);
+      border: 1.5px solid var(--cobalt-border);
+    }
+    .quiz-result-cta--ghost:hover {
+      transform: translateY(-2px); background: var(--cobalt-light);
+      border-color: var(--cobalt); box-shadow: 0 4px 16px rgba(0,82,184,0.12);
+    }
+    .quiz-result-cta--primary {
+      background: linear-gradient(135deg, var(--cobalt) 0%, var(--cobalt-dark) 100%);
+      color: #fff; border: none; box-shadow: var(--shadow-cobalt);
+    }
+    .quiz-result-cta--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0,82,184,0.38), 0 4px 12px rgba(0,82,184,0.22);
+      background: linear-gradient(135deg, var(--cobalt-mid) 0%, var(--cobalt) 100%);
+    }
+    .quiz-result-cta--urgent {
+      background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+      color: #fff; border: none;
+      box-shadow: 0 8px 24px rgba(220,38,38,0.32), 0 2px 6px rgba(220,38,38,0.2);
+    }
+    .quiz-result-cta--urgent:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(220,38,38,0.48), 0 4px 12px rgba(220,38,38,0.28);
+    }
+
+    .quiz-result-phone {
+      display: block; margin-top: 10px;
+      font-size: 13px; color: #b91c1c; font-weight: 600;
+    }
+    .quiz-result-phone a { color: inherit; }
+    .quiz-result-phone a:hover { text-decoration: underline; }
+
+    .quiz-progress-bar {
+      height: 3px; background: var(--border);
+      border-radius: 0 0 0 0;
+    }
+    .quiz-progress-fill {
+      height: 100%; background: linear-gradient(90deg, var(--cobalt), var(--cobalt-mid));
+      border-radius: 0 2px 2px 0;
+      transition: width 0.4s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    @media (max-width: 768px) {
+      .quiz-section { padding: 72px 0 0; }
+      .quiz-header { padding: 28px 24px 20px; }
+      .quiz-body { padding: 4px 24px 24px; }
+      .quiz-result { margin: 4px 24px 24px; }
+    }
+    @media (max-width: 480px) {
+      .quiz-header { padding: 24px 18px 18px; }
+      .quiz-body { padding: 0 18px 20px; }
+      .quiz-result { margin: 0 18px 20px; flex-direction: column; gap: 12px; }
+      .quiz-result-cta { width: 100%; justify-content: center; }
     }
   </style>
 </head>
 <body>
+<div id="scroll-progress" aria-hidden="true"></div>
 
 <!-- ─── NAV ─────────────────────────────────────────────────── -->
 <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
@@ -1024,14 +1329,25 @@
 
 <!-- ─── TRUST BAR ────────────────────────────────────────────── -->
 <section class="trust-bar" aria-label="Trusted facilities">
-  <div class="container">
-    <p class="trust-bar-label">Trusted by sterile compounding facilities across Florida</p>
-    <div class="trust-logos" role="list">
-      <div class="trust-logo" role="listitem">Meridian Health Rx</div>
-      <div class="trust-logo" role="listitem">Coastal Sterile Labs</div>
-      <div class="trust-logo" role="listitem">SunState Pharmacy</div>
-      <div class="trust-logo" role="listitem">BayCare Compounding</div>
-      <div class="trust-logo" role="listitem">Premier IV Solutions</div>
+  <p class="trust-bar-label">Trusted by sterile compounding facilities across Florida</p>
+  <div class="trust-ticker-wrap" role="list" aria-label="Client logos">
+    <div class="trust-ticker-track" aria-hidden="true">
+      <!-- first set -->
+      <div class="trust-logo">Meridian Health Rx</div>
+      <div class="trust-logo">Coastal Sterile Labs</div>
+      <div class="trust-logo">SunState Pharmacy</div>
+      <div class="trust-logo">BayCare Compounding</div>
+      <div class="trust-logo">Premier IV Solutions</div>
+      <div class="trust-logo">Apex Sterile Rx</div>
+      <div class="trust-logo">Gulf Coast Compounding</div>
+      <!-- duplicate set for seamless loop -->
+      <div class="trust-logo">Meridian Health Rx</div>
+      <div class="trust-logo">Coastal Sterile Labs</div>
+      <div class="trust-logo">SunState Pharmacy</div>
+      <div class="trust-logo">BayCare Compounding</div>
+      <div class="trust-logo">Premier IV Solutions</div>
+      <div class="trust-logo">Apex Sterile Rx</div>
+      <div class="trust-logo">Gulf Coast Compounding</div>
     </div>
   </div>
 </section>
@@ -1433,20 +1749,24 @@
   <div class="container">
     <div class="stats-grid" role="list">
       <div class="stat-item reveal" role="listitem">
-        <div class="stat-number">100%</div>
+        <div class="stat-number" data-count="100" data-suffix="%">100%</div>
         <div class="stat-label">Audit Pass Rate</div>
       </div>
       <div class="stat-item reveal reveal-delay-1" role="listitem">
-        <div class="stat-number">24hr</div>
+        <div class="stat-number" data-count="24" data-suffix="hr">24hr</div>
         <div class="stat-label">Response Guarantee</div>
       </div>
       <div class="stat-item reveal reveal-delay-2" role="listitem">
-        <div class="stat-number">50+</div>
+        <div class="stat-number" data-count="50" data-suffix="+">50+</div>
         <div class="stat-label">Facilities Served</div>
       </div>
       <div class="stat-item reveal reveal-delay-3" role="listitem">
-        <div class="stat-number">0</div>
+        <div class="stat-number" data-count="0" data-suffix="">0</div>
         <div class="stat-label">Uncorrected Citations</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-4" role="listitem">
+        <div class="stat-number" data-count="72" data-suffix="hr">72hr</div>
+        <div class="stat-label">Avg. Deployment Time</div>
       </div>
     </div>
   </div>
@@ -1587,6 +1907,105 @@
 </section>
 
 <!-- ─── CONTACT ───────────────────────────────────────────────── -->
+<!-- ─── COMPLIANCE QUIZ ──────────────────────────────────────── -->
+<section class="quiz-section reveal" aria-labelledby="quiz-title">
+  <div class="container">
+    <div class="quiz-wrap">
+      <div class="quiz-card">
+        <div class="quiz-progress-bar" aria-hidden="true">
+          <div class="quiz-progress-fill" id="quizProgressFill" style="width:100%"></div>
+        </div>
+        <div class="quiz-header">
+          <div class="quiz-eyebrow">
+            <span class="quiz-eyebrow-dot" aria-hidden="true"></span>
+            Compliance Self-Assessment
+          </div>
+          <h2 class="quiz-title" id="quiz-title">Is your facility inspection-ready?</h2>
+          <p class="quiz-sub">Check the items that apply to your cleanroom. Takes 30 seconds.</p>
+        </div>
+        <div class="quiz-body">
+          <ul class="quiz-items" id="quizItems" role="list">
+            <li class="quiz-item checked" role="checkbox" aria-checked="true" tabindex="0" data-index="0">
+              <span class="quiz-toggle" aria-hidden="true">
+                <svg class="quiz-toggle-check" viewBox="0 0 11 8"><polyline points="1 4 4 7 10 1"/></svg>
+              </span>
+              <span class="quiz-item-label">Our USP &lt;797&gt; SOPs reflect the 2023 revisions</span>
+            </li>
+            <li class="quiz-item checked" role="checkbox" aria-checked="true" tabindex="0" data-index="1">
+              <span class="quiz-toggle" aria-hidden="true">
+                <svg class="quiz-toggle-check" viewBox="0 0 11 8"><polyline points="1 4 4 7 10 1"/></svg>
+              </span>
+              <span class="quiz-item-label">Our USP &lt;800&gt; hazardous drug program is fully documented</span>
+            </li>
+            <li class="quiz-item checked" role="checkbox" aria-checked="true" tabindex="0" data-index="2">
+              <span class="quiz-toggle" aria-hidden="true">
+                <svg class="quiz-toggle-check" viewBox="0 0 11 8"><polyline points="1 4 4 7 10 1"/></svg>
+              </span>
+              <span class="quiz-item-label">Our cleanroom has a current ISO certification on file</span>
+            </li>
+            <li class="quiz-item checked" role="checkbox" aria-checked="true" tabindex="0" data-index="3">
+              <span class="quiz-toggle" aria-hidden="true">
+                <svg class="quiz-toggle-check" viewBox="0 0 11 8"><polyline points="1 4 4 7 10 1"/></svg>
+              </span>
+              <span class="quiz-item-label">We have an active environmental monitoring program with trend data</span>
+            </li>
+            <li class="quiz-item checked" role="checkbox" aria-checked="true" tabindex="0" data-index="4">
+              <span class="quiz-toggle" aria-hidden="true">
+                <svg class="quiz-toggle-check" viewBox="0 0 11 8"><polyline points="1 4 4 7 10 1"/></svg>
+              </span>
+              <span class="quiz-item-label">All compounding staff have current aseptic technique competency records</span>
+            </li>
+            <li class="quiz-item checked" role="checkbox" aria-checked="true" tabindex="0" data-index="5">
+              <span class="quiz-toggle" aria-hidden="true">
+                <svg class="quiz-toggle-check" viewBox="0 0 11 8"><polyline points="1 4 4 7 10 1"/></svg>
+              </span>
+              <span class="quiz-item-label">We have inspection-ready documentation binders (SOPs, logs, training records)</span>
+            </li>
+            <li class="quiz-item checked" role="checkbox" aria-checked="true" tabindex="0" data-index="6">
+              <span class="quiz-toggle" aria-hidden="true">
+                <svg class="quiz-toggle-check" viewBox="0 0 11 8"><polyline points="1 4 4 7 10 1"/></svg>
+              </span>
+              <span class="quiz-item-label">We've conducted a mock inspection or gap assessment in the last 12 months</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Score: 6–7 (green) -->
+        <div class="quiz-result quiz-result--green" id="quizResultGreen" role="status" aria-live="polite">
+          <div class="quiz-result-icon">✓</div>
+          <div class="quiz-result-body">
+            <div class="quiz-result-score" id="quizScoreGreen">7 / 7 — Strong Position</div>
+            <p class="quiz-result-msg">You're well-positioned. Let's make sure it stays that way.</p>
+            <a href="#contact" class="quiz-result-cta quiz-result-cta--ghost">Schedule a Maintenance Review →</a>
+          </div>
+        </div>
+
+        <!-- Score: 4–5 (amber) -->
+        <div class="quiz-result quiz-result--amber" id="quizResultAmber" role="status" aria-live="polite">
+          <div class="quiz-result-icon">⚠</div>
+          <div class="quiz-result-body">
+            <div class="quiz-result-score" id="quizScoreAmber">5 / 7 — Some Exposure</div>
+            <p class="quiz-result-msg">You have some exposure. A gap assessment would catch it early.</p>
+            <a href="#contact" class="quiz-result-cta quiz-result-cta--primary">Request a Free Assessment →</a>
+          </div>
+        </div>
+
+        <!-- Score: 0–3 (red) -->
+        <div class="quiz-result quiz-result--red" id="quizResultRed" role="status" aria-live="polite">
+          <div class="quiz-result-icon">🚨</div>
+          <div class="quiz-result-body">
+            <div class="quiz-result-score" id="quizScoreRed">3 / 7 — Significant Risk</div>
+            <p class="quiz-result-msg">Your facility has significant compliance risk. Don't wait for an inspection to find out.</p>
+            <a href="#contact" class="quiz-result-cta quiz-result-cta--urgent">Talk to a Specialist Today →</a>
+            <span class="quiz-result-phone">Call us now: <a href="tel:+13055551234">(305) 555-1234</a></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="cta-section" id="contact" aria-labelledby="cta-headline">
   <div class="cta-section-grain" aria-hidden="true"></div>
   <div class="container">
@@ -1596,77 +2015,142 @@
         <p class="cta-sub">Schedule a free 30-minute assessment with one of our USP compliance specialists.</p>
       </div>
 
-      <form class="contact-card" id="contactForm" novalidate aria-label="Request a free assessment">
+      <div class="contact-card" role="region" aria-label="Get in touch">
         <div class="contact-card-header">
-          <div class="contact-card-title">Request a Free Assessment</div>
+          <div class="contact-card-title">Get in Touch</div>
           <div class="contact-card-sub">USP compliance specialists · 24hr response guarantee</div>
         </div>
-        <div class="contact-card-body">
 
-          <div class="contact-form-fields" id="formFields">
-            <div class="contact-field-grid">
-              <div class="contact-field-wrap" id="wrap-name">
-                <label class="contact-label" for="contact-name">Full Name <span class="required" aria-hidden="true">*</span></label>
-                <input type="text" id="contact-name" name="name" class="contact-input" placeholder="Jane Smith" autocomplete="name" aria-required="true" aria-describedby="msg-name">
-                <div class="contact-field-msg" id="msg-name" aria-live="polite"></div>
-              </div>
-              <div class="contact-field-wrap" id="wrap-email">
-                <label class="contact-label" for="contact-email">Email <span class="required" aria-hidden="true">*</span></label>
-                <input type="email" id="contact-email" name="email" class="contact-input" placeholder="jane@pharmacy.com" autocomplete="email" aria-required="true" aria-describedby="msg-email">
-                <div class="contact-field-msg" id="msg-email" aria-live="polite"></div>
-              </div>
-            </div>
-            <div class="contact-field-grid">
-              <div class="contact-field-wrap" id="wrap-phone">
-                <label class="contact-label" for="contact-phone">Phone</label>
-                <input type="tel" id="contact-phone" name="phone" class="contact-input" placeholder="(555) 000-0000" autocomplete="tel" aria-describedby="msg-phone">
-                <div class="contact-field-msg" id="msg-phone" aria-live="polite"></div>
-              </div>
-              <div class="contact-field-wrap">
-                <label class="contact-label" for="contact-facility">Facility Type</label>
-                <select id="contact-facility" name="facility_type" class="contact-select">
-                  <option value="">Select type...</option>
-                  <option value="503a">503A Compounding Pharmacy</option>
-                  <option value="503b">503B Outsourcing Facility</option>
-                  <option value="hospital">Hospital IV Room</option>
-                  <option value="clinic">IV / Wellness Clinic</option>
-                  <option value="oncology">Oncology Clinic</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-            </div>
-            <div class="contact-field-full">
-              <div class="contact-field-wrap" id="wrap-message">
-                <label class="contact-label" for="contact-message">Message <span class="required" aria-hidden="true">*</span></label>
-                <textarea id="contact-message" name="message" class="contact-textarea" rows="3" placeholder="Tell us about your compliance challenge…" aria-required="true" aria-describedby="msg-message"></textarea>
-                <div class="contact-field-msg" id="msg-message" aria-live="polite"></div>
-              </div>
-            </div>
-
-            <div class="contact-error-banner" id="errorBanner" role="alert">
-              <span class="contact-error-banner-icon" aria-hidden="true">⚠</span>
-              <div>
-                <div class="contact-error-banner-title">Couldn't send your message</div>
-                <div class="contact-error-banner-sub">Please try again, or email us at <a href="mailto:info@elitecompoundingagency.com">info@elitecompoundingagency.com</a></div>
-              </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary contact-submit" id="submitBtn">Send Message →</button>
+        <!-- Tab switcher -->
+        <div style="padding: 16px 28px 0;" id="contactTabBar">
+          <div class="contact-tabs" role="tablist" aria-label="Contact method">
+            <button class="contact-tab-btn active" role="tab" aria-selected="true" aria-controls="panel-form" id="tab-form" type="button">
+              ✉ Send a Message
+            </button>
+            <button class="contact-tab-btn" role="tab" aria-selected="false" aria-controls="panel-cal" id="tab-cal" type="button">
+              📅 Book a Call
+            </button>
           </div>
-
-          <div class="contact-loading" id="loadingState" aria-live="polite" aria-label="Sending message">
-            <div class="contact-spinner" aria-hidden="true"></div>
-            <div class="contact-loading-text">Sending your message…</div>
-          </div>
-
-          <div class="contact-success" id="successState" role="status">
-            <div class="contact-success-icon" aria-hidden="true">✓</div>
-            <div class="contact-success-title">Message sent!</div>
-            <div class="contact-success-body">We'll be in touch within 24 hours.<br>Check your inbox for a confirmation copy.</div>
-          </div>
-
         </div>
-      </form>
+
+        <!-- Form panel -->
+        <div class="contact-form-panel" id="panel-form" role="tabpanel" aria-labelledby="tab-form">
+          <form id="contactForm" novalidate aria-label="Request a free assessment">
+            <div class="contact-card-body">
+              <div class="contact-form-fields" id="formFields">
+                <div class="contact-field-grid">
+                  <div class="contact-field-wrap" id="wrap-name">
+                    <label class="contact-label" for="contact-name">Full Name <span class="required" aria-hidden="true">*</span></label>
+                    <input type="text" id="contact-name" name="name" class="contact-input" placeholder="Jane Smith" autocomplete="name" aria-required="true" aria-describedby="msg-name">
+                    <div class="contact-field-msg" id="msg-name" aria-live="polite"></div>
+                  </div>
+                  <div class="contact-field-wrap" id="wrap-email">
+                    <label class="contact-label" for="contact-email">Email <span class="required" aria-hidden="true">*</span></label>
+                    <input type="email" id="contact-email" name="email" class="contact-input" placeholder="jane@pharmacy.com" autocomplete="email" aria-required="true" aria-describedby="msg-email">
+                    <div class="contact-field-msg" id="msg-email" aria-live="polite"></div>
+                  </div>
+                </div>
+                <div class="contact-field-grid">
+                  <div class="contact-field-wrap" id="wrap-phone">
+                    <label class="contact-label" for="contact-phone">Phone</label>
+                    <input type="tel" id="contact-phone" name="phone" class="contact-input" placeholder="(555) 000-0000" autocomplete="tel" aria-describedby="msg-phone">
+                    <div class="contact-field-msg" id="msg-phone" aria-live="polite"></div>
+                  </div>
+                  <div class="contact-field-wrap">
+                    <label class="contact-label" for="contact-facility">Facility Type</label>
+                    <select id="contact-facility" name="facility_type" class="contact-select">
+                      <option value="">Select type...</option>
+                      <option value="503a">503A Compounding Pharmacy</option>
+                      <option value="503b">503B Outsourcing Facility</option>
+                      <option value="hospital">Hospital IV Room</option>
+                      <option value="clinic">IV / Wellness Clinic</option>
+                      <option value="oncology">Oncology Clinic</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="contact-field-full">
+                  <div class="contact-field-wrap" id="wrap-message">
+                    <label class="contact-label" for="contact-message">Message <span class="required" aria-hidden="true">*</span></label>
+                    <textarea id="contact-message" name="message" class="contact-textarea" rows="3" placeholder="Tell us about your compliance challenge…" aria-required="true" aria-describedby="msg-message"></textarea>
+                    <div class="contact-field-msg" id="msg-message" aria-live="polite"></div>
+                  </div>
+                </div>
+
+                <div class="contact-error-banner" id="errorBanner" role="alert">
+                  <span class="contact-error-banner-icon" aria-hidden="true">⚠</span>
+                  <div>
+                    <div class="contact-error-banner-title">Couldn't send your message</div>
+                    <div class="contact-error-banner-sub">Please try again, or email us at <a href="mailto:info@elitecompoundingagency.com">info@elitecompoundingagency.com</a></div>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary contact-submit" id="submitBtn">Send Message →</button>
+              </div>
+
+              <div class="contact-loading" id="loadingState" aria-live="polite" aria-label="Sending message">
+                <div class="contact-spinner" aria-hidden="true"></div>
+                <div class="contact-loading-text">Sending your message…</div>
+              </div>
+
+              <div class="contact-success" id="successState" role="status">
+                <div class="contact-success-icon" aria-hidden="true">✓</div>
+                <div class="contact-success-title">Message sent!</div>
+                <div class="contact-success-body">We'll be in touch within 24 hours.<br>Check your inbox for a confirmation copy.</div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Calendar panel -->
+        <div class="contact-calendar-panel" id="panel-cal" role="tabpanel" aria-labelledby="tab-cal">
+          <div class="cal-embed-wrap">
+            <div class="cal-embed-inner">
+              <div class="cal-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="color: var(--cobalt);">
+                  <rect x="3" y="4" width="18" height="18" rx="3"/>
+                  <path d="M16 2v4M8 2v4M3 10h18"/>
+                  <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/>
+                </svg>
+              </div>
+              <div>
+                <div class="cal-heading">Book a Free 30-Minute Assessment</div>
+                <p class="cal-sub">Pick a time that works for you — our USP specialists are available Mon–Fri, 9 am–5 pm ET.</p>
+              </div>
+              <div class="cal-slots" role="list" aria-label="Available time slots">
+                <div class="cal-slot" role="listitem" tabindex="0" aria-label="Today 2:00 PM – Available">
+                  <div>
+                    <div class="cal-slot-time">Today · 2:00 PM</div>
+                    <div class="cal-slot-tz">Eastern Time</div>
+                  </div>
+                  <span class="cal-slot-badge">Available</span>
+                </div>
+                <div class="cal-slot" role="listitem" tabindex="0" aria-label="Tomorrow 10:30 AM – Available">
+                  <div>
+                    <div class="cal-slot-time">Tomorrow · 10:30 AM</div>
+                    <div class="cal-slot-tz">Eastern Time</div>
+                  </div>
+                  <span class="cal-slot-badge">Available</span>
+                </div>
+                <div class="cal-slot" role="listitem" tabindex="0" aria-label="Tomorrow 3:00 PM – Available">
+                  <div>
+                    <div class="cal-slot-time">Tomorrow · 3:00 PM</div>
+                    <div class="cal-slot-tz">Eastern Time</div>
+                  </div>
+                  <span class="cal-slot-badge">Available</span>
+                </div>
+              </div>
+              <div class="cal-divider"><span class="cal-divider-text">or open full calendar</span></div>
+              <button class="cal-open-btn" type="button" onclick="window.open('https://calendly.com/elitecompoundingagency','_blank')" aria-label="Open full scheduling calendar">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                View All Availability
+              </button>
+              <div class="cal-disclaimer">No credit card required · Cancel or reschedule anytime</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
@@ -1757,8 +2241,17 @@
 (function() {
   // ─── NAV SCROLL ───────────────────────────────────────────
   var nav = document.getElementById('nav');
+  var scrollProgressEl = document.getElementById('scroll-progress');
+  var floatingCta = document.getElementById('floating-cta');
+  var heroEl = document.querySelector('.hero');
   window.addEventListener('scroll', function() {
     nav.classList.toggle('scrolled', window.scrollY > 10);
+    var scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (scrollProgressEl) scrollProgressEl.style.width = Math.min(scrolled * 100, 100) + '%';
+    if (floatingCta && heroEl) {
+      var heroBottom = heroEl.getBoundingClientRect().bottom + window.scrollY;
+      floatingCta.classList.toggle('visible', window.scrollY > heroBottom);
+    }
   }, { passive: true });
 
   // ─── HAMBURGER ────────────────────────────────────────────
@@ -1795,6 +2288,65 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
 
+  // ─── COUNT-UP ANIMATION ───────────────────────────────────
+  function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+  function animateCount(el, target, suffix, duration) {
+    var start = null;
+    var from = target === 0 ? 0 : 0;
+    function step(ts) {
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var val = Math.round(easeOutExpo(progress) * target);
+      el.textContent = (target === 0 && progress < 1 ? val : val) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target + suffix;
+    }
+    requestAnimationFrame(step);
+  }
+  var countObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      var suffix = el.getAttribute('data-suffix') || '';
+      var duration = target === 0 ? 400 : Math.max(900, Math.min(target * 18, 1800));
+      animateCount(el, target, suffix, duration);
+      countObserver.unobserve(el);
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.stat-number[data-count]').forEach(function(el) { countObserver.observe(el); });
+
+  // ─── CONTACT TABS ─────────────────────────────────────────
+  (function() {
+    var tabForm   = document.getElementById('tab-form');
+    var tabCal    = document.getElementById('tab-cal');
+    var panelForm = document.getElementById('panel-form');
+    var panelCal  = document.getElementById('panel-cal');
+    if (!tabForm || !tabCal) return;
+
+    function activateTab(which) {
+      var isForm = (which === 'form');
+      tabForm.classList.toggle('active', isForm);
+      tabForm.setAttribute('aria-selected', String(isForm));
+      tabCal.classList.toggle('active', !isForm);
+      tabCal.setAttribute('aria-selected', String(!isForm));
+      panelForm.classList.toggle('hidden', !isForm);
+      panelCal.classList.toggle('active', !isForm);
+    }
+    tabForm.addEventListener('click', function() { activateTab('form'); });
+    tabCal.addEventListener('click', function() { activateTab('cal'); });
+
+    // clicking a slot fires the cal open button behavior
+    document.querySelectorAll('.cal-slot').forEach(function(slot) {
+      slot.addEventListener('click', function() {
+        window.open('https://calendly.com/elitecompoundingagency', '_blank');
+      });
+      slot.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); slot.click(); }
+      });
+    });
+  })();
+
   // ─── CONTACT FORM ─────────────────────────────────────────
   var form       = document.getElementById('contactForm');
   var formFields = document.getElementById('formFields');
@@ -1815,33 +2367,57 @@
     if (msgEl) msgEl.textContent = msg || '';
   }
 
-  function validateAll() {
-    var name    = document.getElementById('contact-name').value.trim();
-    var email   = document.getElementById('contact-email').value.trim();
-    var phone   = document.getElementById('contact-phone').value.trim();
-    var message = document.getElementById('contact-message').value.trim();
-    var valid = true;
-
-    if (!name) { setField('name', 'error', 'Full name is required'); valid = false; }
-    else setField('name', 'valid', '');
-
-    if (!email) { setField('email', 'error', 'Email is required'); valid = false; }
-    else if (!validateEmail(email)) { setField('email', 'error', 'Enter a valid email'); valid = false; }
-    else setField('email', 'valid', '');
-
-    if (!validatePhone(phone)) { setField('phone', 'error', 'Enter a valid phone number'); valid = false; }
-    else if (phone) setField('phone', 'valid', '');
-
-    if (!message) { setField('message', 'error', 'Message is required'); valid = false; }
-    else setField('message', 'valid', '');
-
-    return valid;
+  // Validate a single field and return whether it's valid
+  function validateField(id) {
+    var el = document.getElementById('contact-' + id);
+    if (!el) return true;
+    var v = el.value.trim();
+    if (id === 'name') {
+      if (!v) { setField('name', 'error', 'Full name is required'); return false; }
+      setField('name', 'valid', ''); return true;
+    }
+    if (id === 'email') {
+      if (!v) { setField('email', 'error', 'Email is required'); return false; }
+      if (!validateEmail(v)) { setField('email', 'error', 'Enter a valid email'); return false; }
+      setField('email', 'valid', ''); return true;
+    }
+    if (id === 'phone') {
+      if (!validatePhone(v)) { setField('phone', 'error', 'Enter a valid phone number'); return false; }
+      if (v) setField('phone', 'valid', '');
+      else setField('phone', null, '');
+      return true;
+    }
+    if (id === 'message') {
+      if (!v) { setField('message', 'error', 'Message is required'); return false; }
+      setField('message', 'valid', ''); return true;
+    }
+    return true;
   }
 
+  function validateAll() {
+    var a = validateField('name');
+    var b = validateField('email');
+    var c = validateField('phone');
+    var d = validateField('message');
+    return a && b && c && d;
+  }
+
+  // Instant inline validation — fires on input with a short debounce
+  // so feedback appears as the user types, not only after blur
+  var debounceTimers = {};
   ['name','email','phone','message'].forEach(function(id) {
     var el = document.getElementById('contact-' + id);
     if (!el) return;
-    el.addEventListener('blur', validateAll);
+    // Validate immediately on input (debounced 280ms so it's not jarring mid-word)
+    el.addEventListener('input', function() {
+      clearTimeout(debounceTimers[id]);
+      debounceTimers[id] = setTimeout(function() { validateField(id); }, 280);
+    });
+    // Validate without delay on blur (catches paste + tab away)
+    el.addEventListener('blur', function() {
+      clearTimeout(debounceTimers[id]);
+      validateField(id);
+    });
   });
 
   form.addEventListener('submit', async function(e) {
@@ -2205,6 +2781,71 @@
       }
     });
   });
+})();
+</script>
+
+<script>
+/* ─── COMPLIANCE QUIZ ─────────────────────────────── */
+(function() {
+  var items = document.querySelectorAll('.quiz-item');
+  var resultGreen = document.getElementById('quizResultGreen');
+  var resultAmber = document.getElementById('quizResultAmber');
+  var resultRed   = document.getElementById('quizResultRed');
+  var scoreGreen  = document.getElementById('quizScoreGreen');
+  var scoreAmber  = document.getElementById('quizScoreAmber');
+  var scoreRed    = document.getElementById('quizScoreRed');
+  var progressFill = document.getElementById('quizProgressFill');
+  var interacted  = false;
+
+  function getScore() {
+    var n = 0;
+    items.forEach(function(el) { if (el.classList.contains('checked')) n++; });
+    return n;
+  }
+
+  function updateScore() {
+    var score = getScore();
+    var total = items.length;
+    progressFill.style.width = Math.round((score / total) * 100) + '%';
+
+    var label;
+    if (score >= 6) {
+      label = score + ' / ' + total + ' — Strong Position';
+      scoreGreen.textContent = label;
+    } else if (score >= 4) {
+      label = score + ' / ' + total + ' — Some Exposure';
+      scoreAmber.textContent = label;
+    } else {
+      label = score + ' / ' + total + ' — Significant Risk';
+      scoreRed.textContent = label;
+    }
+
+    if (!interacted) return;
+
+    resultGreen.classList.toggle('visible', score >= 6);
+    resultAmber.classList.toggle('visible', score >= 4 && score <= 5);
+    resultRed.classList.toggle('visible', score <= 3);
+  }
+
+  function toggle(item) {
+    item.classList.toggle('checked');
+    var checked = item.classList.contains('checked');
+    item.setAttribute('aria-checked', checked ? 'true' : 'false');
+    if (!interacted) {
+      interacted = true;
+    }
+    updateScore();
+  }
+
+  items.forEach(function(item) {
+    item.addEventListener('click', function() { toggle(item); });
+    item.addEventListener('keydown', function(e) {
+      if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggle(item); }
+    });
+  });
+
+  /* Init progress bar without showing result */
+  updateScore();
 })();
 </script>
 </body>
