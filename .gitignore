@@ -3,3 +3,5 @@ dist/
 .env
 temporary screenshots/
 .superpowers/
+
+.vercel
