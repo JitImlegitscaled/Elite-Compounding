@@ -388,48 +388,6 @@
     .stat-card-val { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 11.5px; color: #fff; line-height: 1.2; }
     .stat-card-lbl { font-size: 10px; color: rgba(255,255,255,0.5); font-weight: 400; }
 
-    /* ─── TRUST BAR ──────────────────────────────────────────── */
-    .trust-bar {
-      background: #06091a;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      padding: 20px 0;
-      overflow: hidden;
-    }
-    .trust-bar-label { text-align: center; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
-    /* ticker track — clips the overflow */
-    .trust-ticker-wrap {
-      overflow: hidden;
-      position: relative;
-      /* fade edges */
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-    }
-    .trust-ticker-track {
-      display: flex;
-      align-items: center;
-      width: max-content;
-      animation: ticker-scroll 28s linear infinite;
-    }
-    .trust-ticker-track:hover { animation-play-state: paused; }
-    @keyframes ticker-scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .trust-logo {
-      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px;
-      letter-spacing: -0.01em; color: rgba(255,255,255,0.42);
-      white-space: nowrap; padding: 0 32px; flex-shrink: 0;
-      transition: color 0.2s ease;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .trust-logo::before {
-      content: '';
-      display: block; width: 4px; height: 4px; border-radius: 50%;
-      background: rgba(0,82,184,0.6); flex-shrink: 0;
-    }
-    .trust-ticker-track:hover .trust-logo:hover { color: rgba(255,255,255,0.8); }
-
     /* ─── PROBLEM ────────────────────────────────────────────── */
     .problem { padding: 100px 0; background: #F4F7FF; position: relative; }
     .problem::before { content: ''; position: absolute; inset: 0; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 180px 180px; pointer-events: none; }
@@ -577,8 +535,9 @@
     .service-deliverables { display: flex; flex-direction: column; gap: 9px; }
     .service-deliverable { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-2); line-height: 1.5; }
     .service-deliverable::before { content: ''; width: 18px; height: 18px; border-radius: 50%; background: var(--cobalt-light); border: 1.5px solid var(--cobalt-border); flex-shrink: 0; margin-top: 0px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8l3 3 6-6' stroke='%230070F3' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-size: 14px; background-position: center; background-repeat: no-repeat; }
-    .services-banner { margin-top: 48px; background: linear-gradient(135deg, var(--cobalt-light), rgba(235,243,255,0.6)); border-top: 1px solid var(--cobalt-border); padding: 22px 32px; text-align: center; font-size: 14px; font-weight: 500; color: var(--cobalt-dark); }
-    .services-banner span { font-weight: 700; }
+    .services-banner { margin-top: 0; background: #EBF3FF; border-top: 3px solid #0B5DBB; padding: 20px 40px; border-radius: 0 0 10px 10px; display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 500; color: #0A3F8C; }
+    .services-banner-icon { width: 28px; height: 28px; flex-shrink: 0; color: #0B5DBB; }
+    .services-banner strong { font-weight: 700; }
 
     /* ─── HOW IT WORKS ──────────────────────────────────────── */
     .how-it-works { padding: 96px 0; background: var(--bg-soft); }
@@ -672,8 +631,12 @@
     .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
 
     /* ─── WHY ELITE ──────────────────────────────────────────── */
-    .why { padding: 112px 0; background: #F4F7FF; }
-    .why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .why { padding: 0; background: #F4F7FF; overflow: hidden; }
+    .why-inner { display: grid; grid-template-columns: 45% 55%; gap: 0; align-items: stretch; min-height: 680px; }
+    .why-photo { position: relative; overflow: hidden; flex-shrink: 0; }
+    .why-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .why-photo-overlay { position: absolute; inset: 0; background: rgba(10, 63, 140, 0.35); z-index: 1; }
+    .why-content { padding: 80px 64px 80px 56px; display: flex; flex-direction: column; justify-content: center; }
     .why-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(28px, 2.8vw, 40px); letter-spacing: -0.04em; line-height: 1.1; color: var(--text); margin-bottom: 20px; }
     .why-sub { font-size: 16px; color: var(--text-2); line-height: 1.75; margin-bottom: 32px; max-width: 420px; }
     .why-link { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: var(--cobalt); transition: gap 0.22s ease; }
@@ -817,7 +780,7 @@
 
     /* ─── FOOTER ─────────────────────────────────────────────── */
     .footer { background: #0A0F1E; padding: 72px 0 0; color: rgba(255,255,255,0.65); }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 0; }
     .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
     .footer-logo-img-wrap { height: 80px; flex-shrink: 0; display: flex; align-items: center; }
     .footer-tagline { font-size: 13px; line-height: 1.6; margin-bottom: 24px; max-width: 260px; }
@@ -827,7 +790,9 @@
     .footer-links { display: flex; flex-direction: column; gap: 10px; }
     .footer-links a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color 0.18s ease; }
     .footer-links a:hover { color: #fff; }
-    .footer-bottom { padding: 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .footer-links a.footer-link-accent { color: #0B5DBB; font-weight: 600; }
+    .footer-links a.footer-link-accent:hover { color: #3d82d4; text-decoration: underline; }
+    .footer-bottom { padding: 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 32px; }
     .footer-bottom-text { font-size: 12px; color: rgba(255,255,255,0.3); }
     .footer-usp { font-size: 12px; color: rgba(255,255,255,0.3); display: flex; align-items: center; gap: 8px; }
     .footer-usp-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.25); }
@@ -837,7 +802,7 @@
       .container { padding: 0 24px; }
       .hero-inner { gap: 40px; }
       .problem-inner { gap: 48px; }
-      .why-inner { gap: 48px; }
+      .why-inner { gap: 0; grid-template-columns: 40% 60%; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
       .cta-box { padding: 48px; }
     }
@@ -869,8 +834,11 @@
       .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); padding: 0 16px 40px; }
       .stat-item:nth-child(5) { border-bottom: none; }
       .stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.15); }
-      .why { padding: 80px 0; }
-      .why-inner { grid-template-columns: 1fr; gap: 48px; }
+      .why { padding: 0; }
+      .why-inner { grid-template-columns: 1fr; gap: 0; min-height: unset; }
+      .why-photo { height: 200px; position: relative; }
+      .why-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .why-content { padding: 48px 24px; }
       .why-sub { max-width: 100%; }
       .why-cards { grid-template-columns: 1fr; }
       .who { padding: 80px 0; }
@@ -1154,6 +1122,8 @@
             </svg>
           </div>
           USP &lt;797&gt; &amp; &lt;800&gt; Specialists
+          <span style="display:inline-block;width:1px;height:13px;background:rgba(0,82,184,0.35);margin:0 8px;vertical-align:middle;" aria-hidden="true"></span>
+          <span style="font-size:12px;font-weight:600;color:#0B5DBB;letter-spacing:0.06em;text-transform:uppercase;">Sterile Precision. Elite Standards.</span>
         </div>
 
         <h1 class="hero-headline" id="hero-headline">
@@ -1342,31 +1312,6 @@
 
       </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- ─── TRUST BAR ────────────────────────────────────────────── -->
-<section class="trust-bar" aria-label="Trusted facilities">
-  <p class="trust-bar-label">Trusted by sterile compounding facilities across Florida</p>
-  <div class="trust-ticker-wrap" role="list" aria-label="Client logos">
-    <div class="trust-ticker-track" aria-hidden="true">
-      <!-- first set -->
-      <div class="trust-logo">Meridian Health Rx</div>
-      <div class="trust-logo">Coastal Sterile Labs</div>
-      <div class="trust-logo">SunState Pharmacy</div>
-      <div class="trust-logo">BayCare Compounding</div>
-      <div class="trust-logo">Premier IV Solutions</div>
-      <div class="trust-logo">Apex Sterile Rx</div>
-      <div class="trust-logo">Gulf Coast Compounding</div>
-      <!-- duplicate set for seamless loop -->
-      <div class="trust-logo">Meridian Health Rx</div>
-      <div class="trust-logo">Coastal Sterile Labs</div>
-      <div class="trust-logo">SunState Pharmacy</div>
-      <div class="trust-logo">BayCare Compounding</div>
-      <div class="trust-logo">Premier IV Solutions</div>
-      <div class="trust-logo">Apex Sterile Rx</div>
-      <div class="trust-logo">Gulf Coast Compounding</div>
     </div>
   </div>
 </section>
@@ -1615,7 +1560,11 @@
       </div>
     </div>
     <div class="services-banner">
-      <span>All services include inspection-ready documentation as standard</span> — binders, digital records, and audit trails formatted for immediate regulatory use.
+      <svg class="services-banner-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 2L20 6V12C20 16.4 16.4 19.6 12 21C7.6 19.6 4 16.4 4 12V6L12 2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M8.5 12L11 14.5L15.5 9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>All services include <strong>inspection-ready documentation</strong> as standard — binders, digital records, and audit trails formatted for immediate regulatory use.</span>
     </div>
   </div>
 </section>
@@ -1715,11 +1664,16 @@
 
 <!-- ─── WHY ELITE ─────────────────────────────────────────────── -->
 <section class="why" id="why" aria-labelledby="why-headline">
-  <div class="container">
-    <div class="why-inner">
+  <div class="why-inner">
+    <div class="why-photo" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=1200&q=80&fm=jpg&crop=entropy&cs=tinysrgb" alt="Pharmaceutical cleanroom" loading="lazy" onerror="this.src='https://placehold.co/800x1000/1a3a6b/1a3a6b'">
+      <div class="why-photo-overlay"></div>
+    </div>
+    <div class="why-content">
       <div class="why-left reveal">
         <span class="section-eyebrow">Why Elite</span>
         <h2 class="why-headline" id="why-headline">Built for pharmacists.<br>Trusted by regulators.</h2>
+        <p style="font-size:17px;font-weight:400;color:var(--text-2);margin-bottom:24px;max-width:600px;line-height:1.6;">Where Aseptic Excellence Meets Reliability.</p>
         <p class="why-sub">We don't just help you pass inspections — we build the operational infrastructure that prevents citations before they happen. Our team has decades of combined sterile compounding experience at the regulatory, operational, and clinical levels.</p>
         <a href="#contact" class="why-link">
           Talk to our compliance team
@@ -1777,11 +1731,13 @@
 </section>
 
 <!-- ─── WHO WE SERVE ──────────────────────────────────────────── -->
+
 <section class="who" id="who" aria-labelledby="who-headline">
   <div class="container">
     <div class="section-header reveal">
       <span class="section-eyebrow">Who We Serve</span>
       <h2 class="section-headline" id="who-headline" style="max-width:640px;margin-left:auto;margin-right:auto;">Built for every sterile compounding environment.</h2>
+      <p style="font-size:17px;font-weight:400;color:var(--text-2);margin-top:14px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6;">Elite-Level Sterile Support for Critical Environments.</p>
     </div>
     <div class="who-grid" role="list">
       <div class="who-card reveal" role="listitem">
@@ -2110,6 +2066,7 @@
             <span style="color:#6B9FE4;">Compliance Specialists</span>
           </div>
         </div>
+        <p style="font-size:13px;font-weight:400;font-style:italic;color:rgba(255,255,255,0.6);margin:8px 0 16px;">Your Partner in Sterile Compliance &amp; Compounding.</p>
         <p class="footer-tagline">Florida's leading USP compliance consultancy for sterile compounding pharmacies and outsourcing facilities.</p>
         <div class="footer-contact-item">
           <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2159,14 +2116,14 @@
         <ul class="footer-links">
           <li><a href="#why">About Elite</a></li>
           <li><a href="#why">Why Us</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="tel:0000000000">Schedule a Call</a></li>
+          <li><a href="#contact" class="footer-link-accent">Contact</a></li>
+          <li><a href="tel:0000000000" class="footer-link-accent">Schedule a Call</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <div class="footer-bottom-text">&copy; 2025 Elite Compounding Agency. All rights reserved.</div>
+      <div class="footer-bottom-text">&copy; 2026 Elite Compounding Agency. All rights reserved.</div>
       <div class="footer-usp">
         <span>USP &lt;797&gt; &amp; &lt;800&gt; Compliance Specialists</span>
         <div class="footer-usp-dot" aria-hidden="true"></div>
