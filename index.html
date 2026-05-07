@@ -56,6 +56,22 @@
       pointer-events: none;
     }
 
+    /* ─── FLOATING CTA ─────────────────────────────────────── */
+    #floating-cta {
+      position: fixed; bottom: 28px; right: 28px;
+      z-index: 90;
+      opacity: 0; pointer-events: none;
+      transform: translateY(16px);
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    #floating-cta.visible {
+      opacity: 1; pointer-events: auto;
+      transform: translateY(0);
+    }
+    @media (max-width: 480px) {
+      #floating-cta { bottom: 20px; right: 16px; }
+    }
+
     /* ─── RESET ─────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
@@ -2236,6 +2252,9 @@
     </div>
   </div>
 </footer>
+<div id="floating-cta">
+  <a href="#contact" class="btn btn-primary btn-sm">Get a free assessment →</a>
+</div>
 
 <script>
 (function() {
@@ -2287,6 +2306,17 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+
+  // Hide floating CTA when contact section is in view
+  var contactSection = document.getElementById('contact');
+  if (contactSection && floatingCta) {
+    var ctaObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) floatingCta.classList.remove('visible');
+      });
+    }, { threshold: 0.1 });
+    ctaObserver.observe(contactSection);
+  }
 
   // ─── COUNT-UP ANIMATION ───────────────────────────────────
   function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
