@@ -121,7 +121,7 @@
 
     /* ─── NAV ────────────────────────────────────────────────── */
     .nav {
-      position: sticky; top: 0; z-index: 100; height: 72px;
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100; height: 72px;
       background: rgba(255,255,255,0.82);
       backdrop-filter: blur(18px) saturate(180%);
       -webkit-backdrop-filter: blur(18px) saturate(180%);
@@ -158,7 +158,7 @@
     .nav-mobile-btns .btn { justify-content: center; }
 
     /* ─── HERO ───────────────────────────────────────────────── */
-    .hero { padding: 96px 0 80px; min-height: calc(100vh - 72px); position: relative; overflow: hidden; background: #06091a; display: flex; flex-direction: column; justify-content: center; }
+    .hero { padding: 72px 0 80px; height: 100vh; box-sizing: border-box; position: relative; overflow: hidden; background: #06091a; display: flex; flex-direction: column; justify-content: center; }
     /* Layered ambient glow */
     .hero::before { content: ''; position: absolute; inset: 0; background:
       radial-gradient(ellipse 70% 60% at 15% 55%, rgba(0,82,184,0.22) 0%, transparent 70%),
@@ -229,13 +229,14 @@
     /* ─── TYPEWRITER ─────────────────────────────────────────── */
     .typewriter-cursor {
       display: inline-block;
+      width: 0.6ch;
       color: var(--cobalt);
       font-weight: 300;
       margin-left: 2px;
       animation: blink 0.85s step-start infinite;
     }
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-    #typewriter-line { display: inline; }
+    #typewriter-line { display: block; }
 
     .hero-grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.028; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 180px 180px; }
 
@@ -253,7 +254,7 @@
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 8px; background: var(--cobalt-light); border: 1px solid var(--cobalt-border); border-radius: 100px; font-size: 13px; font-weight: 500; color: var(--cobalt); margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,82,184,0.1); }
     .hero-badge-dot { width: 20px; height: 20px; background: var(--cobalt); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .hero-badge-dot svg { width: 11px; height: 11px; }
-    .hero-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(44px, 4.8vw, 64px); line-height: 1.06; letter-spacing: -0.05em; color: var(--text); margin-bottom: 22px; }
+    .hero-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(44px, 4.8vw, 64px); line-height: 1.06; letter-spacing: -0.05em; color: var(--text); margin-bottom: 22px; display: block; }
     .hero-headline .accent { color: var(--cobalt); }
     .hero-sub { font-size: 16.5px; line-height: 1.72; color: var(--text-2); max-width: 480px; margin-bottom: 32px; }
     .hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; }
@@ -1156,7 +1157,7 @@
         </div>
 
         <h1 class="hero-headline" id="hero-headline">
-          <span id="typewriter-line" aria-live="polite"></span><span class="typewriter-cursor" aria-hidden="true">|</span>
+          <span id="typewriter-line" aria-live="polite"><span class="typewriter-cursor" aria-hidden="true">|</span></span>
         </h1>
 
         <p class="hero-sub">
@@ -1688,7 +1689,7 @@
   <div class="stats-grain" aria-hidden="true"></div>
   <div class="container">
     <div class="stats-grid" role="list">
-      <div class="stat-item reveal" role="listitem">
+      <div class="stat-item reveal" role="listitem" style="border-right: 1px solid rgba(255,255,255,0.15);">
         <div class="stat-number" data-count="100" data-suffix="%">100%</div>
         <div class="stat-label">Audit Pass Rate</div>
       </div>
@@ -1706,7 +1707,7 @@
       </div>
       <div class="stat-item reveal reveal-delay-4" role="listitem">
         <div class="stat-number" data-count="72" data-suffix="hr">72hr</div>
-        <div class="stat-label">Avg. Deployment Time</div>
+        <div class="stat-label">Avg. Staff Deployment</div>
       </div>
     </div>
   </div>
@@ -2532,6 +2533,7 @@
 
   var el = document.getElementById('typewriter-line');
   if (!el) return;
+  var h1 = el.closest('.hero-headline');
 
   var CHAR_DELAY  = 42;   // ms per character typed
   var DELETE_DELAY = 22;  // ms per character deleted
@@ -2542,10 +2544,9 @@
   var charIdx = 0;
   var deleting = false;
 
+  var CURSOR_HTML = '<span class="typewriter-cursor" aria-hidden="true">|</span>';
+
   function buildHTML(lineArr, visibleChars) {
-    /* The line is an array of [normal, accent, normal, accent, ...] segments.
-       We flatten to full plain text then slice to visibleChars, then re-split
-       back into segments for coloring. */
     var segments = lineArr;
     var full = segments.join('');
     var visible = full.slice(0, visibleChars);
@@ -2557,13 +2558,31 @@
       var chunk = visible.slice(consumed, consumed + seg.length);
       consumed += seg.length;
       if (s % 2 === 1) {
-        // accent segment
         html += '<span class="accent">' + chunk + '</span>';
       } else {
         html += chunk;
       }
     }
-    return html;
+    return html + CURSOR_HTML;
+  }
+
+  function measureAndLockHeight() {
+    // Render each full phrase invisibly into a ghost span, measure, take max.
+    var ghost = document.createElement('span');
+    ghost.setAttribute('aria-hidden', 'true');
+    ghost.style.cssText = 'position:absolute;top:0;left:0;width:100%;opacity:0;pointer-events:none;';
+    h1.appendChild(ghost);
+
+    var maxH = 0;
+    for (var i = 0; i < lines.length; i++) {
+      ghost.innerHTML = buildHTML(lines[i], lines[i].join('').length);
+      var h = ghost.offsetHeight;
+      if (h > maxH) maxH = h;
+    }
+
+    h1.removeChild(ghost);
+
+    // no fixed height — h1 flows naturally with typed content
   }
 
   function tick() {
@@ -2593,8 +2612,11 @@
     setTimeout(tick, deleting ? DELETE_DELAY : CHAR_DELAY);
   }
 
-  // Start after a short delay so page paints first
-  setTimeout(tick, 600);
+  // Measure after fonts have rendered, then start typing
+  setTimeout(function() {
+    measureAndLockHeight();
+    tick();
+  }, 600);
 })();
 </script>
 
