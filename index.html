@@ -741,6 +741,10 @@
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
       .trust-logos { gap: 24px; }
+      .how-it-works { padding: 72px 0; }
+      .hiw-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 0; }
+      .hiw-grid::before { display: none; }
+      .hiw-step { padding: 0 8px; }
     }
     @media (max-width: 540px) {
       .contact-card-header { padding: 18px 20px; }
@@ -757,6 +761,7 @@
       .stat-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.15) !important; padding: 0 0 32px; }
       .stat-item:last-child { border-bottom: none !important; }
       .who-grid { grid-template-columns: repeat(2, 1fr); }
+      .hiw-grid { grid-template-columns: 1fr; gap: 36px 0; }
     }
   </style>
 </head>
