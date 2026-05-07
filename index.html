@@ -212,6 +212,17 @@
     #typewriter-line { display: inline; }
 
     .hero-grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.028; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 180px 180px; }
+
+    /* dot grid */
+    .hero-dot-grid { position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background-image: radial-gradient(circle, rgba(96,165,250,0.28) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+    }
+
+    /* particle canvas */
+    #hero-particles { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
     .hero-inner { display: grid; grid-template-columns: 52fr 48fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 8px; background: var(--cobalt-light); border: 1px solid var(--cobalt-border); border-radius: 100px; font-size: 13px; font-weight: 500; color: var(--cobalt); margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,82,184,0.1); }
     .hero-badge-dot { width: 20px; height: 20px; background: var(--cobalt); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -376,7 +387,7 @@
       background: transparent; color: #6E6E73;
       border-left: 3px solid transparent;
       transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-      line-height: 1.35;
+      line-height: 1.35; position: relative; overflow: hidden;
     }
     .prob-tab-btn:hover { background: #F7F9FC; color: #0A3F8C; }
     .prob-tab-btn.active {
@@ -384,6 +395,39 @@
       border-left-color: #0B5DBB;
     }
     .prob-tab-btn:focus-visible { outline: 2px solid #0B5DBB; outline-offset: 2px; }
+
+    /* Progress bar under active tab */
+    .prob-tab-btn .prob-tab-progress {
+      position: absolute; bottom: 0; left: 0; height: 2px;
+      background: var(--cobalt); width: 0%; opacity: 0;
+      transition: none;
+    }
+    .prob-tab-btn.active .prob-tab-progress { opacity: 1; }
+    .prob-tab-btn.active.cycling .prob-tab-progress {
+      transition: width var(--cycle-duration, 4000ms) linear;
+      width: 100%;
+    }
+
+    /* Paused badge */
+    .prob-paused-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 600; color: #0B5DBB;
+      background: #EAF1FB; border: 1px solid #B8CFED;
+      border-radius: 100px; padding: 3px 10px; margin-bottom: 16px;
+      opacity: 0; transition: opacity 0.25s ease; pointer-events: none;
+    }
+    .prob-paused-badge.visible { opacity: 1; }
+    .prob-paused-badge svg { width: 10px; height: 10px; }
+
+    /* Real cost stat in panel */
+    .prob-cost-stat {
+      display: flex; align-items: center; gap: 10px;
+      background: #FFF8F0; border: 1px solid #FFD9B0; border-radius: 8px;
+      padding: 12px 16px; margin-top: 20px;
+    }
+    .prob-cost-icon { font-size: 18px; line-height: 1; flex-shrink: 0; }
+    .prob-cost-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #C25E00; margin: 0 0 2px; }
+    .prob-cost-value { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; color: #7A3600; margin: 0; }
 
     /* Right panel card */
     .prob-panel-wrap { position: relative; min-height: 400px; }
@@ -479,6 +523,50 @@
     .service-deliverable::before { content: ''; width: 18px; height: 18px; border-radius: 50%; background: var(--cobalt-light); border: 1.5px solid var(--cobalt-border); flex-shrink: 0; margin-top: 0px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8l3 3 6-6' stroke='%230070F3' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-size: 14px; background-position: center; background-repeat: no-repeat; }
     .services-banner { margin-top: 48px; background: linear-gradient(135deg, var(--cobalt-light), rgba(235,243,255,0.6)); border-top: 1px solid var(--cobalt-border); padding: 22px 32px; text-align: center; font-size: 14px; font-weight: 500; color: var(--cobalt-dark); }
     .services-banner span { font-weight: 700; }
+
+    /* ─── HOW IT WORKS ──────────────────────────────────────── */
+    .how-it-works { padding: 96px 0; background: var(--bg-soft); }
+    .hiw-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+      position: relative; margin-top: 56px;
+    }
+    /* dashed connector line through the node row */
+    .hiw-grid::before {
+      content: ''; position: absolute;
+      top: 28px; /* half of 56px node height */
+      left: calc(12.5% + 28px); right: calc(12.5% + 28px);
+      border-top: 2px dashed var(--cobalt-border);
+      z-index: 0;
+    }
+    .hiw-step {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; padding: 0 16px; position: relative; z-index: 1;
+    }
+    .hiw-node {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--cobalt-light); border: 2px solid var(--cobalt-border);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-bottom: 20px; position: relative; z-index: 1;
+      box-shadow: 0 0 0 6px var(--bg-soft); /* punches through the dashed line */
+    }
+    .hiw-node svg { width: 22px; height: 22px; color: var(--cobalt); }
+    .hiw-num {
+      position: absolute; top: -8px; left: -8px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--cobalt); color: #fff;
+      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      letter-spacing: 0.02em;
+    }
+    .hiw-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      font-size: 16px; color: var(--text); margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+    .hiw-desc {
+      font-family: 'Inter', sans-serif; font-size: 13.5px;
+      color: var(--text-2); line-height: 1.6; max-width: 200px;
+    }
 
     /* ─── STATS ──────────────────────────────────────────────── */
     .stats { padding: 90px 0; background: linear-gradient(135deg, #0052B8 0%, #0A3F8C 100%); position: relative; overflow: hidden; }
@@ -692,6 +780,8 @@
 
 <!-- ─── HERO ─────────────────────────────────────────────────── -->
 <section class="hero" aria-labelledby="hero-headline">
+  <div class="hero-dot-grid" aria-hidden="true"></div>
+  <canvas id="hero-particles" aria-hidden="true"></canvas>
   <div class="hero-grain" aria-hidden="true"></div>
   <div class="hero-shape hero-shape-1" aria-hidden="true"></div>
   <div class="hero-shape hero-shape-2" aria-hidden="true"></div>
@@ -926,13 +1016,17 @@
         <h2 class="problem-headline" id="problem-headline">
           The compliance problems that cost you <span class="accent">time and money.</span>
         </h2>
-        <p class="problem-subtext">Click each problem to learn more.</p>
+        <p class="problem-subtext">Auto-cycling every 4 seconds — click to pause and explore.</p>
+        <div class="prob-paused-badge" id="prob-paused-badge" aria-live="polite">
+          <svg viewBox="0 0 10 10" fill="currentColor"><rect x="1.5" y="1" width="2.5" height="8" rx="1"/><rect x="6" y="1" width="2.5" height="8" rx="1"/></svg>
+          Paused
+        </div>
         <div class="prob-tab-list">
-          <button class="prob-tab-btn active" role="tab" aria-selected="true"  aria-controls="prob-panel-1" id="prob-tab-1" type="button">Surprise Board of Pharmacy Inspections</button>
-          <button class="prob-tab-btn"        role="tab" aria-selected="false" aria-controls="prob-panel-2" id="prob-tab-2" type="button">Outdated SOPs &amp; Policy Gaps</button>
-          <button class="prob-tab-btn"        role="tab" aria-selected="false" aria-controls="prob-panel-3" id="prob-tab-3" type="button">Environmental Monitoring Failures</button>
-          <button class="prob-tab-btn"        role="tab" aria-selected="false" aria-controls="prob-panel-4" id="prob-tab-4" type="button">Staff Training &amp; Competency Gaps</button>
-          <button class="prob-tab-btn"        role="tab" aria-selected="false" aria-controls="prob-panel-5" id="prob-tab-5" type="button">No Clear Path to 503A or 503B Status</button>
+          <button class="prob-tab-btn active" role="tab" aria-selected="true"  aria-controls="prob-panel-1" id="prob-tab-1" type="button">Surprise Board of Pharmacy Inspections<span class="prob-tab-progress"></span></button>
+          <button class="prob-tab-btn"        role="tab" aria-selected="false" aria-controls="prob-panel-2" id="prob-tab-2" type="button">Outdated SOPs &amp; Policy Gaps<span class="prob-tab-progress"></span></button>
+          <button class="prob-tab-btn"        role="tab" aria-selected="false" aria-controls="prob-panel-3" id="prob-tab-3" type="button">Environmental Monitoring Failures<span class="prob-tab-progress"></span></button>
+          <button class="prob-tab-btn"        role="tab" aria-selected="false" aria-controls="prob-panel-4" id="prob-tab-4" type="button">Staff Training &amp; Competency Gaps<span class="prob-tab-progress"></span></button>
+          <button class="prob-tab-btn"        role="tab" aria-selected="false" aria-controls="prob-panel-5" id="prob-tab-5" type="button">No Clear Path to 503A or 503B Status<span class="prob-tab-progress"></span></button>
         </div>
       </div>
 
@@ -952,6 +1046,13 @@
           </div>
           <div class="prob-panel-body">
             <p class="prob-panel-desc">Unannounced state inspections expose documentation gaps, room pressure failures, and SOP deficiencies that trigger immediate corrective actions.</p>
+            <div class="prob-cost-stat">
+              <span class="prob-cost-icon">⚠️</span>
+              <div>
+                <p class="prob-cost-label">Average citation fine</p>
+                <p class="prob-cost-value">$15,000 – $50,000 per violation</p>
+              </div>
+            </div>
             <hr class="prob-panel-divider" />
             <p class="prob-panel-label">How we solve this</p>
             <p class="prob-panel-solution">We keep your cleanroom inspection-ready 365 days a year — documentation current, logs complete, and protocols audit-proof.</p>
@@ -971,6 +1072,13 @@
           </div>
           <div class="prob-panel-body">
             <p class="prob-panel-desc">USP &lt;797&gt; 2023 revisions introduced sweeping changes. Facilities still running legacy procedures face citation risk with every inspection cycle.</p>
+            <div class="prob-cost-stat">
+              <span class="prob-cost-icon">📋</span>
+              <div>
+                <p class="prob-cost-label">Cost of a failed re-inspection</p>
+                <p class="prob-cost-value">$25,000 – $75,000 in remediation fees</p>
+              </div>
+            </div>
             <hr class="prob-panel-divider" />
             <p class="prob-panel-label">How we solve this</p>
             <p class="prob-panel-solution">We audit your existing SOPs and align them with current USP &lt;797&gt;/&lt;800&gt; standards so you're never caught with outdated policies.</p>
@@ -988,6 +1096,13 @@
           </div>
           <div class="prob-panel-body">
             <p class="prob-panel-desc">Missed viable and non-viable particle counts, inadequate surface sampling, or failed trending analysis invalidates your cleanroom certification.</p>
+            <div class="prob-cost-stat">
+              <span class="prob-cost-icon">🔬</span>
+              <div>
+                <p class="prob-cost-label">Cleanroom recertification cost</p>
+                <p class="prob-cost-value">$8,000 – $30,000 + 2–4 weeks downtime</p>
+              </div>
+            </div>
             <hr class="prob-panel-divider" />
             <p class="prob-panel-label">How we solve this</p>
             <p class="prob-panel-solution">Our EM programs are fully documented and trend-tracked, so your certification stays valid and your data tells a clean story.</p>
@@ -1007,6 +1122,13 @@
           </div>
           <div class="prob-panel-body">
             <p class="prob-panel-desc">Unqualified or under-trained compounding personnel are among the top cited violations in Florida Board of Pharmacy inspections.</p>
+            <div class="prob-cost-stat">
+              <span class="prob-cost-icon">👤</span>
+              <div>
+                <p class="prob-cost-label">Cost of a personnel-related closure</p>
+                <p class="prob-cost-value">$50,000+ in lost revenue per week</p>
+              </div>
+            </div>
             <hr class="prob-panel-divider" />
             <p class="prob-panel-label">How we solve this</p>
             <p class="prob-panel-solution">We supply trained, experienced sterile compounding technicians ready to integrate without disrupting your operations.</p>
@@ -1025,6 +1147,13 @@
           </div>
           <div class="prob-panel-body">
             <p class="prob-panel-desc">Navigating FDA outsourcing facility registration, CGMP requirements, and state board licensing simultaneously overwhelms most pharmacy teams.</p>
+            <div class="prob-cost-stat">
+              <span class="prob-cost-icon">📑</span>
+              <div>
+                <p class="prob-cost-label">Average FDA warning letter response cost</p>
+                <p class="prob-cost-value">$100,000 – $500,000 in legal & remediation</p>
+              </div>
+            </div>
             <hr class="prob-panel-divider" />
             <p class="prob-panel-label">How we solve this</p>
             <p class="prob-panel-solution">We've guided facilities through both 503A and 503B pathways and can map out exactly what your facility needs to get there.</p>
@@ -1651,13 +1780,33 @@
   });
 })();
 
-/* ─── PROBLEM TABS (desktop) ──────────────────────────────── */
+/* ─── PROBLEM TABS (desktop) — auto-cycling ───────────────── */
 (function() {
-  var tabs    = document.querySelectorAll('.prob-tab-btn');
-  var panels  = document.querySelectorAll('.prob-panel');
+  var tabs       = document.querySelectorAll('.prob-tab-btn');
+  var panels     = document.querySelectorAll('.prob-panel');
+  var badge      = document.getElementById('prob-paused-badge');
   if (!tabs.length) return;
 
-  function activateTab(index) {
+  var CYCLE_MS   = 4000;
+  var current    = 0;
+  var paused     = false;
+  var timer      = null;
+  var progressEl = null;
+
+  function activateTab(index, fromUser) {
+    if (fromUser) {
+      paused = true;
+      clearTimeout(timer);
+      if (badge) badge.classList.add('visible');
+    }
+
+    // clear cycling class + reset progress bar on old active tab
+    tabs.forEach(function(t) {
+      t.classList.remove('cycling');
+      var bar = t.querySelector('.prob-tab-progress');
+      if (bar) { bar.style.transition = 'none'; bar.style.width = '0%'; }
+    });
+
     tabs.forEach(function(t, i) {
       var isActive = i === index;
       t.classList.toggle('active', isActive);
@@ -1667,25 +1816,62 @@
       if (i === index) {
         p.removeAttribute('hidden');
         p.classList.remove('active');
-        void p.offsetWidth; // reflow to restart transition
+        void p.offsetWidth;
         p.classList.add('active');
       } else {
         p.classList.remove('active');
         p.setAttribute('hidden', '');
       }
     });
+
+    current = index;
+
+    if (!paused) startProgress();
   }
+
+  function startProgress() {
+    var activeTab = tabs[current];
+    var bar = activeTab.querySelector('.prob-tab-progress');
+    if (!bar) return;
+    // Reset bar without transition, then animate
+    bar.style.transition = 'none';
+    bar.style.width = '0%';
+    void bar.offsetWidth;
+    bar.style.transition = 'width ' + CYCLE_MS + 'ms linear';
+    bar.style.width = '100%';
+    activeTab.classList.add('cycling');
+
+    clearTimeout(timer);
+    timer = setTimeout(function() {
+      if (!paused) activateTab((current + 1) % tabs.length, false);
+    }, CYCLE_MS);
+  }
+
+  // Start cycling immediately
+  activateTab(0, false);
 
   tabs.forEach(function(btn, i) {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
-      activateTab(i);
+      activateTab(i, true);
     });
     btn.addEventListener('keydown', function(e) {
-      if (e.key === 'ArrowDown') { e.preventDefault(); activateTab((i + 1) % tabs.length); tabs[(i + 1) % tabs.length].focus(); }
-      if (e.key === 'ArrowUp')   { e.preventDefault(); activateTab((i - 1 + tabs.length) % tabs.length); tabs[(i - 1 + tabs.length) % tabs.length].focus(); }
+      if (e.key === 'ArrowDown') { e.preventDefault(); activateTab((i + 1) % tabs.length, false); tabs[(i + 1) % tabs.length].focus(); }
+      if (e.key === 'ArrowUp')   { e.preventDefault(); activateTab((i - 1 + tabs.length) % tabs.length, false); tabs[(i - 1 + tabs.length) % tabs.length].focus(); }
     });
   });
+
+  // Resume cycling when mouse leaves the whole section
+  var section = document.getElementById('problem');
+  if (section) {
+    section.addEventListener('mouseleave', function() {
+      if (paused) {
+        paused = false;
+        if (badge) badge.classList.remove('visible');
+        startProgress();
+      }
+    });
+  }
 })();
 
 /* ─── PROBLEM ACCORDION (mobile) ─────────────────────────── */
@@ -1786,6 +1972,87 @@
 
   // Start after a short delay so page paints first
   setTimeout(tick, 600);
+})();
+</script>
+
+<script>
+/* ── Hero particle drift ── */
+(function() {
+  var canvas = document.getElementById('hero-particles');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var COUNT = 72;
+
+  function resize() {
+    var hero = canvas.parentElement;
+    canvas.width  = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+  }
+
+  function rand(min, max) { return min + Math.random() * (max - min); }
+
+  function mkParticle() {
+    return {
+      x:     rand(0, canvas.width),
+      y:     rand(0, canvas.height),
+      r:     rand(0.8, 2.2),
+      alpha: rand(0.06, 0.38),
+      /* drift vector — slow, organic */
+      vx:    rand(-0.12, 0.12),
+      vy:    rand(-0.18, -0.04),   /* mostly upward */
+      /* wobble */
+      wobbleAmp:   rand(0.3, 1.2),
+      wobbleFreq:  rand(0.004, 0.01),
+      wobblePhase: rand(0, Math.PI * 2),
+      life:  0,
+      maxLife: rand(280, 520)
+    };
+  }
+
+  for (var i = 0; i < COUNT; i++) {
+    var p = mkParticle();
+    p.life = Math.floor(Math.random() * p.maxLife); /* stagger */
+    particles.push(p);
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var t = performance.now() * 0.001;
+
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+
+      /* fade in / fade out over lifetime */
+      var progress = p.life / p.maxLife;
+      var fade = progress < 0.15
+        ? progress / 0.15
+        : progress > 0.75
+          ? 1 - (progress - 0.75) / 0.25
+          : 1;
+
+      p.x += p.vx + Math.sin(t * p.wobbleFreq * 60 + p.wobblePhase) * p.wobbleAmp * 0.04;
+      p.y += p.vy;
+      p.life++;
+
+      if (p.life >= p.maxLife) {
+        particles[i] = mkParticle();
+        particles[i].life = 0;
+        continue;
+      }
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(96,165,250,' + (p.alpha * fade).toFixed(3) + ')';
+      ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+  draw();
 })();
 </script>
 
