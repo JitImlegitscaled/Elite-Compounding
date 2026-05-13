@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Elite Compounding Agency — Cleanroom Compliance &amp; Sterile Staffing</title>
   <meta name="description" content="Elite Compounding Agency delivers USP &lt;797&gt; &amp; &lt;800&gt; compliance consulting, cleanroom certification, and sterile compounding staffing across Florida." />
+  <meta property="og:title" content="Elite Compounding Agency — USP <797> & <800> Compliance Florida" />
+  <meta property="og:description" content="Florida's leading consultancy for sterile compounding facilities. USP compliance, cleanroom certification, and sterile staffing." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta property="og:image" content="logo-v2.png" />
   <link rel="icon" type="image/png" href="logo-v2.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,17 +16,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     /* ─── TOKENS ───────────────────────────────────────────── */
-    /* Brand Update — 2026-05-04
-       Colors changed:
-         --cobalt        #0052B8  →  #0052B8  (ECA Primary Blue)
-         --cobalt-dark   #0050CC  →  #0A3F8C  (ECA Deep Blue)
-         --cobalt-mid    #1a7fff  →  #1a65cc  (derived mid)
-         --cobalt-light  #EBF3FF  →  #EBF1FB  (derived tint)
-         --cobalt-border #C7DEFF  →  #B8CFED  (derived border)
-       Fonts changed:
-         Display/headings: Bricolage Grotesque  →  Montserrat (Bold/ExtraBold)
-         Body:             DM Sans              →  Inter (Regular/Medium)
-         Buttons:          DM Sans              →  Montserrat (SemiBold)
+    /* Elite Compounding Agency — Brand System
+       Palette:
+         --cobalt        #0052B8  (Primary Blue)
+         --cobalt-dark   #0A3F8C  (Deep Blue — hovers, deep accents)
+         --cobalt-mid    #1a65cc  (mid tone — gradients)
+         --cobalt-light  #EBF1FB  (light accent fill — badges, soft bg)
+         --cobalt-border #B8CFED  (subtle borders on accent surfaces)
+       Typography:
+         Display/headings: Montserrat (Bold 700 / ExtraBold 800)
+         Body:             Inter (Regular 400 / Medium 500)
+         Buttons:          Montserrat (SemiBold 600)
     */
     :root {
       --cobalt:        #0052B8;
@@ -84,6 +88,13 @@
       overflow-x: hidden;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
+    :focus-visible {
+      outline: 2px solid var(--cobalt);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    /* Remove default browser focus on mouse-click, keep for keyboard */
+    :focus:not(:focus-visible) { outline: none; }
     h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
     p, li, label { font-family: 'Inter', sans-serif; font-weight: 400; }
     img, svg { display: block; max-width: 100%; }
@@ -122,13 +133,19 @@
     /* ─── NAV ────────────────────────────────────────────────── */
     .nav {
       position: fixed; top: 0; left: 0; width: 100%; z-index: 100; height: 72px;
-      background: rgba(255,255,255,0.82);
-      backdrop-filter: blur(18px) saturate(180%);
-      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      background: rgba(255,255,255,0.65);
+      backdrop-filter: blur(14px) saturate(180%);
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
       border-bottom: 1px solid transparent;
-      transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.3s ease, backdrop-filter 0.3s ease;
     }
-    .nav.scrolled { border-color: var(--border); box-shadow: 0 2px 20px rgba(10,15,30,0.06); }
+    .nav.scrolled {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom-color: rgba(184, 207, 237, 0.6);
+      box-shadow: 0 4px 24px rgba(10, 15, 30, 0.06);
+    }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; gap: 24px; }
     .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     .nav-logo-mark {
@@ -143,6 +160,21 @@
     .nav-links a { padding: 8px 14px; font-size: 14px; font-weight: 500; color: var(--text-2); border-radius: var(--radius-sm); transition: color 0.18s ease, background 0.18s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1); white-space: nowrap; display: inline-block; }
     .nav-links a:hover { color: var(--text); background: var(--bg-soft); transform: translateY(-2px); }
     .nav-links a:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
+    .nav-links a { position: relative; }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 14px;
+      right: 14px;
+      height: 2px;
+      background: var(--cobalt);
+      border-radius: 1px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .nav-links a:hover::after { transform: scaleX(1); }
     .nav-ctas { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     .nav-hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; border-radius: var(--radius-sm); cursor: pointer; }
     .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
@@ -158,24 +190,22 @@
     .nav-mobile-btns .btn { justify-content: center; }
 
     /* ─── HERO ───────────────────────────────────────────────── */
-    .hero { padding: 72px 0 80px; height: 100vh; box-sizing: border-box; position: relative; overflow: hidden; background: #06091a; display: flex; flex-direction: column; justify-content: center; }
+    .hero { padding: 72px 0 80px; height: 100vh; box-sizing: border-box; position: relative; overflow: hidden; background: linear-gradient(160deg, #FFFFFF 0%, #F4F8FE 40%, #EBF1FB 100%); display: flex; flex-direction: column; justify-content: center; }
     /* Layered ambient glow */
     .hero::before { content: ''; position: absolute; inset: 0; background:
-      radial-gradient(ellipse 70% 60% at 15% 55%, rgba(0,82,184,0.22) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 50% at 85% 40%, rgba(14,165,233,0.12) 0%, transparent 65%),
-      radial-gradient(ellipse 40% 35% at 50% 0%, rgba(99,102,241,0.1) 0%, transparent 60%),
-      radial-gradient(ellipse 30% 40% at 95% 80%, rgba(0,82,184,0.1) 0%, transparent 60%);
+      radial-gradient(ellipse 70% 60% at 15% 55%, rgba(0,82,184,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 50% at 85% 40%, rgba(0,82,184,0.06) 0%, transparent 65%);
       pointer-events: none; z-index: 0; }
     .hero::after { display: none; }
 
     /* floating pill shapes */
     .hero-shape { position: absolute; border-radius: 9999px; pointer-events: none; z-index: 0; }
     .hero-shape::after { display: none; }
-    .hero-shape-1 { width: 420px; height: 90px; background: linear-gradient(135deg, rgba(0,82,184,0.22) 0%, rgba(0,82,184,0.07) 100%); border: 1px solid rgba(96,165,250,0.38); top: 5%; left: -8%; transform: rotate(-18deg); animation: shapefloat 12s ease-in-out infinite; backdrop-filter: blur(10px); box-shadow: 0 4px 32px rgba(0,82,184,0.18), inset 0 1px 0 rgba(255,255,255,0.10); }
-    .hero-shape-2 { width: 380px; height: 80px; background: linear-gradient(135deg, rgba(0,82,184,0.20) 0%, rgba(0,82,184,0.06) 100%); border: 1px solid rgba(96,165,250,0.34); bottom: 8%; right: -6%; transform: rotate(-10deg); animation: shapefloat 14s ease-in-out infinite 1s; backdrop-filter: blur(10px); box-shadow: 0 4px 28px rgba(0,82,184,0.16), inset 0 1px 0 rgba(255,255,255,0.08); }
-    .hero-shape-3 { width: 200px; height: 56px; background: linear-gradient(135deg, rgba(14,165,233,0.22) 0%, rgba(14,165,233,0.06) 100%); border: 1px solid rgba(56,189,248,0.36); top: 8%; right: 18%; transform: rotate(6deg); animation: shapefloat 11s ease-in-out infinite 0.5s; backdrop-filter: blur(10px); box-shadow: 0 4px 24px rgba(14,165,233,0.14), inset 0 1px 0 rgba(255,255,255,0.08); }
-    .hero-shape-6 { width: 320px; height: 72px; background: linear-gradient(135deg, rgba(0,82,184,0.20) 0%, rgba(0,82,184,0.06) 100%); border: 1px solid rgba(96,165,250,0.32); bottom: 18%; left: -5%; transform: rotate(14deg); animation: shapefloat 13s ease-in-out infinite 2s; backdrop-filter: blur(10px); box-shadow: 0 4px 28px rgba(0,82,184,0.15), inset 0 1px 0 rgba(255,255,255,0.08); }
-    .hero-shape-7 { width: 160px; height: 46px; background: linear-gradient(135deg, rgba(99,102,241,0.22) 0%, rgba(99,102,241,0.06) 100%); border: 1px solid rgba(165,180,252,0.36); top: 55%; right: -2%; transform: rotate(-8deg); animation: shapefloat 15s ease-in-out infinite 3s; backdrop-filter: blur(10px); box-shadow: 0 4px 22px rgba(99,102,241,0.14), inset 0 1px 0 rgba(255,255,255,0.08); }
+    .hero-shape-1 { width: 420px; height: 90px; background: linear-gradient(135deg, rgba(0,82,184,0.10) 0%, rgba(0,82,184,0.02) 100%); border: 1px solid rgba(0,82,184,0.15); top: 5%; left: -8%; transform: rotate(-18deg); animation: shapefloat 12s ease-in-out infinite; backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,82,184,0.06); }
+    .hero-shape-2 { width: 380px; height: 80px; background: linear-gradient(135deg, rgba(0,82,184,0.10) 0%, rgba(0,82,184,0.02) 100%); border: 1px solid rgba(0,82,184,0.15); bottom: 8%; right: -6%; transform: rotate(-10deg); animation: shapefloat 14s ease-in-out infinite 1s; backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,82,184,0.06); }
+    .hero-shape-3 { width: 200px; height: 56px; background: linear-gradient(135deg, rgba(0,82,184,0.08) 0%, rgba(0,82,184,0.02) 100%); border: 1px solid rgba(0,82,184,0.12); top: 8%; right: 18%; transform: rotate(6deg); animation: shapefloat 11s ease-in-out infinite 0.5s; backdrop-filter: blur(10px); box-shadow: 0 4px 18px rgba(0,82,184,0.05); }
+    .hero-shape-6 { width: 320px; height: 72px; background: linear-gradient(135deg, rgba(0,82,184,0.10) 0%, rgba(0,82,184,0.02) 100%); border: 1px solid rgba(0,82,184,0.15); bottom: 18%; left: -5%; transform: rotate(14deg); animation: shapefloat 13s ease-in-out infinite 2s; backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,82,184,0.06); }
+    .hero-shape-7 { width: 160px; height: 46px; background: linear-gradient(135deg, rgba(0,82,184,0.08) 0%, rgba(0,82,184,0.02) 100%); border: 1px solid rgba(0,82,184,0.12); top: 55%; right: -2%; transform: rotate(-8deg); animation: shapefloat 15s ease-in-out infinite 3s; backdrop-filter: blur(10px); box-shadow: 0 4px 18px rgba(0,82,184,0.05); }
     @keyframes shapefloat { 0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); } 50% { transform: translateY(-14px) rotate(var(--r, 0deg)); } }
     .hero-shape-1 { --r: -18deg; }
     .hero-shape-2 { --r: -10deg; }
@@ -183,48 +213,7 @@
     .hero-shape-6 { --r: 14deg; }
     .hero-shape-7 { --r: -8deg; }
 
-    /* hero content overrides for dark background */
-    .hero .hero-headline { color: #fff; }
-    .hero .hero-headline .accent {
-      background: linear-gradient(90deg, #60a5fa 0%, #3b82f6 50%, #0052B8 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .hero .hero-sub { color: rgba(255,255,255,0.72); }
-    .hero .hero-badge {
-      background: rgba(0,82,184,0.15);
-      border-color: rgba(0,82,184,0.35);
-      color: #93c5fd;
-      box-shadow: 0 0 0 1px rgba(0,82,184,0.1), inset 0 1px 0 rgba(255,255,255,0.05);
-    }
-    .hero .hero-badge-dot { background: var(--cobalt); box-shadow: 0 0 12px rgba(0,82,184,0.6); }
-    .hero .hero-trust {
-      background: transparent;
-      border-color: transparent;
-      box-shadow: none;
-      backdrop-filter: none;
-      padding: 0;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .hero .hero-trust-item {
-      color: rgba(255,255,255,0.78);
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 100px;
-      padding: 6px 12px 6px 8px;
-      backdrop-filter: blur(8px);
-      font-size: 12.5px;
-    }
-    .hero .hero-trust-icon {
-      background: linear-gradient(135deg, rgba(0,82,184,0.9), rgba(14,165,233,0.9));
-      box-shadow: 0 2px 8px rgba(0,82,184,0.4);
-      width: 24px;
-      height: 24px;
-      border-radius: 6px;
-    }
-    .hero .hero-trust-icon svg { width: 12px; height: 12px; }
-    .hero .btn-ghost { background: rgba(255,255,255,0.05); color: #fff; border-color: rgba(255,255,255,0.2); backdrop-filter: blur(8px); }
-    .hero .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.35); }
+    .hero .hero-headline .accent { color: var(--cobalt); }
 
     /* ─── TYPEWRITER ─────────────────────────────────────────── */
     .typewriter-cursor {
@@ -242,15 +231,15 @@
 
     /* dot grid */
     .hero-dot-grid { position: absolute; inset: 0; pointer-events: none; z-index: 0;
-      background-image: radial-gradient(circle, rgba(96,165,250,0.28) 1px, transparent 1px);
+      background-image: radial-gradient(circle, rgba(0,82,184,0.18) 1px, transparent 1px);
       background-size: 28px 28px;
       mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
       -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
     }
 
     /* particle canvas */
-    #hero-particles { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
-    .hero-inner { display: grid; grid-template-columns: 52fr 48fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
+    #hero-particles { position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 0.4; }
+    .hero-inner { display: grid; grid-template-columns: 1fr; gap: 64px; align-items: center; position: relative; z-index: 1; max-width: 720px; }
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 8px; background: var(--cobalt-light); border: 1px solid var(--cobalt-border); border-radius: 100px; font-size: 13px; font-weight: 500; color: var(--cobalt); margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,82,184,0.1); }
     .hero-badge-dot { width: 20px; height: 20px; background: var(--cobalt); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .hero-badge-dot svg { width: 11px; height: 11px; }
@@ -262,134 +251,8 @@
     .hero-trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--text); }
     .hero-trust-icon { width: 30px; height: 30px; background: var(--cobalt); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,82,184,0.3); }
     .hero-trust-icon svg { width: 14px; height: 14px; color: #fff; }
-    .hero-visual { position: relative; display: flex; flex-direction: column; align-items: stretch; justify-content: center; gap: 12px; padding: 0; }
-
-    /* ─── COMPLIANCE CHECKLIST CARD ─────────────────────────────── */
-    .checklist-card {
-      background: rgba(10,20,50,0.72);
-      border: 1px solid rgba(0,82,184,0.25);
-      border-radius: 14px;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.06) inset;
-      overflow: hidden;
-    }
-    .checklist-header { padding: 20px 24px 16px; border-bottom: 1px solid rgba(255,255,255,0.07); }
-    .checklist-eyebrow {
-      font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: #60a5fa; margin-bottom: 6px;
-    }
-    .checklist-title {
-      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 17px;
-      color: #fff; line-height: 1.25; margin-bottom: 3px;
-    }
-    .checklist-subtitle { font-family: 'Inter', sans-serif; font-size: 13px; color: rgba(255,255,255,0.55); }
-
-    /* ─── TOGGLE ROWS ────────────────────────────────────────────── */
-    .checklist-items { padding: 8px 0; }
-    .checklist-row {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 12px; padding: 10px 24px; cursor: pointer;
-      transition: background 0.18s ease;
-    }
-    .checklist-row:hover { background: rgba(255,255,255,0.04); }
-    .checklist-row:focus-visible { outline: 2px solid var(--cobalt); outline-offset: -2px; }
-    .checklist-label {
-      font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 500;
-      color: rgba(255,255,255,0.82); line-height: 1.4;
-      transition: color 0.2s ease, text-decoration 0.2s ease;
-      user-select: none;
-    }
-    .checklist-row.gap .checklist-label { color: rgba(255,255,255,0.42); text-decoration: line-through; }
-    .checklist-toggle {
-      flex-shrink: 0; width: 52px; height: 26px; border-radius: 100px;
-      background: rgba(34,197,94,0.85);
-      border: 1px solid rgba(34,197,94,0.4);
-      display: flex; align-items: center; justify-content: center; gap: 4px;
-      transition: background 0.2s ease, border-color 0.2s ease;
-      position: relative;
-    }
-    .checklist-row.gap .checklist-toggle {
-      background: rgba(239,68,68,0.6);
-      border-color: rgba(239,68,68,0.35);
-    }
-    .checklist-toggle svg { width: 12px; height: 12px; color: #fff; flex-shrink: 0; }
-    .checklist-toggle .icon-check { display: block; }
-    .checklist-toggle .icon-x { display: none; }
-    .checklist-row.gap .checklist-toggle .icon-check { display: none; }
-    .checklist-row.gap .checklist-toggle .icon-x { display: block; }
-
-    /* ─── RESULT ZONE ────────────────────────────────────────────── */
-    .checklist-result-wrap { border-top: 1px solid rgba(255,255,255,0.08); padding: 16px 24px 20px; position: relative; }
-    .checklist-result {
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.3s ease;
-      position: absolute; inset: 16px 24px 20px;
-    }
-    .checklist-result.active { opacity: 1; pointer-events: auto; position: relative; inset: auto; }
-    .checklist-result-inner {
-      border-radius: 10px; padding: 14px 16px;
-      border: 1px solid;
-    }
-    .checklist-result--good .checklist-result-inner { background: rgba(34,197,94,0.07); border-color: rgba(34,197,94,0.25); }
-    .checklist-result--warn .checklist-result-inner { background: rgba(245,158,11,0.07); border-color: rgba(245,158,11,0.25); }
-    .checklist-result--urgent .checklist-result-inner { background: rgba(239,68,68,0.07); border-color: rgba(239,68,68,0.25); }
-    .checklist-result-msg {
-      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13.5px;
-      color: #fff; line-height: 1.35; margin-bottom: 3px;
-    }
-    .checklist-result-sub {
-      font-family: 'Inter', sans-serif; font-size: 12px; color: rgba(255,255,255,0.55);
-      margin-bottom: 12px; line-height: 1.5;
-    }
-    .checklist-cta {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 9px 18px; border-radius: 100px; font-family: 'Montserrat', sans-serif;
-      font-size: 12.5px; font-weight: 600; letter-spacing: 0.02em; cursor: pointer;
-      text-decoration: none; transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.22s ease, background 0.18s ease;
-      white-space: nowrap;
-    }
-    .checklist-cta:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 3px; }
-    .checklist-cta:active { transform: scale(0.97) !important; }
-    .checklist-cta--ghost {
-      background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.85);
-      border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(8px);
-    }
-    .checklist-cta--ghost:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
-    .checklist-cta--primary {
-      background: linear-gradient(135deg, var(--cobalt) 0%, var(--cobalt-dark) 100%);
-      color: #fff; border: none; box-shadow: var(--shadow-cobalt);
-    }
-    .checklist-cta--primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,82,184,0.38), 0 4px 12px rgba(0,82,184,0.22); }
-    .checklist-cta--urgent {
-      width: 100%; justify-content: center;
-      background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
-      color: #fff; border: none;
-      box-shadow: 0 8px 24px rgba(220,38,38,0.4), 0 2px 8px rgba(220,38,38,0.25);
-      font-size: 13px;
-    }
-    .checklist-cta--urgent:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(220,38,38,0.5), 0 4px 12px rgba(220,38,38,0.3); }
-
-    /* ─── STAT STRIP (below checklist card) ─────────────────────── */
-    .stat-strip { display: flex; gap: 8px; }
-    .stat-card {
-      flex: 1;
-      background: rgba(10,20,50,0.72);
-      border: 1px solid rgba(0,82,184,0.25);
-      border-radius: 10px; padding: 10px 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.05) inset;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      display: flex; align-items: center; gap: 8px;
-    }
-    .stat-card-icon { width: 30px; height: 30px; border-radius: 8px; background: linear-gradient(135deg, #0070f3, #0ea5e9); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,82,184,0.5); }
-    .stat-card-icon svg { width: 14px; height: 14px; color: #fff; }
-    .stat-card-val { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 11.5px; color: #fff; line-height: 1.2; }
-    .stat-card-lbl { font-size: 10px; color: rgba(255,255,255,0.5); font-weight: 400; }
-
     /* ─── PROBLEM ────────────────────────────────────────────── */
-    .problem { padding: 100px 0; background: #F4F7FF; position: relative; }
+    .problem { padding: 96px 0; background: #F4F7FF; position: relative; }
     .problem::before { content: ''; position: absolute; inset: 0; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 180px 180px; pointer-events: none; }
     .problem-inner { display: grid; grid-template-columns: 40% 60%; gap: 60px; align-items: center; }
     .prob-mobile-select {
@@ -497,7 +360,7 @@
     .section-sub { font-size: 17px; color: var(--text-2); max-width: 540px; margin: 0 auto; }
 
     /* ─── SERVICES ───────────────────────────────────────────── */
-    .services { padding: 112px 0 0; background: #FFFFFF; }
+    .services { padding: 96px 0 0; background: #FFFFFF; }
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
     .service-card {
       background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg);
@@ -505,7 +368,27 @@
       transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
     }
     .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
-    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 48px rgba(10, 63, 140, 0.14),
+                  0 8px 16px rgba(10, 63, 140, 0.08);
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, #0052B8, #1a65cc, #0A3F8C);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .service-card:hover::after { opacity: 1; }
 
     /* Card 1 — cobalt (Cleanroom Compliance) */
     .service-card.featured { background: linear-gradient(170deg, #f2f7ff 0%, #fff 55%); }
@@ -619,51 +502,51 @@
     .service-drawer-cta:focus-visible { outline: 2px solid rgba(255,255,255,0.6); outline-offset: 3px; border-radius: 2px; }
 
     /* ─── STATS ──────────────────────────────────────────────── */
-    .stats { padding: 90px 0; background: linear-gradient(135deg, #0052B8 0%, #0A3F8C 100%); position: relative; overflow: hidden; }
-    .stats-dots { position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 32px 32px; }
-    .stats-glow { position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 800px; height: 500px; background: radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, transparent 65%); pointer-events: none; }
-    .stats-grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.06; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 180px 180px; }
-    .stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); position: relative; z-index: 1; width: 100%; overflow: hidden; }
-    .stat-item { text-align: center; padding: 0 24px; border-right: 1px solid rgba(255,255,255,0.15); min-width: 0; }
-    .stat-item:last-child { border-right: none; }
-    .stat-number { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(52px, 5.5vw, 80px); color: #fff; line-height: 1; letter-spacing: -0.04em; margin-bottom: 14px; }
-    .stat-number-sm { font-size: clamp(22px, 2.2vw, 38px); line-height: 1.15; }
-    .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
 
     /* ─── WHY ELITE ──────────────────────────────────────────── */
     .why { padding: 0; background: #F4F7FF; overflow: hidden; }
-    .why-inner { display: grid; grid-template-columns: 45% 55%; gap: 0; align-items: stretch; min-height: 680px; }
-    .why-photo { position: relative; overflow: hidden; flex-shrink: 0; }
-    .why-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
-    .why-photo-overlay { position: absolute; inset: 0; background: rgba(10, 63, 140, 0.35); z-index: 1; }
+    .why-inner { display: grid; grid-template-columns: 45% 55%; gap: 0; align-items: start; }
+    .why-cred-panel { background: linear-gradient(160deg, #0A3F8C 0%, #0B5DBB 100%); border-radius: 16px; padding: 56px 48px; display: flex; flex-direction: column; justify-content: center; gap: 0; align-self: flex-start; position: sticky; top: 100px; }
+    .why-cred-stat { padding: 28px 0; }
+    .why-cred-number { font-family: 'Montserrat', sans-serif; font-size: 64px; font-weight: 800; color: #FFFFFF; line-height: 1; }
+    .why-cred-label { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 8px; }
+    .why-cred-divider { border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 0; }
     .why-content { padding: 80px 64px 80px 56px; display: flex; flex-direction: column; justify-content: center; }
     .why-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(28px, 2.8vw, 40px); letter-spacing: -0.04em; line-height: 1.1; color: var(--text); margin-bottom: 20px; }
     .why-sub { font-size: 16px; color: var(--text-2); line-height: 1.75; margin-bottom: 32px; max-width: 420px; }
     .why-link { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: var(--cobalt); transition: gap 0.22s ease; }
     .why-link:hover { gap: 14px; }
     .why-link svg { width: 16px; height: 16px; }
-    .why-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .why-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
     .why-card { background: var(--bg); border: 1px solid var(--border); border-top: 3px solid transparent; border-radius: var(--radius-lg); padding: 32px 28px; position: relative; overflow: hidden; transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease; }
     .why-card::after { display: none; }
     .why-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(11,93,187,0.12); border-top-color: #0B5DBB; }
-    .why-card-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--cobalt); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(0,82,184,0.25); }
-    .why-card-icon svg { width: 22px; height: 22px; color: #fff; }
+    .why-card-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--cobalt); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(0,82,184,0.25); transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease; }
+    .why-card-icon svg { width: 22px; height: 22px; }
+    .why-card:nth-child(1) .why-card-icon { background: var(--cobalt); color: #fff; }
+    .why-card:nth-child(2) .why-card-icon { background: var(--cobalt-light); color: var(--cobalt); border: 1px solid var(--cobalt-border); }
+    .why-card:nth-child(3) .why-card-icon { background: linear-gradient(135deg, var(--cobalt), var(--cobalt-dark)); color: #fff; }
+    .why-card:nth-child(4) .why-card-icon { background: #fff; color: var(--cobalt); border: 2px solid var(--cobalt); }
+    .why-card:hover .why-card-icon { transform: scale(1.06); }
     .why-card-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; color: var(--text); margin-bottom: 8px; letter-spacing: -0.01em; }
     .why-card-desc { font-size: 15px; color: var(--text-2); line-height: 1.65; }
 
     /* ─── WHO WE SERVE ───────────────────────────────────────── */
-    .who { padding: 112px 0; background: var(--bg); position: relative; overflow: hidden; }
-    .who::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(0,82,184,0.04) 0%, transparent 60%); pointer-events: none; }
+    .who { padding: 96px 0; background: linear-gradient(135deg, #071F45 0%, #0A3F8C 100%); position: relative; overflow: hidden; }
+    .who::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.04) 0%, transparent 60%); pointer-events: none; }
+    .who .section-eyebrow { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); }
+    .who .section-headline { color: #FFFFFF; }
+    .who p { color: rgba(255,255,255,0.7); }
     .who-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 56px; }
-    .who-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 28px 20px 24px; background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius-lg); transition: border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease, transform 0.22s cubic-bezier(0.34,1.56,0.64,1); cursor: default; }
-    .who-card:hover { border-color: var(--cobalt-border); background: linear-gradient(170deg, var(--cobalt-light), var(--bg)); box-shadow: 0 8px 24px rgba(0,82,184,0.1); transform: translateY(-5px); }
-    .who-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--cobalt); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,82,184,0.25); }
+    .who-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 28px 20px 24px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-lg); transition: border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease, transform 0.22s cubic-bezier(0.34,1.56,0.64,1); cursor: default; }
+    .who-card:hover { border-color: rgba(255,255,255,0.28); background: rgba(255,255,255,0.13); box-shadow: 0 8px 24px rgba(0,0,0,0.2); transform: translateY(-5px); }
+    .who-icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
     .who-icon svg { width: 24px; height: 24px; color: #fff; }
-    .who-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: var(--text); line-height: 1.3; }
-    .who-type { font-size: 12px; color: var(--text-3); line-height: 1.4; }
+    .who-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: #FFFFFF; line-height: 1.3; }
+    .who-type { font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.4; }
 
     /* ─── CONTACT ────────────────────────────────────────────── */
-    .cta-section { padding: 112px 0; background: linear-gradient(135deg, #0B5DBB, #0A3F8C); position: relative; overflow: hidden; }
+    .cta-section { padding: 96px 0; background: linear-gradient(135deg, #0B5DBB, #0A3F8C); position: relative; overflow: hidden; }
     .cta-section::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; }
     .cta-section::after { content: ''; position: absolute; top: -100px; right: -100px; width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(255,255,255,0.07) 0%, transparent 65%); pointer-events: none; }
     .cta-section-grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.05; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 180px 180px; }
@@ -797,6 +680,60 @@
     .footer-usp { font-size: 12px; color: rgba(255,255,255,0.3); display: flex; align-items: center; gap: 8px; }
     .footer-usp-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.25); }
 
+    /* ─── CREDENTIALS STRIP ──────────────────────────────────── */
+    .creds-strip {
+      padding: 36px 0;
+      background: #0A0F1E;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .creds-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .creds-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 24px;
+      gap: 4px;
+    }
+    .creds-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .creds-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+    .creds-divider {
+      width: 1px;
+      height: 36px;
+      background: rgba(255,255,255,0.12);
+      flex-shrink: 0;
+    }
+    @media (max-width: 768px) {
+      .creds-inner { gap: 20px 0; justify-content: center; }
+      .creds-item { min-width: calc(33.33% - 1px); }
+      .creds-divider { display: none; }
+    }
+    @media (max-width: 480px) {
+      .creds-item { min-width: calc(50% - 1px); }
+    }
+
     /* ─── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 1024px) {
       .container { padding: 0 24px; }
@@ -812,9 +749,6 @@
       .hero { padding: 72px 0 60px; }
       .hero-inner { grid-template-columns: 1fr; gap: 52px; }
       .hero-headline { font-size: 42px; }
-      .hero-visual { max-width: 480px; margin: 0 auto; }
-      .stat-strip { flex-wrap: wrap; }
-      .stat-card { min-width: calc(50% - 4px); }
       .problem { padding: 72px 0; }
       .problem-inner { grid-template-columns: 1fr; gap: 24px; }
       .problem-left { position: static; }
@@ -829,15 +763,9 @@
       .prob-panel-title { font-size: 17px; }
       .services { padding: 80px 0 0; }
       .services-grid { grid-template-columns: 1fr; gap: 20px; }
-      .stats { padding: 72px 0; }
-      .stats-grid { grid-template-columns: 1fr 1fr; gap: 40px 0; }
-      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); padding: 0 16px 40px; }
-      .stat-item:nth-child(5) { border-bottom: none; }
-      .stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.15); }
       .why { padding: 0; }
       .why-inner { grid-template-columns: 1fr; gap: 0; min-height: unset; }
-      .why-photo { height: 200px; position: relative; }
-      .why-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
       .why-content { padding: 48px 24px; }
       .why-sub { max-width: 100%; }
       .why-cards { grid-template-columns: 1fr; }
@@ -866,9 +794,6 @@
       .hero-ctas { flex-direction: column; align-items: flex-start; }
       .hero-ctas .btn { width: 100%; justify-content: center; }
       .hero-trust { gap: 12px; }
-      .stats-grid { grid-template-columns: 1fr; }
-      .stat-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.15) !important; padding: 0 0 32px; }
-      .stat-item:last-child { border-bottom: none !important; padding-bottom: 0; }
       .who-grid { grid-template-columns: repeat(2, 1fr); }
       .hiw-grid { grid-template-columns: 1fr; gap: 36px 0; }
     }
@@ -1026,13 +951,6 @@
       box-shadow: 0 12px 32px rgba(220,38,38,0.48), 0 4px 12px rgba(220,38,38,0.28);
     }
 
-    .quiz-result-phone {
-      display: block; margin-top: 10px;
-      font-size: 13px; color: #b91c1c; font-weight: 600;
-    }
-    .quiz-result-phone a { color: inherit; }
-    .quiz-result-phone a:hover { text-decoration: underline; }
-
     .quiz-progress-bar {
       height: 3px; background: var(--border);
       border-radius: 0 0 0 0;
@@ -1065,7 +983,7 @@
   <div class="container">
     <div class="nav-inner">
       <a href="#" class="nav-logo" aria-label="Elite Compounding Agency home" id="logo-link">
-        <img src="logo-v2.png" alt="Elite Compounding Agency" class="nav-logo-img" />
+        <img src="logo-v2.png" alt="Elite Compounding Agency" class="nav-logo-img" width="64" height="64" loading="eager" fetchpriority="high" />
         <div class="nav-logo-text" aria-hidden="true">
           Elite Compounding Agency
           <span>Compliance Specialists</span>
@@ -1096,7 +1014,7 @@
   <a href="#who">Who We Serve</a>
   <a href="#contact">Contact</a>
   <div class="nav-mobile-btns">
-    <a href="tel:0000000000" class="btn btn-ghost">Schedule a Call</a>
+    <a href="#contact" class="btn btn-ghost">Schedule a Call</a>
     <a href="#contact" class="btn btn-primary">Request a Quote</a>
   </div>
 </div>
@@ -1156,7 +1074,7 @@
                 <path d="M7 1L8.5 5.5H13L9.5 8L10.5 13L7 10.5L3.5 13L4.5 8L1 5.5H5.5L7 1Z" fill="currentColor"/>
               </svg>
             </div>
-            5-Star Inspection Record
+            10+ Years USP &lt;797&gt;/&lt;800&gt; Experience
           </div>
           <div class="hero-trust-item">
             <div class="hero-trust-icon" aria-hidden="true">
@@ -1165,7 +1083,7 @@
                 <path d="M7 4V7.5L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
               </svg>
             </div>
-            24-Hour Response SLA
+            PTCB Certified Lead Technician
           </div>
           <div class="hero-trust-item">
             <div class="hero-trust-icon" aria-hidden="true">
@@ -1174,142 +1092,9 @@
                 <path d="M4.5 7L6 8.5L9.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-            Florida Licensed &amp; Insured
+            Florida Licensed &amp; Based
           </div>
         </div>
-      </div>
-
-      <div class="hero-visual reveal reveal-delay-2">
-
-        <!-- Compliance Gap Checker Card -->
-        <div class="checklist-card" role="region" aria-label="Compliance self-audit">
-          <div class="checklist-header">
-            <div class="checklist-eyebrow">Compliance Self-Audit</div>
-            <div class="checklist-title">Is your facility covered?</div>
-            <div class="checklist-subtitle">Uncheck anything you're missing.</div>
-          </div>
-
-          <div class="checklist-items" role="list">
-            <div class="checklist-row" role="listitem" tabindex="0" data-item="0" aria-pressed="true">
-              <span class="checklist-label">USP &lt;797&gt; Compliance Program</span>
-              <span class="checklist-toggle" aria-hidden="true">
-                <svg class="icon-check" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg class="icon-x" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              </span>
-            </div>
-            <div class="checklist-row" role="listitem" tabindex="0" data-item="1" aria-pressed="true">
-              <span class="checklist-label">USP &lt;800&gt; Hazardous Drug Policies</span>
-              <span class="checklist-toggle" aria-hidden="true">
-                <svg class="icon-check" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg class="icon-x" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              </span>
-            </div>
-            <div class="checklist-row" role="listitem" tabindex="0" data-item="2" aria-pressed="true">
-              <span class="checklist-label">Cleanroom Certification (ISO class current)</span>
-              <span class="checklist-toggle" aria-hidden="true">
-                <svg class="icon-check" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg class="icon-x" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              </span>
-            </div>
-            <div class="checklist-row" role="listitem" tabindex="0" data-item="3" aria-pressed="true">
-              <span class="checklist-label">SOP Documentation (written &amp; accessible)</span>
-              <span class="checklist-toggle" aria-hidden="true">
-                <svg class="icon-check" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg class="icon-x" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              </span>
-            </div>
-            <div class="checklist-row" role="listitem" tabindex="0" data-item="4" aria-pressed="true">
-              <span class="checklist-label">Staff Training &amp; Competency Records</span>
-              <span class="checklist-toggle" aria-hidden="true">
-                <svg class="icon-check" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg class="icon-x" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              </span>
-            </div>
-            <div class="checklist-row" role="listitem" tabindex="0" data-item="5" aria-pressed="true">
-              <span class="checklist-label">Environmental Monitoring Program</span>
-              <span class="checklist-toggle" aria-hidden="true">
-                <svg class="icon-check" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg class="icon-x" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              </span>
-            </div>
-            <div class="checklist-row" role="listitem" tabindex="0" data-item="6" aria-pressed="true">
-              <span class="checklist-label">Inspection Readiness Documentation</span>
-              <span class="checklist-toggle" aria-hidden="true">
-                <svg class="icon-check" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg class="icon-x" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-              </span>
-            </div>
-          </div>
-
-          <!-- Result zone — 3 pre-rendered states, JS toggles .active -->
-          <div class="checklist-result-wrap" aria-live="polite">
-
-            <div class="checklist-result checklist-result--good active" id="result-good">
-              <div class="checklist-result-inner">
-                <div class="checklist-result-msg">You're in good shape. Let's keep it that way.</div>
-                <div class="checklist-result-sub">Stay ahead of regulatory changes with a maintenance review.</div>
-                <a href="#contact" class="checklist-cta checklist-cta--ghost">Schedule a Maintenance Review</a>
-              </div>
-            </div>
-
-            <div class="checklist-result checklist-result--warn" id="result-warn">
-              <div class="checklist-result-inner">
-                <div class="checklist-result-msg">You have some exposure. Let's talk.</div>
-                <div class="checklist-result-sub">A few gaps can compound into a failed inspection.</div>
-                <a href="#contact" class="checklist-cta checklist-cta--primary">Request a Quote</a>
-              </div>
-            </div>
-
-            <div class="checklist-result checklist-result--urgent" id="result-urgent">
-              <div class="checklist-result-inner">
-                <div class="checklist-result-msg">Your facility is at risk. You need this call.</div>
-                <div class="checklist-result-sub">Don't wait for an inspection to find out.</div>
-                <a href="#contact" class="checklist-cta checklist-cta--urgent">Get Emergency Consultation</a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Stat strip -->
-        <div class="stat-strip" aria-label="Key credentials">
-          <div class="stat-card">
-            <div class="stat-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 1.5L13.5 4.5V11.5C13.5 13 11 14 8 14.5C5 14 2.5 13 2.5 11.5V4.5L8 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                <path d="M5.5 8L7 9.5L10.5 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <div class="stat-card-val">100% Pass Rate</div>
-              <div class="stat-card-lbl">All audits &amp; inspections</div>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M8 5V8.5L10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div>
-              <div class="stat-card-val">24hr Response</div>
-              <div class="stat-card-lbl">Guaranteed SLA</div>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 8H13M8 3L13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <div class="stat-card-val">USP &lt;797&gt; Compliant</div>
-              <div class="stat-card-lbl">Certified specialists</div>
-            </div>
-          </div>
-        </div>
-
       </div>
 
     </div>
@@ -1511,7 +1296,7 @@
           <li class="service-deliverable">Pre-inspection mock audit &amp; report</li>
         </ul>
         <div class="service-drawer" aria-hidden="true">
-          <span class="service-drawer-outcome">Facilities we onboard pass their next inspection. Guaranteed.</span>
+          <span class="service-drawer-outcome">Facilities we onboard are built for inspection readiness from day one.</span>
           <a href="#contact" class="service-drawer-cta">Get Started →</a>
         </div>
       </div>
@@ -1529,7 +1314,7 @@
         <ul class="service-deliverables">
           <li class="service-deliverable">Aseptic technique-verified technicians</li>
           <li class="service-deliverable">Licensed pharmacist placement</li>
-          <li class="service-deliverable">Rapid 48-72hr deployment</li>
+          <li class="service-deliverable">Rapid deployment to meet your timeline</li>
           <li class="service-deliverable">Contract &amp; per-diem staffing models</li>
         </ul>
         <div class="service-drawer" aria-hidden="true">
@@ -1631,32 +1416,38 @@
   </div>
 </section>
 
-<!-- ─── STATS ─────────────────────────────────────────────────── -->
-<section class="stats" aria-label="Company statistics">
-  <div class="stats-dots" aria-hidden="true"></div>
-  <div class="stats-glow" aria-hidden="true"></div>
-  <div class="stats-grain" aria-hidden="true"></div>
+<!-- ─── CREDENTIALS STRIP ─────────────────────────────────────── -->
+<section class="creds-strip" aria-label="Credentials and specializations">
   <div class="container">
-    <div class="stats-grid" role="list">
-      <div class="stat-item reveal" role="listitem" style="border-right: 1px solid rgba(255,255,255,0.15);">
-        <div class="stat-number" data-count="100" data-suffix="%">100%</div>
-        <div class="stat-label">Audit Pass Rate</div>
+    <div class="creds-inner">
+      <div class="creds-item">
+        <span class="creds-label">USP &lt;797&gt;</span>
+        <span class="creds-sub">Sterile Compounding</span>
       </div>
-      <div class="stat-item reveal reveal-delay-1" role="listitem">
-        <div class="stat-number" data-count="24" data-suffix="hr">24hr</div>
-        <div class="stat-label">Response Guarantee</div>
+      <div class="creds-divider" aria-hidden="true"></div>
+      <div class="creds-item">
+        <span class="creds-label">USP &lt;800&gt;</span>
+        <span class="creds-sub">Hazardous Drug Compliance</span>
       </div>
-      <div class="stat-item reveal reveal-delay-2" role="listitem">
-        <div class="stat-number" data-count="50" data-suffix="+">50+</div>
-        <div class="stat-label">Facilities Served</div>
+      <div class="creds-divider" aria-hidden="true"></div>
+      <div class="creds-item">
+        <span class="creds-label">503A</span>
+        <span class="creds-sub">Compounding Pharmacy</span>
       </div>
-      <div class="stat-item reveal reveal-delay-3" role="listitem">
-        <div class="stat-number" data-count="0" data-suffix="">0</div>
-        <div class="stat-label">Uncorrected Citations</div>
+      <div class="creds-divider" aria-hidden="true"></div>
+      <div class="creds-item">
+        <span class="creds-label">503B</span>
+        <span class="creds-sub">Outsourcing Facility</span>
       </div>
-      <div class="stat-item reveal reveal-delay-4" role="listitem">
-        <div class="stat-number" data-count="72" data-suffix="hr">72hr</div>
-        <div class="stat-label">Avg. Staff Deployment</div>
+      <div class="creds-divider" aria-hidden="true"></div>
+      <div class="creds-item">
+        <span class="creds-label">Florida Licensed</span>
+        <span class="creds-sub">&amp; Insured</span>
+      </div>
+      <div class="creds-divider" aria-hidden="true"></div>
+      <div class="creds-item">
+        <span class="creds-label">Sterile Only</span>
+        <span class="creds-sub">IV Compounding Specialists</span>
       </div>
     </div>
   </div>
@@ -1665,9 +1456,21 @@
 <!-- ─── WHY ELITE ─────────────────────────────────────────────── -->
 <section class="why" id="why" aria-labelledby="why-headline">
   <div class="why-inner">
-    <div class="why-photo" aria-hidden="true">
-      <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=1200&q=80&fm=jpg&crop=entropy&cs=tinysrgb" alt="Pharmaceutical cleanroom" loading="lazy" onerror="this.src='https://placehold.co/800x1000/1a3a6b/1a3a6b'">
-      <div class="why-photo-overlay"></div>
+    <div class="why-cred-panel">
+      <div class="why-cred-stat">
+        <div class="why-cred-number">10+</div>
+        <div class="why-cred-label">Years USP Experience</div>
+      </div>
+      <hr class="why-cred-divider">
+      <div class="why-cred-stat">
+        <div class="why-cred-number">CPhT</div>
+        <div class="why-cred-label">PTCB Certified</div>
+      </div>
+      <hr class="why-cred-divider">
+      <div class="why-cred-stat">
+        <div class="why-cred-number">FL</div>
+        <div class="why-cred-label">Licensed &amp; Based in Florida</div>
+      </div>
     </div>
     <div class="why-content">
       <div class="why-left reveal">
@@ -1894,7 +1697,6 @@
             <div class="quiz-result-score" id="quizScoreRed">3 / 7 — Significant Risk</div>
             <p class="quiz-result-msg">Your facility has significant compliance risk. Don't wait for an inspection to find out.</p>
             <a href="#contact" class="quiz-result-cta quiz-result-cta--urgent">Talk to a Specialist Today →</a>
-            <span class="quiz-result-phone">Call us now: <a href="tel:+13055551234">(305) 555-1234</a></span>
           </div>
         </div>
 
@@ -2059,7 +1861,7 @@
       <div class="footer-brand">
         <div class="footer-logo">
           <div class="footer-logo-img-wrap">
-            <img src="logo-v2.png" alt="Elite Compounding Agency" style="height:80px;width:auto;display:block;" />
+            <img src="logo-v2.png" alt="Elite Compounding Agency" width="80" height="80" loading="eager" fetchpriority="high" style="height:80px;width:auto;display:block;" />
           </div>
           <div class="nav-logo-text" aria-hidden="true" style="color:#ffffff;">
             Elite Compounding Agency
@@ -2076,12 +1878,6 @@
         </div>
         <div class="footer-contact-item">
           <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M3.5 2H5.5L6.5 4.5L5 5.5C5.7 7 6 7.3 7.5 8L8.5 6.5L11 7.5V9.5C11 10.3 10.3 11 9.5 11C5 11 2 7.8 2 4.5C2 2.8 2.8 2 3.5 2Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
-          </svg>
-          <a href="tel:0000000000" style="color:inherit">(000) 000-0000</a>
-        </div>
-        <div class="footer-contact-item">
-          <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M7 2C4.5 2 2.5 4 2.5 6.5C2.5 9.5 7 13 7 13C7 13 11.5 9.5 11.5 6.5C11.5 4 9.5 2 7 2Z" stroke="currentColor" stroke-width="1.2"/>
             <circle cx="7" cy="6.5" r="1.5" stroke="currentColor" stroke-width="1.2"/>
           </svg>
@@ -2095,8 +1891,6 @@
           <li><a href="#services">Cleanroom Compliance</a></li>
           <li><a href="#services">Sterile Staffing</a></li>
           <li><a href="#services">Regulatory Consulting</a></li>
-          <li><a href="#services">SOP Development</a></li>
-          <li><a href="#services">Mock Inspections</a></li>
         </ul>
       </div>
 
@@ -2117,7 +1911,7 @@
           <li><a href="#why">About Elite</a></li>
           <li><a href="#why">Why Us</a></li>
           <li><a href="#contact" class="footer-link-accent">Contact</a></li>
-          <li><a href="tel:0000000000" class="footer-link-accent">Schedule a Call</a></li>
+          <li><a href="#contact" class="footer-link-accent">Schedule a Call</a></li>
         </ul>
       </div>
     </div>
@@ -2127,7 +1921,7 @@
       <div class="footer-usp">
         <span>USP &lt;797&gt; &amp; &lt;800&gt; Compliance Specialists</span>
         <div class="footer-usp-dot" aria-hidden="true"></div>
-        <span>Florida Licensed &amp; Insured</span>
+        <span>Florida Licensed &amp; Based</span>
         <div class="footer-usp-dot" aria-hidden="true"></div>
         <span>503A &amp; 503B Pathways</span>
       </div>
@@ -2146,7 +1940,7 @@
   var floatingCta = document.getElementById('floating-cta');
   var heroEl = document.querySelector('.hero');
   window.addEventListener('scroll', function() {
-    nav.classList.toggle('scrolled', window.scrollY > 10);
+    nav.classList.toggle('scrolled', window.scrollY > 8);
     var scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
     if (scrollProgressEl) scrollProgressEl.style.width = Math.min(scrolled * 100, 100) + '%';
     if (floatingCta && heroEl) {
@@ -2199,34 +1993,6 @@
     }, { threshold: 0.1 });
     ctaObserver.observe(contactSection);
   }
-
-  // ─── COUNT-UP ANIMATION ───────────────────────────────────
-  function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
-  function animateCount(el, target, suffix, duration) {
-    var start = null;
-    var from = target === 0 ? 0 : 0;
-    function step(ts) {
-      if (!start) start = ts;
-      var progress = Math.min((ts - start) / duration, 1);
-      var val = Math.round(easeOutExpo(progress) * target);
-      el.textContent = (target === 0 && progress < 1 ? val : val) + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = target + suffix;
-    }
-    requestAnimationFrame(step);
-  }
-  var countObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (!entry.isIntersecting) return;
-      var el = entry.target;
-      var target = parseInt(el.getAttribute('data-count'), 10);
-      var suffix = el.getAttribute('data-suffix') || '';
-      var duration = target === 0 ? 400 : Math.max(900, Math.min(target * 18, 1800));
-      animateCount(el, target, suffix, duration);
-      countObserver.unobserve(el);
-    });
-  }, { threshold: 0.4 });
-  document.querySelectorAll('.stat-number[data-count]').forEach(function(el) { countObserver.observe(el); });
 
   // ─── CONTACT TABS ─────────────────────────────────────────
   (function() {
@@ -2481,9 +2247,8 @@
 <script>
 (function() {
   var lines = [
-    ["We've helped ", "50+ facilities", " pass inspections.", "Yours is next."],
-    ["Serving ", "30+ pharmacies", " across Florida.", "Ready to be next?"],
-    ["Zero failed inspections", " in our 5-year history.", "", "Let's keep it that way."],
+    ["Your cleanroom.", " Always compliant.", " Always ready.", ""],
+    ["Serving ", "Florida sterile compounding facilities.", "", "Ready to be next?"],
     ["Average client gets compliant", " in under 90 days.", "", "Start the clock."],
     ["USP 797 & 800 compliance,", " done right.", "", "Every time."]
   ];
@@ -2645,7 +2410,7 @@
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(96,165,250,' + (p.alpha * fade).toFixed(3) + ')';
+      ctx.fillStyle = 'rgba(0,82,184,' + (p.alpha * fade).toFixed(3) + ')';
       ctx.fill();
     }
 
@@ -2655,53 +2420,6 @@
   resize();
   window.addEventListener('resize', resize);
   draw();
-})();
-</script>
-
-<script>
-(function() {
-  var rows = document.querySelectorAll('.checklist-row');
-  var resultGood = document.getElementById('result-good');
-  var resultWarn = document.getElementById('result-warn');
-  var resultUrgent = document.getElementById('result-urgent');
-
-  function getGapCount() {
-    var count = 0;
-    rows.forEach(function(row) {
-      if (row.classList.contains('gap')) count++;
-    });
-    return count;
-  }
-
-  function updateResult() {
-    var gaps = getGapCount();
-    resultGood.classList.remove('active');
-    resultWarn.classList.remove('active');
-    resultUrgent.classList.remove('active');
-    if (gaps <= 2) {
-      resultGood.classList.add('active');
-    } else if (gaps <= 4) {
-      resultWarn.classList.add('active');
-    } else {
-      resultUrgent.classList.add('active');
-    }
-  }
-
-  function toggleRow(row) {
-    var isGap = row.classList.toggle('gap');
-    row.setAttribute('aria-pressed', isGap ? 'false' : 'true');
-    updateResult();
-  }
-
-  rows.forEach(function(row) {
-    row.addEventListener('click', function() { toggleRow(row); });
-    row.addEventListener('keydown', function(e) {
-      if (e.key === ' ' || e.key === 'Enter') {
-        e.preventDefault();
-        toggleRow(row);
-      }
-    });
-  });
 })();
 </script>
 
