@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Elite Compounding Agency — Cleanroom Compliance &amp; Sterile Staffing</title>
+  <title>Elite Compounding Agency · Cleanroom Compliance &amp; Sterile Staffing</title>
   <meta name="description" content="Elite Compounding Agency delivers USP &lt;797&gt; &amp; &lt;800&gt; compliance consulting, cleanroom certification, and sterile compounding staffing across Florida." />
-  <meta property="og:title" content="Elite Compounding Agency — USP <797> & <800> Compliance Florida" />
+  <meta property="og:title" content="Elite Compounding Agency · USP <797> & <800> Compliance Florida" />
   <meta property="og:description" content="Florida's leading consultancy for sterile compounding facilities. USP compliance, cleanroom certification, and sterile staffing." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -133,9 +133,7 @@
     /* ─── NAV ────────────────────────────────────────────────── */
     .nav {
       position: fixed; top: 0; left: 0; width: 100%; z-index: 100; height: 72px;
-      background: rgba(255,255,255,0.65);
-      backdrop-filter: blur(14px) saturate(180%);
-      -webkit-backdrop-filter: blur(14px) saturate(180%);
+      background: transparent;
       border-bottom: 1px solid transparent;
       transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.3s ease, backdrop-filter 0.3s ease;
     }
@@ -143,9 +141,16 @@
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(20px) saturate(180%);
       -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border-bottom-color: rgba(184, 207, 237, 0.6);
-      box-shadow: 0 4px 24px rgba(10, 15, 30, 0.06);
+      border-bottom-color: rgba(184,207,237,0.6);
+      box-shadow: 0 4px 24px rgba(10,15,30,0.06);
     }
+    .nav:not(.scrolled) .nav-links a { color: rgba(255,255,255,0.80); }
+    .nav:not(.scrolled) .nav-links a:hover { color: #ffffff; background: rgba(255,255,255,0.08); }
+    .nav:not(.scrolled) .nav-logo-text { color: #ffffff; }
+    .nav:not(.scrolled) .nav-hamburger span { background: #ffffff; }
+    .nav.scrolled .nav-links a { color: var(--text-2); }
+    .nav.scrolled .nav-logo-text { color: #0A0F1E; }
+    .nav.scrolled .nav-hamburger span { background: var(--text); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; gap: 24px; }
     .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     .nav-logo-mark {
@@ -190,34 +195,55 @@
     .nav-mobile-btns .btn { justify-content: center; }
 
     /* ─── HERO ───────────────────────────────────────────────── */
-    .hero { padding: 72px 0 80px; height: 100vh; box-sizing: border-box; position: relative; overflow: hidden; background: linear-gradient(160deg, #FFFFFF 0%, #F4F8FE 40%, #EBF1FB 100%); display: flex; flex-direction: column; justify-content: center; }
+    .hero { padding: 72px 0 80px; height: 100vh; box-sizing: border-box; position: relative; overflow: hidden; background: #06091a; background-image: url('hero-bg.png'); background-size: cover; background-position: center center; background-repeat: no-repeat; display: flex; flex-direction: column; justify-content: center; }
+    .hero .hero-headline { color: #ffffff; }
+    .hero .hero-headline .accent {
+      background: linear-gradient(90deg, #60a5fa 0%, #3b82f6 50%, #0052B8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero .hero-sub { color: rgba(255,255,255,0.70); }
+    .hero .hero-badge {
+      background: rgba(0,82,184,0.18);
+      border-color: rgba(0,82,184,0.38);
+      color: #93c5fd;
+    }
+    .hero .hero-badge-dot { background: #0052B8; box-shadow: 0 0 12px rgba(0,82,184,0.6); }
+    .hero .hero-badge span { color: #93c5fd !important; }
+    .hero .hero-trust {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.10);
+      backdrop-filter: blur(8px);
+    }
+    .hero .hero-trust-item { color: rgba(255,255,255,0.85); }
+    .hero .hero-trust-icon {
+      background: linear-gradient(135deg, rgba(0,82,184,0.9), rgba(14,165,233,0.9));
+      box-shadow: 0 2px 8px rgba(0,82,184,0.4);
+    }
+    .hero .btn-ghost {
+      background: rgba(255,255,255,0.06);
+      color: #ffffff;
+      border-color: rgba(255,255,255,0.22);
+      backdrop-filter: blur(8px);
+    }
+    .hero .btn-ghost:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.38);
+    }
     /* Layered ambient glow */
     .hero::before { content: ''; position: absolute; inset: 0; background:
-      radial-gradient(ellipse 70% 60% at 15% 55%, rgba(0,82,184,0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 50% at 85% 40%, rgba(0,82,184,0.06) 0%, transparent 65%);
+      linear-gradient(to bottom, rgba(6,9,26,0.72) 0%, rgba(6,9,26,0.55) 50%, rgba(6,9,26,0.72) 100%),
+      radial-gradient(ellipse 70% 60% at 15% 55%, rgba(0,82,184,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 50% at 85% 40%, rgba(14,165,233,0.10) 0%, transparent 65%);
       pointer-events: none; z-index: 0; }
     .hero::after { display: none; }
 
-    /* floating pill shapes */
-    .hero-shape { position: absolute; border-radius: 9999px; pointer-events: none; z-index: 0; }
-    .hero-shape::after { display: none; }
-    .hero-shape-1 { width: 420px; height: 90px; background: linear-gradient(135deg, rgba(0,82,184,0.10) 0%, rgba(0,82,184,0.02) 100%); border: 1px solid rgba(0,82,184,0.15); top: 5%; left: -8%; transform: rotate(-18deg); animation: shapefloat 12s ease-in-out infinite; backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,82,184,0.06); }
-    .hero-shape-2 { width: 380px; height: 80px; background: linear-gradient(135deg, rgba(0,82,184,0.10) 0%, rgba(0,82,184,0.02) 100%); border: 1px solid rgba(0,82,184,0.15); bottom: 8%; right: -6%; transform: rotate(-10deg); animation: shapefloat 14s ease-in-out infinite 1s; backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,82,184,0.06); }
-    .hero-shape-3 { width: 200px; height: 56px; background: linear-gradient(135deg, rgba(0,82,184,0.08) 0%, rgba(0,82,184,0.02) 100%); border: 1px solid rgba(0,82,184,0.12); top: 8%; right: 18%; transform: rotate(6deg); animation: shapefloat 11s ease-in-out infinite 0.5s; backdrop-filter: blur(10px); box-shadow: 0 4px 18px rgba(0,82,184,0.05); }
-    .hero-shape-6 { width: 320px; height: 72px; background: linear-gradient(135deg, rgba(0,82,184,0.10) 0%, rgba(0,82,184,0.02) 100%); border: 1px solid rgba(0,82,184,0.15); bottom: 18%; left: -5%; transform: rotate(14deg); animation: shapefloat 13s ease-in-out infinite 2s; backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,82,184,0.06); }
-    .hero-shape-7 { width: 160px; height: 46px; background: linear-gradient(135deg, rgba(0,82,184,0.08) 0%, rgba(0,82,184,0.02) 100%); border: 1px solid rgba(0,82,184,0.12); top: 55%; right: -2%; transform: rotate(-8deg); animation: shapefloat 15s ease-in-out infinite 3s; backdrop-filter: blur(10px); box-shadow: 0 4px 18px rgba(0,82,184,0.05); }
-    @keyframes shapefloat { 0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); } 50% { transform: translateY(-14px) rotate(var(--r, 0deg)); } }
-    .hero-shape-1 { --r: -18deg; }
-    .hero-shape-2 { --r: -10deg; }
-    .hero-shape-3 { --r: 6deg; }
-    .hero-shape-6 { --r: 14deg; }
-    .hero-shape-7 { --r: -8deg; }
-
     .hero .hero-headline .accent { color: var(--cobalt); }
 
-    /* ─── TYPEWRITER ─────────────────────────────────────────── */
+    /* ─── TYPEWRITER (legacy, kept to avoid breakage) ────────── */
     .typewriter-cursor {
-      display: inline-block;
+      display: none;
       width: 0.6ch;
       color: var(--cobalt);
       font-weight: 300;
@@ -231,19 +257,32 @@
 
     /* dot grid */
     .hero-dot-grid { position: absolute; inset: 0; pointer-events: none; z-index: 0;
-      background-image: radial-gradient(circle, rgba(0,82,184,0.18) 1px, transparent 1px);
+      background-image: radial-gradient(circle, rgba(96,165,250,0.22) 1px, transparent 1px);
       background-size: 28px 28px;
       mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
       -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
     }
 
     /* particle canvas */
-    #hero-particles { position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 0.4; }
-    .hero-inner { display: grid; grid-template-columns: 1fr; gap: 64px; align-items: center; position: relative; z-index: 1; max-width: 720px; }
+    #hero-particles { position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 1; }
+    .hero-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .hero-badge { margin-left: auto; margin-right: auto; }
+    .hero-sub { margin-left: auto; margin-right: auto; max-width: 580px; }
+    .hero-ctas { justify-content: center; }
+    .hero-trust { justify-content: center; width: 100%; }
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 8px; background: var(--cobalt-light); border: 1px solid var(--cobalt-border); border-radius: 100px; font-size: 13px; font-weight: 500; color: var(--cobalt); margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,82,184,0.1); }
     .hero-badge-dot { width: 20px; height: 20px; background: var(--cobalt); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .hero-badge-dot svg { width: 11px; height: 11px; }
-    .hero-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(44px, 4.8vw, 64px); line-height: 1.06; letter-spacing: -0.05em; color: var(--text); margin-bottom: 22px; display: block; }
+    .hero-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(36px, 3.8vw, 52px); line-height: 1.06; letter-spacing: -0.05em; color: var(--text); margin-bottom: 22px; display: block; }
     .hero-headline .accent { color: var(--cobalt); }
     .hero-sub { font-size: 16.5px; line-height: 1.72; color: var(--text-2); max-width: 480px; margin-bottom: 32px; }
     .hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; }
@@ -504,20 +543,100 @@
     /* ─── STATS ──────────────────────────────────────────────── */
 
     /* ─── WHY ELITE ──────────────────────────────────────────── */
-    .why { padding: 0; background: #F4F7FF; overflow: hidden; }
-    .why-inner { display: grid; grid-template-columns: 45% 55%; gap: 0; align-items: start; }
-    .why-cred-panel { background: linear-gradient(160deg, #0A3F8C 0%, #0B5DBB 100%); border-radius: 16px; padding: 56px 48px; display: flex; flex-direction: column; justify-content: center; gap: 0; align-self: flex-start; position: sticky; top: 100px; }
-    .why-cred-stat { padding: 28px 0; }
-    .why-cred-number { font-family: 'Montserrat', sans-serif; font-size: 64px; font-weight: 800; color: #FFFFFF; line-height: 1; }
-    .why-cred-label { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 8px; }
-    .why-cred-divider { border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 0; }
-    .why-content { padding: 80px 64px 80px 56px; display: flex; flex-direction: column; justify-content: center; }
+    .why {
+      padding: 96px 0;
+      background: #06091a;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('why-bg.png');
+      background-size: cover;
+      background-position: center center;
+      opacity: 0.38;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .why::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 45% at 50% 22%, rgba(96,165,250,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 80% 70% at 50% 50%, rgba(6,9,26,0.55) 0%, rgba(6,9,26,0.82) 70%, rgba(6,9,26,0.95) 100%),
+        linear-gradient(to bottom, rgba(6,9,26,0.55) 0%, transparent 18%, transparent 82%, rgba(6,9,26,0.85) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .why-grain {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.07;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 220px 220px;
+    }
+
+    .why-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      align-items: start;
+      max-width: 780px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .why .section-eyebrow { color: #93c5fd; }
+    .why .why-headline { color: rgba(255,255,255,0.92); }
+    .why .why-sub { color: rgba(255,255,255,0.75); }
+    .why .why-link { color: #60a5fa; }
+    .why .why-link:hover { color: #93c5fd; }
+
+    .why .why-card {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.10);
+    }
+    .why .why-card:hover {
+      background: rgba(255,255,255,0.09);
+      border-top-color: #60a5fa;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .why .why-card-title { color: rgba(255,255,255,0.95); }
+    .why .why-card-desc { color: rgba(255,255,255,0.70); }
+
+    .why-content {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 24px;
+    }
+    .why .why-headline { max-width: 640px; }
+    .why .why-sub { max-width: 580px; }
+    .why .why-link { align-self: center; }
+    .why .section-eyebrow { text-align: center; display: block; }
     .why-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(28px, 2.8vw, 40px); letter-spacing: -0.04em; line-height: 1.1; color: var(--text); margin-bottom: 20px; }
-    .why-sub { font-size: 16px; color: var(--text-2); line-height: 1.75; margin-bottom: 32px; max-width: 420px; }
+    .why-sub { font-size: 16px; color: var(--text-2); line-height: 1.75; margin-bottom: 0; max-width: 420px; }
     .why-link { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: var(--cobalt); transition: gap 0.22s ease; }
     .why-link:hover { gap: 14px; }
     .why-link svg { width: 16px; height: 16px; }
-    .why-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; }
+    .why-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      width: 100%;
+    }
     .why-card { background: var(--bg); border: 1px solid var(--border); border-top: 3px solid transparent; border-radius: var(--radius-lg); padding: 32px 28px; position: relative; overflow: hidden; transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease; }
     .why-card::after { display: none; }
     .why-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(11,93,187,0.12); border-top-color: #0B5DBB; }
@@ -682,56 +801,67 @@
 
     /* ─── CREDENTIALS STRIP ──────────────────────────────────── */
     .creds-strip {
-      padding: 36px 0;
+      padding: 72px 0;
       background: #0A0F1E;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .creds-inner {
+    .creds-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .creds-tile {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 40px 36px;
+      background: #0A0F1E;
+      transition: background 0.22s ease;
+    }
+    .creds-tile:hover {
+      background: #0f1628;
+    }
+    .creds-tile-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(0,82,184,0.18);
+      border: 1px solid rgba(0,82,184,0.3);
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 0;
-      flex-wrap: wrap;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .creds-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 0 24px;
-      gap: 4px;
+    .creds-tile-icon svg {
+      width: 22px;
+      height: 22px;
+      color: #60a5fa;
     }
-    .creds-label {
+    .creds-tile-title {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 16px;
       color: #ffffff;
       letter-spacing: -0.01em;
-      line-height: 1.2;
-    }
-    .creds-sub {
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.45);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      margin-bottom: 8px;
       line-height: 1.3;
     }
-    .creds-divider {
-      width: 1px;
-      height: 36px;
-      background: rgba(255,255,255,0.12);
-      flex-shrink: 0;
+    .creds-tile-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
     }
+
     @media (max-width: 768px) {
-      .creds-inner { gap: 20px 0; justify-content: center; }
-      .creds-item { min-width: calc(33.33% - 1px); }
-      .creds-divider { display: none; }
-    }
-    @media (max-width: 480px) {
-      .creds-item { min-width: calc(50% - 1px); }
+      .creds-strip { padding: 56px 0; }
+      .creds-grid {
+        grid-template-columns: 1fr;
+        gap: 1px;
+      }
+      .creds-tile { padding: 28px 24px; }
     }
 
     /* ─── RESPONSIVE ─────────────────────────────────────────── */
@@ -739,7 +869,6 @@
       .container { padding: 0 24px; }
       .hero-inner { gap: 40px; }
       .problem-inner { gap: 48px; }
-      .why-inner { gap: 0; grid-template-columns: 40% 60%; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
       .cta-box { padding: 48px; }
     }
@@ -747,7 +876,8 @@
       .nav-links, .nav-ctas { display: none; }
       .nav-hamburger { display: flex; }
       .hero { padding: 72px 0 60px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 52px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 0; }
+      .hero-ctas { justify-content: center; }
       .hero-headline { font-size: 42px; }
       .problem { padding: 72px 0; }
       .problem-inner { grid-template-columns: 1fr; gap: 24px; }
@@ -763,12 +893,9 @@
       .prob-panel-title { font-size: 17px; }
       .services { padding: 80px 0 0; }
       .services-grid { grid-template-columns: 1fr; gap: 20px; }
-      .why { padding: 0; }
-      .why-inner { grid-template-columns: 1fr; gap: 0; min-height: unset; }
-
-      .why-content { padding: 48px 24px; }
-      .why-sub { max-width: 100%; }
-      .why-cards { grid-template-columns: 1fr; }
+      .why { padding: 72px 0; }
+      .why-inner { max-width: 100%; }
+      .why-cards { grid-template-columns: 1fr 1fr; gap: 16px; }
       .who { padding: 80px 0; }
       .who-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
       .who-card { padding: 24px 16px; }
@@ -796,6 +923,7 @@
       .hero-trust { gap: 12px; }
       .who-grid { grid-template-columns: repeat(2, 1fr); }
       .hiw-grid { grid-template-columns: 1fr; gap: 36px 0; }
+      .why-cards { grid-template-columns: 1fr; }
     }
 
     /* ─── COMPLIANCE QUIZ ────────────────────────────────────── */
@@ -1024,11 +1152,6 @@
   <div class="hero-dot-grid" aria-hidden="true"></div>
   <canvas id="hero-particles" aria-hidden="true"></canvas>
   <div class="hero-grain" aria-hidden="true"></div>
-  <div class="hero-shape hero-shape-1" aria-hidden="true"></div>
-  <div class="hero-shape hero-shape-2" aria-hidden="true"></div>
-  <div class="hero-shape hero-shape-3" aria-hidden="true"></div>
-  <div class="hero-shape hero-shape-6" aria-hidden="true"></div>
-  <div class="hero-shape hero-shape-7" aria-hidden="true"></div>
   <div class="container">
     <div class="hero-inner">
 
@@ -1040,16 +1163,14 @@
             </svg>
           </div>
           USP &lt;797&gt; &amp; &lt;800&gt; Specialists
-          <span style="display:inline-block;width:1px;height:13px;background:rgba(0,82,184,0.35);margin:0 8px;vertical-align:middle;" aria-hidden="true"></span>
-          <span style="font-size:12px;font-weight:600;color:#0B5DBB;letter-spacing:0.06em;text-transform:uppercase;">Sterile Precision. Elite Standards.</span>
         </div>
 
         <h1 class="hero-headline" id="hero-headline">
-          <span id="typewriter-line" aria-live="polite"><span class="typewriter-cursor" aria-hidden="true">|</span></span>
+          Your cleanroom. <span class="accent">Always compliant.</span>
         </h1>
 
         <p class="hero-sub">
-          Elite Compounding Agency partners with Florida's sterile compounding facilities to achieve full USP compliance, pass regulatory inspections, and maintain audit-ready operations — year-round.
+          Florida's specialist consultancy for USP &lt;797&gt; and &lt;800&gt; compliance, cleanroom certification, and sterile compounding staffing. We make your facility audit-ready, year-round.
         </p>
 
         <div class="hero-ctas">
@@ -1112,7 +1233,7 @@
         <h2 class="problem-headline" id="problem-headline">
           The compliance problems that cost you <span class="accent">time and money.</span>
         </h2>
-        <p class="problem-subtext">Auto-cycling every 4 seconds — click to pause and explore.</p>
+        <p class="problem-subtext">Five categories that close pharmacies. We resolve each one before your next inspection.</p>
         <div class="prob-paused-badge" id="prob-paused-badge" aria-live="polite">
           <svg viewBox="0 0 10 10" fill="currentColor"><rect x="1.5" y="1" width="2.5" height="8" rx="1"/><rect x="6" y="1" width="2.5" height="8" rx="1"/></svg>
           Paused
@@ -1158,7 +1279,7 @@
             </div>
             <hr class="prob-panel-divider" />
             <p class="prob-panel-label">How we solve this</p>
-            <p class="prob-panel-solution">We keep your cleanroom inspection-ready 365 days a year — documentation current, logs complete, and protocols audit-proof.</p>
+            <p class="prob-panel-solution">We keep your cleanroom inspection-ready 365 days a year, with documentation current, logs complete, and protocols audit-proof.</p>
           </div>
         </div>
 
@@ -1310,7 +1431,7 @@
           </svg>
         </div>
         <h3 class="service-title">Sterile Staffing Solutions</h3>
-        <p class="service-desc">Credentialed sterile compounding pharmacists and pharmacy technicians placed on-demand. Short-term coverage, long-term contracts, or urgent gap-filling — all pre-vetted for USP competency.</p>
+        <p class="service-desc">Credentialed sterile compounding pharmacists and pharmacy technicians placed on-demand. Short-term coverage, long-term contracts, or urgent gap-filling. All pre-vetted for USP competency.</p>
         <ul class="service-deliverables">
           <li class="service-deliverable">Aseptic technique-verified technicians</li>
           <li class="service-deliverable">Licensed pharmacist placement</li>
@@ -1349,7 +1470,7 @@
         <path d="M12 2L20 6V12C20 16.4 16.4 19.6 12 21C7.6 19.6 4 16.4 4 12V6L12 2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
         <path d="M8.5 12L11 14.5L15.5 9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <span>All services include <strong>inspection-ready documentation</strong> as standard — binders, digital records, and audit trails formatted for immediate regulatory use.</span>
+      <span>All services include <strong>inspection-ready documentation</strong> as standard: binders, digital records, and audit trails formatted for immediate regulatory use.</span>
     </div>
   </div>
 </section>
@@ -1397,7 +1518,7 @@
           </svg>
         </div>
         <div class="hiw-title">Execute</div>
-        <p class="hiw-desc">Our team implements fixes — SOPs, certifications, staffing — on your timeline.</p>
+        <p class="hiw-desc">Our team implements fixes (SOPs, certifications, staffing) on your timeline.</p>
       </div>
 
       <div class="hiw-step reveal reveal-delay-3">
@@ -1417,67 +1538,66 @@
 </section>
 
 <!-- ─── CREDENTIALS STRIP ─────────────────────────────────────── -->
-<section class="creds-strip" aria-label="Credentials and specializations">
+<section class="creds-strip" aria-label="Core specializations">
   <div class="container">
-    <div class="creds-inner">
-      <div class="creds-item">
-        <span class="creds-label">USP &lt;797&gt;</span>
-        <span class="creds-sub">Sterile Compounding</span>
+    <div class="creds-grid">
+
+      <div class="creds-tile">
+        <div class="creds-tile-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L20 6.5V17.5C20 19.5 16.5 21 12 21.5C7.5 21 4 19.5 4 17.5V6.5L12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M8 12L10.5 14.5L16 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="creds-tile-body">
+          <div class="creds-tile-title">USP &lt;797&gt; &amp; &lt;800&gt;</div>
+          <div class="creds-tile-desc">Full-scope sterile compounding compliance: gap assessments, SOP development, and inspection readiness.</div>
+        </div>
       </div>
-      <div class="creds-divider" aria-hidden="true"></div>
-      <div class="creds-item">
-        <span class="creds-label">USP &lt;800&gt;</span>
-        <span class="creds-sub">Hazardous Drug Compliance</span>
+
+      <div class="creds-tile">
+        <div class="creds-tile-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17 21V19C17 17.9 16.1 17 15 17H9C7.9 17 7 17.9 7 19V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="12" cy="11" r="4" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M21 7L19 5L17 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M19 5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="creds-tile-body">
+          <div class="creds-tile-title">503A &amp; 503B Pathways</div>
+          <div class="creds-tile-desc">Credentialed sterile compounding staff and regulatory guidance for outsourcing facility designation.</div>
+        </div>
       </div>
-      <div class="creds-divider" aria-hidden="true"></div>
-      <div class="creds-item">
-        <span class="creds-label">503A</span>
-        <span class="creds-sub">Compounding Pharmacy</span>
+
+      <div class="creds-tile">
+        <div class="creds-tile-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 5H7C5.9 5 5 5.9 5 7V19C5 20.1 5.9 21 7 21H17C18.1 21 19 20.1 19 19V7C19 5.9 18.1 5 17 5H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="9" y="3" width="6" height="4" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M9 12H15M9 16H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="creds-tile-body">
+          <div class="creds-tile-title">Florida Licensed &amp; Based</div>
+          <div class="creds-tile-desc">PTCB certified, Florida-licensed specialists operating exclusively in sterile IV compounding environments.</div>
+        </div>
       </div>
-      <div class="creds-divider" aria-hidden="true"></div>
-      <div class="creds-item">
-        <span class="creds-label">503B</span>
-        <span class="creds-sub">Outsourcing Facility</span>
-      </div>
-      <div class="creds-divider" aria-hidden="true"></div>
-      <div class="creds-item">
-        <span class="creds-label">Florida Licensed</span>
-        <span class="creds-sub">&amp; Insured</span>
-      </div>
-      <div class="creds-divider" aria-hidden="true"></div>
-      <div class="creds-item">
-        <span class="creds-label">Sterile Only</span>
-        <span class="creds-sub">IV Compounding Specialists</span>
-      </div>
+
     </div>
   </div>
 </section>
 
 <!-- ─── WHY ELITE ─────────────────────────────────────────────── -->
 <section class="why" id="why" aria-labelledby="why-headline">
-  <div class="why-inner">
-    <div class="why-cred-panel">
-      <div class="why-cred-stat">
-        <div class="why-cred-number">10+</div>
-        <div class="why-cred-label">Years USP Experience</div>
-      </div>
-      <hr class="why-cred-divider">
-      <div class="why-cred-stat">
-        <div class="why-cred-number">CPhT</div>
-        <div class="why-cred-label">PTCB Certified</div>
-      </div>
-      <hr class="why-cred-divider">
-      <div class="why-cred-stat">
-        <div class="why-cred-number">FL</div>
-        <div class="why-cred-label">Licensed &amp; Based in Florida</div>
-      </div>
-    </div>
+  <div class="why-grain" aria-hidden="true"></div>
+  <div class="container">
+    <div class="why-inner">
     <div class="why-content">
-      <div class="why-left reveal">
+      <div class="why-left">
         <span class="section-eyebrow">Why Elite</span>
         <h2 class="why-headline" id="why-headline">Built for pharmacists.<br>Trusted by regulators.</h2>
-        <p style="font-size:17px;font-weight:400;color:var(--text-2);margin-bottom:24px;max-width:600px;line-height:1.6;">Where Aseptic Excellence Meets Reliability.</p>
-        <p class="why-sub">We don't just help you pass inspections — we build the operational infrastructure that prevents citations before they happen. Our team has decades of combined sterile compounding experience at the regulatory, operational, and clinical levels.</p>
+        <p class="why-sub">Every engagement is led by pharmacists and PTCB-certified technicians with hands-on sterile compounding experience. Not generalist consultants reading from a checklist. We work inside your facility, alongside your team, until compliance is no longer a concern.</p>
         <a href="#contact" class="why-link">
           Talk to our compliance team
           <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1486,7 +1606,7 @@
         </a>
       </div>
       <div class="why-cards">
-        <div class="why-card reveal">
+        <div class="why-card">
           <div class="why-card-icon" aria-hidden="true">
             <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M10 2L17 5.5V10.5C17 13.5 14 15.5 10 16.5C6 15.5 3 13.5 3 10.5V5.5L10 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
@@ -1494,9 +1614,9 @@
             </svg>
           </div>
           <div class="why-card-title">USP Expert Consultants</div>
-          <div class="why-card-desc">Every engagement is led by pharmacists with direct USP &lt;797&gt;/&lt;800&gt; regulatory experience — not generalist consultants.</div>
+          <div class="why-card-desc">We bring direct regulatory experience to every engagement, from gap assessments to mock inspections, so nothing gets missed before the auditor arrives.</div>
         </div>
-        <div class="why-card reveal reveal-delay-1">
+        <div class="why-card">
           <div class="why-card-icon" aria-hidden="true">
             <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.5"/>
@@ -1506,7 +1626,7 @@
           <div class="why-card-title">Always-On Availability</div>
           <div class="why-card-desc">Compliance emergencies don't keep business hours. Our on-call team responds to urgent regulatory situations around the clock.</div>
         </div>
-        <div class="why-card reveal reveal-delay-2">
+        <div class="why-card">
           <div class="why-card-icon" aria-hidden="true">
             <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 15V12M7.5 15V8M11 15V10M14.5 15V5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -1516,7 +1636,7 @@
           <div class="why-card-title">Data-Driven Programs</div>
           <div class="why-card-desc">Trending analysis, automated reminders, and digital recordkeeping turn your compliance program from reactive to predictive.</div>
         </div>
-        <div class="why-card reveal reveal-delay-3">
+        <div class="why-card">
           <div class="why-card-icon" aria-hidden="true">
             <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="3" y="4" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
@@ -1526,9 +1646,10 @@
             </svg>
           </div>
           <div class="why-card-title">Turnkey Documentation</div>
-          <div class="why-card-desc">We produce inspection-ready SOPs, logbooks, training records, and risk assessments — every document formatted for immediate regulator review.</div>
+          <div class="why-card-desc">We produce inspection-ready SOPs, logbooks, training records, and risk assessments. Every document formatted for immediate regulator review.</div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </section>
@@ -1814,7 +1935,7 @@
               </div>
               <div>
                 <div class="cal-heading">Book a Free 30-Minute Assessment</div>
-                <p class="cal-sub">Pick a time that works for you — our USP specialists are available Mon–Fri, 9 am–5 pm ET.</p>
+                <p class="cal-sub">Pick a time that works for you. Our USP specialists are available Mon to Fri, 9 am to 5 pm ET.</p>
               </div>
               <div class="cal-slots" role="list" aria-label="Available time slots">
                 <div class="cal-slot" role="listitem" tabindex="0" aria-label="Today 2:00 PM – Available">
@@ -2243,105 +2364,6 @@
 
 </script>
 
-<!-- Typewriter / cycling stat headline -->
-<script>
-(function() {
-  var lines = [
-    ["Your cleanroom.", " Always compliant.", " Always ready.", ""],
-    ["Serving ", "Florida sterile compounding facilities.", "", "Ready to be next?"],
-    ["Average client gets compliant", " in under 90 days.", "", "Start the clock."],
-    ["USP 797 & 800 compliance,", " done right.", "", "Every time."]
-  ];
-
-  var el = document.getElementById('typewriter-line');
-  if (!el) return;
-  var h1 = el.closest('.hero-headline');
-
-  var CHAR_DELAY  = 42;   // ms per character typed
-  var DELETE_DELAY = 22;  // ms per character deleted
-  var PAUSE_FULL  = 2800; // ms to pause when fully typed
-  var PAUSE_EMPTY = 300;  // ms to pause before typing next
-
-  var lineIdx = 0;
-  var charIdx = 0;
-  var deleting = false;
-
-  var CURSOR_HTML = '<span class="typewriter-cursor" aria-hidden="true">|</span>';
-
-  function buildHTML(lineArr, visibleChars) {
-    var segments = lineArr;
-    var full = segments.join('');
-    var visible = full.slice(0, visibleChars);
-    var html = '';
-    var consumed = 0;
-    for (var s = 0; s < segments.length; s++) {
-      var seg = segments[s];
-      if (consumed >= visible.length) break;
-      var chunk = visible.slice(consumed, consumed + seg.length);
-      consumed += seg.length;
-      if (s % 2 === 1) {
-        html += '<span class="accent">' + chunk + '</span>';
-      } else {
-        html += chunk;
-      }
-    }
-    return html + CURSOR_HTML;
-  }
-
-  function measureAndLockHeight() {
-    // Render each full phrase invisibly into a ghost span, measure, take max.
-    var ghost = document.createElement('span');
-    ghost.setAttribute('aria-hidden', 'true');
-    ghost.style.cssText = 'position:absolute;top:0;left:0;width:100%;opacity:0;pointer-events:none;';
-    h1.appendChild(ghost);
-
-    var maxH = 0;
-    for (var i = 0; i < lines.length; i++) {
-      ghost.innerHTML = buildHTML(lines[i], lines[i].join('').length);
-      var h = ghost.offsetHeight;
-      if (h > maxH) maxH = h;
-    }
-
-    h1.removeChild(ghost);
-
-    // no fixed height — h1 flows naturally with typed content
-  }
-
-  function tick() {
-    var line = lines[lineIdx];
-    var full = line.join('');
-    var totalChars = full.length;
-
-    if (!deleting) {
-      charIdx++;
-      el.innerHTML = buildHTML(line, charIdx);
-      if (charIdx >= totalChars) {
-        deleting = true;
-        setTimeout(tick, PAUSE_FULL);
-        return;
-      }
-    } else {
-      charIdx--;
-      el.innerHTML = buildHTML(line, charIdx);
-      if (charIdx <= 0) {
-        deleting = false;
-        lineIdx = (lineIdx + 1) % lines.length;
-        setTimeout(tick, PAUSE_EMPTY);
-        return;
-      }
-    }
-
-    setTimeout(tick, deleting ? DELETE_DELAY : CHAR_DELAY);
-  }
-
-  // Measure after fonts have rendered, then start typing
-  setTimeout(function() {
-    measureAndLockHeight();
-    tick();
-  }, 600);
-})();
-</script>
-
 <script>
 /* ── Hero particle drift ── */
 (function() {
@@ -2410,7 +2432,7 @@
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(0,82,184,' + (p.alpha * fade).toFixed(3) + ')';
+      ctx.fillStyle = 'rgba(96,165,250,' + (p.alpha * fade).toFixed(3) + ')';
       ctx.fill();
     }
 
