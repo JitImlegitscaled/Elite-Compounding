@@ -48,6 +48,20 @@
       --radius-md:     16px;
       --radius-lg:     16px;
       --max-w:         1120px;
+
+      /* Surface system — 3 surfaces, used across the page for rhythm */
+      --surface-navy:          #06091a;
+      --surface-navy-text:     rgba(255,255,255,0.78);
+      --surface-navy-eyebrow:  #93c5fd;
+      --surface-navy-border:   rgba(255,255,255,0.10);
+      --surface-navy-card:     rgba(255,255,255,0.05);
+
+      --surface-soft:          #F4F8FE;
+      --surface-soft-text:     #4A5468;
+      --surface-soft-eyebrow:  #0052B8;
+      --surface-soft-border:   #DDE6F5;
+
+      --surface-cobalt-bg:     linear-gradient(135deg, #0B5DBB 0%, #0A3F8C 100%);
     }
 
     /* ─── SCROLL PROGRESS ──────────────────────────────────── */
@@ -291,7 +305,27 @@
     .hero-trust-icon { width: 30px; height: 30px; background: var(--cobalt); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,82,184,0.3); }
     .hero-trust-icon svg { width: 14px; height: 14px; color: #fff; }
     /* ─── PROBLEM ────────────────────────────────────────────── */
-    .problem { padding: 96px 0; background: #F4F7FF; position: relative; }
+    .problem { padding: 144px 0 96px; background: var(--surface-soft); position: relative; }
+    /* Transition: hero (navy) → problem (soft white) — gradient bleed at top */
+    .problem::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 96px;
+      background: linear-gradient(to bottom, var(--surface-navy) 0%, rgba(244,248,254,0) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .problem::after {
+      content: '';
+      position: absolute;
+      top: 96px; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent 0%, rgba(0,82,184,0.25) 50%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .problem > .container { position: relative; z-index: 1; }
     .problem::before { content: ''; position: absolute; inset: 0; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 180px 180px; pointer-events: none; }
     .problem-inner { display: grid; grid-template-columns: 40% 60%; gap: 60px; align-items: center; }
     .prob-mobile-select {
@@ -399,7 +433,7 @@
     .section-sub { font-size: 17px; color: var(--text-2); max-width: 540px; margin: 0 auto; }
 
     /* ─── SERVICES ───────────────────────────────────────────── */
-    .services { padding: 96px 0 0; background: #FFFFFF; }
+    .services { padding: 96px 0 0; background: var(--surface-soft); }
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
     .service-card {
       background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg);
@@ -462,7 +496,7 @@
     .services-banner strong { font-weight: 700; }
 
     /* ─── HOW IT WORKS ──────────────────────────────────────── */
-    .how-it-works { padding: 96px 0; background: var(--bg-soft); }
+    .how-it-works { padding: 96px 0 140px; background: var(--surface-soft); position: relative; }
     .hiw-grid {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
       position: relative; margin-top: 56px;
@@ -651,8 +685,11 @@
     .why-card-desc { font-size: 15px; color: var(--text-2); line-height: 1.65; }
 
     /* ─── WHO WE SERVE ───────────────────────────────────────── */
-    .who { padding: 96px 0; background: linear-gradient(135deg, #071F45 0%, #0A3F8C 100%); position: relative; overflow: hidden; }
-    .who::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.04) 0%, transparent 60%); pointer-events: none; }
+    .who { padding: 96px 0; background: var(--surface-navy); position: relative; overflow: hidden; }
+    .who::before { content: ''; position: absolute; inset: 0; background:
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(96,165,250,0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 60% at 50% 100%, rgba(0,82,184,0.10) 0%, transparent 70%);
+      pointer-events: none; }
     .who .section-eyebrow { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); }
     .who .section-headline { color: #FFFFFF; }
     .who p { color: rgba(255,255,255,0.7); }
@@ -781,7 +818,18 @@
     .cal-disclaimer { font-size: 10.5px; color: var(--text-2); opacity: 0.7; }
 
     /* ─── FOOTER ─────────────────────────────────────────────── */
-    .footer { background: #0A0F1E; padding: 72px 0 0; color: rgba(255,255,255,0.65); }
+    .footer { background: var(--surface-navy); padding: 72px 0 0; color: rgba(255,255,255,0.65); position: relative; }
+    /* Transition: contact (cobalt) → footer (navy) — gradient bleed at top of footer */
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(to bottom, rgba(11,93,187,0.55) 0%, rgba(10,63,140,0.35) 40%, var(--surface-navy) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .footer > * { position: relative; z-index: 1; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 0; }
     .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
     .footer-logo-img-wrap { height: 80px; flex-shrink: 0; display: flex; align-items: center; }
@@ -801,8 +849,42 @@
 
     /* ─── CREDENTIALS STRIP ──────────────────────────────────── */
     .creds-strip {
-      padding: 72px 0;
-      background: #0A0F1E;
+      padding: 40px 0 72px;
+      background: var(--surface-navy);
+      position: relative;
+    }
+    /* Transition: how-it-works (soft white) → credentials (navy) — photo strip */
+    .surface-bridge-photo {
+      position: relative;
+      height: 140px;
+      width: 100%;
+      overflow: hidden;
+      background: var(--surface-navy);
+      margin-top: -140px;
+      z-index: 2;
+    }
+    .surface-bridge-photo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('why-bg.png');
+      background-size: cover;
+      background-position: center 40%;
+      filter: blur(2px);
+      opacity: 0.55;
+      transform: scale(1.05);
+    }
+    .surface-bridge-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom,
+          rgba(244,248,254,1) 0%,
+          rgba(244,248,254,0.55) 18%,
+          rgba(6,9,26,0.30) 50%,
+          rgba(6,9,26,0.85) 85%,
+          var(--surface-navy) 100%);
     }
     .creds-grid {
       display: grid;
@@ -817,11 +899,11 @@
       align-items: flex-start;
       gap: 20px;
       padding: 40px 36px;
-      background: #0A0F1E;
+      background: var(--surface-navy);
       transition: background 0.22s ease;
     }
     .creds-tile:hover {
-      background: #0f1628;
+      background: #0c1023;
     }
     .creds-tile-icon {
       width: 48px;
@@ -927,7 +1009,29 @@
     }
 
     /* ─── COMPLIANCE QUIZ ────────────────────────────────────── */
-    .quiz-section { padding: 96px 0 0; }
+    .quiz-section { padding: 96px 0 96px; background: var(--surface-soft); position: relative; overflow: hidden; }
+    /* Transition: who (navy) → quiz (soft white) — sharp cut + cobalt accent */
+    .quiz-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent 0%, #0B5DBB 30%, #1a65cc 50%, #0B5DBB 70%, transparent 100%);
+      box-shadow: 0 0 24px rgba(11,93,187,0.45);
+      pointer-events: none;
+      z-index: 2;
+    }
+    /* Transition: quiz (soft white) → contact (cobalt) — gradient bleed at bottom */
+    .quiz-section::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 96px;
+      background: linear-gradient(to bottom, rgba(244,248,254,0) 0%, rgba(11,93,187,0.18) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .quiz-section > .container { position: relative; z-index: 1; }
     .quiz-wrap { max-width: 720px; margin: 0 auto; }
     .quiz-card {
       background: var(--bg);
@@ -1536,6 +1640,8 @@
     </div>
   </div>
 </section>
+
+<div class="surface-bridge-photo" aria-hidden="true"></div>
 
 <!-- ─── CREDENTIALS STRIP ─────────────────────────────────────── -->
 <section class="creds-strip" aria-label="Core specializations">
