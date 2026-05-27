@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Elite Compounding Agency · Cleanroom Compliance &amp; Sterile Staffing</title>
-  <meta name="description" content="Elite Compounding Agency delivers USP &lt;797&gt; &amp; &lt;800&gt; compliance consulting, cleanroom certification, and sterile compounding staffing across Florida." />
-  <meta property="og:title" content="Elite Compounding Agency · USP <797> & <800> Compliance Florida" />
+  <title>Elite Compounding &amp; Aseptic Services · Cleanroom Compliance &amp; Sterile Staffing</title>
+  <meta name="description" content="Elite Compounding &amp; Aseptic Services delivers USP &lt;797&gt; &amp; &lt;800&gt; compliance consulting, cleanroom certification, and sterile compounding staffing across Florida." />
+  <meta property="og:title" content="Elite Compounding &amp; Aseptic Services · USP <797> & <800> Compliance Florida" />
   <meta property="og:description" content="Florida's leading consultancy for sterile compounding facilities. USP compliance, cleanroom certification, and sterile staffing." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -95,7 +95,7 @@
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
     body {
       font-family: 'Inter', sans-serif;
-      font-size: 18px;
+      font-size: 16px;
       line-height: 1.7;
       color: var(--text);
       background: var(--bg);
@@ -130,7 +130,7 @@
     /* ─── BUTTONS ────────────────────────────────────────────── */
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 28px; border-radius: 100px;
+      padding: 14px 28px; border-radius: 4px;
       font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600;
       letter-spacing: 0.02em; text-transform: none;
       line-height: 1; white-space: nowrap; cursor: pointer;
@@ -138,33 +138,24 @@
     }
     .btn:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 3px; }
     .btn:active { transform: translateY(0) scale(0.97) !important; transition: transform 0.1s ease-out !important; }
-    .btn-primary { background: linear-gradient(135deg, var(--cobalt) 0%, var(--cobalt-dark) 100%); color: #fff; box-shadow: var(--shadow-cobalt); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,82,184,0.38), 0 4px 12px rgba(0,82,184,0.22); background: linear-gradient(135deg, var(--cobalt-mid) 0%, var(--cobalt) 100%); }
+    .btn-primary { background: #0B5DBB; color: #fff; box-shadow: var(--shadow-cobalt); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,82,184,0.38), 0 4px 12px rgba(0,82,184,0.22); background: #0A3F8C; }
     .btn-ghost { background: transparent; color: var(--cobalt); border: 1.5px solid var(--cobalt-border); }
     .btn-ghost:hover { transform: translateY(-2px); background: var(--cobalt-light); border-color: var(--cobalt); box-shadow: 0 4px 16px rgba(0,82,184,0.12); }
-    .btn-sm { padding: 10px 22px; font-size: 13px; }
+    .btn-sm { padding: 10px 20px; font-size: 13px; }
 
     /* ─── NAV ────────────────────────────────────────────────── */
     .nav {
       position: fixed; top: 0; left: 0; width: 100%; z-index: 100; height: 72px;
-      background: transparent;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.3s ease, backdrop-filter 0.3s ease;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: none;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.08);
     }
-    .nav.scrolled {
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border-bottom-color: rgba(184,207,237,0.6);
-      box-shadow: 0 4px 24px rgba(10,15,30,0.06);
-    }
-    .nav:not(.scrolled) .nav-links a { color: rgba(255,255,255,0.80); }
-    .nav:not(.scrolled) .nav-links a:hover { color: #ffffff; background: rgba(255,255,255,0.08); }
-    .nav:not(.scrolled) .nav-logo-text { color: #ffffff; }
-    .nav:not(.scrolled) .nav-hamburger span { background: #ffffff; }
-    .nav.scrolled .nav-links a { color: var(--text-2); }
-    .nav.scrolled .nav-logo-text { color: #0A0F1E; }
-    .nav.scrolled .nav-hamburger span { background: var(--text); }
+    .nav-links a { color: #374151; }
+    .nav-logo-text { color: #0A1628 !important; }
+    .nav-hamburger span { background: var(--text); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; gap: 24px; }
     .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     .nav-logo-mark {
@@ -173,28 +164,24 @@
     }
     .nav-logo-mark svg { width: 18px; height: 18px; }
     .nav-logo-img { height: 64px; width: auto; display: block; }
-    .nav-logo-text { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: -0.02em; color: #0A0F1E; line-height: 1.2; }
+    .nav-logo-text { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 17px; letter-spacing: -0.02em; color: #0A1628; line-height: 1.2; }
     .nav-logo-text span { display: block; font-size: 9.5px; font-weight: 400; color: #0052B8; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'Inter', sans-serif; }
     .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; }
-    .nav-links a { padding: 8px 14px; font-size: 14px; font-weight: 500; color: var(--text-2); border-radius: var(--radius-sm); transition: color 0.18s ease, background 0.18s ease, transform 0.15s cubic-bezier(0.34,1.56,0.64,1); white-space: nowrap; display: inline-block; }
-    .nav-links a:hover { color: var(--text); background: var(--bg-soft); transform: translateY(-2px); }
+    .nav-links a { padding: 8px 14px; font-size: 14px; font-weight: 500; color: #374151; letter-spacing: 0.01em; text-transform: none; border-radius: var(--radius-sm); transition: color 0.18s ease, background 0.18s ease; white-space: nowrap; display: inline-block; }
+    .nav-links a:hover { color: #0B5DBB; background: transparent; transform: none; }
     .nav-links a:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
     .nav-links a { position: relative; }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: 2px;
-      left: 14px;
-      right: 14px;
-      height: 2px;
-      background: var(--cobalt);
-      border-radius: 1px;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links a::after { display: none; }
     .nav-ctas { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-cta-btn {
+      display: inline-flex; align-items: center;
+      padding: 10px 20px; background: #0B5DBB; color: #fff;
+      font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
+      border-radius: 4px; border: none; cursor: pointer; white-space: nowrap;
+      text-decoration: none; line-height: 1;
+      transition: background 0.18s ease, box-shadow 0.18s ease;
+    }
+    .nav-cta-btn:hover { background: #0A3F8C; box-shadow: 0 4px 16px rgba(11,93,187,0.25); }
     .nav-hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; border-radius: var(--radius-sm); cursor: pointer; }
     .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
     .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -206,7 +193,7 @@
     .nav-mobile-menu a:last-of-type { border-bottom: none; }
     .nav-mobile-menu a:hover { color: var(--cobalt); }
     .nav-mobile-btns { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
-    .nav-mobile-btns .btn { justify-content: center; }
+    .nav-mobile-btns .btn { justify-content: center; border-radius: 4px; }
 
     /* ─── HERO ───────────────────────────────────────────────── */
     .hero { padding: 72px 0 80px; height: 100vh; box-sizing: border-box; position: relative; overflow: hidden; background: #06091a; background-image: url('hero-bg.png'); background-size: cover; background-position: center center; background-repeat: no-repeat; display: flex; flex-direction: column; justify-content: center; }
@@ -238,12 +225,13 @@
     .hero .btn-ghost {
       background: rgba(255,255,255,0.06);
       color: #ffffff;
-      border-color: rgba(255,255,255,0.22);
+      border: 1.5px solid rgba(255,255,255,0.28);
+      border-radius: 4px;
       backdrop-filter: blur(8px);
     }
     .hero .btn-ghost:hover {
       background: rgba(255,255,255,0.12);
-      border-color: rgba(255,255,255,0.38);
+      border-color: rgba(255,255,255,0.45);
     }
     /* Layered ambient glow */
     .hero::before { content: ''; position: absolute; inset: 0; background:
@@ -296,12 +284,12 @@
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 8px; background: var(--cobalt-light); border: 1px solid var(--cobalt-border); border-radius: 100px; font-size: 13px; font-weight: 500; color: var(--cobalt); margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,82,184,0.1); }
     .hero-badge-dot { width: 20px; height: 20px; background: var(--cobalt); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .hero-badge-dot svg { width: 11px; height: 11px; }
-    .hero-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(36px, 3.8vw, 52px); line-height: 1.06; letter-spacing: -0.05em; color: var(--text); margin-bottom: 22px; display: block; }
+    .hero-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(36px, 3.8vw, 52px); line-height: 1.1; letter-spacing: -0.03em; color: var(--text); margin-bottom: 22px; display: block; }
     .hero-headline .accent { color: var(--cobalt); }
-    .hero-sub { font-size: 16.5px; line-height: 1.72; color: var(--text-2); max-width: 480px; margin-bottom: 32px; }
+    .hero-sub { font-size: 18px; line-height: 1.7; color: var(--text-2); max-width: 520px; margin-bottom: 32px; }
     .hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; }
     .hero-trust { display: flex; align-items: center; flex-wrap: wrap; background: rgba(255,255,255,0.85); border: 1px solid rgba(11,93,187,0.15); border-radius: 12px; padding: 12px 20px; gap: 20px; backdrop-filter: blur(8px); box-shadow: 0 4px 16px rgba(11,93,187,0.08); }
-    .hero-trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--text); }
+    .hero-trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.70); }
     .hero-trust-icon { width: 30px; height: 30px; background: var(--cobalt); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,82,184,0.3); }
     .hero-trust-icon svg { width: 14px; height: 14px; color: #fff; }
     /* ─── PROBLEM ────────────────────────────────────────────── */
@@ -340,7 +328,7 @@
       cursor: pointer;
     }
     .problem-left { position: sticky; top: 100px; }
-    .problem-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 34px; line-height: 1.15; letter-spacing: -0.035em; color: var(--text); margin: 0 0 10px; }
+    .problem-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(28px, 3vw, 38px); line-height: 1.15; letter-spacing: -0.02em; color: #0A1628; margin: 0 0 10px; }
     .problem-headline .accent { color: #0052B8; }
     .problem-subtext { font-size: 14px; color: #4A5468; margin: 0 0 28px; }
 
@@ -428,40 +416,26 @@
 
     /* ─── SECTION HEADER ─────────────────────────────────────── */
     .section-header { text-align: center; margin-bottom: 64px; }
-    .section-eyebrow { display: inline-block; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cobalt); margin-bottom: 16px; }
-    .section-headline { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: clamp(28px, 3.2vw, 40px); letter-spacing: -0.035em; line-height: 1.1; color: var(--text); margin-bottom: 16px; }
-    .section-sub { font-size: 17px; color: var(--text-2); max-width: 540px; margin: 0 auto; }
+    .section-eyebrow { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #0B5DBB; margin-bottom: 16px; }
+    .section-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.02em; line-height: 1.15; color: #0A1628; margin-bottom: 16px; max-width: 640px; margin-left: auto; margin-right: auto; }
+    .section-sub { font-size: 16px; color: #4B5563; line-height: 1.7; max-width: 540px; margin: 0 auto; }
 
     /* ─── SERVICES ───────────────────────────────────────────── */
-    .services { padding: 96px 0 0; background: var(--surface-soft); }
+    .services { padding: 96px 0 0; background: #F9FAFB; }
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
     .service-card {
-      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      background: #ffffff; border: 1px solid #E5E7EB; border-radius: 6px;
       padding: 36px 32px; position: relative; overflow: hidden;
-      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
     }
-    .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; border-radius: 6px 6px 0 0; }
     .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 24px 48px rgba(10, 63, 140, 0.14),
-                  0 8px 16px rgba(10, 63, 140, 0.08);
+      border-color: #0B5DBB;
+      box-shadow: 0 4px 24px rgba(11,93,187,0.10);
+      transform: translateY(-4px);
     }
-    .service-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 1px;
-      background: linear-gradient(135deg, #0052B8, #1a65cc, #0A3F8C);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-              mask-composite: exclude;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
-      z-index: 1;
-    }
-    .service-card:hover::after { opacity: 1; }
+    .service-card::after { display: none; }
 
     /* Card 1 — cobalt (Cleanroom Compliance) */
     .service-card.featured { background: linear-gradient(170deg, #f2f7ff 0%, #fff 55%); }
@@ -486,8 +460,8 @@
     .service-badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; background: var(--cobalt-light); border: 1px solid var(--cobalt-border); border-radius: 100px; font-size: 11px; font-weight: 600; color: var(--cobalt); margin-bottom: 20px; }
     .service-icon { width: 52px; height: 52px; background: var(--cobalt-light); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
     .service-icon svg { width: 26px; height: 26px; color: var(--cobalt); }
-    .service-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 20px; color: var(--text); margin-bottom: 10px; letter-spacing: -0.02em; }
-    .service-desc { font-size: 14px; color: var(--text-2); line-height: 1.7; margin-bottom: 24px; }
+    .service-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 18px; color: #0A1628; margin-bottom: 10px; letter-spacing: -0.02em; }
+    .service-desc { font-size: 15px; color: #4B5563; line-height: 1.65; margin-bottom: 24px; }
     .service-deliverables { display: flex; flex-direction: column; gap: 9px; }
     .service-deliverable { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-2); line-height: 1.5; }
     .service-deliverable::before { content: ''; width: 18px; height: 18px; border-radius: 50%; background: var(--cobalt-light); border: 1.5px solid var(--cobalt-border); flex-shrink: 0; margin-top: 0px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8l3 3 6-6' stroke='%230070F3' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-size: 14px; background-position: center; background-repeat: no-repeat; }
@@ -641,12 +615,12 @@
       border-color: rgba(255,255,255,0.10);
     }
     .why .why-card:hover {
-      background: rgba(255,255,255,0.09);
-      border-top-color: #60a5fa;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      background: rgba(255,255,255,0.08);
+      border-color: #0B5DBB;
     }
-    .why .why-card-title { color: rgba(255,255,255,0.95); }
-    .why .why-card-desc { color: rgba(255,255,255,0.70); }
+    .why .why-card .why-card-title { color: rgba(255,255,255,0.95); }
+    .why .why-card .why-card-desc { color: rgba(255,255,255,0.65); }
+    .why .why-card .why-card-icon { background: #EBF1FB; }
 
     .why-content {
       padding: 0;
@@ -660,8 +634,8 @@
     .why .why-sub { max-width: 580px; }
     .why .why-link { align-self: center; }
     .why .section-eyebrow { text-align: center; display: block; }
-    .why-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(28px, 2.8vw, 40px); letter-spacing: -0.04em; line-height: 1.1; color: var(--text); margin-bottom: 20px; }
-    .why-sub { font-size: 16px; color: var(--text-2); line-height: 1.75; margin-bottom: 0; max-width: 420px; }
+    .why-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.02em; line-height: 1.15; color: var(--text); margin-bottom: 20px; max-width: 640px; }
+    .why-sub { font-size: 16px; color: var(--text-2); line-height: 1.7; margin-bottom: 0; max-width: 580px; }
     .why-link { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: var(--cobalt); transition: gap 0.22s ease; }
     .why-link:hover { gap: 14px; }
     .why-link svg { width: 16px; height: 16px; }
@@ -671,18 +645,17 @@
       gap: 20px;
       width: 100%;
     }
-    .why-card { background: var(--bg); border: 1px solid var(--border); border-top: 3px solid transparent; border-radius: var(--radius-lg); padding: 32px 28px; position: relative; overflow: hidden; transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease; }
+    .why-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.10); border-radius: 6px; padding: 32px 28px; position: relative; overflow: hidden; transition: border-color 0.2s ease; }
     .why-card::after { display: none; }
-    .why-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(11,93,187,0.12); border-top-color: #0B5DBB; }
-    .why-card-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--cobalt); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(0,82,184,0.25); transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease; }
-    .why-card-icon svg { width: 22px; height: 22px; }
-    .why-card:nth-child(1) .why-card-icon { background: var(--cobalt); color: #fff; }
-    .why-card:nth-child(2) .why-card-icon { background: var(--cobalt-light); color: var(--cobalt); border: 1px solid var(--cobalt-border); }
-    .why-card:nth-child(3) .why-card-icon { background: linear-gradient(135deg, var(--cobalt), var(--cobalt-dark)); color: #fff; }
-    .why-card:nth-child(4) .why-card-icon { background: #fff; color: var(--cobalt); border: 2px solid var(--cobalt); }
-    .why-card:hover .why-card-icon { transform: scale(1.06); }
-    .why-card-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; color: var(--text); margin-bottom: 8px; letter-spacing: -0.01em; }
-    .why-card-desc { font-size: 15px; color: var(--text-2); line-height: 1.65; }
+    .why-card:hover { border-color: #0B5DBB; }
+    .why-card-icon { width: 40px; height: 40px; border-radius: 8px; background: #EBF1FB; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; flex-shrink: 0; }
+    .why-card-icon svg { width: 20px; height: 20px; color: #0B5DBB; }
+    .why-card:nth-child(1) .why-card-icon { background: #EBF1FB; }
+    .why-card:nth-child(2) .why-card-icon { background: #EBF1FB; }
+    .why-card:nth-child(3) .why-card-icon { background: #EBF1FB; }
+    .why-card:nth-child(4) .why-card-icon { background: #EBF1FB; }
+    .why-card-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; color: #0A1628; margin-bottom: 8px; letter-spacing: -0.01em; }
+    .why-card-desc { font-size: 14px; color: #6B7280; line-height: 1.6; }
 
     /* ─── WHO WE SERVE ───────────────────────────────────────── */
     .who { padding: 96px 0; background: var(--surface-navy); position: relative; overflow: hidden; }
@@ -690,16 +663,16 @@
       radial-gradient(ellipse 70% 50% at 50% 0%, rgba(96,165,250,0.10) 0%, transparent 60%),
       radial-gradient(ellipse 60% 60% at 50% 100%, rgba(0,82,184,0.10) 0%, transparent 70%);
       pointer-events: none; }
-    .who .section-eyebrow { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); }
-    .who .section-headline { color: #FFFFFF; }
-    .who p { color: rgba(255,255,255,0.7); }
-    .who-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 56px; }
-    .who-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 28px 20px 24px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-lg); transition: border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease, transform 0.22s cubic-bezier(0.34,1.56,0.64,1); cursor: default; }
-    .who-card:hover { border-color: rgba(255,255,255,0.28); background: rgba(255,255,255,0.13); box-shadow: 0 8px 24px rgba(0,0,0,0.2); transform: translateY(-5px); }
+    .who .section-eyebrow { color: rgba(255,255,255,0.65); border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); }
+    .who .section-headline { color: #FFFFFF; max-width: 640px; }
+    .who p { color: rgba(255,255,255,0.65); }
+    .who-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px; }
+    .who-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 28px 20px 24px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; transition: border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease, transform 0.22s cubic-bezier(0.34,1.56,0.64,1); cursor: default; }
+    .who-card:hover { border-color: rgba(255,255,255,0.28); background: rgba(255,255,255,0.10); box-shadow: 0 8px 24px rgba(0,0,0,0.2); transform: translateY(-5px); }
     .who-icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
     .who-icon svg { width: 24px; height: 24px; color: #fff; }
-    .who-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: #FFFFFF; line-height: 1.3; }
-    .who-type { font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.4; }
+    .who-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; color: #FFFFFF; line-height: 1.3; }
+    .who-type { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.4; }
 
     /* ─── CONTACT ────────────────────────────────────────────── */
     .cta-section { padding: 96px 0; background: linear-gradient(135deg, #0B5DBB, #0A3F8C); position: relative; overflow: hidden; }
@@ -707,7 +680,7 @@
     .cta-section::after { content: ''; position: absolute; top: -100px; right: -100px; width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(255,255,255,0.07) 0%, transparent 65%); pointer-events: none; }
     .cta-section-grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.05; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 180px 180px; }
     .cta-box { background: transparent; border: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
-    .cta-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(32px, 3.5vw, 48px); letter-spacing: -0.04em; color: #fff; margin-bottom: 12px; }
+    .cta-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(32px, 3.5vw, 48px); letter-spacing: -0.02em; color: #fff; margin-bottom: 12px; }
     .cta-sub { font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.6; }
     .contact-card { width: 100%; max-width: 520px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.25), 0 4px 16px rgba(0,0,0,0.15); }
     .contact-card-header { background: linear-gradient(135deg, #0A0F1E 0%, #12203A 100%); padding: 24px 28px; border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -818,14 +791,14 @@
     .cal-disclaimer { font-size: 10.5px; color: var(--text-2); opacity: 0.7; }
 
     /* ─── FOOTER ─────────────────────────────────────────────── */
-    .footer { background: var(--surface-navy); padding: 72px 0 0; color: rgba(255,255,255,0.65); position: relative; }
+    .footer { background: #0A1628; padding: 72px 0 0; color: rgba(255,255,255,0.65); position: relative; }
     /* Transition: contact (cobalt) → footer (navy) — gradient bleed at top of footer */
     .footer::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 80px;
-      background: linear-gradient(to bottom, rgba(11,93,187,0.55) 0%, rgba(10,63,140,0.35) 40%, var(--surface-navy) 100%);
+      background: linear-gradient(to bottom, rgba(11,93,187,0.55) 0%, rgba(10,63,140,0.35) 40%, #0A1628 100%);
       pointer-events: none;
       z-index: 0;
     }
@@ -833,17 +806,18 @@
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 0; }
     .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
     .footer-logo-img-wrap { height: 80px; flex-shrink: 0; display: flex; align-items: center; }
-    .footer-tagline { font-size: 13px; line-height: 1.6; margin-bottom: 24px; max-width: 260px; }
+    .footer-logo-name { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 800; color: #FFFFFF; line-height: 1.2; }
+    .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 24px; max-width: 260px; }
     .footer-contact-item { display: flex; align-items: center; gap: 8px; font-size: 13px; margin-bottom: 10px; color: rgba(255,255,255,0.55); }
     .footer-contact-item svg { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.7; }
-    .footer-col-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+    .footer-col-title { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
     .footer-links { display: flex; flex-direction: column; gap: 10px; }
-    .footer-links a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color 0.18s ease; }
-    .footer-links a:hover { color: #fff; }
-    .footer-links a.footer-link-accent { color: #0B5DBB; font-weight: 600; }
-    .footer-links a.footer-link-accent:hover { color: #3d82d4; text-decoration: underline; }
-    .footer-bottom { padding: 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 32px; }
-    .footer-bottom-text { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .footer-links a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color 0.18s ease; text-decoration: none; }
+    .footer-links a:hover { color: #fff; text-decoration: none; }
+    .footer-links a.footer-link-accent { color: rgba(255,255,255,0.6); font-weight: 400; }
+    .footer-links a.footer-link-accent:hover { color: #fff; text-decoration: none; }
+    .footer-bottom { padding: 24px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 32px; }
+    .footer-bottom-text { font-size: 13px; color: rgba(255,255,255,0.4); }
     .footer-usp { font-size: 12px; color: rgba(255,255,255,0.3); display: flex; align-items: center; gap: 8px; }
     .footer-usp-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.25); }
 
@@ -979,7 +953,7 @@
       .why-inner { max-width: 100%; }
       .why-cards { grid-template-columns: 1fr 1fr; gap: 16px; }
       .who { padding: 80px 0; }
-      .who-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .who-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
       .who-card { padding: 24px 16px; }
       .cta-section { padding: 80px 0; }
       .cta-box { grid-template-columns: 1fr; gap: 40px; }
@@ -1148,7 +1122,7 @@
 
     .quiz-result-cta {
       display: inline-flex; align-items: center; gap: 7px;
-      padding: 10px 20px; border-radius: 100px;
+      padding: 10px 20px; border-radius: 4px;
       font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
       letter-spacing: 0.01em; cursor: pointer; text-decoration: none;
       transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.22s ease, background 0.18s ease;
@@ -1214,10 +1188,10 @@
 <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
   <div class="container">
     <div class="nav-inner">
-      <a href="#" class="nav-logo" aria-label="Elite Compounding Agency home" id="logo-link">
-        <img src="logo-v2.png" alt="Elite Compounding Agency" class="nav-logo-img" width="64" height="64" loading="eager" fetchpriority="high" />
+      <a href="#" class="nav-logo" aria-label="Elite Compounding &amp; Aseptic Services home" id="logo-link">
+        <img src="logo-v2.png" alt="Elite Compounding &amp; Aseptic Services" class="nav-logo-img" width="64" height="64" loading="eager" fetchpriority="high" />
         <div class="nav-logo-text" aria-hidden="true">
-          Elite Compounding Agency
+          Elite Compounding &amp; Aseptic Services
           <span>Compliance Specialists</span>
         </div>
       </a>
@@ -1226,11 +1200,12 @@
         <a href="#services">Services</a>
         <a href="#why">Why Elite</a>
         <a href="#who">Who We Serve</a>
+        <a href="pricing.html">Pricing</a>
         <a href="#contact">Contact</a>
       </nav>
 
       <div class="nav-ctas">
-        <a href="#contact" class="btn btn-primary btn-sm">Request a Quote</a>
+        <a href="#contact" class="nav-cta-btn">Request a Consultation</a>
       </div>
 
       <button class="nav-hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
@@ -1244,6 +1219,7 @@
   <a href="#services">Services</a>
   <a href="#why">Why Elite</a>
   <a href="#who">Who We Serve</a>
+  <a href="pricing.html">Pricing</a>
   <a href="#contact">Contact</a>
   <div class="nav-mobile-btns">
     <a href="#contact" class="btn btn-ghost">Schedule a Call</a>
@@ -1378,7 +1354,7 @@
               <span class="prob-cost-icon">⚠️</span>
               <div>
                 <p class="prob-cost-label">Average citation fine</p>
-                <p class="prob-cost-value">$15,000 – $50,000 per violation</p>
+                <p class="prob-cost-value">Fines, probation, or permit suspension — per violation</p>
               </div>
             </div>
             <hr class="prob-panel-divider" />
@@ -1454,7 +1430,7 @@
               <span class="prob-cost-icon">👤</span>
               <div>
                 <p class="prob-cost-label">Cost of a personnel-related closure</p>
-                <p class="prob-cost-value">$50,000+ in lost revenue per week</p>
+                <p class="prob-cost-value">Every day closed is revenue your facility won't recover</p>
               </div>
             </div>
             <hr class="prob-panel-divider" />
@@ -1479,7 +1455,7 @@
               <span class="prob-cost-icon">📑</span>
               <div>
                 <p class="prob-cost-label">Average FDA warning letter response cost</p>
-                <p class="prob-cost-value">$100,000 – $500,000 in legal & remediation</p>
+                <p class="prob-cost-value">FDA warning letter response can reach six figures in legal and remediation fees</p>
               </div>
             </div>
             <hr class="prob-panel-divider" />
@@ -1564,7 +1540,7 @@
           <li class="service-deliverable">Board response &amp; citation resolution</li>
         </ul>
         <div class="service-drawer" aria-hidden="true">
-          <span class="service-drawer-outcome">We've resolved every citation we've ever taken on. Zero exceptions.</span>
+          <span class="service-drawer-outcome">Strategic guidance through every stage of the regulatory process — from first notice to full resolution.</span>
           <a href="#contact" class="service-drawer-cta">Talk to Us →</a>
         </div>
       </div>
@@ -1817,18 +1793,6 @@
           <div class="who-type">Hazardous drug handling</div>
         </div>
       </div>
-      <div class="who-card reveal reveal-delay-4" role="listitem">
-        <div class="who-icon" aria-hidden="true">
-          <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14 9L9 14L4 9L9 4L14 9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-            <circle cx="9" cy="9" r="2" fill="currentColor" opacity="0.4"/>
-          </svg>
-        </div>
-        <div>
-          <div class="who-name">Nuclear Pharmacies</div>
-          <div class="who-type">Radiopharmaceutical prep</div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -1852,43 +1816,43 @@
         </div>
         <div class="quiz-body">
           <ul class="quiz-items" id="quizItems" role="list">
-            <li class="quiz-item checked" role="checkbox" aria-checked="true" tabindex="0" data-index="0">
+            <li class="quiz-item" role="checkbox" aria-checked="false" tabindex="0" data-index="0">
               <span class="quiz-toggle" aria-hidden="true">
                 <svg class="quiz-toggle-check" viewBox="0 0 11 8"><polyline points="1 4 4 7 10 1"/></svg>
               </span>
               <span class="quiz-item-label">Our USP &lt;797&gt; SOPs reflect the 2023 revisions</span>
             </li>
-            <li class="quiz-item checked" role="checkbox" aria-checked="true" tabindex="0" data-index="1">
+            <li class="quiz-item" role="checkbox" aria-checked="false" tabindex="0" data-index="1">
               <span class="quiz-toggle" aria-hidden="true">
                 <svg class="quiz-toggle-check" viewBox="0 0 11 8"><polyline points="1 4 4 7 10 1"/></svg>
               </span>
               <span class="quiz-item-label">Our USP &lt;800&gt; hazardous drug program is fully documented</span>
             </li>
-            <li class="quiz-item checked" role="checkbox" aria-checked="true" tabindex="0" data-index="2">
+            <li class="quiz-item" role="checkbox" aria-checked="false" tabindex="0" data-index="2">
               <span class="quiz-toggle" aria-hidden="true">
                 <svg class="quiz-toggle-check" viewBox="0 0 11 8"><polyline points="1 4 4 7 10 1"/></svg>
               </span>
               <span class="quiz-item-label">Our cleanroom has a current ISO certification on file</span>
             </li>
-            <li class="quiz-item checked" role="checkbox" aria-checked="true" tabindex="0" data-index="3">
+            <li class="quiz-item" role="checkbox" aria-checked="false" tabindex="0" data-index="3">
               <span class="quiz-toggle" aria-hidden="true">
                 <svg class="quiz-toggle-check" viewBox="0 0 11 8"><polyline points="1 4 4 7 10 1"/></svg>
               </span>
               <span class="quiz-item-label">We have an active environmental monitoring program with trend data</span>
             </li>
-            <li class="quiz-item checked" role="checkbox" aria-checked="true" tabindex="0" data-index="4">
+            <li class="quiz-item" role="checkbox" aria-checked="false" tabindex="0" data-index="4">
               <span class="quiz-toggle" aria-hidden="true">
                 <svg class="quiz-toggle-check" viewBox="0 0 11 8"><polyline points="1 4 4 7 10 1"/></svg>
               </span>
               <span class="quiz-item-label">All compounding staff have current aseptic technique competency records</span>
             </li>
-            <li class="quiz-item checked" role="checkbox" aria-checked="true" tabindex="0" data-index="5">
+            <li class="quiz-item" role="checkbox" aria-checked="false" tabindex="0" data-index="5">
               <span class="quiz-toggle" aria-hidden="true">
                 <svg class="quiz-toggle-check" viewBox="0 0 11 8"><polyline points="1 4 4 7 10 1"/></svg>
               </span>
               <span class="quiz-item-label">We have inspection-ready documentation binders (SOPs, logs, training records)</span>
             </li>
-            <li class="quiz-item checked" role="checkbox" aria-checked="true" tabindex="0" data-index="6">
+            <li class="quiz-item" role="checkbox" aria-checked="false" tabindex="0" data-index="6">
               <span class="quiz-toggle" aria-hidden="true">
                 <svg class="quiz-toggle-check" viewBox="0 0 11 8"><polyline points="1 4 4 7 10 1"/></svg>
               </span>
@@ -1947,8 +1911,8 @@
           <div class="contact-card-sub">USP compliance specialists · 24hr response guarantee</div>
         </div>
 
-        <!-- Tab switcher -->
-        <div style="padding: 16px 28px 0;" id="contactTabBar">
+        <!-- Tab switcher hidden until booking link is configured -->
+        <div style="padding: 16px 28px 0; display:none;" id="contactTabBar">
           <div class="contact-tabs" role="tablist" aria-label="Contact method">
             <button class="contact-tab-btn active" role="tab" aria-selected="true" aria-controls="panel-form" id="tab-form" type="button">
               ✉ Send a Message
@@ -2007,7 +1971,7 @@
                   <span class="contact-error-banner-icon" aria-hidden="true">⚠</span>
                   <div>
                     <div class="contact-error-banner-title">Couldn't send your message</div>
-                    <div class="contact-error-banner-sub">Please try again, or email us at <a href="mailto:info@elitecompoundingagency.com">info@elitecompoundingagency.com</a></div>
+                    <div class="contact-error-banner-sub">Please try again, or email us at <a href="mailto:info@elitecompoundingservices.com">info@elitecompoundingservices.com</a></div>
                   </div>
                 </div>
 
@@ -2067,7 +2031,7 @@
                 </div>
               </div>
               <div class="cal-divider"><span class="cal-divider-text">or open full calendar</span></div>
-              <button class="cal-open-btn" type="button" onclick="window.open('https://calendly.com/elitecompoundingagency','_blank')" aria-label="Open full scheduling calendar">
+              <button class="cal-open-btn" type="button" onclick="window.open('https://calendly.com/elitecompoundingservices','_blank')" aria-label="Open full scheduling calendar">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 View All Availability
               </button>
@@ -2088,20 +2052,18 @@
       <div class="footer-brand">
         <div class="footer-logo">
           <div class="footer-logo-img-wrap">
-            <img src="logo-v2.png" alt="Elite Compounding Agency" width="80" height="80" loading="eager" fetchpriority="high" style="height:80px;width:auto;display:block;" />
+            <img src="logo-v2.png" alt="Elite Compounding &amp; Aseptic Services" width="80" height="80" loading="eager" fetchpriority="high" style="height:80px;width:auto;display:block;" />
           </div>
-          <div class="nav-logo-text" aria-hidden="true" style="color:#ffffff;">
-            Elite Compounding Agency
-            <span style="color:#6B9FE4;">Compliance Specialists</span>
+          <div class="footer-logo-name" aria-hidden="true">
+            Elite Compounding<br>&amp; Aseptic Services
           </div>
         </div>
-        <p style="font-size:13px;font-weight:400;font-style:italic;color:rgba(255,255,255,0.6);margin:8px 0 16px;">Your Partner in Sterile Compliance &amp; Compounding.</p>
         <p class="footer-tagline">Florida's leading USP compliance consultancy for sterile compounding pharmacies and outsourcing facilities.</p>
         <div class="footer-contact-item">
           <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M2 3L7 7.5L12 3M2 3H12V11H2V3Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
           </svg>
-          <a href="mailto:info@elitecompoundingagency.com" style="color:inherit">info@elitecompoundingagency.com</a>
+          <a href="mailto:info@elitecompoundingservices.com" style="color:inherit">info@elitecompoundingservices.com</a>
         </div>
         <div class="footer-contact-item">
           <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2144,7 +2106,7 @@
     </div>
 
     <div class="footer-bottom">
-      <div class="footer-bottom-text">&copy; 2026 Elite Compounding Agency. All rights reserved.</div>
+      <div class="footer-bottom-text">&copy; 2026 Elite Compounding &amp; Aseptic Services. All rights reserved.</div>
       <div class="footer-usp">
         <span>USP &lt;797&gt; &amp; &lt;800&gt; Compliance Specialists</span>
         <div class="footer-usp-dot" aria-hidden="true"></div>
@@ -2244,7 +2206,7 @@
     // clicking a slot fires the cal open button behavior
     document.querySelectorAll('.cal-slot').forEach(function(slot) {
       slot.addEventListener('click', function() {
-        window.open('https://calendly.com/elitecompoundingagency', '_blank');
+        window.open('https://calendly.com/elitecompoundingservices', '_blank');
       });
       slot.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); slot.click(); }
@@ -2335,7 +2297,10 @@
     submitBtn.disabled = true;
 
     var data = {
-      access_key: 'YOUR_ACCESS_KEY',
+      access_key: '13ef69ad-13b3-4349-a13c-6300fd8a0ed7',
+      subject: 'New Consultation Request — Elite Compounding Website',
+      from_name: document.getElementById('contact-name').value.trim(),
+      replyto: document.getElementById('contact-email').value.trim(),
       name:    document.getElementById('contact-name').value.trim(),
       email:   document.getElementById('contact-email').value.trim(),
       phone:   document.getElementById('contact-phone').value.trim(),
@@ -2351,11 +2316,18 @@
       });
       var json = await res.json();
       loadState.classList.remove('visible');
-      formFields.style.display = 'none';
-      successEl.classList.add('visible');
-      requestAnimationFrame(function() {
-        requestAnimationFrame(function() { successEl.classList.add('fade-in'); });
-      });
+      if (json.success) {
+        formFields.style.display = 'none';
+        successEl.classList.add('visible');
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() { successEl.classList.add('fade-in'); });
+        });
+      } else {
+        formFields.classList.remove('loading');
+        submitBtn.disabled = false;
+        errorBanner.classList.add('visible');
+        submitBtn.textContent = 'Try Again →';
+      }
     } catch (err) {
       loadState.classList.remove('visible');
       formFields.classList.remove('loading');
