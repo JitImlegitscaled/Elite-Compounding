@@ -39,7 +39,7 @@
     /* ─── COBALT TOP BAR ──────────────────────────────────────── */
     #cobalt-bar {
       position: fixed; top: 0; left: 0; right: 0;
-      height: 3px; background: #0B5DBB;
+      height: 3px; background: #ffffff;
       z-index: 1001; pointer-events: none;
     }
 
@@ -99,38 +99,48 @@
 
     /* ─── NAV ────────────────────────────────────────────────── */
     .nav {
-      position: fixed; top: 3px; left: 0; width: 100%; z-index: 100; height: 72px;
-      background: rgba(255,255,255,0.98);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100; height: 72px;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       box-shadow: 0 1px 0 rgba(0,0,0,0.08);
     }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; gap: 24px; }
-    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-    .nav-logo-img { height: 64px; width: auto; display: block; }
-    .nav-logo-text { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 17px; letter-spacing: -0.02em; color: #0A1628; line-height: 1.2; }
-    .nav-logo-text span { display: block; font-size: 9.5px; font-weight: 400; color: #0052B8; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'Inter', sans-serif; }
-    .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; }
-    .nav-links a { padding: 8px 14px; font-size: 14px; font-weight: 500; color: #374151; letter-spacing: 0.01em; border-radius: var(--radius-sm); transition: color 0.18s ease; white-space: nowrap; display: inline-block; }
+    .nav-inner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      height: 100%;
+      padding: 0 32px 0 16px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; text-decoration: none; }
+    .nav-logo-img { height: 56px; width: auto; display: block; }
+    .nav-logo-text { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px; letter-spacing: -0.02em; color: #0A1628; line-height: 1.2; }
+    .nav-logo-text span { display: block; font-size: 9px; font-weight: 500; color: #0052B8; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'Inter', sans-serif; }
+    .nav-links {
+      display: flex; align-items: center; gap: 2px;
+      justify-content: center;
+    }
+    .nav-links a { padding: 8px 13px; font-size: 13.5px; font-weight: 500; color: #374151; letter-spacing: 0.01em; border-radius: 6px; transition: color 0.18s ease; white-space: nowrap; display: inline-block; }
     .nav-links a:hover { color: #0B5DBB; }
     .nav-links a.active { color: #0B5DBB; font-weight: 600; }
     .nav-links a:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
-    .nav-ctas { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-links a::after { display: none; }
+    .nav-ctas { display: flex; align-items: center; justify-content: flex-end; }
     .nav-cta-btn {
       display: inline-flex; align-items: center;
-      padding: 10px 20px; background: #0B5DBB; color: #fff;
+      padding: 9px 18px; background: #0B5DBB; color: #fff;
       font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
-      border-radius: 4px; border: none; cursor: pointer; white-space: nowrap;
+      border-radius: 5px; border: none; cursor: pointer; white-space: nowrap;
       text-decoration: none; line-height: 1;
       transition: background 0.18s ease, box-shadow 0.18s ease;
     }
-    .nav-cta-btn:hover { background: #0A3F8C; box-shadow: 0 4px 16px rgba(11,93,187,0.25); }
-    .nav-hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; border-radius: var(--radius-sm); cursor: pointer; }
+    .nav-cta-btn:hover { background: #0A3F8C; box-shadow: 0 4px 16px rgba(11,93,187,0.28); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; border-radius: var(--radius-sm); cursor: pointer; background: none; border: none; min-height: 44px; min-width: 44px; justify-content: center; }
     .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
     .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-hamburger.open span:nth-child(2) { opacity: 0; }
     .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .nav-mobile-menu { display: none; position: fixed; top: 75px; left: 0; right: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 20px 24px 28px; z-index: 99; box-shadow: 0 8px 32px rgba(10,15,30,0.1); }
+    .nav-mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 20px 24px 28px; z-index: 99; box-shadow: 0 8px 32px rgba(10,15,30,0.1); }
     .nav-mobile-menu.open { display: block; }
     .nav-mobile-menu a { display: block; padding: 14px 0; font-size: 16px; font-weight: 500; color: var(--text-2); border-bottom: 1px solid var(--border); transition: color 0.18s ease; }
     .nav-mobile-menu a:last-of-type { border-bottom: none; }
@@ -424,11 +434,14 @@
     @media (max-width: 768px) {
       .nav-links, .nav-ctas { display: none; }
       .nav-hamburger { display: flex; }
+      .nav-inner { grid-template-columns: 1fr auto; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
       .pricing-section { padding: 56px 0; }
       .packages-section { padding: 56px 0; }
       .footer-usp { flex-wrap: wrap; }
+      .page-header { padding-top: 72px; min-height: 180px; }
+      .page-header-inner { padding: 32px 0 40px; }
     }
     @media (max-width: 480px) {
       .container { padding: 0 16px; }
@@ -573,8 +586,7 @@
 
 <!-- ─── NAV ─────────────────────────────────────────────────── -->
 <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
-  <div class="container">
-    <div class="nav-inner">
+  <div class="nav-inner">
       <a href="index.html" class="nav-logo" aria-label="Elite Compounding &amp; Aseptic Services home">
         <img src="logo-v2.png" alt="Elite Compounding &amp; Aseptic Services" class="nav-logo-img" width="64" height="64" loading="eager" fetchpriority="high" />
         <div class="nav-logo-text" aria-hidden="true">
@@ -598,7 +610,6 @@
       <button class="nav-hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-    </div>
   </div>
 </nav>
 
@@ -685,7 +696,7 @@
 </section>
 
 <!-- ─── SECTION 2: STERILE TECH PRN ─────────────────────────── -->
-<section class="pricing-section" style="border-top: 1px solid #E5E7EB;" aria-labelledby="prn-headline">
+<section class="pricing-section" style="border-top: 1px solid #ffffff;" aria-labelledby="prn-headline">
   <div class="container">
     <div class="section-header reveal">
       <span class="section-eyebrow">PRN Staffing</span>
