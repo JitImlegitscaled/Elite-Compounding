@@ -99,7 +99,7 @@
 
     /* ─── NAV ────────────────────────────────────────────────── */
     .nav {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 100; height: 72px;
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100; height: 90px;
       background: rgba(255,255,255,0.97);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
@@ -112,15 +112,15 @@
       height: 100%;
       padding: 0 32px 0 16px;
     }
-    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; text-decoration: none; }
-    .nav-logo-img { height: 70px; width: auto; display: block; }
-    .nav-logo-text { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px; letter-spacing: -0.02em; color: #0A1628; line-height: 1.2; }
-    .nav-logo-text span { display: block; font-size: 9px; font-weight: 500; color: #0052B8; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'Inter', sans-serif; }
+    .nav-logo { display: flex; align-items: center; gap: 14px; flex-shrink: 0; text-decoration: none; }
+    .nav-logo-img { height: 82px; width: auto; display: block; }
+    .nav-logo-text { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: -0.02em; color: #0A1628; line-height: 1.2; }
+    .nav-logo-text span { display: block; font-size: 11.5px; font-weight: 500; color: #0052B8; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'Inter', sans-serif; }
     .nav-links {
       display: flex; align-items: center; gap: 2px;
       justify-content: center;
     }
-    .nav-links a { padding: 8px 13px; font-size: 13.5px; font-weight: 500; color: #374151; letter-spacing: 0.01em; border-radius: 6px; transition: color 0.18s ease; white-space: nowrap; display: inline-block; }
+    .nav-links a { padding: 8px 17px; font-size: 17px; font-weight: 500; color: #374151; letter-spacing: 0.01em; border-radius: 6px; transition: color 0.18s ease; white-space: nowrap; display: inline-block; }
     .nav-links a:hover { color: #0B5DBB; }
     .nav-links a.active { color: #0B5DBB; font-weight: 600; }
     .nav-links a:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
@@ -128,9 +128,9 @@
     .nav-ctas { display: flex; align-items: center; justify-content: flex-end; }
     .nav-cta-btn {
       display: inline-flex; align-items: center;
-      padding: 9px 18px; background: #0B5DBB; color: #fff;
-      font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
-      border-radius: 5px; border: none; cursor: pointer; white-space: nowrap;
+      padding: 12px 26px; background: #0B5DBB; color: #fff;
+      font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 600;
+      border-radius: 6px; border: none; cursor: pointer; white-space: nowrap;
       text-decoration: none; line-height: 1;
       transition: background 0.18s ease, box-shadow 0.18s ease;
     }
@@ -140,7 +140,7 @@
     .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-hamburger.open span:nth-child(2) { opacity: 0; }
     .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .nav-mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 20px 24px 28px; z-index: 99; box-shadow: 0 8px 32px rgba(10,15,30,0.1); }
+    .nav-mobile-menu { display: none; position: fixed; top: 90px; left: 0; right: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 20px 24px 28px; z-index: 99; box-shadow: 0 8px 32px rgba(10,15,30,0.1); }
     .nav-mobile-menu.open { display: block; }
     .nav-mobile-menu a { display: block; padding: 14px 0; font-size: 16px; font-weight: 500; color: var(--text-2); border-bottom: 1px solid var(--border); transition: color 0.18s ease; }
     .nav-mobile-menu a:last-of-type { border-bottom: none; }
@@ -179,7 +179,7 @@
       margin-bottom: 14px;
     }
     .page-header-sub {
-      font-size: 16px;
+      font-size: 17px;
       color: rgba(255,255,255,0.70);
       line-height: 1.65;
       max-width: 560px;
@@ -228,7 +228,7 @@
       font-family: 'Montserrat', sans-serif;
       font-weight: 700; font-size: 15px; color: #0A1628;
     }
-    .td-description { color: #6B7280; font-size: 14px; line-height: 1.55; max-width: 280px; }
+    .td-description { color: #6B7280; font-size: 15px; line-height: 1.55; max-width: 280px; }
     .td-duration { color: #374151; font-size: 14px; white-space: nowrap; }
     .td-price { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; color: #0B5DBB; white-space: nowrap; }
     .td-monthly { color: #374151; font-size: 14px; white-space: nowrap; }
@@ -292,7 +292,7 @@
       letter-spacing: -0.01em;
     }
     .package-desc {
-      font-size: 14px; color: #6B7280; line-height: 1.6;
+      font-size: 15px; color: #6B7280; line-height: 1.6;
       margin-bottom: 24px;
     }
     .package-freq {
@@ -339,7 +339,7 @@
       font-weight: 700; font-size: 15px; color: #0A1628;
       margin-bottom: 6px;
     }
-    .discount-body { font-size: 14px; color: #6B7280; line-height: 1.6; }
+    .discount-body { font-size: 15px; color: #6B7280; line-height: 1.6; }
 
     @media (max-width: 768px) {
       .discounts-grid { grid-template-columns: 1fr; gap: 28px; }
@@ -604,7 +604,7 @@
       </nav>
 
       <div class="nav-ctas">
-        <a href="index.html#contact" class="nav-cta-btn">Request a Consultation</a>
+        <a href="index.html#contact" class="nav-cta-btn">Request a Free Assessment</a>
       </div>
 
       <button class="nav-hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
@@ -620,7 +620,7 @@
   <a href="pricing.html" class="active">Pricing</a>
   <a href="index.html#contact">Contact</a>
   <div class="nav-mobile-btns">
-    <a href="index.html#contact" class="btn btn-primary">Request a Consultation</a>
+    <a href="index.html#contact" class="btn btn-primary">Request a Free Assessment</a>
   </div>
 </div>
 
@@ -821,13 +821,23 @@
 <section class="cta-section" aria-labelledby="cta-headline">
   <div class="container">
     <div class="cta-inner reveal">
-      <h2 class="cta-headline" id="cta-headline">Ready to get a custom quote?</h2>
-      <p class="cta-sub">We'll assess your cleanroom and give you an exact number — no guesswork. Free consultations available.</p>
-      <a href="index.html#contact" class="btn btn-white">Request a Consultation</a>
+      <h2 class="cta-headline" id="cta-headline">Not sure which service you need?</h2>
+      <p class="cta-sub">Request a free cleanroom readiness assessment and we'll identify your gaps before recommending a service plan.</p>
+      <a href="index.html#contact" class="btn btn-white">Request a Free Assessment</a>
       <a href="mailto:elitecompoundingaseptic@gmail.com" class="cta-email-link">Or email us at elitecompoundingaseptic@gmail.com</a>
     </div>
   </div>
 </section>
+
+<!-- ─── PHARMACY VISIT NOTE ──────────────────────────────────── -->
+<div style="background:#0A1628;border-top:1px solid rgba(255,255,255,0.06);padding:20px 0;text-align:center;">
+  <div class="container">
+    <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;">
+      Met us during a pharmacy visit?
+      <a href="index.html#contact" style="color:#93c5fd;font-weight:600;text-decoration:none;margin-left:4px;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#93c5fd'">Request your free cleanroom readiness assessment here →</a>
+    </p>
+  </div>
+</div>
 
 <!-- ─── FOOTER ────────────────────────────────────────────────── -->
 <footer class="footer" aria-label="Site footer">
@@ -910,8 +920,8 @@
 
     <!-- Form state -->
     <div id="req-form-state">
-      <h2 class="req-modal-headline" id="req-modal-headline">Request a Package</h2>
-      <p class="req-modal-sub">We'll review your cleanroom details and send you a custom invoice within 24 hours.</p>
+      <h2 class="req-modal-headline" id="req-modal-headline">Request a Free Assessment</h2>
+      <p class="req-modal-sub">Tell us about your facility and we'll reach out within 24 hours to discuss this service and confirm a support plan.</p>
 
       <form id="req-form" action="https://formspree.io/f/mykvnjkq" method="POST" novalidate>
         <input type="hidden" name="_subject" value="New Package Request — Elite Compounding &amp; Aseptic Services">
@@ -964,8 +974,8 @@
           <textarea id="req-message" name="message" rows="4" placeholder="Any additional details about your facility or needs"></textarea>
         </div>
 
-        <button type="submit" id="req-submit-btn">Submit Request</button>
-        <p class="req-form-note">We typically respond within 24 hours with your custom invoice.</p>
+        <button type="submit" id="req-submit-btn">Request My Free Assessment</button>
+        <p class="req-form-note">No commitment required. We respond within 24 hours.</p>
         <p class="req-error-msg" id="req-error-msg">Something went wrong. Please email us directly at elitecompoundingaseptic@gmail.com</p>
       </form>
     </div>
@@ -973,8 +983,8 @@
     <!-- Success state -->
     <div id="req-success" aria-live="polite">
       <div class="req-check-circle" aria-hidden="true">&#10003;</div>
-      <div class="req-success-headline">Request Submitted!</div>
-      <p class="req-success-body">Thank you. We'll review your cleanroom details and send your custom invoice within 24 hours.</p>
+      <div class="req-success-headline">Assessment Requested!</div>
+      <p class="req-success-body">Thank you. We'll review your facility details and be in touch within 24 hours to schedule your free cleanroom readiness assessment.</p>
       <button id="req-success-close">Close</button>
     </div>
   </div>

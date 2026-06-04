@@ -148,7 +148,7 @@
 
     /* ─── NAV ────────────────────────────────────────────────── */
     .nav {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 200; height: 72px;
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 200; height: 90px;
       background: rgba(255,255,255,0);
       border-bottom: none;
       box-shadow: none;
@@ -180,14 +180,14 @@
       height: 100%;
       padding: 0 32px 0 16px;
     }
-    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; text-decoration: none; }
-    .nav-logo-img { height: 70px; width: auto; display: block; }
+    .nav-logo { display: flex; align-items: center; gap: 14px; flex-shrink: 0; text-decoration: none; }
+    .nav-logo-img { height: 82px; width: auto; display: block; }
     .nav-logo-text {
-      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px;
+      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 20px;
       letter-spacing: -0.02em; line-height: 1.2;
     }
     .nav-logo-text span {
-      display: block; font-size: 9px; font-weight: 500;
+      display: block; font-size: 11.5px; font-weight: 500;
       letter-spacing: 0.1em; text-transform: uppercase; font-family: 'Inter', sans-serif;
     }
     .nav-links {
@@ -195,7 +195,7 @@
       justify-content: center;
     }
     .nav-links a {
-      padding: 8px 13px; font-size: 13.5px; font-weight: 500;
+      padding: 8px 17px; font-size: 17px; font-weight: 500;
       letter-spacing: 0.01em; border-radius: 6px;
       white-space: nowrap; display: inline-flex; align-items: center;
       min-height: 44px;
@@ -205,10 +205,10 @@
     .nav-ctas { display: flex; align-items: center; justify-content: flex-end; }
     .nav-cta-btn {
       display: inline-flex; align-items: center;
-      padding: 9px 18px; background: #0B5DBB; color: #fff;
-      font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
-      border-radius: 5px; border: none; cursor: pointer; white-space: nowrap;
-      text-decoration: none; line-height: 1; min-height: 44px;
+      padding: 12px 26px; background: #0B5DBB; color: #fff;
+      font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 600;
+      border-radius: 6px; border: none; cursor: pointer; white-space: nowrap;
+      text-decoration: none; line-height: 1; min-height: 48px;
       transition: background 0.18s ease, box-shadow 0.18s ease;
     }
     .nav-cta-btn:hover { background: #0A3F8C; box-shadow: 0 4px 16px rgba(11,93,187,0.28); }
@@ -217,7 +217,7 @@
     .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-hamburger.open span:nth-child(2) { opacity: 0; }
     .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .nav-mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: #ffffff; border-bottom: 1px solid var(--border); padding: 20px 24px 28px; z-index: 190; box-shadow: 0 8px 32px rgba(10,15,30,0.1); }
+    .nav-mobile-menu { display: none; position: fixed; top: 90px; left: 0; right: 0; background: #ffffff; border-bottom: 1px solid var(--border); padding: 20px 24px 28px; z-index: 190; box-shadow: 0 8px 32px rgba(10,15,30,0.1); }
     .nav-mobile-menu.open { display: block; }
     .nav-mobile-menu a { display: block; padding: 14px 24px; font-size: 18px; font-weight: 500; color: var(--text-2); border-bottom: 1px solid var(--border); transition: color 0.18s ease; width: 100%; min-height: 44px; }
     .nav-mobile-menu a:last-of-type { border-bottom: none; }
@@ -318,7 +318,7 @@
     .hero-badge-dot svg { width: 11px; height: 11px; }
     .hero-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(32px, 5vw, 64px); line-height: 1.1; letter-spacing: -0.03em; color: var(--text); margin-bottom: 22px; display: block; }
     .hero-headline .accent { color: var(--cobalt); }
-    .hero-sub { font-size: clamp(15px, 4vw, 20px); line-height: 1.7; color: var(--text-2); max-width: 520px; margin-bottom: 32px; }
+    .hero-sub { font-size: clamp(16px, 4vw, 21px); line-height: 1.7; color: var(--text-2); max-width: 520px; margin-bottom: 32px; }
     .hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; }
     .hero-trust { display: flex; align-items: center; flex-wrap: wrap; background: rgba(255,255,255,0.85); border: 1px solid rgba(11,93,187,0.15); border-radius: 12px; padding: 12px 20px; gap: 20px; backdrop-filter: blur(8px); box-shadow: 0 4px 16px rgba(11,93,187,0.08); }
     .hero-trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.70); }
@@ -439,18 +439,18 @@
     .prob-panel-icon svg { width: 26px; height: 26px; color: #fff; }
     .prob-panel-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 21px; color: #0A0F1E; margin: 6px 0 0; letter-spacing: -0.025em; line-height: 1.25; }
     .prob-panel-body { padding: 28px 32px 32px; }
-    .prob-panel-desc { font-size: 15px; color: #4A5468; line-height: 1.75; margin: 0; }
+    .prob-panel-desc { font-size: 16px; color: #4A5468; line-height: 1.75; margin: 0; }
     .prob-panel-divider { border: none; border-top: 1px solid #E2E8F4; margin: 24px 0; }
     .prob-panel-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #0052B8; margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
     .prob-panel-label::before { content: ''; width: 16px; height: 2px; background: var(--cobalt); border-radius: 2px; display: inline-block; }
-    .prob-panel-solution { font-size: 15px; color: #0A0F1E; font-weight: 500; line-height: 1.65; margin: 0; }
+    .prob-panel-solution { font-size: 16px; color: #0A0F1E; font-weight: 500; line-height: 1.65; margin: 0; }
 
 
     /* ─── SECTION HEADER ─────────────────────────────────────── */
     .section-header { text-align: center; margin-bottom: 64px; }
     .section-eyebrow { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #0B5DBB; margin-bottom: 16px; }
     .section-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(24px, 3.5vw, 42px); letter-spacing: -0.02em; line-height: 1.15; color: #0A1628; margin-bottom: 16px; max-width: 640px; margin-left: auto; margin-right: auto; }
-    .section-sub { font-size: clamp(14px, 1.5vw, 16px); color: #4B5563; line-height: 1.7; max-width: 540px; margin: 0 auto; }
+    .section-sub { font-size: clamp(15px, 1.5vw, 17px); color: #4B5563; line-height: 1.7; max-width: 540px; margin: 0 auto; }
 
     /* ─── SERVICES ───────────────────────────────────────────── */
     .services { padding: 100px 0 0; background: #F9FAFB; }
@@ -493,7 +493,7 @@
     .service-icon { width: 52px; height: 52px; background: var(--cobalt-light); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
     .service-icon svg { width: 26px; height: 26px; color: var(--cobalt); }
     .service-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: clamp(18px, 2.5vw, 24px); color: #0A1628; margin-bottom: 10px; letter-spacing: -0.02em; }
-    .service-desc { font-size: 15px; color: #4B5563; line-height: 1.65; margin-bottom: 24px; }
+    .service-desc { font-size: 16px; color: #4B5563; line-height: 1.65; margin-bottom: 24px; }
     .service-deliverables { display: flex; flex-direction: column; gap: 9px; }
     .service-deliverable { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-2); line-height: 1.5; }
     .service-deliverable::before { content: ''; width: 18px; height: 18px; border-radius: 50%; background: var(--cobalt-light); border: 1.5px solid var(--cobalt-border); flex-shrink: 0; margin-top: 0px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8l3 3 6-6' stroke='%230070F3' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-size: 14px; background-position: center; background-repeat: no-repeat; }
@@ -684,7 +684,7 @@
     .why .why-link { align-self: center; }
     .why .section-eyebrow { text-align: center; display: block; }
     .why-headline { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(24px, 3.5vw, 42px); letter-spacing: -0.02em; line-height: 1.15; color: var(--text); margin-bottom: 20px; max-width: 640px; }
-    .why-sub { font-size: 16px; color: var(--text-2); line-height: 1.7; margin-bottom: 0; max-width: 580px; }
+    .why-sub { font-size: 17px; color: var(--text-2); line-height: 1.7; margin-bottom: 0; max-width: 580px; }
     .why-link { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: var(--cobalt); transition: gap 0.22s ease; }
     .why-link:hover { gap: 14px; }
     .why-link svg { width: 16px; height: 16px; }
@@ -705,7 +705,7 @@
     .why-card:nth-child(3) .why-card-icon { background: #EBF1FB; }
     .why-card:nth-child(4) .why-card-icon { background: #EBF1FB; }
     .why-card-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; color: #0A1628; margin-bottom: 8px; letter-spacing: -0.01em; }
-    .why-card-desc { font-size: 14px; color: #6B7280; line-height: 1.6; }
+    .why-card-desc { font-size: 15px; color: #6B7280; line-height: 1.6; }
 
     /* ─── WHO WE SERVE ───────────────────────────────────────── */
     .who { padding: 100px 0; background: var(--surface-navy); position: relative; overflow: hidden; }
@@ -723,7 +723,7 @@
     .who-icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
     .who-icon svg { width: 24px; height: 24px; color: #fff; }
     .who-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; color: #FFFFFF; line-height: 1.3; }
-    .who-type { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.4; }
+    .who-type { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.4; }
 
     /* ─── CONTACT ────────────────────────────────────────────── */
     .cta-section { padding: 100px 0; background: linear-gradient(135deg, #0B5DBB, #0A3F8C); position: relative; overflow: hidden; }
@@ -1310,7 +1310,7 @@
       </nav>
 
       <div class="nav-ctas">
-        <a href="#contact" class="nav-cta-btn">Request a Consultation</a>
+        <a href="#contact" class="nav-cta-btn">Request a Free Assessment</a>
       </div>
 
       <button class="nav-hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
@@ -1326,8 +1326,7 @@
   <a href="pricing.html">Pricing</a>
   <a href="#contact">Contact</a>
   <div class="nav-mobile-btns">
-    <a href="#contact" class="btn btn-ghost">Schedule a Call</a>
-    <a href="#contact" class="btn btn-primary">Request a Quote</a>
+    <a href="#contact" class="btn btn-primary">Request a Free Assessment</a>
   </div>
 </div>
 
@@ -1350,11 +1349,11 @@
         </div>
 
         <h1 class="hero-headline" id="hero-headline">
-          Your cleanroom. <span class="accent">Always compliant.</span>
+          Keep Your Sterile Cleanroom <span class="accent">Inspection&#8209;Ready</span>
         </h1>
 
         <p class="hero-sub">
-          Florida's specialist consultancy for USP &lt;797&gt; and &lt;800&gt; compliance, cleanroom certification, and sterile compounding staffing. We make your facility audit-ready, year-round.
+          USP &lt;797&gt;/&lt;800&gt; cleanroom support, documentation review, and sterile compounding readiness for Florida pharmacies.
         </p>
 
         <div class="hero-ctas">
@@ -1402,6 +1401,21 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ─── INTRO / GAPS EXPLAINER ───────────────────────────────── -->
+<section style="padding:72px 0 48px;background:#F4F8FE;position:relative;z-index:1;" aria-label="What we help you identify">
+  <div class="container">
+    <div class="reveal" style="max-width:820px;margin:0 auto;text-align:center;">
+      <span class="section-eyebrow">Why Facilities Come to Us</span>
+      <h2 style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(22px,3vw,34px);letter-spacing:-0.02em;line-height:1.2;color:#0A1628;margin-bottom:20px;">Gaps don't wait for your next inspection — we help you find them first.</h2>
+      <p style="font-size:clamp(15px,1.5vw,17px);color:#4A5468;line-height:1.75;margin-bottom:40px;">Most citations aren't surprises. They're cleaning protocol drift, documentation that hasn't been updated since a staff change, SOPs written before the 2023 USP &lt;797&gt; revisions, and environmental monitoring logs with missing entries. We review your facility for gaps in <strong>cleaning practices, documentation, SOPs, staffing, and environmental monitoring</strong> — before an inspection exposes them.</p>
+      <a href="#contact" class="btn btn-primary" style="display:inline-flex;">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5L13.5 5V11L8 14.5L2.5 11V5L8 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        Request a Free Cleanroom Readiness Assessment
+      </a>
     </div>
   </div>
 </section>
@@ -1574,6 +1588,14 @@
   </div>
 </section>
 
+<!-- CTA after Problems We Solve -->
+<div style="background:#0A1628;padding:28px 0;text-align:center;" aria-label="Assessment CTA">
+  <div class="container">
+    <p style="color:rgba(255,255,255,0.75);font-size:15px;margin-bottom:14px;">Seeing yourself in any of these? We can help identify your specific gaps.</p>
+    <a href="#contact" class="btn btn-primary" style="display:inline-flex;">Request a Free Cleanroom Readiness Assessment →</a>
+  </div>
+</div>
+
 <!-- ─── SERVICES ─────────────────────────────────────────────── -->
 <section class="services" id="services" aria-labelledby="services-headline">
   <div class="container">
@@ -1624,14 +1646,19 @@
         </div>
       </div>
     </div>
-    <p style="text-align:center;font-size:13px;color:#6B7280;margin-top:20px;padding-bottom:40px;">PRN staffing support available on a limited basis. Ask us about availability.</p>
+    <p style="text-align:center;font-size:13px;color:#6B7280;margin-top:20px;padding-bottom:24px;">PRN staffing support available on a limited basis. Ask us about availability.</p>
+    <div style="text-align:center;padding-bottom:48px;">
+      <a href="#contact" class="btn btn-primary" style="display:inline-flex;">Request a Free Assessment →</a>
+    </div>
   </div>
 </section>
 
 <!-- ─── PRICING CTA BAND ─────────────────────────────────────── -->
-<a href="pricing.html" class="pricing-band" aria-label="See transparent pricing for cleanroom cleaning and sterile tech services">
-  See transparent pricing for cleanroom cleaning and sterile tech services →
-</a>
+<div style="background:#F0F5FF;border-top:1px solid #DDE6F5;border-bottom:1px solid #DDE6F5;padding:20px 24px;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;">
+  <a href="pricing.html" class="pricing-band" style="display:inline;background:none;padding:0;font-size:15px;" aria-label="See transparent pricing for cleanroom cleaning and sterile tech services">See transparent pricing for cleanroom cleaning &amp; sterile tech →</a>
+  <span style="color:#B8CFED;font-size:14px;">|</span>
+  <a href="#contact" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;color:#0B5DBB;text-decoration:none;white-space:nowrap;">Not sure what you need? Request a free assessment →</a>
+</div>
 
 <!-- ─── HOW IT WORKS ────────────────────────────────────────── -->
 <section class="how-it-works" aria-labelledby="hiw-headline">
@@ -1691,6 +1718,9 @@
         <p class="hiw-desc">Ongoing monitoring, annual reviews, and pre-inspection readiness keep you compliant.</p>
       </div>
 
+    </div>
+    <div style="text-align:center;margin-top:48px;" class="reveal">
+      <a href="#contact" class="btn btn-primary" style="display:inline-flex;">Start with a Free Assessment →</a>
     </div>
   </div>
 </section>
@@ -1974,36 +2004,65 @@
   </div>
 </section>
 
+<!-- ─── WHAT HAPPENS AFTER ────────────────────────────────────── -->
+<section style="padding:80px 0;background:#F4F8FE;" aria-label="What happens after you request an assessment">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Our Process</span>
+      <h2 class="section-headline" style="max-width:600px;">What Happens After You Request an Assessment?</h2>
+      <p class="section-sub">No forms lost in inboxes. No vague timelines. Here's exactly what to expect.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px;" class="assess-steps-grid">
+      <div class="reveal" style="background:#fff;border:1px solid #E2E8F4;border-radius:10px;padding:28px 24px;text-align:center;box-shadow:0 2px 12px rgba(0,82,184,0.06);">
+        <div style="width:48px;height:48px;background:#EBF1FB;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:18px;color:#0052B8;">1</div>
+        <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;color:#0A1628;margin-bottom:8px;letter-spacing:-0.01em;">We Review Your Request</div>
+        <p style="font-size:14px;color:#4A5468;line-height:1.65;">We look at your facility type and main concern to understand what kind of support will be most useful before we reach out.</p>
+      </div>
+      <div class="reveal reveal-delay-1" style="background:#fff;border:1px solid #E2E8F4;border-radius:10px;padding:28px 24px;text-align:center;box-shadow:0 2px 12px rgba(0,82,184,0.06);">
+        <div style="width:48px;height:48px;background:#EBF1FB;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:18px;color:#0052B8;">2</div>
+        <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;color:#0A1628;margin-bottom:8px;letter-spacing:-0.01em;">We Schedule a Call or Site Visit</div>
+        <p style="font-size:14px;color:#4A5468;line-height:1.65;">Based on your preference and location, we'll set up a phone call or arrange a visit to your Florida facility — at no cost to you.</p>
+      </div>
+      <div class="reveal reveal-delay-2" style="background:#fff;border:1px solid #E2E8F4;border-radius:10px;padding:28px 24px;text-align:center;box-shadow:0 2px 12px rgba(0,82,184,0.06);">
+        <div style="width:48px;height:48px;background:#EBF1FB;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:18px;color:#0052B8;">3</div>
+        <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;color:#0A1628;margin-bottom:8px;letter-spacing:-0.01em;">We Identify the Gaps</div>
+        <p style="font-size:14px;color:#4A5468;line-height:1.65;">We review your cleaning protocols, documentation, SOPs, staffing, and environmental monitoring against current USP &lt;797&gt;/&lt;800&gt; standards.</p>
+      </div>
+      <div class="reveal reveal-delay-3" style="background:#fff;border:1px solid #E2E8F4;border-radius:10px;padding:28px 24px;text-align:center;box-shadow:0 2px 12px rgba(0,82,184,0.06);">
+        <div style="width:48px;height:48px;background:#EBF1FB;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:18px;color:#0052B8;">4</div>
+        <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;color:#0A1628;margin-bottom:8px;letter-spacing:-0.01em;">We Deliver a Support Plan</div>
+        <p style="font-size:14px;color:#4A5468;line-height:1.65;">You receive a clear, prioritized plan for addressing gaps — and we can stay on to provide the hands-on support your facility needs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  @media (max-width: 768px) {
+    .assess-steps-grid { grid-template-columns: 1fr 1fr !important; }
+  }
+  @media (max-width: 480px) {
+    .assess-steps-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
+
 <section class="cta-section" id="contact" aria-labelledby="cta-headline">
   <div class="cta-section-grain" aria-hidden="true"></div>
   <div class="container">
     <div class="cta-box reveal">
       <div>
-        <h2 class="cta-headline" id="cta-headline">Ready to get compliant?</h2>
-        <p class="cta-sub">Schedule a free 30-minute assessment with one of our USP compliance specialists.</p>
+        <h2 class="cta-headline" id="cta-headline">Request a Free Cleanroom Readiness Assessment</h2>
+        <p class="cta-sub">Tell us about your facility and we'll identify gaps in cleaning, documentation, SOPs, staffing, and environmental monitoring — before an inspection does.</p>
       </div>
 
-      <div class="contact-card" role="region" aria-label="Get in touch">
+      <div class="contact-card" role="region" aria-label="Request a free assessment">
         <div class="contact-card-header">
-          <div class="contact-card-title">Get in Touch</div>
-          <div class="contact-card-sub">USP compliance specialists · 24hr response guarantee</div>
-        </div>
-
-        <!-- Tab switcher hidden until booking link is configured -->
-        <div style="padding: 16px 28px 0; display:none;" id="contactTabBar">
-          <div class="contact-tabs" role="tablist" aria-label="Contact method">
-            <button class="contact-tab-btn active" role="tab" aria-selected="true" aria-controls="panel-form" id="tab-form" type="button">
-              ✉ Send a Message
-            </button>
-            <button class="contact-tab-btn" role="tab" aria-selected="false" aria-controls="panel-cal" id="tab-cal" type="button">
-              📅 Book a Call
-            </button>
-          </div>
+          <div class="contact-card-title">Request Your Free Assessment</div>
+          <div class="contact-card-sub">USP &lt;797&gt;/&lt;800&gt; readiness specialists · Response within 24 hours</div>
         </div>
 
         <!-- Form panel -->
-        <div class="contact-form-panel" id="panel-form" role="tabpanel" aria-labelledby="tab-form">
-          <form id="contactForm" novalidate aria-label="Request a free assessment">
+        <div class="contact-form-panel" id="panel-form">
+          <form id="contactForm" novalidate aria-label="Request a free cleanroom readiness assessment">
             <div class="contact-card-body">
               <div class="contact-form-fields" id="formFields">
                 <div class="contact-field-grid">
@@ -2012,17 +2071,28 @@
                     <input type="text" id="contact-name" name="name" class="contact-input" placeholder="Jane Smith" autocomplete="name" aria-required="true" aria-describedby="msg-name">
                     <div class="contact-field-msg" id="msg-name" aria-live="polite"></div>
                   </div>
+                  <div class="contact-field-wrap" id="wrap-facility-name">
+                    <label class="contact-label" for="contact-facility-name">Facility Name <span class="required" aria-hidden="true">*</span></label>
+                    <input type="text" id="contact-facility-name" name="facility_name" class="contact-input" placeholder="ABC Compounding Pharmacy" aria-required="true" aria-describedby="msg-facility-name">
+                    <div class="contact-field-msg" id="msg-facility-name" aria-live="polite"></div>
+                  </div>
+                </div>
+                <div class="contact-field-grid">
                   <div class="contact-field-wrap" id="wrap-email">
                     <label class="contact-label" for="contact-email">Email <span class="required" aria-hidden="true">*</span></label>
                     <input type="email" id="contact-email" name="email" class="contact-input" placeholder="jane@pharmacy.com" autocomplete="email" aria-required="true" aria-describedby="msg-email">
                     <div class="contact-field-msg" id="msg-email" aria-live="polite"></div>
                   </div>
-                </div>
-                <div class="contact-field-grid">
                   <div class="contact-field-wrap" id="wrap-phone">
                     <label class="contact-label" for="contact-phone">Phone</label>
                     <input type="tel" id="contact-phone" name="phone" class="contact-input" placeholder="(555) 000-0000" autocomplete="tel" aria-describedby="msg-phone">
                     <div class="contact-field-msg" id="msg-phone" aria-live="polite"></div>
+                  </div>
+                </div>
+                <div class="contact-field-grid">
+                  <div class="contact-field-wrap">
+                    <label class="contact-label" for="contact-city">City</label>
+                    <input type="text" id="contact-city" name="city" class="contact-input" placeholder="Tampa" autocomplete="address-level2">
                   </div>
                   <div class="contact-field-wrap">
                     <label class="contact-label" for="contact-facility">Facility Type</label>
@@ -2031,16 +2101,41 @@
                       <option value="503a">503A Compounding Pharmacy</option>
                       <option value="503b">503B Outsourcing Facility</option>
                       <option value="hospital">Hospital IV Room</option>
-                      <option value="clinic">IV / Wellness Clinic</option>
                       <option value="oncology">Oncology Clinic</option>
+                      <option value="clinic">IV / Wellness Clinic</option>
                       <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="contact-field-grid">
+                  <div class="contact-field-wrap">
+                    <label class="contact-label" for="contact-concern">Main Concern</label>
+                    <select id="contact-concern" name="main_concern" class="contact-select">
+                      <option value="">Select concern...</option>
+                      <option value="cleaning">Cleaning Protocols</option>
+                      <option value="documentation">Documentation &amp; Logs</option>
+                      <option value="sops">SOP Gaps / Updates</option>
+                      <option value="staffing">Staffing / Coverage</option>
+                      <option value="em">Environmental Monitoring</option>
+                      <option value="inspection">Upcoming Inspection</option>
+                      <option value="general">General Readiness Review</option>
+                    </select>
+                  </div>
+                  <div class="contact-field-wrap">
+                    <label class="contact-label" for="contact-contact-time">Preferred Contact Time</label>
+                    <select id="contact-contact-time" name="preferred_contact_time" class="contact-select">
+                      <option value="">Select time...</option>
+                      <option value="morning">Morning (8am–12pm ET)</option>
+                      <option value="afternoon">Afternoon (12pm–5pm ET)</option>
+                      <option value="evening">Evening (5pm–7pm ET)</option>
+                      <option value="anytime">Anytime</option>
                     </select>
                   </div>
                 </div>
                 <div class="contact-field-full">
                   <div class="contact-field-wrap" id="wrap-message">
                     <label class="contact-label" for="contact-message">Message <span class="required" aria-hidden="true">*</span></label>
-                    <textarea id="contact-message" name="message" class="contact-textarea" rows="3" placeholder="Tell us about your compliance challenge…" aria-required="true" aria-describedby="msg-message"></textarea>
+                    <textarea id="contact-message" name="message" class="contact-textarea" rows="3" placeholder="Describe your main compliance concern or anything you'd like us to know before we connect…" aria-required="true" aria-describedby="msg-message"></textarea>
                     <div class="contact-field-msg" id="msg-message" aria-live="polite"></div>
                   </div>
                 </div>
@@ -2053,75 +2148,38 @@
                   </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary contact-submit" id="submitBtn">Send Message →</button>
+                <button type="submit" class="btn btn-primary contact-submit" id="submitBtn">Request My Free Assessment →</button>
+                <p style="font-size:11px;color:#8A93A8;text-align:center;margin-top:8px;line-height:1.5;">No commitment required. We respond within 24 hours.</p>
               </div>
 
               <div class="contact-loading" id="loadingState" aria-live="polite" aria-label="Sending message">
                 <div class="contact-spinner" aria-hidden="true"></div>
-                <div class="contact-loading-text">Sending your message…</div>
+                <div class="contact-loading-text">Sending your request…</div>
               </div>
 
               <div class="contact-success" id="successState" role="status">
                 <div class="contact-success-icon" aria-hidden="true">✓</div>
-                <div class="contact-success-title">Message sent!</div>
-                <div class="contact-success-body">We'll be in touch within 24 hours.<br>Check your inbox for a confirmation copy.</div>
+                <div class="contact-success-title">Assessment Requested!</div>
+                <div class="contact-success-body">We'll review your facility details and reach out within 24 hours to schedule your free assessment.</div>
               </div>
             </div>
           </form>
-        </div>
-
-        <!-- Calendar panel -->
-        <div class="contact-calendar-panel" id="panel-cal" role="tabpanel" aria-labelledby="tab-cal">
-          <div class="cal-embed-wrap">
-            <div class="cal-embed-inner">
-              <div class="cal-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="color: var(--cobalt);">
-                  <rect x="3" y="4" width="18" height="18" rx="3"/>
-                  <path d="M16 2v4M8 2v4M3 10h18"/>
-                  <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/>
-                </svg>
-              </div>
-              <div>
-                <div class="cal-heading">Book a Free 30-Minute Assessment</div>
-                <p class="cal-sub">Pick a time that works for you. Our USP specialists are available Mon to Fri, 9 am to 5 pm ET.</p>
-              </div>
-              <div class="cal-slots" role="list" aria-label="Available time slots">
-                <div class="cal-slot" role="listitem" tabindex="0" aria-label="Today 2:00 PM – Available">
-                  <div>
-                    <div class="cal-slot-time">Today · 2:00 PM</div>
-                    <div class="cal-slot-tz">Eastern Time</div>
-                  </div>
-                  <span class="cal-slot-badge">Available</span>
-                </div>
-                <div class="cal-slot" role="listitem" tabindex="0" aria-label="Tomorrow 10:30 AM – Available">
-                  <div>
-                    <div class="cal-slot-time">Tomorrow · 10:30 AM</div>
-                    <div class="cal-slot-tz">Eastern Time</div>
-                  </div>
-                  <span class="cal-slot-badge">Available</span>
-                </div>
-                <div class="cal-slot" role="listitem" tabindex="0" aria-label="Tomorrow 3:00 PM – Available">
-                  <div>
-                    <div class="cal-slot-time">Tomorrow · 3:00 PM</div>
-                    <div class="cal-slot-tz">Eastern Time</div>
-                  </div>
-                  <span class="cal-slot-badge">Available</span>
-                </div>
-              </div>
-              <div class="cal-divider"><span class="cal-divider-text">or open full calendar</span></div>
-              <button class="cal-open-btn" type="button" onclick="window.open('https://calendly.com/elitecompoundingservices','_blank')" aria-label="Open full scheduling calendar">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                View All Availability
-              </button>
-              <div class="cal-disclaimer">No credit card required · Cancel or reschedule anytime</div>
-            </div>
-          </div>
         </div>
 
       </div>
     </div>
   </div>
 </section>
+
+<!-- ─── PHARMACY VISIT NOTE ──────────────────────────────────── -->
+<div style="background:#0A1628;border-top:1px solid rgba(255,255,255,0.06);padding:20px 0;text-align:center;">
+  <div class="container">
+    <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;">
+      Met us during a pharmacy visit?
+      <a href="#contact" style="color:#93c5fd;font-weight:600;text-decoration:none;margin-left:4px;transition:color 0.18s ease;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#93c5fd'">Request your free cleanroom readiness assessment here →</a>
+    </p>
+  </div>
+</div>
 
 <!-- ─── FOOTER ────────────────────────────────────────────────── -->
 <footer class="footer" aria-label="Site footer">
@@ -2202,7 +2260,7 @@
   </div>
 </footer>
 <div id="floating-cta">
-  <a href="#contact" class="btn btn-primary btn-sm">Get a free assessment →</a>
+  <a href="#contact" class="btn btn-primary btn-sm">Request a Free Assessment →</a>
 </div>
 
 <script>
@@ -2331,6 +2389,10 @@
       if (!v) { setField('name', 'error', 'Full name is required'); return false; }
       setField('name', 'valid', ''); return true;
     }
+    if (id === 'facility-name') {
+      if (!v) { setField('facility-name', 'error', 'Facility name is required'); return false; }
+      setField('facility-name', 'valid', ''); return true;
+    }
     if (id === 'email') {
       if (!v) { setField('email', 'error', 'Email is required'); return false; }
       if (!validateEmail(v)) { setField('email', 'error', 'Enter a valid email'); return false; }
@@ -2351,16 +2413,17 @@
 
   function validateAll() {
     var a = validateField('name');
-    var b = validateField('email');
-    var c = validateField('phone');
-    var d = validateField('message');
-    return a && b && c && d;
+    var b = validateField('facility-name');
+    var c = validateField('email');
+    var d = validateField('phone');
+    var e = validateField('message');
+    return a && b && c && d && e;
   }
 
   // Instant inline validation — fires on input with a short debounce
   // so feedback appears as the user types, not only after blur
   var debounceTimers = {};
-  ['name','email','phone','message'].forEach(function(id) {
+  ['name','facility-name','email','phone','message'].forEach(function(id) {
     var el = document.getElementById('contact-' + id);
     if (!el) return;
     // Validate immediately on input (debounced 280ms so it's not jarring mid-word)
@@ -2386,14 +2449,18 @@
 
     var data = {
       access_key: '13ef69ad-13b3-4349-a13c-6300fd8a0ed7',
-      subject: 'New Consultation Request — Elite Compounding Website',
+      subject: 'New Cleanroom Readiness Assessment Request — Elite Compounding',
       from_name: document.getElementById('contact-name').value.trim(),
       replyto: document.getElementById('contact-email').value.trim(),
-      name:    document.getElementById('contact-name').value.trim(),
-      email:   document.getElementById('contact-email').value.trim(),
-      phone:   document.getElementById('contact-phone').value.trim(),
+      name:          document.getElementById('contact-name').value.trim(),
+      facility_name: document.getElementById('contact-facility-name').value.trim(),
+      email:         document.getElementById('contact-email').value.trim(),
+      phone:         document.getElementById('contact-phone').value.trim(),
+      city:          document.getElementById('contact-city').value.trim(),
       facility_type: document.getElementById('contact-facility').value,
-      message: document.getElementById('contact-message').value.trim(),
+      main_concern:  document.getElementById('contact-concern').value,
+      preferred_contact_time: document.getElementById('contact-contact-time').value,
+      message:       document.getElementById('contact-message').value.trim(),
     };
 
     try {
