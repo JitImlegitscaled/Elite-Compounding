@@ -232,6 +232,7 @@
     .td-duration { color: #374151; font-size: 14px; white-space: nowrap; }
     .td-price { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; color: #0B5DBB; white-space: nowrap; }
     .td-monthly { color: #374151; font-size: 14px; white-space: nowrap; }
+    .td-price-note { display: block; font-size: 13px; font-weight: 400; color: #6B7280; font-style: italic; margin-top: 2px; white-space: nowrap; }
 
     /* ─── MOBILE TABLE → STACKED CARDS ─────────────────────── */
     @media (max-width: 767px) {
@@ -307,6 +308,9 @@
     }
     .package-price-unit {
       font-size: 16px; font-weight: 600; color: #6B7280;
+    }
+    .package-price-note {
+      font-size: 14px; font-weight: 400; color: #6B7280; font-style: italic; margin-top: 4px;
     }
 
     @media (max-width: 640px) {
@@ -662,23 +666,23 @@
             <td data-label="Service"><span class="td-service-name">Deep Weekly Cleaning</span></td>
             <td data-label="Description"><span class="td-description">Deep clean + sporicidal agent. Low walls, ceilings, shelving, and equipment.</span></td>
             <td data-label="Duration"><span class="td-duration">3–4 hours</span></td>
-            <td data-label="Per Visit"><span class="td-price">Starting at $550</span></td>
-            <td data-label="Est. Monthly"><span class="td-monthly">Starting at $2,200</span></td>
+            <td data-label="Per Visit"><span class="td-price">Starting at $550</span><span class="td-price-note">varies by sq. ft.</span></td>
+            <td data-label="Est. Monthly"><span class="td-monthly">Starting at $2,200</span><span class="td-price-note">varies by sq. ft.</span></td>
             <td data-label="Action" class="td-action"><button class="req-btn" onclick="openReqModal('Deep Weekly Cleaning')">Request This Package</button></td>
           </tr>
           <tr>
             <td data-label="Service"><span class="td-service-name">Full Monthly Cleaning</span></td>
             <td data-label="Description"><span class="td-description">Exhaustive full cleanroom clean (floors, walls, ceilings, racks, etc.) + sporicidal agent.</span></td>
             <td data-label="Duration"><span class="td-duration">4–6 hours</span></td>
-            <td data-label="Per Visit"><span class="td-price">Starting at $950</span></td>
-            <td data-label="Est. Monthly"><span class="td-monthly">Starting at $950</span></td>
+            <td data-label="Per Visit"><span class="td-price">Starting at $950</span><span class="td-price-note">varies by sq. ft.</span></td>
+            <td data-label="Est. Monthly"><span class="td-monthly">Starting at $950</span><span class="td-price-note">varies by sq. ft.</span></td>
             <td data-label="Action" class="td-action"><button class="req-btn" onclick="openReqModal('Full Monthly Cleaning')">Request This Package</button></td>
           </tr>
           <tr>
             <td data-label="Service"><span class="td-service-name">Event Cleaning</span></td>
             <td data-label="Description"><span class="td-description">Special cleaning after maintenance, validation, or inspection events.</span></td>
             <td data-label="Duration"><span class="td-duration">2–4 hours</span></td>
-            <td data-label="Per Visit"><span class="td-price">Starting at $280</span></td>
+            <td data-label="Per Visit"><span class="td-price">Starting at $280</span><span class="td-price-note">varies by sq. ft.</span></td>
             <td data-label="Est. Monthly"><span class="td-monthly">—</span></td>
             <td data-label="Action" class="td-action"><button class="req-btn" onclick="openReqModal('Event Cleaning')">Request This Package</button></td>
           </tr>
@@ -713,7 +717,7 @@
             <td data-label="Service"><span class="td-service-name">Sterile Tech PRN (Short)</span></td>
             <td data-label="Description"><span class="td-description">Sterile support — garbing, aseptic technique assistance, compounding support.</span></td>
             <td data-label="Max Duration"><span class="td-duration">Up to 4 hours</span></td>
-            <td data-label="Rate"><span class="td-price">Starting at $45 / hour</span></td>
+            <td data-label="Rate"><span class="td-price">Starting at $45 / hour</span><span class="td-price-note">varies by sq. ft.</span></td>
             <td data-label="Action" class="td-action"><button class="req-btn" onclick="openReqModal('Sterile Tech PRN (Short)')">Request This Package</button></td>
           </tr>
         </tbody>
@@ -738,6 +742,7 @@
         <p class="package-desc">Deep Weekly Cleaning + 1 short PRN tech visit</p>
         <div class="package-freq">Per visit</div>
         <div class="package-price">Starting at $650 <span class="package-price-unit">/ visit</span></div>
+        <div class="package-price-note">varies by sq. ft.</div>
         <button class="req-btn req-btn-full" onclick="openReqModal('Weekly Combo Package')">Request This Package</button>
       </div>
       <div class="package-card reveal reveal-delay-1">
@@ -746,6 +751,7 @@
         <p class="package-desc">4 Deep Weekly Cleanings + 1 Full Monthly Cleaning + 20 hours Sterile Tech PRN</p>
         <div class="package-freq">Monthly</div>
         <div class="package-price">Starting at $5,200 <span class="package-price-unit">/ month</span></div>
+        <div class="package-price-note">varies by sq. ft.</div>
         <button class="req-btn req-btn-full" onclick="openReqModal('Monthly VIP Package')">Request This Package</button>
       </div>
     </div>
