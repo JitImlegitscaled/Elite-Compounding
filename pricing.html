@@ -327,7 +327,7 @@
     }
     .discounts-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 40px;
     }
     .discount-item { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
@@ -346,9 +346,6 @@
     }
     .discount-body { font-size: 15px; color: #6B7280; line-height: 1.6; }
 
-    @media (max-width: 1024px) {
-      .discounts-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
-    }
     @media (max-width: 768px) {
       .discounts-grid { grid-template-columns: 1fr; gap: 28px; }
     }
@@ -671,21 +668,21 @@
             <td data-label="Service"><span class="td-service-name">Triple Decontamination (Post-Construction / Post-Audit)</span></td>
             <td data-label="Description"><span class="td-description">Full 3-cycle decon protocol (Cleaner → Disinfectant → Sporicide) over 3 consecutive days. Required after construction, renovation, or failed audit. Includes validated cleaning log with chemical lot numbers and dwell times.</span></td>
             <td data-label="Duration"><span class="td-duration">3 days (3 separate visits)</span></td>
-            <td data-label="Per Visit"><span class="td-price">Starting at $3,500</span><span class="td-price-note">flat event rate</span><span class="td-price-note">Large facilities: $6–$10 / sq ft</span></td>
+            <td data-label="Per Visit"><span class="td-price">Starting at $3,800</span><span class="td-price-note">flat event rate</span><span class="td-price-note">Large facilities: $6–$10 / sq ft</span></td>
             <td data-label="Action" class="td-action"><button class="req-btn" onclick="openReqModal('Triple Decontamination')">Request</button></td>
           </tr>
           <tr>
             <td data-label="Service"><span class="td-service-name">Emergency Action Level Response</span></td>
             <td data-label="Description"><span class="td-description">Urgent deep-clean intervention when microbial action levels are exceeded (fungal or bacterial positive). Production-critical response targeting ISO 5 and ISO 7 zones with sporicidal dwell-time precision.</span></td>
             <td data-label="Duration"><span class="td-duration">1 day (same-day or next-day)</span></td>
-            <td data-label="Per Visit"><span class="td-price">Starting at $2,000</span><span class="td-price-note">+$500–$1,000 urgency premium for &lt;48-hour dispatch</span></td>
+            <td data-label="Per Visit"><span class="td-price">Starting at $2,200</span><span class="td-price-note">$500 urgency premium for &lt;48-hour dispatch</span></td>
             <td data-label="Action" class="td-action"><button class="req-btn" onclick="openReqModal('Emergency Action Level Response')">Request</button></td>
           </tr>
           <tr>
             <td data-label="Service"><span class="td-service-name">Full Monthly Deep Clean</span></td>
             <td data-label="Description"><span class="td-description">Exhaustive clean of all surfaces — floors, walls, ceilings, HEPA return registers, racks, and equipment. Sporicidal agent applied per USP &lt;797&gt; contact-time requirements. Includes full documentation dossier.</span></td>
             <td data-label="Duration"><span class="td-duration">4–6 hours</span></td>
-            <td data-label="Per Visit"><span class="td-price">Starting at $800</span><span class="td-price-note">Annual contract available — lock in monthly rate</span><span class="td-price-note">Est. monthly: $800 (1× per month)</span></td>
+            <td data-label="Per Visit"><span class="td-price">Starting at $950</span><span class="td-price-note">Annual contract available — lock in monthly rate</span><span class="td-price-note">Est. monthly: $950 (1× per month)</span></td>
             <td data-label="Action" class="td-action"><button class="req-btn" onclick="openReqModal('Full Monthly Deep Clean')">Request</button></td>
           </tr>
           <tr>
@@ -740,29 +737,68 @@
   <div class="container">
     <div class="section-header reveal">
       <span class="section-eyebrow">Best Value</span>
-      <h2 class="section-headline" id="packages-headline">Recommended Packages</h2>
+      <h2 class="section-headline" id="packages-headline">Compliance Packages</h2>
     </div>
-    <p class="section-note reveal">Package pricing is estimated. Final cost varies by cleanroom size, ISO classification, and hours used.</p>
+    <p class="section-note reveal">Package pricing is estimated. Final cost varies by cleanroom size, ISO classification, and suite configuration.</p>
 
     <div class="packages-grid">
-      <div class="package-card reveal">
-        <div class="package-badge">POPULAR</div>
-        <div class="package-name">Weekly Combo Package</div>
-        <p class="package-desc">Deep Weekly Cleaning + 1 short PRN tech visit</p>
-        <div class="package-freq">Per visit</div>
-        <div class="package-price">Starting at $650 <span class="package-price-unit">/ visit</span></div>
-        <div class="package-price-note">varies by sq. ft.</div>
-        <button class="req-btn req-btn-full" onclick="openReqModal('Weekly Combo Package')">Request This Package</button>
-      </div>
+
       <div class="package-card reveal reveal-delay-1">
         <div class="package-badge">BEST VALUE</div>
-        <div class="package-name">Monthly VIP Package</div>
-        <p class="package-desc">4 Deep Weekly Cleanings + 1 Full Monthly Cleaning + 20 hours Sterile Tech PRN</p>
+        <div class="package-name">Monthly Compliance VIP Package</div>
+        <p class="package-desc">The recommended package for continuous USP &lt;797&gt;/&lt;800&gt; compliance. Covers all recurring cleaning, documentation, and certified technician support.</p>
+        <ul style="list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:#4A5468;line-height:1.5;">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><path d="M2.5 7.5L6 11L12.5 4" stroke="#0B5DBB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            4 weekly deep cleans (triple protocol, 4–6 hrs each)
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:#4A5468;line-height:1.5;">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><path d="M2.5 7.5L6 11L12.5 4" stroke="#0B5DBB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            1 full monthly deep clean (ceilings, HEPA registers, high walls)
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:#4A5468;line-height:1.5;">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><path d="M2.5 7.5L6 11L12.5 4" stroke="#0B5DBB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Complete documentation dossier — folioed logs, audit-ready
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:#4A5468;line-height:1.5;">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><path d="M2.5 7.5L6 11L12.5 4" stroke="#0B5DBB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Priority response &amp; PTCB-certified technician support
+          </li>
+        </ul>
         <div class="package-freq">Monthly</div>
-        <div class="package-price">Starting at $5,200 <span class="package-price-unit">/ month</span></div>
-        <div class="package-price-note">varies by sq. ft.</div>
-        <button class="req-btn req-btn-full" onclick="openReqModal('Monthly VIP Package')">Request This Package</button>
+        <div class="package-price">Starting at $2,900 <span class="package-price-unit">/ month</span></div>
+        <div class="package-price-note">varies by suite size</div>
+        <button class="req-btn req-btn-full" onclick="openReqModal('Monthly Compliance VIP Package')">Request This Package</button>
       </div>
+
+      <div class="package-card reveal">
+        <div class="package-badge">POPULAR</div>
+        <div class="package-name">Startup + Maintenance Bundle</div>
+        <p class="package-desc">Ideal for new pharmacies or facilities recovering compliance. Combines an intensive decontamination event with 6 months of ongoing VIP maintenance.</p>
+        <ul style="list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:#4A5468;line-height:1.5;">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><path d="M2.5 7.5L6 11L12.5 4" stroke="#0B5DBB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            1 triple decontamination intensive (3 consecutive days, 9-step clean)
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:#4A5468;line-height:1.5;">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><path d="M2.5 7.5L6 11L12.5 4" stroke="#0B5DBB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            6 months of Monthly Compliance VIP (all deep cleans included)
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:#4A5468;line-height:1.5;">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><path d="M2.5 7.5L6 11L12.5 4" stroke="#0B5DBB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Launch discount: 12–15% off total package price
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:#4A5468;line-height:1.5;">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><path d="M2.5 7.5L6 11L12.5 4" stroke="#0B5DBB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Staff training on daily best practices for sterile environments
+          </li>
+        </ul>
+        <div class="package-freq">6-Month Bundle</div>
+        <div class="package-price">Starting at $11,500 <span class="package-price-unit">/ bundle</span></div>
+        <div class="package-price-note">complete 6-month engagement</div>
+        <button class="req-btn req-btn-full" onclick="openReqModal('Startup + Maintenance Bundle')">Request This Package</button>
+      </div>
+
     </div>
   </div>
 </section>
@@ -811,18 +847,6 @@
         </div>
       </div>
 
-      <div class="discount-item reveal reveal-delay-2">
-        <div class="discount-icon-wrap" aria-hidden="true">
-          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M10 6V10.5L13 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="discount-content">
-          <div class="discount-title">After-Hours &amp; Weekends</div>
-          <p class="discount-body">+25% surcharge applies outside standard business hours (Mon–Fri, 8 AM–6 PM).</p>
-        </div>
-      </div>
     </div>
   </div>
 </div>
