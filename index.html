@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     /* ─── TOKENS ───────────────────────────────────────────── */
-    /* Elite Compounding Agency — Brand System
+    /* Elite Compounding & Aseptic Services — Brand System
        Palette:
          --cobalt        #0052B8  (Primary Blue)
          --cobalt-dark   #0A3F8C  (Deep Blue — hovers, deep accents)
@@ -1405,20 +1405,77 @@
   </div>
 </section>
 
-<!-- ─── INTRO / GAPS EXPLAINER ───────────────────────────────── -->
-<section style="padding:72px 0 48px;background:#F4F8FE;position:relative;z-index:1;" aria-label="What we help you identify">
+<!-- ─── ALERT BAND ────────────────────────────────────────────── -->
+<div style="background:linear-gradient(135deg,#0B5DBB,#0A3F8C);padding:14px 24px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;position:relative;z-index:1;">
+  <span style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;color:#ffffff;letter-spacing:0.01em;">Get 1-on-1 USP &lt;797&gt;/&lt;800&gt; Guidance</span>
+  <span style="color:rgba(255,255,255,0.4);font-size:12px;">·</span>
+  <a href="#contact" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;color:#93c5fd;text-decoration:none;white-space:nowrap;transition:color 0.18s ease;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#93c5fd'">Request a Free Cleanroom Assessment →</a>
+</div>
+
+<!-- ─── GAPS INTRO ─────────────────────────────────────────────── -->
+<section style="padding:80px 0;background:#F4F8FE;position:relative;z-index:1;" aria-labelledby="gaps-headline">
   <div class="container">
-    <div class="reveal" style="max-width:820px;margin:0 auto;text-align:center;">
-      <span class="section-eyebrow">Why Facilities Come to Us</span>
-      <h2 style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(22px,3vw,34px);letter-spacing:-0.02em;line-height:1.2;color:#0A1628;margin-bottom:20px;">Gaps don't wait for your next inspection — we help you find them first.</h2>
-      <p style="font-size:clamp(15px,1.5vw,17px);color:#4A5468;line-height:1.75;margin-bottom:40px;">Most citations aren't surprises. They're cleaning protocol drift, documentation that hasn't been updated since a staff change, SOPs written before the 2023 USP &lt;797&gt; revisions, and environmental monitoring logs with missing entries. We review your facility for gaps in <strong>cleaning practices, documentation, SOPs, staffing, and environmental monitoring</strong> — before an inspection exposes them.</p>
-      <a href="#contact" class="btn btn-primary" style="display:inline-flex;">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5L13.5 5V11L8 14.5L2.5 11V5L8 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-        Request a Free Cleanroom Readiness Assessment
-      </a>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1000px;margin:0 auto;" class="gaps-intro-grid reveal">
+      <!-- Left -->
+      <div>
+        <span class="section-eyebrow">Why Facilities Come to Us</span>
+        <h2 style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,34px);letter-spacing:-0.02em;line-height:1.2;color:#0A1628;margin:12px 0 20px;" id="gaps-headline">The compliance problems that cost you time and money.</h2>
+        <p style="font-size:15px;color:#4A5468;line-height:1.75;margin-bottom:24px;">Most violations aren't dramatic. They're cleaning logs not maintained, SOPs not updated since the 2023 USP &lt;797&gt; revisions, and documentation that hasn't been reviewed — until an inspector does.</p>
+        <ul style="list-style:none;padding:0;margin:0 0 28px;display:flex;flex-direction:column;gap:10px;">
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#374151;line-height:1.55;">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;margin-top:1px;" aria-hidden="true"><circle cx="9" cy="9" r="8" stroke="#0052B8" stroke-width="1.5"/><path d="M5.5 9l2.5 2.5L12.5 6" stroke="#0052B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Cleanroom cleaning &amp; disinfection protocols
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#374151;line-height:1.55;">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;margin-top:1px;" aria-hidden="true"><circle cx="9" cy="9" r="8" stroke="#0052B8" stroke-width="1.5"/><path d="M5.5 9l2.5 2.5L12.5 6" stroke="#0052B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Cleaning log &amp; documentation organization
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#374151;line-height:1.55;">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;margin-top:1px;" aria-hidden="true"><circle cx="9" cy="9" r="8" stroke="#0052B8" stroke-width="1.5"/><path d="M5.5 9l2.5 2.5L12.5 6" stroke="#0052B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            SOP readiness for 2023 USP &lt;797&gt; revisions
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#374151;line-height:1.55;">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;margin-top:1px;" aria-hidden="true"><circle cx="9" cy="9" r="8" stroke="#0052B8" stroke-width="1.5"/><path d="M5.5 9l2.5 2.5L12.5 6" stroke="#0052B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            PRN sterile compounding technician coverage
+          </li>
+        </ul>
+        <a href="#contact" class="btn btn-primary" style="display:inline-flex;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5L13.5 5V11L8 14.5L2.5 11V5L8 1.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          Request a Free Cleanroom Readiness Assessment
+        </a>
+      </div>
+      <!-- Right: callout card -->
+      <div style="background:#fff;border:1px solid #E2E8F4;border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(0,82,184,0.08);">
+        <div style="background:#FFF8E7;border-bottom:2px solid #F5A623;padding:16px 24px;display:flex;align-items:flex-start;gap:12px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:1px;" aria-hidden="true"><path d="M10 2L18 16H2L10 2Z" stroke="#D97706" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 8V11" stroke="#D97706" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="13.5" r="0.75" fill="#D97706"/></svg>
+          <p style="font-size:13px;font-weight:600;color:#92400E;line-height:1.5;margin:0;">This warning message exists to let you know it may take more than just a cleaning service to reach 503A or 503B status. We can guide you through the gap.</p>
+        </div>
+        <div style="padding:28px 24px;">
+          <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:17px;color:#0A1628;margin-bottom:12px;letter-spacing:-0.01em;">No Clear Path to 503A or 503B Status</div>
+          <p style="font-size:14px;color:#4A5468;line-height:1.7;margin-bottom:16px;">Many facilities operate without a clear roadmap for maintaining USP &lt;797&gt;/&lt;800&gt; compliance documentation. We help identify where the gaps are — cleaning logs, SOP currency, documentation consistency — so you're not surprised during an inspection.</p>
+          <ul style="list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:8px;">
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:13px;color:#374151;line-height:1.55;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:1px;" aria-hidden="true"><path d="M2.5 8l4 4 7-7" stroke="#0052B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              We guide your facility through the USP standards gap
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:13px;color:#374151;line-height:1.55;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:1px;" aria-hidden="true"><path d="M2.5 8l4 4 7-7" stroke="#0052B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Documentation and SOP review to identify what's missing
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:9px;font-size:13px;color:#374151;line-height:1.55;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:1px;" aria-hidden="true"><path d="M2.5 8l4 4 7-7" stroke="#0052B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Practical, hands-on support — not just a checklist
+            </li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost btn-sm" style="display:inline-flex;width:100%;justify-content:center;">Get a Free Readiness Assessment</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+<style>
+  @media (max-width: 768px) { .gaps-intro-grid { grid-template-columns: 1fr !important; gap: 32px !important; } }
+</style>
 
 <!-- ─── PROBLEM ──────────────────────────────────────────────── -->
 <section class="problem" id="problem" aria-labelledby="problem-headline">
@@ -1431,7 +1488,7 @@
         <h2 class="problem-headline" id="problem-headline">
           The compliance problems that cost you <span class="accent">time and money.</span>
         </h2>
-        <p class="problem-subtext">Five categories that close pharmacies. We resolve each one before your next inspection.</p>
+        <p class="problem-subtext">Areas where facilities often need additional support — and where we can help.</p>
         <div class="prob-paused-badge" id="prob-paused-badge" aria-live="polite">
           <svg viewBox="0 0 10 10" fill="currentColor"><rect x="1.5" y="1" width="2.5" height="8" rx="1"/><rect x="6" y="1" width="2.5" height="8" rx="1"/></svg>
           Paused
@@ -1441,14 +1498,14 @@
           <button class="prob-tab-btn"        role="tab" aria-selected="false" aria-controls="prob-panel-2" id="prob-tab-2" type="button">Outdated SOPs &amp; Policy Gaps<span class="prob-tab-progress"></span></button>
           <button class="prob-tab-btn"        role="tab" aria-selected="false" aria-controls="prob-panel-3" id="prob-tab-3" type="button">Environmental Monitoring Failures<span class="prob-tab-progress"></span></button>
           <button class="prob-tab-btn"        role="tab" aria-selected="false" aria-controls="prob-panel-4" id="prob-tab-4" type="button">Staff Training &amp; Competency Gaps<span class="prob-tab-progress"></span></button>
-          <button class="prob-tab-btn"        role="tab" aria-selected="false" aria-controls="prob-panel-5" id="prob-tab-5" type="button">No Clear Path to 503A or 503B Status<span class="prob-tab-progress"></span></button>
+          <button class="prob-tab-btn"        role="tab" aria-selected="false" aria-controls="prob-panel-5" id="prob-tab-5" type="button">Supporting 503A and 503B Environments<span class="prob-tab-progress"></span></button>
         </div>
         <select id="prob-mobile-select" class="prob-mobile-select" aria-label="Select compliance problem">
           <option value="0">Surprise Board of Pharmacy Inspections</option>
           <option value="1">Outdated SOPs &amp; Policy Gaps</option>
           <option value="2">Environmental Monitoring Failures</option>
           <option value="3">Staff Training &amp; Competency Gaps</option>
-          <option value="4">No Clear Path to 503A or 503B Status</option>
+          <option value="4">Supporting 503A and 503B Environments</option>
         </select>
       </div>
 
@@ -1467,17 +1524,17 @@
             <h3 class="prob-panel-title">Surprise Board of Pharmacy Inspections</h3>
           </div>
           <div class="prob-panel-body">
-            <p class="prob-panel-desc">Unannounced state inspections expose documentation gaps, room pressure failures, and SOP deficiencies that trigger immediate corrective actions.</p>
+            <p class="prob-panel-desc">Unannounced state inspections can expose documentation gaps, cleaning inconsistencies, and SOP deficiencies. Ongoing preparation matters more than last-minute corrections.</p>
             <div class="prob-cost-stat">
               <span class="prob-cost-icon">⚠️</span>
               <div>
-                <p class="prob-cost-label">Average citation fine</p>
-                <p class="prob-cost-value">Fines, probation, or permit suspension — per violation</p>
+                <p class="prob-cost-label">Common citation areas</p>
+                <p class="prob-cost-value">Cleaning logs, SOP currency, documentation completeness, and staff training records</p>
               </div>
             </div>
             <hr class="prob-panel-divider" />
-            <p class="prob-panel-label">How we solve this</p>
-            <p class="prob-panel-solution">We keep your cleanroom inspection-ready 365 days a year, with documentation current, logs complete, and protocols audit-proof.</p>
+            <p class="prob-panel-label">How we support this</p>
+            <p class="prob-panel-solution">We help keep your cleanroom organized and documentation current through consistent cleaning support, log maintenance, and readiness walkthroughs.</p>
           </div>
         </div>
 
@@ -1493,17 +1550,17 @@
             <h3 class="prob-panel-title">Outdated SOPs &amp; Policy Gaps</h3>
           </div>
           <div class="prob-panel-body">
-            <p class="prob-panel-desc">USP &lt;797&gt; 2023 revisions introduced sweeping changes. Facilities still running legacy procedures face citation risk with every inspection cycle.</p>
+            <p class="prob-panel-desc">USP &lt;797&gt; 2023 revisions introduced significant changes. Facilities still running legacy procedures may have documentation that no longer reflects current standards.</p>
             <div class="prob-cost-stat">
               <span class="prob-cost-icon">📋</span>
               <div>
-                <p class="prob-cost-label">Cost of a failed re-inspection</p>
-                <p class="prob-cost-value">$25,000 – $75,000 in remediation fees</p>
+                <p class="prob-cost-label">Common documentation concern</p>
+                <p class="prob-cost-value">SOPs not updated to reflect the 2023 USP &lt;797&gt; revisions</p>
               </div>
             </div>
             <hr class="prob-panel-divider" />
-            <p class="prob-panel-label">How we solve this</p>
-            <p class="prob-panel-solution">We audit your existing SOPs and align them with current USP &lt;797&gt;/&lt;800&gt; standards so you're never caught with outdated policies.</p>
+            <p class="prob-panel-label">How we support this</p>
+            <p class="prob-panel-solution">We assist with SOP organization and documentation review to help your facility identify where updates may be needed, in support of your team's pharmacist-led compliance program.</p>
           </div>
         </div>
 
@@ -1517,17 +1574,17 @@
             <h3 class="prob-panel-title">Environmental Monitoring Failures</h3>
           </div>
           <div class="prob-panel-body">
-            <p class="prob-panel-desc">Missed viable and non-viable particle counts, inadequate surface sampling, or failed trending analysis invalidates your cleanroom certification.</p>
+            <p class="prob-panel-desc">Consistent cleaning practices and well-maintained cleaning logs are foundational to a credible environmental monitoring program under USP &lt;797&gt;.</p>
             <div class="prob-cost-stat">
               <span class="prob-cost-icon">🔬</span>
               <div>
-                <p class="prob-cost-label">Cleanroom recertification cost</p>
-                <p class="prob-cost-value">$8,000 – $30,000 + 2–4 weeks downtime</p>
+                <p class="prob-cost-label">Common area of concern</p>
+                <p class="prob-cost-value">Incomplete cleaning logs or inconsistent disinfection procedures</p>
               </div>
             </div>
             <hr class="prob-panel-divider" />
-            <p class="prob-panel-label">How we solve this</p>
-            <p class="prob-panel-solution">Our EM programs are fully documented and trend-tracked, so your certification stays valid and your data tells a clean story.</p>
+            <p class="prob-panel-label">How we support this</p>
+            <p class="prob-panel-solution">We provide hands-on cleanroom cleaning support and help maintain accurate cleaning logs so your facility has a consistent, documented record of cleaning activity.</p>
           </div>
         </div>
 
@@ -1543,16 +1600,16 @@
             <h3 class="prob-panel-title">Staff Training &amp; Competency Gaps</h3>
           </div>
           <div class="prob-panel-body">
-            <p class="prob-panel-desc">Unqualified or under-trained compounding personnel are among the top cited violations in Florida Board of Pharmacy inspections.</p>
+            <p class="prob-panel-desc">Sterile compounding facilities sometimes need additional technician coverage — for staffing gaps, planned absences, or increased workload — without compromising aseptic workflow.</p>
             <div class="prob-cost-stat">
               <span class="prob-cost-icon">👤</span>
               <div>
-                <p class="prob-cost-label">Cost of a personnel-related closure</p>
-                <p class="prob-cost-value">Every day closed is revenue your facility won't recover</p>
+                <p class="prob-cost-label">Common staffing need</p>
+                <p class="prob-cost-value">PRN sterile compounding technician coverage on a per-need basis</p>
               </div>
             </div>
             <hr class="prob-panel-divider" />
-            <p class="prob-panel-label">How we solve this</p>
+            <p class="prob-panel-label">How we support this</p>
             <p class="prob-panel-solution">We supply trained, experienced sterile compounding technicians ready to integrate without disrupting your operations.</p>
           </div>
         </div>
@@ -1565,20 +1622,20 @@
                 <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.75"/>
               </svg>
             </div>
-            <h3 class="prob-panel-title">No Clear Path to 503A or 503B Status</h3>
+            <h3 class="prob-panel-title">Supporting 503A and 503B Environments</h3>
           </div>
           <div class="prob-panel-body">
-            <p class="prob-panel-desc">Navigating FDA outsourcing facility registration, CGMP requirements, and state board licensing simultaneously overwhelms most pharmacy teams.</p>
+            <p class="prob-panel-desc">Both 503A compounding pharmacies and 503B outsourcing facilities have rigorous cleanroom, documentation, and staffing requirements under USP &lt;797&gt; and USP &lt;800&gt;.</p>
             <div class="prob-cost-stat">
               <span class="prob-cost-icon">📑</span>
               <div>
-                <p class="prob-cost-label">Average FDA warning letter response cost</p>
-                <p class="prob-cost-value">FDA warning letter response can reach six figures in legal and remediation fees</p>
+                <p class="prob-cost-label">Support scope</p>
+                <p class="prob-cost-value">Cleanroom cleaning, documentation assistance, and PRN technician support for 503A and 503B facilities</p>
               </div>
             </div>
             <hr class="prob-panel-divider" />
-            <p class="prob-panel-label">How we solve this</p>
-            <p class="prob-panel-solution">We've guided facilities through both 503A and 503B pathways and can map out exactly what your facility needs to get there.</p>
+            <p class="prob-panel-label">How we support this</p>
+            <p class="prob-panel-solution">We provide hands-on cleanroom and documentation support for facilities operating in 503A and 503B environments, working alongside your pharmacist-led compliance team.</p>
           </div>
         </div>
 
@@ -1637,16 +1694,17 @@
         <p class="service-desc">Expert support for USP &lt;797&gt; and &lt;800&gt; compliance — from gap identification to documentation and staff readiness.</p>
         <ul class="service-deliverables">
           <li class="service-deliverable">USP &lt;797&gt; / &lt;800&gt; gap assessment</li>
-          <li class="service-deliverable">SOP development &amp; annual review</li>
-          <li class="service-deliverable">Staff training &amp; competency verification</li>
+          <li class="service-deliverable">Documentation review &amp; organization</li>
           <li class="service-deliverable">General compliance support</li>
+          <li class="service-deliverable">Ongoing documentation assistance</li>
         </ul>
         <div class="service-drawer" aria-hidden="true">
           <a href="#contact" class="service-drawer-cta">Schedule a Call →</a>
         </div>
       </div>
     </div>
-    <p style="text-align:center;font-size:13px;color:#6B7280;margin-top:20px;padding-bottom:24px;">PRN staffing support available on a limited basis. Ask us about availability.</p>
+    <p style="text-align:center;font-size:13px;color:#6B7280;margin-top:20px;padding-bottom:8px;">PRN sterile compounding technician support available on a limited basis. Ask us about current availability.</p>
+    <p style="text-align:center;font-size:12px;color:#8A93A8;padding-bottom:24px;max-width:600px;margin:0 auto;line-height:1.6;">PRN sterile technician services are provided under the client facility's pharmacist supervision, policies, procedures, and applicable state requirements.</p>
     <div style="text-align:center;padding-bottom:48px;">
       <a href="#contact" class="btn btn-primary" style="display:inline-flex;">Request a Free Assessment →</a>
     </div>
@@ -1678,8 +1736,8 @@
             <path d="M9 12H15M9 16H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </div>
-        <div class="hiw-title">Assess</div>
-        <p class="hiw-desc">We audit your facility against current USP &lt;797&gt;/&lt;800&gt; standards and identify every gap.</p>
+        <div class="hiw-title">Review</div>
+        <p class="hiw-desc">We discuss your facility's needs and review your current cleaning, documentation, and staffing concerns.</p>
       </div>
 
       <div class="hiw-step reveal reveal-delay-1">
@@ -1691,8 +1749,8 @@
             <path d="M8 13H16M8 17H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </div>
-        <div class="hiw-title">Plan</div>
-        <p class="hiw-desc">A prioritized remediation roadmap is delivered within 5 business days.</p>
+        <div class="hiw-title">Support Plan</div>
+        <p class="hiw-desc">We recommend the right support services based on your facility's needs, scope, and location.</p>
       </div>
 
       <div class="hiw-step reveal reveal-delay-2">
@@ -1702,8 +1760,8 @@
             <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <div class="hiw-title">Execute</div>
-        <p class="hiw-desc">Our team implements fixes (SOPs, certifications, staffing) on your timeline.</p>
+        <div class="hiw-title">Hands-On Support</div>
+        <p class="hiw-desc">Our team provides cleanroom cleaning, documentation assistance, and technician coverage on your schedule.</p>
       </div>
 
       <div class="hiw-step reveal reveal-delay-3">
@@ -1714,7 +1772,7 @@
             <path d="M8 12L10.5 14.5L16 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <div class="hiw-title">Maintain</div>
+        <div class="hiw-title">Ongoing Support</div>
         <p class="hiw-desc">Ongoing monitoring, annual reviews, and pre-inspection readiness keep you compliant.</p>
       </div>
 
@@ -1755,7 +1813,7 @@
           </svg>
         </div>
         <div class="creds-tile-body">
-          <div class="creds-tile-title">503A &amp; 503B Pathways</div>
+          <div class="creds-tile-title">503A &amp; 503B Environments</div>
           <div class="creds-tile-desc">Credentialed sterile compounding staff and regulatory guidance for outsourcing facility designation.</div>
         </div>
       </div>

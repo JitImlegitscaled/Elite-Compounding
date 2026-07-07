@@ -466,8 +466,8 @@
     .req-btn-full { display: block; width: 100%; margin-top: 24px; text-align: center; }
 
     /* ─── TABLE ACTION COLUMN ───────────────────────────────────── */
-    .pricing-table thead th.th-action { white-space: nowrap; }
-    .pricing-table tbody td.td-action { vertical-align: middle; }
+    .pricing-table thead th.th-action { white-space: nowrap; min-width: 180px; }
+    .pricing-table tbody td.td-action { vertical-align: middle; min-width: 180px; }
     @media (max-width: 767px) {
       .pricing-table tbody td.td-action { padding: 16px 20px; }
       .req-btn { width: 100%; text-align: center; display: block; }
@@ -596,7 +596,7 @@
         <img src="logo-v2.png" alt="Elite Compounding &amp; Aseptic Services" class="nav-logo-img" width="64" height="64" loading="eager" fetchpriority="high" />
         <div class="nav-logo-text" aria-hidden="true">
           Elite Compounding &amp; Aseptic Services
-          <span>Compliance Specialists</span>
+          <span>CSPT-Led Sterile Cleanroom Support</span>
         </div>
       </a>
 
@@ -609,7 +609,7 @@
       </nav>
 
       <div class="nav-ctas">
-        <a href="index.html#contact" class="nav-cta-btn">Request a Free Assessment</a>
+        <a href="index.html#contact" class="nav-cta-btn">Request a Readiness Call</a>
       </div>
 
       <button class="nav-hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
@@ -625,7 +625,7 @@
   <a href="pricing.html" class="active">Pricing</a>
   <a href="index.html#contact">Contact</a>
   <div class="nav-mobile-btns">
-    <a href="index.html#contact" class="btn btn-primary">Request a Free Assessment</a>
+    <a href="index.html#contact" class="btn btn-primary">Request a Readiness Call</a>
   </div>
 </div>
 
@@ -634,11 +634,20 @@
   <div class="container">
     <div class="page-header-inner">
       <span class="page-header-eyebrow">Transparent Pricing</span>
-      <h1 class="page-header-headline" id="page-title">Cleanroom Compliance Services</h1>
-      <p class="page-header-sub">Certified sterile technicians serving Tampa Bay, Orlando, Sarasota and surrounding areas. No hidden fees.</p>
+      <h1 class="page-header-headline" id="page-title">Transparent Pricing for Cleanroom Support</h1>
+      <p class="page-header-sub">Cleanroom cleaning, sterile support, and USP &lt;797&gt;/&lt;800&gt; readiness services for Tampa Bay, Orlando, Sarasota, Lakeland, and surrounding Florida areas.</p>
     </div>
   </div>
 </header>
+
+<!-- ─── PRICING DISCLAIMER ──────────────────────────────────── -->
+<div style="background:#EBF1FB;border-bottom:1px solid #B8CFED;padding:14px 0;">
+  <div class="container">
+    <p style="font-size:13px;color:#374151;line-height:1.6;text-align:center;margin:0;">
+      <strong>Pricing shown is for planning purposes only.</strong> Final pricing depends on facility size, ISO classification, scope of work, frequency, location, materials, urgency, and scheduling requirements.
+    </p>
+  </div>
+</div>
 
 <!-- ─── SECTION 1: CLEANROOM CLEANING ───────────────────────── -->
 <section class="pricing-section" aria-labelledby="cleaning-headline">
@@ -665,8 +674,8 @@
         <tbody>
 
           <tr>
-            <td data-label="Service"><span class="td-service-name">Triple Decontamination (Post-Construction / Post-Audit)</span></td>
-            <td data-label="Description"><span class="td-description">Full 3-cycle decon protocol (Cleaner → Disinfectant → Sporicide) over 3 consecutive days. Required after construction, renovation, or failed audit. Includes validated cleaning log with chemical lot numbers and dwell times.</span></td>
+            <td data-label="Service"><span class="td-service-name">Triple Decontamination (Post-Construction / Post-Inspection Event)</span></td>
+            <td data-label="Description"><span class="td-description">Full 3-cycle decon protocol (Cleaner → Disinfectant → Sporicide) over 3 consecutive days. Used after construction, renovation, or microbial action level events. Includes validated cleaning log with chemical lot numbers and dwell times.</span></td>
             <td data-label="Duration"><span class="td-duration">3 days (3 separate visits)</span></td>
             <td data-label="Per Visit"><span class="td-price">Starting at $3,800</span><span class="td-price-note">flat event rate</span><span class="td-price-note">Large facilities: $6–$10 / sq ft</span></td>
             <td data-label="Action" class="td-action"><button class="req-btn" onclick="openReqModal('Triple Decontamination')">Request</button></td>
@@ -687,7 +696,7 @@
           </tr>
           <tr>
             <td data-label="Service"><span class="td-service-name">Weekly Maintenance Clean</span></td>
-            <td data-label="Description"><span class="td-description">Recurring surface clean of low-touch and high-touch zones, sporicidal wipe-down, and documentation log. Keeps daily compounding activities audit-ready between deep cleans.</span></td>
+            <td data-label="Description"><span class="td-description">Recurring surface clean of low-touch and high-touch zones, sporicidal wipe-down, and documentation log. Keeps daily compounding activities consistently documented between deep cleans.</span></td>
             <td data-label="Duration"><span class="td-duration">3–4 hours</span></td>
             <td data-label="Per Visit"><span class="td-price">Starting at $550</span><span class="td-price-note">varies by sq. ft.</span><span class="td-price-note">Est. monthly: $2,200 (4× per month)</span></td>
             <td data-label="Action" class="td-action"><button class="req-btn" onclick="openReqModal('Weekly Maintenance Clean')">Request</button></td>
@@ -705,8 +714,11 @@
       <span class="section-eyebrow">PRN Staffing</span>
       <h2 class="section-headline" id="prn-headline">Sterile Tech Services</h2>
     </div>
-    <p class="section-note reveal">Limited availability — contact us early to secure scheduling.</p>
+    <p class="section-note reveal">Availability is limited and scheduled based on facility needs, technician availability, location, and scope of work. Contact us early to discuss your requirements.</p>
+    <p class="section-note reveal" style="margin-top:8px;">PRN sterile technician services are provided under the client facility's pharmacist supervision, policies, procedures, and applicable state requirements.</p>
 
+  </div>
+  <div class="container" style="max-width: 1400px;">
     <div class="pricing-table-wrap reveal">
       <table class="pricing-table" aria-label="Sterile tech PRN service rates">
         <thead>
@@ -723,8 +735,8 @@
             <td data-label="Service"><span class="td-service-name">Sterile Tech PRN (Short)</span></td>
             <td data-label="Description"><span class="td-description">Sterile support — garbing, aseptic technique assistance, compounding support.</span></td>
             <td data-label="Max Duration"><span class="td-duration">Up to 4 hours</span></td>
-            <td data-label="Rate"><span class="td-price">Starting at $45 / hour</span><span class="td-price-note">varies by sq. ft.</span></td>
-            <td data-label="Action" class="td-action"><button class="req-btn" onclick="openReqModal('Sterile Tech PRN (Short)')">Request This Package</button></td>
+            <td data-label="Rate"><span class="td-price">Starting at $45 / hour</span><span class="td-price-note">Final rate depends on scope, location, and scheduling</span></td>
+            <td data-label="Action" class="td-action"><button class="req-btn" onclick="openReqModal('Sterile Tech PRN (Short)')">Request This Service</button></td>
           </tr>
         </tbody>
       </table>
@@ -737,7 +749,7 @@
   <div class="container">
     <div class="section-header reveal">
       <span class="section-eyebrow">Best Value</span>
-      <h2 class="section-headline" id="packages-headline">Compliance Packages</h2>
+      <h2 class="section-headline" id="packages-headline">Cleanroom Support Packages</h2>
     </div>
     <p class="section-note reveal">Package pricing is estimated. Final cost varies by cleanroom size, ISO classification, and suite configuration.</p>
 
@@ -745,8 +757,8 @@
 
       <div class="package-card reveal reveal-delay-1">
         <div class="package-badge">BEST VALUE</div>
-        <div class="package-name">Monthly Compliance VIP Package</div>
-        <p class="package-desc">The recommended package for continuous USP &lt;797&gt;/&lt;800&gt; compliance. Covers all recurring cleaning, documentation, and certified technician support.</p>
+        <div class="package-name">Monthly Maintenance Package</div>
+        <p class="package-desc">A comprehensive monthly package for consistent cleanroom cleaning, documentation support, and ongoing USP &lt;797&gt;/&lt;800&gt; readiness. Ideal for facilities that want reliable, recurring coverage.</p>
         <ul style="list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:8px;">
           <li style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:#4A5468;line-height:1.5;">
             <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><path d="M2.5 7.5L6 11L12.5 4" stroke="#0B5DBB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -758,23 +770,23 @@
           </li>
           <li style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:#4A5468;line-height:1.5;">
             <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><path d="M2.5 7.5L6 11L12.5 4" stroke="#0B5DBB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Complete documentation dossier — folioed logs, audit-ready
+            Complete documentation package — cleaning checklists, service logs, and completion reports
           </li>
           <li style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:#4A5468;line-height:1.5;">
             <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><path d="M2.5 7.5L6 11L12.5 4" stroke="#0B5DBB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Priority response &amp; PTCB-certified technician support
+            Priority scheduling &amp; PTCB-certified technician support
           </li>
         </ul>
         <div class="package-freq">Monthly</div>
         <div class="package-price">Starting at $2,900 <span class="package-price-unit">/ month</span></div>
         <div class="package-price-note">varies by suite size</div>
-        <button class="req-btn req-btn-full" onclick="openReqModal('Monthly Compliance VIP Package')">Request This Package</button>
+        <button class="req-btn req-btn-full" onclick="openReqModal('Monthly Maintenance Package')">Discuss This Service</button>
       </div>
 
       <div class="package-card reveal">
         <div class="package-badge">POPULAR</div>
         <div class="package-name">Startup + Maintenance Bundle</div>
-        <p class="package-desc">Ideal for new pharmacies or facilities recovering compliance. Combines an intensive decontamination event with 6 months of ongoing VIP maintenance.</p>
+        <p class="package-desc">Ideal for new pharmacies or facilities that need an intensive reset followed by consistent ongoing maintenance. Combines a triple decontamination event with 6 months of recurring cleanroom and documentation support.</p>
         <ul style="list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:8px;">
           <li style="display:flex;align-items:flex-start;gap:8px;font-size:14px;color:#4A5468;line-height:1.5;">
             <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;margin-top:2px;" aria-hidden="true"><path d="M2.5 7.5L6 11L12.5 4" stroke="#0B5DBB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -796,7 +808,7 @@
         <div class="package-freq">6-Month Bundle</div>
         <div class="package-price">Starting at $11,500 <span class="package-price-unit">/ bundle</span></div>
         <div class="package-price-note">complete 6-month engagement</div>
-        <button class="req-btn req-btn-full" onclick="openReqModal('Startup + Maintenance Bundle')">Request This Package</button>
+        <button class="req-btn req-btn-full" onclick="openReqModal('Startup + Maintenance Bundle')">Discuss This Service</button>
       </div>
 
     </div>
@@ -855,7 +867,7 @@
 <div class="disclaimer-wrap">
   <div class="container">
     <div class="disclaimer-box reveal">
-      <p>Pricing reflects 2026 Florida market rates for USP &lt;797&gt;/&lt;800&gt;-compliant sterile environments. Rates are structured per project/event for one-time and emergency services, per sq ft for large suites and initial budget estimates, and as recurring contracts with annual discount options. Travel and mobilization fees apply outside the Tampa Bay service area. Pharmaceutical-grade materials (PREempt, Decon-Spore, cleanroom-laundered mops, sterile gowning) are itemized separately or passed through at cost plus a handling markup. Final pricing confirmed at free on-site assessment.</p>
+      <p>Pricing reflects 2026 Florida market rates for USP &lt;797&gt;/&lt;800&gt;-compliant sterile environments. Rates are structured per project/event for one-time and emergency services, per sq ft for large suites and initial budget estimates, and as recurring contracts with annual discount options. Travel and mobilization fees apply outside the Tampa Bay service area. Pharmaceutical-grade materials (PREempt, Decon-Spore, cleanroom-laundered mops, sterile gowning) are itemized separately or passed through at cost plus a handling markup. Final pricing confirmed following a readiness call and scope review.</p>
     </div>
   </div>
 </div>
@@ -865,8 +877,8 @@
   <div class="container">
     <div class="cta-inner reveal">
       <h2 class="cta-headline" id="cta-headline">Not sure which service you need?</h2>
-      <p class="cta-sub">Request a free cleanroom readiness assessment and we'll identify your gaps before recommending a service plan.</p>
-      <a href="index.html#contact" class="btn btn-white">Request a Free Assessment</a>
+      <p class="cta-sub">Request a cleanroom readiness call and we'll help identify key gaps before recommending a service plan.</p>
+      <a href="index.html#contact" class="btn btn-white">Request a Cleanroom Readiness Call</a>
       <a href="mailto:elitecompoundingaseptic@gmail.com" class="cta-email-link">Or email us at elitecompoundingaseptic@gmail.com</a>
     </div>
   </div>
@@ -877,7 +889,7 @@
   <div class="container">
     <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;">
       Met us during a pharmacy visit?
-      <a href="index.html#contact" style="color:#93c5fd;font-weight:600;text-decoration:none;margin-left:4px;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#93c5fd'">Request your free cleanroom readiness assessment here →</a>
+      <a href="index.html#contact" style="color:#93c5fd;font-weight:600;text-decoration:none;margin-left:4px;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#93c5fd'">Request a cleanroom readiness call here →</a>
     </p>
   </div>
 </div>
@@ -895,7 +907,7 @@
             Elite Compounding<br>&amp; Aseptic Services
           </div>
         </div>
-        <p class="footer-tagline">Florida's leading USP compliance consultancy for sterile compounding pharmacies and outsourcing facilities.</p>
+        <p class="footer-tagline">Florida-based cleanroom cleaning, documentation support, and USP &lt;797&gt;/&lt;800&gt; readiness services for sterile compounding environments.</p>
         <div class="footer-contact-item">
           <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M2 3L7 7.5L12 3M2 3H12V11H2V3Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
@@ -914,9 +926,9 @@
       <div>
         <div class="footer-col-title">Services</div>
         <ul class="footer-links">
-          <li><a href="index.html#services">Cleanroom Compliance</a></li>
-          <li><a href="index.html#services">Sterile Staffing</a></li>
-          <li><a href="index.html#services">Regulatory Consulting</a></li>
+          <li><a href="index.html#services">Sterile Cleanroom Cleaning</a></li>
+          <li><a href="index.html#services">USP &lt;797&gt;/&lt;800&gt; Readiness Support</a></li>
+          <li><a href="index.html#services">PRN Sterile Technician Coverage</a></li>
         </ul>
       </div>
 
@@ -946,11 +958,11 @@
     <div class="footer-bottom">
       <div class="footer-bottom-text">&copy; 2026 Elite Compounding &amp; Aseptic Services. All rights reserved.</div>
       <div class="footer-usp">
-        <span>USP &lt;797&gt; &amp; &lt;800&gt; Compliance Specialists</span>
+        <span>CSPT-Led Sterile Cleanroom Support</span>
         <div class="footer-usp-dot" aria-hidden="true"></div>
-        <span>Florida Licensed &amp; Based</span>
+        <span>USP &lt;797&gt; &amp; &lt;800&gt; Readiness</span>
         <div class="footer-usp-dot" aria-hidden="true"></div>
-        <span>503A &amp; 503B Pathways</span>
+        <span>Florida-Based</span>
       </div>
     </div>
   </div>
@@ -963,7 +975,7 @@
 
     <!-- Form state -->
     <div id="req-form-state">
-      <h2 class="req-modal-headline" id="req-modal-headline">Request a Free Assessment</h2>
+      <h2 class="req-modal-headline" id="req-modal-headline">Request a Readiness Call</h2>
       <p class="req-modal-sub">Tell us about your facility and we'll reach out within 24 hours to discuss this service and confirm a support plan.</p>
 
       <form id="req-form" action="https://formspree.io/f/mvznkyqq" method="POST" novalidate>
@@ -1017,7 +1029,7 @@
           <textarea id="req-message" name="message" rows="4" placeholder="Any additional details about your facility or needs"></textarea>
         </div>
 
-        <button type="submit" id="req-submit-btn">Request My Free Assessment</button>
+        <button type="submit" id="req-submit-btn">Request a Readiness Call</button>
         <p class="req-form-note">No commitment required. We respond within 24 hours.</p>
         <p class="req-error-msg" id="req-error-msg">Something went wrong. Please email us directly at elitecompoundingaseptic@gmail.com</p>
       </form>
@@ -1026,8 +1038,8 @@
     <!-- Success state -->
     <div id="req-success" aria-live="polite">
       <div class="req-check-circle" aria-hidden="true">&#10003;</div>
-      <div class="req-success-headline">Assessment Requested!</div>
-      <p class="req-success-body">Thank you. We'll review your facility details and be in touch within 24 hours to schedule your free cleanroom readiness assessment.</p>
+      <div class="req-success-headline">Request Received!</div>
+      <p class="req-success-body">Thank you. We'll review your facility details and be in touch within 24 hours to schedule your readiness call.</p>
       <button id="req-success-close">Close</button>
     </div>
   </div>
